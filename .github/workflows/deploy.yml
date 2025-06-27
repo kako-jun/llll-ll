@@ -18,6 +18,7 @@ jobs:
           host: 35.197.65.57
           username: ${{ secrets.GCE_USERNAME }}
           key: ${{ secrets.GCE_SSH_KEY }}
+          command_timeout: 20m
           script: |
             cd ~/repos/llll-ll
             git pull origin main

@@ -1,12 +1,14 @@
 id: sid-note
 title:
   en: "Sid Note"
-  zh: "Sid Note"
   ja: "Sid Note"
+  zh: "Sid Note"
+  es: "Sid Note"
 description:
   en: "A note and track list app for bass practice. Provides practice tracks for various music genres and songs with a minimalist design and grunge texture background."
-  zh: "用于贝斯练习的笔记和曲目列表应用。提供各种音乐流派和歌曲的练习曲目，采用简约设计和复古纹理背景。"
   ja: "ベース演奏の練習のためのノート・トラックリストアプリ。様々な音楽ジャンルや楽曲の練習トラックを提供する、ミニマルなデザインとグランジテクスチャ背景が特徴。"
+  zh: "用于贝斯练习的笔记和曲目列表应用。提供各种音乐流派和歌曲的练习曲目，采用简约设计和复古纹理背景。"
+  es: "Una aplicación de notas y lista de pistas para practicar bajo. Proporciona pistas de práctica para varios géneros musicales y canciones con un diseño minimalista y fondo de textura grunge."
 tags:
   - "無料"
   - "Next.js"

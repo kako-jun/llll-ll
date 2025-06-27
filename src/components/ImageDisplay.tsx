@@ -6,7 +6,7 @@ interface ImageDisplayProps {
 
 export default function ImageDisplay({ language }: ImageDisplayProps) {
   return (
-    <section style={{ padding: "2rem 0 1rem 0" }}>
+    <section style={{ padding: "2rem 0 1rem 0", position: "relative", zIndex: 1 }}>
       <div className="container">
         <div
           style={{
@@ -25,6 +25,8 @@ export default function ImageDisplay({ language }: ImageDisplayProps) {
               borderRadius: "8px",
               objectFit: "cover",
               border: "2px solid var(--border-color)",
+              position: "relative",
+              zIndex: 1,
             }}
           />
         </div>

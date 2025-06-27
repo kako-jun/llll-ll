@@ -38,6 +38,8 @@ export default function ScrollToTop() {
       onClick={scrollToTop}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={() => setIsHovered(true)}
+      onTouchEnd={() => setIsHovered(false)}
       style={{
         position: "fixed",
         bottom: "2rem",
@@ -66,6 +68,14 @@ export default function ScrollToTop() {
       }}
       onMouseUp={(e) => {
         e.currentTarget.style.transform = isHovered ? "scale(1.1) translateY(-2px)" : "scale(1) translateY(0)";
+      }}
+      onTouchStart={(e) => {
+        e.currentTarget.style.transform = "scale(0.95) translateY(0)";
+      }}
+      onTouchEnd={(e) => {
+        e.currentTarget.style.transform = "scale(1) translateY(0)";
+        // タッチ終了時は必ず元の状態に戻す
+        setTimeout(() => setIsHovered(false), 100);
       }}
       title="ページトップに戻る"
     >

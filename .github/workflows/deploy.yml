@@ -25,3 +25,6 @@ jobs:
             docker compose down
             docker compose build
             docker compose up -d
+            # 不要なDockerリソースをクリーンアップ
+            docker image prune -f
+            docker container prune -f

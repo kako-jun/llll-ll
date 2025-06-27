@@ -1,8 +1,8 @@
 services:
   llll-ll:
     build: .
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     restart: unless-stopped
     container_name: llll-ll-app
     environment:

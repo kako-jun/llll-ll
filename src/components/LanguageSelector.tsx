@@ -142,6 +142,38 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
               >
                 中文
               </button>
+
+              <span
+                style={{
+                  color: "var(--muted-text)",
+                  width: "15px",
+                  textAlign: "center",
+                  display: "inline-block",
+                  fontFamily: "'Noto Sans', sans-serif",
+                  flexShrink: 0,
+                }}
+              >
+                |
+              </span>
+
+              <button
+                onClick={() => handleLanguageSelect("es")}
+                style={{
+                  background: "none",
+                  border: "none",
+                  color: selectedLanguage === "es" ? "var(--primary-color)" : "var(--link-color)",
+                  textDecoration: "none",
+                  fontSize: "0.9rem",
+                  cursor: "pointer",
+                  fontFamily: "'Noto Sans', sans-serif",
+                  fontWeight: selectedLanguage === "es" ? "bold" : "normal",
+                  width: "60px",
+                  textAlign: "center",
+                  flexShrink: 0,
+                }}
+              >
+                Español
+              </button>
             </div>
 
             {/* Theme Toggle Switch */}
@@ -352,6 +384,27 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
             >
               中文
             </button>
+
+            <span style={{ color: "var(--muted-text)", fontSize: "0.9rem", margin: "0 0.5rem" }}>|</span>
+
+            <button
+              onClick={() => changeLanguageWithFade("es")}
+              onMouseEnter={() => changeLanguageWithFade("es")}
+              style={{
+                background: "none",
+                border: "none",
+                color: currentLang === "es" ? "var(--primary-color)" : "var(--link-color)",
+                textDecoration: "none",
+                fontSize: "1rem",
+                cursor: "pointer",
+                fontFamily: "'Noto Sans', sans-serif",
+                fontWeight: currentLang === "es" ? "bold" : "normal",
+                minWidth: "80px",
+                textAlign: "center",
+              }}
+            >
+              Español
+            </button>
           </div>
 
           <div style={{ marginBottom: "2rem" }}>
@@ -386,7 +439,7 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
                   opacity: isChanging ? 0 : 1,
                 }}
               >
-                {currentLang === "en" ? "Continue" : currentLang === "ja" ? "続行" : "继续"}
+                {currentLang === "en" ? "Continue" : currentLang === "ja" ? "続行" : currentLang === "zh" ? "继续" : "Continuar"}
               </span>
             </button>
           </div>

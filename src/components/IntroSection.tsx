@@ -52,26 +52,19 @@ export default function IntroSection({ language }: IntroSectionProps) {
                 color: "var(--primary-color)",
               }}
             >
-              {language === "en" ? (
-                <>
-                  {t.welcome}{" "}
-                  <span className="logo-font" style={{ fontSize: "1.8rem" }}>
-                    llll-ll
-                  </span>
-                </>
-              ) : language === "zh" ? (
-                <>
-                  {t.welcome}{" "}
-                  <span className="logo-font" style={{ fontSize: "1.8rem" }}>
-                    llll-ll
-                  </span>
-                </>
-              ) : (
+              {language === "ja" ? (
                 <>
                   <span className="logo-font" style={{ fontSize: "1.8rem" }}>
                     llll-ll
                   </span>{" "}
                   {t.welcome}
+                </>
+              ) : (
+                <>
+                  {t.welcome}{" "}
+                  <span className="logo-font" style={{ fontSize: "1.8rem" }}>
+                    llll-ll
+                  </span>
                 </>
               )}
             </h2>

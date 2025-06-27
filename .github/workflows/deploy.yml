@@ -22,10 +22,8 @@ jobs:
           script: |
             cd ~/repos/llll-ll
             git pull origin main
-            # Docker Composeでアプリを再デプロイ
-            docker compose down
-            docker compose build
-            docker compose up -d
+            # Docker Composeでアプリを再デプロイ（ダウンタイム最小）
+            docker compose up -d --build
             # 不要なDockerリソースをクリーンアップ
             docker image prune -f
             docker container prune -f

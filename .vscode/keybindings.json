@@ -1,0 +1,11 @@
+[
+  {
+    "key": "f10",
+    "command": "-workbench.action.debug.stepOver"
+  },
+  {
+    "key": "f10",
+    "command": "-workbench.action.debug.start",
+    "when": "!inDebugMode"
+  }
+]

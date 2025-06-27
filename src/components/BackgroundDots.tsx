@@ -134,7 +134,7 @@ export default function BackgroundDots() {
             animation: `float-${dot.id} ${dot.duration}s cubic-bezier(0.4, 0, 0.6, 1) infinite`,
             animationDelay: `${dot.delay}s`,
             pointerEvents: "none",
-            zIndex: 1,
+            zIndex: 0,
           }}
         />
       ))}

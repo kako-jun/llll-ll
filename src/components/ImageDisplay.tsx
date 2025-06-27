@@ -6,14 +6,14 @@ interface ImageDisplayProps {
 
 export default function ImageDisplay({ language }: ImageDisplayProps) {
   return (
-    <section style={{ padding: "3rem 0 2rem 0" }}>
+    <section style={{ padding: "2rem 0 1rem 0" }}>
       <div className="container">
         <div
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            marginBottom: "2rem",
+            marginBottom: "1rem",
           }}
         >
           <img

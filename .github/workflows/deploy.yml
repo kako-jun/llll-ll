@@ -22,6 +22,8 @@ jobs:
           script: |
             cd ~/repos/llll-ll
             git pull origin main
+            # ネットワークを事前作成（既存の場合は無視）
+            docker network create proxy-network 2>/dev/null || true
             # Docker Composeでアプリを再デプロイ（ダウンタイム最小）
             docker compose up -d --build
             # 不要なDockerリソースをクリーンアップ

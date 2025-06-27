@@ -411,7 +411,7 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
               {t.forMobileDevices}
             </div>
             <img
-              src="https://llll-ll.com/images/qrcode.webp"
+              src="/qrcode.webp"
               alt="QR Code for mobile access"
               style={{
                 width: "120px",

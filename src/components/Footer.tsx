@@ -21,6 +21,7 @@ export default function Footer({}: FooterProps) {
         marginTop: "3rem",
         padding: "2rem 0 4rem 0", // 下のパディングを増やしてScrollToTopボタンとの重複を避ける
         position: "relative",
+        zIndex: 2,
         backgroundImage: "var(--footer-gradient)",
         transition: "background-color 0.3s ease, background-image 0.3s ease",
       }}

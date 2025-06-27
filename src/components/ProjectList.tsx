@@ -86,7 +86,7 @@ export default function ProjectList({ products, language }: ProjectListProps) {
           style={{
             fontSize: "1.8rem",
             fontWeight: "bold",
-            marginBottom: "2rem",
+            marginBottom: "1.5rem",
             textAlign: "center",
             color: "var(--primary-color)",
           }}
@@ -95,7 +95,7 @@ export default function ProjectList({ products, language }: ProjectListProps) {
         </h2>
 
         {/* 検索・フィルター・ソートエリア */}
-        <div style={{ marginBottom: "2rem" }}>
+        <div style={{ marginBottom: "1.5rem" }}>
           {/* 検索ボックス */}
           <div style={{ maxWidth: "400px", margin: "0 auto 1.5rem", position: "relative" }}>
             <div

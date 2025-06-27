@@ -22,6 +22,31 @@ jobs:
           script: |
             cd ~/repos/llll-ll
             git pull origin main
+            
+            # ビルド競合回避のロック機能
+            LOCK_FILE="/tmp/docker-build.lock"
+            BUILD_TIMEOUT=1200  # 20分
+            
+            # 古いロックファイルをチェック
+            if [ -f "$LOCK_FILE" ]; then
+              LOCK_TIME=$(stat -c %Y "$LOCK_FILE" 2>/dev/null || echo 0)
+              CURRENT_TIME=$(date +%s)
+              AGE=$((CURRENT_TIME - LOCK_TIME))
+              
+              if [ $AGE -gt $BUILD_TIMEOUT ]; then
+                echo "古いロックファイルを削除: ${AGE}秒経過"
+                rm -f "$LOCK_FILE"
+              else
+                WAIT_TIME=$((BUILD_TIMEOUT - AGE))
+                echo "他のビルドが実行中。残り約$((WAIT_TIME/60))分待機..."
+                sleep $WAIT_TIME
+              fi
+            fi
+            
+            # 新しいロック作成
+            echo "$(date +%s)" > "$LOCK_FILE"
+            trap "rm -f $LOCK_FILE" EXIT
+            
             # ネットワークを事前作成（既存の場合は無視）
             docker network create proxy-network 2>/dev/null || true
             # Docker Composeでアプリを再デプロイ（ダウンタイム最小）

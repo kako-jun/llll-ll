@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
 import ArrowIcon from "./ArrowIcon";
@@ -11,107 +11,179 @@ interface IntroSectionProps {
 
 export default function IntroSection({ language }: IntroSectionProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [buttonRect, setButtonRect] = useState<DOMRect | null>(null);
   const t = useTranslation(language);
 
+  const updateButtonPosition = () => {
+    const button = document.querySelector('.about-button') as HTMLElement;
+    if (button) {
+      setButtonRect(button.getBoundingClientRect());
+    }
+  };
+
+  const handleButtonClick = () => {
+    if (!isExpanded) {
+      updateButtonPosition();
+    }
+    setIsExpanded(!isExpanded);
+  };
+
+  useEffect(() => {
+    if (isExpanded) {
+      const handleScroll = () => {
+        updateButtonPosition();
+      };
+      
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+  }, [isExpanded]);
+
   return (
-    <section style={{ padding: "2rem 0" }} className="fade-in">
-      <div className="container">
-        <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-          <h2
+    <>
+      <section style={{ padding: "2rem 0", position: "relative" }} className="fade-in">
+        <div className="container">
+          <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+            <h2
+              style={{
+                fontSize: "1.8rem",
+                fontWeight: "bold",
+                marginBottom: "1rem",
+                color: "var(--primary-color)",
+              }}
+            >
+              {language === "en" ? (
+                <>
+                  {t.welcome}{" "}
+                  <span className="logo-font" style={{ fontSize: "1.8rem" }}>
+                    llll-ll
+                  </span>
+                </>
+              ) : language === "zh" ? (
+                <>
+                  {t.welcome}{" "}
+                  <span className="logo-font" style={{ fontSize: "1.8rem" }}>
+                    llll-ll
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="logo-font" style={{ fontSize: "1.8rem" }}>
+                    llll-ll
+                  </span>{" "}
+                  {t.welcome}
+                </>
+              )}
+            </h2>
+
+            <button
+              className="about-button"
+              onClick={handleButtonClick}
+              style={{
+                background: "none",
+                border: "none",
+                color: "var(--link-color)",
+                textDecoration: "none",
+                fontSize: "1rem",
+                cursor: "pointer",
+                fontFamily: language === "zh" ? "'Noto Sans SC', sans-serif" : "inherit",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                margin: "0 auto",
+              }}
+            >
+              {isExpanded ? t.hideAbout : t.showAbout}
+              <ArrowIcon
+                direction={isExpanded ? "up" : "down"}
+                size={16}
+                strokeWidth={2}
+                style={{
+                  transition: "transform 0.3s ease",
+                  transform: isExpanded ? "rotate(0deg)" : "rotate(0deg)",
+                }}
+              />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 絶対確実な吹き出し */}
+      {isExpanded && buttonRect && (
+        <div
+          style={{
+            position: "fixed",
+            top: `${buttonRect.bottom + 20}px`,
+            left: "50%",
+            transform: "translateX(-50%)",
+            backgroundColor: "var(--input-background)",
+            border: "4px solid var(--primary-color)",
+            borderRadius: "16px",
+            padding: "2rem",
+            width: "500px",
+            maxWidth: "95vw",
+            zIndex: 5,
+            boxShadow: "0 25px 50px rgba(0,0,0,0.5)",
+          }}
+        >
+          {/* 確実な三角形 */}
+          <div
             style={{
-              fontSize: "1.8rem",
+              position: "absolute",
+              top: "-16px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "0",
+              height: "0",
+              borderLeft: "16px solid transparent",
+              borderRight: "16px solid transparent",
+              borderBottom: "16px solid var(--primary-color)",
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              top: "-12px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "0",
+              height: "0",
+              borderLeft: "12px solid transparent",
+              borderRight: "12px solid transparent",
+              borderBottom: "12px solid var(--input-background)",
+            }}
+          />
+          
+          <h3
+            style={{
+              fontSize: "1.4rem",
               fontWeight: "bold",
-              marginBottom: "1rem",
+              marginBottom: "1.5rem",
+              textAlign: "center",
               color: "var(--primary-color)",
             }}
           >
-            {language === "en" ? (
-              <>
-                {t.welcome}{" "}
-                <span className="logo-font" style={{ fontSize: "1.8rem" }}>
-                  llll-ll
-                </span>
-              </>
-            ) : language === "zh" ? (
-              <>
-                {t.welcome}{" "}
-                <span className="logo-font" style={{ fontSize: "1.8rem" }}>
-                  llll-ll
-                </span>
-              </>
-            ) : (
-              <>
-                <span className="logo-font" style={{ fontSize: "1.8rem" }}>
-                  llll-ll
-                </span>{" "}
-                {t.welcome}
-              </>
-            )}
-          </h2>
-
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
+            {t.aboutTitle}
+          </h3>
+          <div
             style={{
-              background: "none",
-              border: "none",
-              color: "var(--link-color)",
-              textDecoration: "none",
-              fontSize: "1rem",
-              cursor: "pointer",
+              color: "var(--text-color)",
+              textAlign: "left",
+              lineHeight: "1.8",
+              fontSize: "1.1rem",
               fontFamily: language === "zh" ? "'Noto Sans SC', sans-serif" : "inherit",
-              display: "flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              margin: "0 auto",
+              whiteSpace: "pre-wrap",
+              wordBreak: "break-word",
+              maxHeight: "300px",
+              overflowY: "auto",
+              padding: "0 1rem",
             }}
           >
-            {isExpanded ? t.hideAbout : t.showAbout}
-            <ArrowIcon
-              direction={isExpanded ? "up" : "down"}
-              size={16}
-              strokeWidth={2}
-              style={{
-                transition: "transform 0.3s ease",
-                transform: isExpanded ? "rotate(0deg)" : "rotate(0deg)",
-              }}
-            />
-          </button>
-        </div>
-
-        {isExpanded && (
-          <div style={{ maxWidth: "600px", margin: "0 auto" }} className="slide-up">
-            <div
-              style={{
-                backgroundColor: "var(--input-background)",
-                padding: "2rem",
-                border: "1px solid var(--border-color)",
-                marginBottom: "2rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.2rem",
-                  fontWeight: "bold",
-                  marginBottom: "1rem",
-                  textAlign: "center",
-                  color: "#28a745",
-                }}
-              >
-                {t.aboutTitle}
-              </h3>
-              <p
-                style={{
-                  color: "#6c757d",
-                  textAlign: "center",
-                  lineHeight: "1.6",
-                }}
-              >
-                {t.intro}
-              </p>
-            </div>
+            {t.intro}
           </div>
-        )}
-      </div>
-    </section>
+        </div>
+      )}
+
+    </>
   );
 }

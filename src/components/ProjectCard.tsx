@@ -83,7 +83,7 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
                     font-size: 0.7rem;
                     text-align: center;
                   `;
-                  placeholder.textContent = "画像なし";
+                  placeholder.textContent = t.noImage;
                   e.currentTarget.parentNode?.appendChild(placeholder);
                 }}
               />
@@ -279,7 +279,7 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
                           font-size: 0.7rem;
                           text-align: center;
                         `;
-                        placeholder.textContent = "画像なし";
+                        placeholder.textContent = t.noImage;
                         e.currentTarget.parentNode?.appendChild(placeholder);
                       }}
                     />
@@ -321,7 +321,7 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
                         font-size: 0.7rem;
                         text-align: center;
                       `;
-                      placeholder.textContent = "画像なし";
+                      placeholder.textContent = t.noImage;
                       e.currentTarget.parentNode?.appendChild(placeholder);
                     }}
                   />

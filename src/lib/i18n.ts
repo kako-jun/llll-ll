@@ -4,7 +4,7 @@ export const translations = {
   en: {
     welcome: "Welcome to",
     intro:
-      "Hi! I'm kako-jun, based in Kanazawa. I create digital experiences that blend nostalgia with modern technology.",
+      "Hi! I'm kako-jun from Kanazawa. I blend nostalgia with modern technology to create apps and games.",
     aboutTitle: "About Me",
     projectsTitle: "Things I Made",
     sortNewest: "Newest First",
@@ -26,10 +26,11 @@ export const translations = {
     showAbout: "About Me",
     hideAbout: "Hide Details",
     forMobileDevices: "Scan QR code for mobile access",
+    noImage: "No Image",
   },
   zh: {
     welcome: "欢迎来到",
-    intro: "你好！我是kako-jun，居住在金泽。我创造融合怀旧与现代技术的数字体验。",
+    intro: "你好！我是kako-jun，来自金泽。我将怀旧与现代技术相结合，制作应用和游戏。",
     aboutTitle: "关于我",
     projectsTitle: "作ったもの",
     sortNewest: "最新优先",
@@ -51,10 +52,11 @@ export const translations = {
     showAbout: "关于我",
     hideAbout: "隐藏详情",
     forMobileDevices: "扫描二维码访问手机版",
+    noImage: "无图片",
   },
   ja: {
     welcome: "へようこそ",
-    intro: "はじめまして！金沢を拠点とするkako-junです。ノスタルジーと現代技術を融合したデジタル体験を創造しています。",
+    intro: "はじめまして！金沢のkako-junです。ノスタルジーと最新技術を組み合わせて、アプリやゲームを作ってます。",
     aboutTitle: "このサイトについて",
     projectsTitle: "作ったもの",
     sortNewest: "新しい順",
@@ -76,6 +78,7 @@ export const translations = {
     showAbout: "このサイトについて",
     hideAbout: "閉じる",
     forMobileDevices: "QRコードでスマホアクセス",
+    noImage: "画像なし",
   },
 };
 

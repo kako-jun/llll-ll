@@ -16,39 +16,17 @@ export default function ImageDisplay({ language }: ImageDisplayProps) {
             marginBottom: "2rem",
           }}
         >
-          <div
+          <img
+            src="/top-image.webp"
+            alt="llll-ll top image"
             style={{
               width: "200px",
               height: "200px",
-              backgroundColor: "var(--input-background)",
-              border: "2px dashed var(--border-color)",
               borderRadius: "8px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              color: "var(--muted-text)",
-              fontSize: "0.9rem",
-              textAlign: "center",
-              position: "relative",
-              overflow: "hidden",
+              objectFit: "cover",
+              border: "2px solid var(--border-color)",
             }}
-          >
-            {/* プレースホルダー */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "0.5rem",
-              }}
-            >
-              <div style={{ fontSize: "0.8rem", opacity: 0.7 }}>
-                Image placeholder
-                <br />
-                (200x200)
-              </div>
-            </div>
-          </div>
+          />
         </div>
       </div>
     </section>

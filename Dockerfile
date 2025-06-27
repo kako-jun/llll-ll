@@ -1,4 +1,4 @@
-# Multi-stage build for Next.js with Nginx
+# Multi-stage build for Next.js standalone
 FROM node:20-alpine AS base
 
 # Install dependencies only when needed
@@ -16,28 +16,31 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Build with output export for static files
+# Build Next.js application
 RUN npm run build
 
-# Production stage with Nginx
-FROM nginx:alpine AS runner
+# Production stage with Node.js
+FROM base AS runner
+WORKDIR /app
 
-# Copy static files from Next.js build
-COPY --from=builder /app/out /usr/share/nginx/html
+ENV NODE_ENV=production
 
-# Custom Nginx config for SPA
-COPY nginx.conf /etc/nginx/nginx.conf
-
-# Create nginx user
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Set proper permissions
-RUN chown -R nextjs:nodejs /usr/share/nginx/html
-RUN chown -R nextjs:nodejs /var/cache/nginx
+# Copy standalone files
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/public ./public
 
-EXPOSE 80
+# Set proper ownership
+RUN chown -R nextjs:nodejs /app
 
 USER nextjs
 
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 3000
+
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+CMD ["node", "server.js"]

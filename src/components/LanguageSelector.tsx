@@ -71,12 +71,12 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
                   cursor: "pointer",
                   fontFamily: "'Noto Sans', sans-serif",
                   fontWeight: selectedLanguage === "en" ? "bold" : "normal",
-                  width: "60px",
+                  width: "40px",
                   textAlign: "center",
                   flexShrink: 0,
                 }}
               >
-                English
+                EN
               </button>
 
               <span
@@ -103,12 +103,12 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
                   cursor: "pointer",
                   fontFamily: "'Noto Sans', sans-serif",
                   fontWeight: selectedLanguage === "ja" ? "bold" : "normal",
-                  width: "60px",
+                  width: "40px",
                   textAlign: "center",
                   flexShrink: 0,
                 }}
               >
-                日本語
+                JP
               </button>
 
               <span
@@ -135,12 +135,12 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
                   cursor: "pointer",
                   fontFamily: "'Noto Sans', sans-serif",
                   fontWeight: selectedLanguage === "zh" ? "bold" : "normal",
-                  width: "60px",
+                  width: "40px",
                   textAlign: "center",
                   flexShrink: 0,
                 }}
               >
-                中文
+                CN
               </button>
 
               <span
@@ -167,12 +167,12 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
                   cursor: "pointer",
                   fontFamily: "'Noto Sans', sans-serif",
                   fontWeight: selectedLanguage === "es" ? "bold" : "normal",
-                  width: "60px",
+                  width: "40px",
                   textAlign: "center",
                   flexShrink: 0,
                 }}
               >
-                Español
+                ES
               </button>
             </div>
 
@@ -320,7 +320,7 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              gap: "1rem",
+              gap: "0.5rem",
               marginBottom: "3rem",
             }}
           >
@@ -336,14 +336,14 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
                 cursor: "pointer",
                 fontFamily: "'Noto Sans', sans-serif",
                 fontWeight: currentLang === "en" ? "bold" : "normal",
-                minWidth: "80px",
+                minWidth: "60px",
                 textAlign: "center",
               }}
             >
               English
             </button>
 
-            <span style={{ color: "var(--muted-text)", fontSize: "0.9rem", margin: "0 0.5rem" }}>|</span>
+            <span style={{ color: "var(--muted-text)", fontSize: "0.9rem", margin: "0 0.25rem" }}>|</span>
 
             <button
               onClick={() => changeLanguageWithFade("ja")}
@@ -357,14 +357,14 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
                 cursor: "pointer",
                 fontFamily: "'Noto Sans', sans-serif",
                 fontWeight: currentLang === "ja" ? "bold" : "normal",
-                minWidth: "80px",
+                minWidth: "60px",
                 textAlign: "center",
               }}
             >
               日本語
             </button>
 
-            <span style={{ color: "var(--muted-text)", fontSize: "0.9rem", margin: "0 0.5rem" }}>|</span>
+            <span style={{ color: "var(--muted-text)", fontSize: "0.9rem", margin: "0 0.25rem" }}>|</span>
 
             <button
               onClick={() => changeLanguageWithFade("zh")}
@@ -378,14 +378,14 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
                 cursor: "pointer",
                 fontFamily: "'Noto Sans', sans-serif",
                 fontWeight: currentLang === "zh" ? "bold" : "normal",
-                minWidth: "80px",
+                minWidth: "60px",
                 textAlign: "center",
               }}
             >
               中文
             </button>
 
-            <span style={{ color: "var(--muted-text)", fontSize: "0.9rem", margin: "0 0.5rem" }}>|</span>
+            <span style={{ color: "var(--muted-text)", fontSize: "0.9rem", margin: "0 0.25rem" }}>|</span>
 
             <button
               onClick={() => changeLanguageWithFade("es")}
@@ -399,7 +399,7 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
                 cursor: "pointer",
                 fontFamily: "'Noto Sans', sans-serif",
                 fontWeight: currentLang === "es" ? "bold" : "normal",
-                minWidth: "80px",
+                minWidth: "60px",
                 textAlign: "center",
               }}
             >
@@ -433,7 +433,7 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
             >
               <span
                 style={{
-                  minWidth: "80px",
+                  minWidth: "60px",
                   display: "inline-block",
                   transition: "opacity 0.2s ease-out",
                   opacity: isChanging ? 0 : 1,

@@ -88,9 +88,20 @@ export default function NotFound() {
       gameTime: "时间:",
       gameNext: "下一个:",
     },
+    es: {
+      title: "404 - Página No Encontrada",
+      message: "La página que buscas no se pudo encontrar.",
+      backHome: "Volver al Inicio",
+      gameTitle: "Mini Juego: ¡Haz clic del 1 al 16 en orden!",
+      gameStart: "Iniciar Juego",
+      gameReset: "Reiniciar",
+      gameCompleted: "¡Completado!",
+      gameTime: "Tiempo:",
+      gameNext: "Siguiente:",
+    },
   };
 
-  const messages = notFoundMessages[language];
+  const messages = notFoundMessages[language] || notFoundMessages["en"];
 
   return (
     <div
@@ -104,16 +115,18 @@ export default function NotFound() {
         justifyContent: "center",
         padding: "2rem",
         textAlign: "center",
+        position: "relative",
+        zIndex: 1,
       }}
     >
       {/* 言語選択 */}
-      <div style={{ marginBottom: "2rem" }}>
+      <div style={{ marginBottom: "2rem", position: "relative", zIndex: 10 }}>
         <div
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            gap: "1rem",
+            gap: "0.5rem",
           }}
         >
           <button
@@ -140,7 +153,7 @@ export default function NotFound() {
           <span
             style={{
               color: "var(--muted-text)",
-              width: "15px",
+              width: "10px",
               textAlign: "center",
               display: "inline-block",
               fontFamily: "'Noto Sans', sans-serif",
@@ -173,7 +186,7 @@ export default function NotFound() {
           <span
             style={{
               color: "var(--muted-text)",
-              width: "15px",
+              width: "10px",
               textAlign: "center",
               display: "inline-block",
               fontFamily: "'Noto Sans', sans-serif",
@@ -202,7 +215,40 @@ export default function NotFound() {
             }}
           >
             中文
-          </button>{" "}
+          </button>
+          <span
+            style={{
+              color: "var(--muted-text)",
+              width: "10px",
+              textAlign: "center",
+              display: "inline-block",
+              fontFamily: "'Noto Sans', sans-serif",
+              flexShrink: 0,
+            }}
+          >
+            |
+          </span>
+          <button
+            onClick={() => {
+              setLanguage("es");
+              document.documentElement.lang = "es";
+            }}
+            style={{
+              background: "none",
+              border: "none",
+              color: language === "es" ? "var(--primary-color)" : "var(--link-color)",
+              textDecoration: "none",
+              fontSize: "0.9rem",
+              cursor: "pointer",
+              fontFamily: "'Noto Sans', sans-serif",
+              fontWeight: language === "es" ? "bold" : "normal",
+              width: "60px",
+              textAlign: "center",
+              flexShrink: 0,
+            }}
+          >
+            Español
+          </button>
         </div>
         {/* テーマ切り替えスイッチ */}
         <div
@@ -337,7 +383,7 @@ export default function NotFound() {
         </p>
       </div>
       {/* ミニゲーム */}
-      <div style={{ marginBottom: "6rem" }}>
+      <div style={{ marginBottom: "6rem", position: "relative", zIndex: 10 }}>
         <h3
           style={{
             fontSize: "1.2rem",
@@ -364,6 +410,8 @@ export default function NotFound() {
               fontWeight: "bold",
               borderRadius: "0.25rem",
               transition: "opacity 0.2s",
+              position: "relative",
+              zIndex: 10,
             }}
             onMouseOver={(e) => {
               e.currentTarget.style.opacity = "0.9";
@@ -404,6 +452,8 @@ export default function NotFound() {
                 gap: "8px",
                 justifyContent: "center",
                 marginBottom: "1rem",
+                position: "relative",
+                zIndex: 10,
               }}
             >
               {gridNumbers.map((number, index) => (
@@ -429,6 +479,8 @@ export default function NotFound() {
                     cursor: gameCompleted ? "default" : "pointer",
                     transition: "all 0.2s ease",
                     opacity: gameCompleted ? 0.7 : 1,
+                    position: "relative",
+                    zIndex: 10,
                   }}
                   onMouseOver={(e) => {
                     if (!gameCompleted && number >= currentNumber) {
@@ -468,6 +520,8 @@ export default function NotFound() {
                 fontFamily: language === "zh" ? "'Noto Sans SC', sans-serif" : "inherit",
                 borderRadius: "0.25rem",
                 transition: "background-color 0.2s",
+                position: "relative",
+                zIndex: 10,
               }}
               onMouseOver={(e) => {
                 e.currentTarget.style.backgroundColor = "var(--hover-background)";
@@ -497,6 +551,8 @@ export default function NotFound() {
           fontWeight: "bold",
           transition: "opacity 0.2s ease",
           fontFamily: language === "zh" ? "'Noto Sans SC', sans-serif" : "inherit",
+          position: "relative",
+          zIndex: 10,
         }}
         onMouseOver={(e) => {
           e.currentTarget.style.opacity = "0.9";

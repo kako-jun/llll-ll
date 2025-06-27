@@ -24,7 +24,6 @@ const nextConfig = {
   },
   // 静的最適化
   trailingSlash: false,
-  // Headers are handled by Nginx in static export mode
 };
 
 module.exports = nextConfig;

@@ -1,0 +1,27 @@
+name: Deploy to GCE
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Deploy to GCE
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          host: 35.197.65.57
+          username: ${{ secrets.GCE_USERNAME }}
+          key: ${{ secrets.GCE_SSH_KEY }}
+          script: |
+            cd ~/llll-ll
+            git pull origin main
+            # Docker Composeでアプリを再デプロイ
+            docker compose down
+            docker compose build --no-cache
+            docker compose up -d

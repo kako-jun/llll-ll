@@ -62,7 +62,7 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
             >
               <img
                 src={product.images[0]}
-                alt={product.title[language]}
+                alt={product.title[language] || product.title["en"] || ""}
                 style={{
                   width: "100%",
                   height: "100%",
@@ -107,7 +107,7 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
                   margin: 0,
                 }}
               >
-                {product.title[language]}
+                {product.title[language] || product.title["en"] || "Untitled"}
               </h3>
               <ArrowIcon direction={isExpanded ? "up" : "down"} size={16} strokeWidth={2} />
             </div>
@@ -121,9 +121,12 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
                 margin: 0,
               }}
             >
-              {product.description[language].length > 80 && !isExpanded
-                ? `${product.description[language].substring(0, 80)}...`
-                : product.description[language]}
+              {(() => {
+                const description = product.description[language] || product.description["en"] || "";
+                return description.length > 80 && !isExpanded
+                  ? `${description.substring(0, 80)}...`
+                  : description;
+              })()}
             </p>
 
             {!isExpanded && (
@@ -258,7 +261,7 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
                   >
                     <img
                       src={animation}
-                      alt={`${product.title[language]} animation ${index + 1}`}
+                      alt={`${product.title[language] || product.title["en"] || "Project"} animation ${index + 1}`}
                       style={{
                         width: "100%",
                         height: "100%",
@@ -300,7 +303,7 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
                 >
                   <img
                     src={image}
-                    alt={`${product.title[language]} ${index + 2}`}
+                    alt={`${product.title[language] || product.title["en"] || "Project"} ${index + 2}`}
                     style={{
                       width: "100%",
                       height: "100%",

@@ -32,9 +32,12 @@ export default function ProjectList({ products, language }: ProjectListProps) {
 
   const filteredProducts = useMemo(() => {
     let filtered = products.filter((product) => {
+      const title = product.title[language] || product.title["en"] || "";
+      const description = product.description[language] || product.description["en"] || "";
+      
       const matchesSearch =
-        product.title[language].toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.description[language].toLowerCase().includes(searchTerm.toLowerCase()) ||
+        title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        description.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()));
 
       const matchesTags = selectedTags.length === 0 || selectedTags.every((tag) => product.tags.includes(tag));

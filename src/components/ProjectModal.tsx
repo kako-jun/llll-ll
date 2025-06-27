@@ -38,7 +38,7 @@ export default function ProjectModal({ product, language, onClose }: ProjectModa
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
       <div className="max-w-4xl w-full max-h-[90vh] overflow-y-auto pixel-border bg-bg-primary">
         <div className="sticky top-0 bg-bg-primary border-b border-border-color p-4 flex justify-between items-center">
-          <h2 className="text-lg glow">{product.title[language]}</h2>
+          <h2 className="text-lg glow">{product.title[language] || product.title["en"] || "Untitled"}</h2>
           <button
             onClick={onClose}
             className="text-text-accent hover:text-text-primary text-xl flex items-center justify-center w-8 h-8 rounded-full hover:bg-hover-background transition-colors"

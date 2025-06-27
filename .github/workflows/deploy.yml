@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.GCE_USERNAME }}
           key: ${{ secrets.GCE_SSH_KEY }}
           script: |
-            cd ~/llll-ll
+            cd ~/repos/llll-ll
             git pull origin main
             # Docker Composeでアプリを再デプロイ
             docker compose down

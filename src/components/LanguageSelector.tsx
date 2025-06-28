@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Language } from "@/types";
 import { useTheme } from "@/hooks/useTheme";
 import { useTranslation } from "@/lib/i18n";
+import { useLanguage } from "@/hooks/useLanguage";
 
 interface LanguageSelectorProps {
   onLanguageSelect: (lang: Language) => void;
@@ -12,7 +13,7 @@ interface LanguageSelectorProps {
 
 export default function LanguageSelector({ onLanguageSelect, selectedLanguage }: LanguageSelectorProps) {
   const { theme, toggleTheme, mounted } = useTheme();
-  const [currentLang, setCurrentLang] = useState<Language>("en"); // 表示用の言語状態
+  const { language: currentLang, changeLanguage } = useLanguage();
   const [isChanging, setIsChanging] = useState(false);
 
   // 言語変更時のフェード効果付き関数
@@ -20,7 +21,7 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
     if (lang !== currentLang) {
       setIsChanging(true);
       setTimeout(() => {
-        setCurrentLang(lang);
+        changeLanguage(lang);
         setIsChanging(false);
       }, 200); // 200msでフェードアウト→フェードイン
     }
@@ -28,9 +29,8 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
 
   // 言語選択時にHTMLのlang属性も更新
   const handleLanguageSelect = (lang: Language) => {
+    changeLanguage(lang);
     onLanguageSelect(lang);
-    document.documentElement.lang = lang;
-    setCurrentLang(lang);
   };
 
   // 言語が既に選択されている場合は、コンパクトな表示

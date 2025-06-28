@@ -59,7 +59,7 @@ export default function HomePage() {
             )}
           </main>
 
-          <Footer />
+          <Footer language={selectedLanguage} />
           <ScrollToTop />
         </>
       )}

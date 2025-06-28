@@ -8,7 +8,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: [],
+    domains: ["imgproxy.snort.social"],
     formats: ["image/webp", "image/avif"],
     minimumCacheTTL: 31536000, // 1年間キャッシュ
     dangerouslyAllowSVG: true,

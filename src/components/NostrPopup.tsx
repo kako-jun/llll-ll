@@ -98,7 +98,7 @@ export default function NostrPopup({ language, isExpanded, profileRect, pubkey }
           fontFamily: language === "zh" ? "'Noto Sans SC', sans-serif" : "inherit",
           maxHeight: "300px",
           overflowY: "auto",
-          padding: "0 1rem",
+          padding: "0 0.5rem",
           scrollbarColor: "var(--primary-color) var(--input-background)",
         }}
       >

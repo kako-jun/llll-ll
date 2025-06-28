@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { Product, Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
 import ArrowIcon from "./ArrowIcon";
@@ -14,10 +15,27 @@ interface ProjectCardProps {
 export default function ProjectCard({ product, language, onSelect }: ProjectCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [popupImage, setPopupImage] = useState<string | null>(null);
+  const [popupVideo, setPopupVideo] = useState<string | null>(null);
   const t = useTranslation(language);
 
   const handleToggle = () => {
     setIsExpanded(!isExpanded);
+  };
+
+  const handleImageClick = (imageSrc: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setPopupImage(imageSrc);
+  };
+
+  const handleVideoClick = (videoSrc: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setPopupVideo(videoSrc);
+  };
+
+  const closePopup = () => {
+    setPopupImage(null);
+    setPopupVideo(null);
   };
 
   return (
@@ -58,7 +76,9 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
                 overflow: "hidden",
                 border: "1px solid var(--border-color)",
                 borderRadius: "4px", // 角ばった見た目に
+                cursor: "pointer",
               }}
+              onClick={(e) => handleImageClick(product.images[0], e)}
             >
               <img
                 src={product.images[0]}
@@ -67,8 +87,15 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
                   width: "100%",
                   height: "100%",
                   objectFit: "cover",
+                  transition: "transform 0.2s ease",
                 }}
                 loading="lazy"
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = "scale(1.05)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = "scale(1)";
+                }}
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
                   const placeholder = document.createElement("div");
@@ -112,7 +139,7 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
               <ArrowIcon direction={isExpanded ? "up" : "down"} size={16} strokeWidth={2} />
             </div>
 
-            <p
+            <div
               style={{
                 fontSize: "0.9rem",
                 color: "var(--text-color)",
@@ -120,14 +147,16 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
                 lineHeight: "1.4",
                 margin: 0,
               }}
-            >
-              {(() => {
-                const description = product.description[language] || product.description["en"] || "";
-                return description.length > 80 && !isExpanded
-                  ? `${description.substring(0, 80)}...`
-                  : description;
-              })()}
-            </p>
+              dangerouslySetInnerHTML={{
+                __html: (() => {
+                  const description = product.description[language] || product.description["en"] || "";
+                  const truncatedDescription = description.length > 80 && !isExpanded
+                    ? `${description.substring(0, 80)}...`
+                    : description;
+                  return truncatedDescription.replace(/\n/g, "<br>");
+                })()
+              }}
+            />
 
             {!isExpanded && (
               <div
@@ -202,18 +231,36 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
                       border: "1px solid var(--border-color)",
                       borderRadius: "4px",
                       position: "relative",
+                      cursor: "pointer",
                     }}
+                    onClick={(e) => handleVideoClick(video, e)}
                   >
                     {video.includes("youtube.com") || video.includes("youtu.be") ? (
-                      <iframe
-                        src={video.replace("watch?v=", "embed/").replace("youtu.be/", "youtube.com/embed/")}
+                      <div
                         style={{
                           width: "100%",
                           height: "100%",
-                          border: "none",
+                          position: "relative",
+                          transition: "transform 0.2s ease",
                         }}
-                        allowFullScreen
-                      />
+                        onMouseOver={(e) => {
+                          e.currentTarget.style.transform = "scale(1.05)";
+                        }}
+                        onMouseOut={(e) => {
+                          e.currentTarget.style.transform = "scale(1)";
+                        }}
+                      >
+                        <iframe
+                          src={video.replace("watch?v=", "embed/").replace("youtu.be/", "youtube.com/embed/")}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            border: "none",
+                            pointerEvents: "none",
+                          }}
+                          allowFullScreen
+                        />
+                      </div>
                     ) : (
                       <video
                         src={video}
@@ -221,9 +268,16 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
                           width: "100%",
                           height: "100%",
                           objectFit: "cover",
+                          transition: "transform 0.2s ease",
+                          pointerEvents: "none",
                         }}
-                        controls
                         muted
+                        onMouseOver={(e) => {
+                          e.currentTarget.style.transform = "scale(1.05)";
+                        }}
+                        onMouseOut={(e) => {
+                          e.currentTarget.style.transform = "scale(1)";
+                        }}
                         onError={(e) => {
                           e.currentTarget.style.display = "none";
                           const placeholder = document.createElement("div");
@@ -299,7 +353,9 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
                     overflow: "hidden",
                     border: "1px solid var(--border-color)",
                     borderRadius: "4px",
+                    cursor: "pointer",
                   }}
+                  onClick={(e) => handleImageClick(image, e)}
                 >
                   <img
                     src={image}
@@ -308,8 +364,15 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
+                      transition: "transform 0.2s ease",
                     }}
                     loading="lazy"
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.transform = "scale(1.05)";
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.transform = "scale(1)";
+                    }}
                     onError={(e) => {
                       e.currentTarget.style.display = "none";
                       const placeholder = document.createElement("div");
@@ -458,6 +521,170 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
             )}
           </div>
         </div>
+      )}
+
+      {/* 画像ポップアップ */}
+      {typeof window !== "undefined" && popupImage && createPortal(
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 1001,
+            padding: "2rem",
+          }}
+          onClick={closePopup}
+        >
+          <div
+            style={{
+              position: "relative",
+              maxWidth: "90%",
+              maxHeight: "90%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={popupImage}
+              alt="拡大画像"
+              style={{
+                maxWidth: "100%",
+                maxHeight: "100%",
+                objectFit: "contain",
+                border: "2px solid var(--primary-color)",
+                borderRadius: "4px",
+              }}
+            />
+            <button
+              onClick={closePopup}
+              style={{
+                position: "absolute",
+                top: "-10px",
+                right: "-10px",
+                width: "32px",
+                height: "32px",
+                backgroundColor: "var(--primary-color)",
+                color: "#ffffff",
+                border: "none",
+                borderRadius: "50%",
+                fontSize: "1.2rem",
+                fontWeight: "bold",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "background-color 0.2s",
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--text-color)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--primary-color)";
+              }}
+            >
+              <ArrowIcon direction="close" size={16} strokeWidth={2} />
+            </button>
+          </div>
+        </div>,
+        document.body
+      )}
+
+      {/* 動画ポップアップ */}
+      {typeof window !== "undefined" && popupVideo && createPortal(
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.8)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 1001,
+            padding: "2rem",
+          }}
+          onClick={closePopup}
+        >
+          <div
+            style={{
+              position: "relative",
+              width: "95vw",
+              height: "95vh",
+              maxWidth: "1200px",
+              maxHeight: "675px", // 16:9 ratio for 1200px width
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {popupVideo.includes("youtube.com") || popupVideo.includes("youtu.be") ? (
+              <iframe
+                src={popupVideo.replace("watch?v=", "embed/").replace("youtu.be/", "youtube.com/embed/")}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  border: "2px solid var(--primary-color)",
+                  borderRadius: "4px",
+                }}
+                allowFullScreen
+              />
+            ) : (
+              <video
+                src={popupVideo}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "contain",
+                  border: "2px solid var(--primary-color)",
+                  borderRadius: "4px",
+                }}
+                controls
+                autoPlay
+              />
+            )}
+            <button
+              onClick={closePopup}
+              style={{
+                position: "absolute",
+                top: "-10px",
+                right: "-10px",
+                width: "32px",
+                height: "32px",
+                backgroundColor: "var(--primary-color)",
+                color: "#ffffff",
+                border: "none",
+                borderRadius: "50%",
+                fontSize: "1.2rem",
+                fontWeight: "bold",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "background-color 0.2s",
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--text-color)";
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--primary-color)";
+              }}
+            >
+              <ArrowIcon direction="close" size={16} strokeWidth={2} />
+            </button>
+          </div>
+        </div>,
+        document.body
       )}
 
       <style jsx>{`

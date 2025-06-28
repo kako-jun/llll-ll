@@ -110,7 +110,7 @@ export default function IntroSection({ language }: IntroSectionProps) {
             left: "50%",
             transform: "translateX(-50%)",
             backgroundColor: "var(--input-background)",
-            border: "4px solid var(--primary-color)",
+            border: "2px solid var(--primary-color)",
             borderRadius: "16px",
             padding: "2rem",
             width: "500px",
@@ -123,14 +123,14 @@ export default function IntroSection({ language }: IntroSectionProps) {
           <div
             style={{
               position: "absolute",
-              top: "-16px",
+              top: "-14px",
               left: "50%",
               transform: "translateX(-50%)",
               width: "0",
               height: "0",
-              borderLeft: "16px solid transparent",
-              borderRight: "16px solid transparent",
-              borderBottom: "16px solid var(--primary-color)",
+              borderLeft: "14px solid transparent",
+              borderRight: "14px solid transparent",
+              borderBottom: "14px solid var(--primary-color)",
             }}
           />
           <div

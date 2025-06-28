@@ -256,3 +256,22 @@ p {
     font-size: 14px;
   }
 }
+
+/* Nostrコンテンツスクロールバーのダーク化 */
+.nostr-content::-webkit-scrollbar {
+  width: 20px;
+}
+
+.nostr-content::-webkit-scrollbar-track {
+  background: var(--input-background);
+}
+
+.nostr-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+.nostr-content::-webkit-scrollbar-thumb:hover {
+  background: var(--link-color);
+}
+

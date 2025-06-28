@@ -26,6 +26,9 @@ export const translations = {
     hideAbout: "Hide Details",
     forMobileDevices: "Scan QR code for mobile access",
     noImage: "No Image",
+    nostrPosts: "Latest Notes",
+    showNostrPosts: "Show Latest Notes",
+    hideNostrPosts: "Hide Notes",
   },
   zh: {
     welcome: "欢迎来到",
@@ -52,6 +55,9 @@ export const translations = {
     hideAbout: "隐藏详情",
     forMobileDevices: "扫描二维码访问手机版",
     noImage: "无图片",
+    nostrPosts: "最新动态",
+    showNostrPosts: "显示最新动态",
+    hideNostrPosts: "隐藏动态",
   },
   ja: {
     welcome: "へようこそ",
@@ -78,6 +84,9 @@ export const translations = {
     hideAbout: "閉じる",
     forMobileDevices: "QRコード",
     noImage: "画像なし",
+    nostrPosts: "最新のつぶやき",
+    showNostrPosts: "最新のつぶやきを見る",
+    hideNostrPosts: "つぶやきを閉じる",
   },
   es: {
     welcome: "Bienvenido a",
@@ -105,6 +114,9 @@ export const translations = {
     hideAbout: "Cerrar",
     forMobileDevices: "Escanea el código QR para acceso móvil",
     noImage: "Sin Imagen",
+    nostrPosts: "Últimas Notas",
+    showNostrPosts: "Mostrar Últimas Notas",
+    hideNostrPosts: "Ocultar Notas",
   },
 };
 

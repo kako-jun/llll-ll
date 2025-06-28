@@ -41,9 +41,9 @@ export default function IntroSection({ language }: IntroSectionProps) {
 
   return (
     <>
-      <section style={{ padding: "2rem 0", position: "relative" }} className="fade-in">
+      <section style={{ padding: "1rem 0", position: "relative" }} className="fade-in">
         <div className="container">
-          <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+          <div style={{ textAlign: "center", marginBottom: "1rem" }}>
             <h2
               style={{
                 fontSize: "1.8rem",

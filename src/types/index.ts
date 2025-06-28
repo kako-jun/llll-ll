@@ -11,6 +11,7 @@ export interface Product {
   demoUrl?: string;
   repositoryUrl?: string;
   developmentRecordUrl?: string;
+  blogUrl?: string;
   supportUrl?: string;
   createdAt: string;
   updatedAt: string;

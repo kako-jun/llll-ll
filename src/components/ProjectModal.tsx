@@ -189,6 +189,17 @@ export default function ProjectModal({ product, language, onClose }: ProjectModa
                   </a>
                 )}
 
+                {product.blogUrl && (
+                  <a
+                    href={product.blogUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-2 border border-text-accent text-text-accent hover:bg-text-accent hover:text-bg-primary transition-colors text-center text-sm"
+                  >
+                    {t.viewDevelopmentRecord}
+                  </a>
+                )}
+
                 {product.supportUrl && (
                   <a
                     href={product.supportUrl}

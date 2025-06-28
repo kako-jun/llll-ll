@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
 import { useTheme } from "@/hooks/useTheme";
+import { useLanguage } from "@/hooks/useLanguage";
 import ArrowIcon from "@/components/ArrowIcon";
 import BackgroundDots from "@/components/BackgroundDots";
 
 export default function NotFound() {
-  const [language, setLanguage] = useState<Language>("ja");
+  const { language, changeLanguage } = useLanguage();
   const { theme, toggleTheme, mounted } = useTheme();
   const t = useTranslation(language);
 
@@ -139,8 +139,7 @@ export default function NotFound() {
         >
           <button
             onClick={() => {
-              setLanguage("en");
-              document.documentElement.lang = "en";
+              changeLanguage("en");
             }}
             style={{
               background: "none",
@@ -172,8 +171,7 @@ export default function NotFound() {
           </span>
           <button
             onClick={() => {
-              setLanguage("ja");
-              document.documentElement.lang = "ja";
+              changeLanguage("ja");
             }}
             style={{
               background: "none",
@@ -205,8 +203,7 @@ export default function NotFound() {
           </span>
           <button
             onClick={() => {
-              setLanguage("zh");
-              document.documentElement.lang = "zh";
+              changeLanguage("zh");
             }}
             style={{
               background: "none",
@@ -238,8 +235,7 @@ export default function NotFound() {
           </span>
           <button
             onClick={() => {
-              setLanguage("es");
-              document.documentElement.lang = "es";
+              changeLanguage("es");
             }}
             style={{
               background: "none",

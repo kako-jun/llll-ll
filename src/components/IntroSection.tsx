@@ -116,7 +116,6 @@ export default function IntroSection({ language }: IntroSectionProps) {
             width: "500px",
             maxWidth: "95vw",
             zIndex: 5,
-            boxShadow: "0 25px 50px rgba(0,0,0,0.5)",
           }}
         >
           {/* 確実な三角形 */}

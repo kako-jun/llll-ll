@@ -43,7 +43,7 @@ export default function Footer({ language }: FooterProps) {
     { name: "GitHub", url: "https://github.com/kako-jun", icon: "/icons/github.svg", size: 20 },
     { name: "X", url: "https://x.com/kako_jun_42", icon: "/icons/x-twitter.svg", size: 20 },
     { name: "Instagram", url: "https://www.instagram.com/kako_jun_42", icon: "/icons/instagram.svg", size: 20 },
-    { name: "Dev.to", url: "https://dev.to/kako-jun", icon: "/icons/dev-to-wide-final.png", size: 24 },
+    { name: "Dev.to", url: "https://dev.to/kako-jun", icon: "/icons/dev-to-wide-final.png", size: 20 },
     { name: "Zenn", url: "https://zenn.dev/kako_jun", icon: "/icons/zenn.svg", size: 20 },
     { name: "Note", url: "https://note.com/kako_jun", icon: "/icons/note.svg", size: 24 }, // noteだけ大きく
   ];

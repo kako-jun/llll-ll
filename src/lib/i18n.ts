@@ -3,8 +3,7 @@ import { Language } from "@/types";
 export const translations = {
   en: {
     welcome: "Welcome to",
-    intro:
-      "Hi! I'm kako-jun from Kanazawa. I blend nostalgia with modern technology to create apps and games.",
+    intro: "Hi! I'm kako-jun from Kanazawa. I blend nostalgia with modern technology to create apps and games.",
     aboutTitle: "About Me",
     projectsTitle: "Things I Made",
     sortNewest: "Newest First",
@@ -32,7 +31,7 @@ export const translations = {
     welcome: "欢迎来到",
     intro: "你好！我是kako-jun，来自金泽。我将怀旧与现代技术相结合，制作应用和游戏。",
     aboutTitle: "关于我",
-    projectsTitle: "作ったもの",
+    projectsTitle: "我的作品",
     sortNewest: "最新优先",
     sortOldest: "最旧优先",
     searchPlaceholder: "搜索...",
@@ -77,12 +76,13 @@ export const translations = {
     redDoorMessage: "せっかくだから、オレはこの赤の扉を選ぶぜ！",
     showAbout: "このサイトについて",
     hideAbout: "閉じる",
-    forMobileDevices: "QRコードでスマホアクセス",
+    forMobileDevices: "QRコード",
     noImage: "画像なし",
   },
   es: {
     welcome: "Bienvenido a",
-    intro: "¡Hola! Soy kako-jun de Kanazawa. Combino nostalgia con tecnología moderna para crear aplicaciones y juegos.",
+    intro:
+      "¡Hola! Soy kako-jun de Kanazawa. Combino nostalgia con tecnología moderna para crear aplicaciones y juegos.",
     aboutTitle: "Sobre Mí",
     projectsTitle: "Cosas que Hice",
     sortNewest: "Más Recientes",

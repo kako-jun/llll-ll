@@ -131,7 +131,12 @@ export default function ProjectModal({ product, language, onClose }: ProjectModa
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <h3 className="text-md glow-accent mb-3">Description</h3>
-              <p className="text-sm text-text-secondary leading-relaxed mb-4">{product.description[language]}</p>
+              <div 
+                className="text-sm text-text-secondary leading-relaxed mb-4"
+                dangerouslySetInnerHTML={{
+                  __html: (product.description[language] || product.description["en"] || "").replace(/\n/g, "<br>")
+                }}
+              />
 
               <div className="mb-4">
                 <h4 className="text-sm glow mb-2">{t.madeWith}</h4>

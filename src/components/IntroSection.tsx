@@ -15,7 +15,7 @@ export default function IntroSection({ language }: IntroSectionProps) {
   const t = useTranslation(language);
 
   const updateButtonPosition = () => {
-    const button = document.querySelector('.about-button') as HTMLElement;
+    const button = document.querySelector(".about-button") as HTMLElement;
     if (button) {
       setButtonRect(button.getBoundingClientRect());
     }
@@ -31,11 +31,11 @@ export default function IntroSection({ language }: IntroSectionProps) {
   useEffect(() => {
     if (isExpanded) {
       const handleScroll = () => {
-        updateButtonPosition();
+        setIsExpanded(false);
       };
-      
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
+
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
     }
   }, [isExpanded]);
 
@@ -145,7 +145,7 @@ export default function IntroSection({ language }: IntroSectionProps) {
               borderBottom: "12px solid var(--input-background)",
             }}
           />
-          
+
           <h3
             style={{
               fontSize: "1.4rem",
@@ -175,7 +175,6 @@ export default function IntroSection({ language }: IntroSectionProps) {
           </div>
         </div>
       )}
-
     </>
   );
 }

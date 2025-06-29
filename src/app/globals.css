@@ -23,7 +23,8 @@
   --hover-color: rgba(255,255,255,0.1);
   --icon-filter: invert(1);
   --footer-background: #1a2e1a;
-  --footer-gradient: linear-gradient(rgba(26, 46, 26, 0.8), rgba(26, 46, 26, 0.8));
+  --footer-gradient: linear-gradient(rgba(26, 46, 26, 0.1), rgba(26, 46, 26, 0.1));
+  --footer-blend-mode: overlay;
 }
 
 /* ライトテーマ変数 */
@@ -48,8 +49,9 @@
   --hover-background: #e9ecef;
   --hover-color: rgba(0,0,0,0.1);
   --icon-filter: none;
-  --footer-background: #e6f4e6;
-  --footer-gradient: linear-gradient(rgba(230, 244, 230, 0.8), rgba(230, 244, 230, 0.8));
+  --footer-background: #d4edda;
+  --footer-gradient: linear-gradient(rgba(40, 167, 69, 0.4), rgba(40, 167, 69, 0.4));
+  --footer-blend-mode: screen;
 }
 
 /* HTML要素のデフォルト設定 */

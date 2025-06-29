@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
-import ArrowIcon from "./ArrowIcon";
 import NostrPopup from "./NostrPopup";
 
 interface FooterProps {
@@ -13,7 +12,6 @@ interface FooterProps {
 
 export default function Footer({ language }: FooterProps) {
   const [profileRect, setProfileRect] = useState<DOMRect | null>(null);
-  const t = useTranslation(language);
   
   // kako-junのNostr公開鍵
   const KAKO_JUN_PUBKEY = "npub1d7rmrw3zmzn9jpcqpzhk6helu8t3rcqk93ja39sh9rgylwr9007q83kemm";
@@ -67,7 +65,11 @@ export default function Footer({ language }: FooterProps) {
           padding: "2rem 0 4rem 0", // 下のパディングを増やしてScrollToTopボタンとの重複を避ける
           position: "relative",
           zIndex: 2,
-          backgroundImage: "var(--footer-gradient)",
+          backgroundImage: `url('/images/footer-bg.webp'), var(--footer-gradient)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundBlendMode: "var(--footer-blend-mode)",
           transition: "background-color 0.3s ease, background-image 0.3s ease",
         }}
       >

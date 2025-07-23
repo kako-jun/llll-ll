@@ -10,8 +10,8 @@ export interface Product {
   videos?: string[];
   demoUrl?: string;
   repositoryUrl?: string;
-  developmentRecordUrl?: string;
-  blogUrl?: string;
+  developmentRecordUrl?: string[];
+  blogUrl?: string[];
   supportUrl?: string;
   createdAt: string;
   updatedAt: string;

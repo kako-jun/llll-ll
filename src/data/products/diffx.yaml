@@ -1,0 +1,29 @@
+id: diffx
+title:
+  en: "diffx: A Structure-Aware, AI-First Diff Tool"
+  ja: "diffx: 構造を理解するAIファーストな差分ツール"
+  zh: "diffx: 一款结构感知、AI优先的差异比较工具"
+  es: "diffx: Una herramienta de diferencias orientada a la IA y consciente de la estructura"
+description:
+  en: "Compares structured data files like JSON and YAML by understanding their semantic structure, rather than traditional line-by-line comparison. Designed for use in automated tasks by AI agents. Built in Rust, with wrappers available for Python (pip) and Node.js (npm)."
+  ja: "JSONやYAMLなどの構造化データファイルの差分を、従来の行単位の比較ではなく、意味的な構造を理解して表示します。AIエージェントによる自動化タスクでの利用も想定して設計されています。Rust製で、Python (pip) と Node.js (npm) のラッパーも提供しています。"
+  zh: "通过理解JSON和YAML等结构化数据文件的语义结构来比较它们，而不是传统的逐行比较。专为AI代理在自动化任务中使用而设计。使用Rust构建，并提供Python (pip) 和 Node.js (npm) 的包装器。"
+  es: "Compara archivos de datos estructurados como JSON y YAML entendiendo su estructura semántica, en lugar de la comparación tradicional línea por línea. Diseñado para su uso en tareas automatizadas por agentes de IA. Construido en Rust, con envoltorios disponibles para Python (pip) y Node.js (npm)."
+tags:
+  - "Rust"
+  - "CLI"
+  - "AI"
+  - "JSON"
+  - "YAML"
+  - "TOML"
+  - "OSS"
+images:
+  - "https://opengraph.githubassets.com/1/kako-jun/diffx"
+  - "https://storage.googleapis.com/zenn-user-upload/a82eab0d5859-20250706.png"
+repositoryUrl: "https://github.com/kako-jun/diffx"
+developmentRecordUrl:
+  - "https://dev.to/kako-jun/i-built-diffx-a-structure-aware-ai-first-diff-tool-in-rust-lets-end-the-comma-induced-suffering-491h"
+  - "https://zenn.dev/kako_jun/articles/1d518f47225f42"
+createdAt: "2024-07-20"
+updatedAt: "2024-07-20"
+featured: true

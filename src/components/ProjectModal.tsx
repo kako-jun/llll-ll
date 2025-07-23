@@ -131,10 +131,10 @@ export default function ProjectModal({ product, language, onClose }: ProjectModa
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <h3 className="text-md glow-accent mb-3">Description</h3>
-              <div 
+              <div
                 className="text-sm text-text-secondary leading-relaxed mb-4"
                 dangerouslySetInnerHTML={{
-                  __html: (product.description[language] || product.description["en"] || "").replace(/\n/g, "<br>")
+                  __html: (product.description[language] || product.description["en"] || "").replace(/\n/g, "<br>"),
                 }}
               />
 
@@ -183,27 +183,34 @@ export default function ProjectModal({ product, language, onClose }: ProjectModa
                   </a>
                 )}
 
-                {product.developmentRecordUrl && (
-                  <a
-                    href={product.developmentRecordUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-4 py-2 border border-text-accent text-text-accent hover:bg-text-accent hover:text-bg-primary transition-colors text-center text-sm"
-                  >
-                    {t.viewDevelopmentRecord}
-                  </a>
-                )}
+                {product.blogUrl &&
+                  product.blogUrl.map((url, index) => (
+                    <a
+                      key={`blog-${index}`}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 border border-text-accent text-text-accent hover:bg-text-accent hover:text-bg-primary transition-colors text-center text-sm"
+                    >
+                      {t.viewBlog}
+                    </a>
+                  ))}
 
-                {product.blogUrl && (
-                  <a
-                    href={product.blogUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-4 py-2 border border-text-accent text-text-accent hover:bg-text-accent hover:text-bg-primary transition-colors text-center text-sm"
-                  >
-                    {t.viewDevelopmentRecord}
-                  </a>
-                )}
+                {product.developmentRecordUrl &&
+                  product.developmentRecordUrl.map((url, index) => (
+                    <a
+                      key={`dev-${index}`}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 border border-text-accent text-text-accent hover:bg-text-accent hover:text-bg-primary transition-colors text-center text-sm"
+                    >
+                      {t.viewDevelopmentRecord}
+                      {product.developmentRecordUrl.length > 1
+                        ? ` ${index + 1}`
+                        : ""}
+                    </a>
+                  ))}
 
                 {product.supportUrl && (
                   <a

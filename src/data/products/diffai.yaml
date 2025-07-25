@@ -1,0 +1,25 @@
+id: diffai
+title:
+  en: "diffai: ML-Specialized Diff Tool for PyTorch, Safetensors & Scientific Data"
+  ja: "diffai: PyTorch、Safetensors、科学データ対応のML特化差分ツール"
+  zh: "diffai: 针对PyTorch、Safetensors和科学数据的ML专用差异比较工具"
+description:
+  en: "Next-generation diff tool specialized for AI/ML workflows. Provides deep, semantic analysis of PyTorch models, Safetensors, NumPy arrays, and MATLAB files. Features 30+ ML analysis capabilities including tensor-level comparisons, quantization analysis, and deployment readiness assessment. Built in Rust for performance."
+  ja: "AI/MLワークフロー専用の次世代差分ツールです。PyTorchモデル、Safetensors、NumPy配列、MATLABファイルの深いセマンティック解析を提供します。テンソルレベル比較、量子化解析、デプロイメント準備評価など30以上のML解析機能を搭載。高性能のRust製。"
+  zh: "专为AI/ML工作流程设计的下一代差异比较工具。提供PyTorch模型、Safetensors、NumPy数组和MATLAB文件的深度语义分析。具备30多种ML分析功能，包括张量级比较、量化分析和部署就绪评估。使用Rust构建以确保高性能。"
+tags:
+  - "Rust"
+  - "CLI"
+  - "AI"
+  - "ML"
+  - "PyTorch"
+  - "Safetensors"
+  - "NumPy"
+  - "MATLAB"
+  - "OSS"
+images:
+  - "https://opengraph.githubassets.com/1/kako-jun/diffai"
+repositoryUrl: "https://github.com/kako-jun/diffai"
+createdAt: "2025-01-20"
+updatedAt: "2025-01-20"
+featured: true

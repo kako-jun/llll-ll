@@ -1,16 +1,44 @@
-name: Deploy to GCE
+name: Build and Deploy to GCE
 
 on:
   push:
     branches: [main]
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/kako-jun/llll-ll:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+      
+      - name: Delete old container images
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: 'llll-ll'
+          package-type: 'container'
+          min-versions-to-keep: 5
+          delete-only-untagged-versions: false
+        continue-on-error: true
         
       - name: Deploy to GCE
         uses: appleboy/ssh-action@v1.1.0
@@ -18,39 +46,20 @@ jobs:
           host: 35.197.65.57
           username: ${{ secrets.GCE_USERNAME }}
           key: ${{ secrets.GCE_SSH_KEY }}
-          command_timeout: 20m
+          command_timeout: 5m
           script: |
             cd ~/repos/llll-ll
             git pull origin main
             
-            # ビルド競合回避のロック機能
-            LOCK_FILE="/tmp/docker-build.lock"
-            BUILD_TIMEOUT=1200  # 20分
-            
-            # 古いロックファイルをチェック
-            if [ -f "$LOCK_FILE" ]; then
-              LOCK_TIME=$(stat -c %Y "$LOCK_FILE" 2>/dev/null || echo 0)
-              CURRENT_TIME=$(date +%s)
-              AGE=$((CURRENT_TIME - LOCK_TIME))
-              
-              if [ $AGE -gt $BUILD_TIMEOUT ]; then
-                echo "古いロックファイルを削除: ${AGE}秒経過"
-                rm -f "$LOCK_FILE"
-              else
-                WAIT_TIME=$((BUILD_TIMEOUT - AGE))
-                echo "他のビルドが実行中。残り約$((WAIT_TIME/60))分待機..."
-                sleep $WAIT_TIME
-              fi
-            fi
-            
-            # 新しいロック作成
-            echo "$(date +%s)" > "$LOCK_FILE"
-            trap "rm -f $LOCK_FILE" EXIT
+            # 新しいイメージをpull
+            docker pull ghcr.io/kako-jun/llll-ll:latest
             
             # ネットワークを事前作成（既存の場合は無視）
             docker network create proxy-network 2>/dev/null || true
-            # Docker Composeでアプリを再デプロイ（ダウンタイム最小）
-            docker compose up -d --build
+            
+            # Docker Composeでアプリを再デプロイ
+            docker compose up -d
+            
             # 不要なDockerリソースをクリーンアップ
             docker image prune -f
             docker container prune -f

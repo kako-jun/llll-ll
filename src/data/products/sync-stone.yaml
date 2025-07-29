@@ -1,0 +1,25 @@
+id: sync-stone
+title:
+  en: "SyncStone: FINAL FANTASY XIV Lodestone Diary Export Tool"
+  ja: "SyncStone: FINAL FANTASY XIV ロドスト日記エクスポートツール"
+  zh: "SyncStone: FINAL FANTASY XIV Lodestone日记导出工具"
+  es: "SyncStone: Herramienta de exportación de diario de FINAL FANTASY XIV Lodestone"
+description:
+  en: "Chrome extension for exporting diary entries from The Lodestone into Markdown format. Features bulk download of images and comments, multi-language support, and privacy-conscious design for backing up FFXIV memories."
+  ja: "ロードストーンの日記エントリーをMarkdown形式でエクスポートするChrome拡張機能。画像とコメントの一括ダウンロード、多言語対応、FFXIVの思い出をバックアップするプライバシー配慮設計。"
+  zh: "用于将Lodestone日记条目导出为Markdown格式的Chrome扩展。支持批量下载图片和评论、多语言支持，以及注重隐私的设计来备份FFXIV回忆。"
+  es: "Extensión de Chrome para exportar entradas de diario desde Lodestone al formato Markdown. Incluye descarga masiva de imágenes y comentarios, soporte multilingüe, y diseño consciente de la privacidad para respaldar recuerdos de FFXIV."
+tags:
+  - "TypeScript"
+  - "Chrome Extension"
+  - "FFXIV"
+  - "Markdown"
+  - "Export Tool"
+  - "Gaming"
+  - "OSS"
+images:
+  - "https://opengraph.githubassets.com/1/kako-jun/sync-stone"
+repositoryUrl: "https://github.com/kako-jun/sync-stone"
+createdAt: "2025-01-15"
+updatedAt: "2025-07-29"
+featured: false

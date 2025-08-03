@@ -9,20 +9,17 @@ const VisitorCounter = ({ language }: VisitorCounterProps) => {
     <div
       style={{
         textAlign: "center",
-        padding: "2rem 0",
-        margin: "2rem 0",
+        padding: "1.5rem 0 1rem 0",
+        margin: "2rem 0 1rem 0",
         borderTop: "1px solid var(--border-color)",
         borderBottom: "1px solid var(--border-color)",
         backgroundColor: "var(--card-background)",
         transition: "all 0.3s ease",
       }}
     >
-      <nostalgic-counter 
-        id="llll-ll-3f2d5e94" 
-        type="total" 
-        theme="classic" 
-        digits="5"
-      ></nostalgic-counter>
+      <div style={{ transform: "scale(1.5)", display: "inline-block" }}>
+        <nostalgic-counter id="llll-ll-3f2d5e94" type="total" theme="classic" digits="5"></nostalgic-counter>
+      </div>
     </div>
   );
 };

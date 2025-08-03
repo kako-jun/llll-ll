@@ -6,6 +6,7 @@ import LanguageSelector from "@/components/LanguageSelector";
 import Header from "@/components/Header";
 import IntroSection from "@/components/IntroSection";
 import ImageDisplay from "@/components/ImageDisplay";
+import VisitorCounter from "@/components/VisitorCounter";
 import ProjectList from "@/components/ProjectList";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -49,6 +50,7 @@ export default function HomePage() {
           >
             <IntroSection language={selectedLanguage} />
             <ImageDisplay language={selectedLanguage} />
+            <VisitorCounter language={selectedLanguage} />
 
             {loading ? (
               <div style={{ textAlign: "center", padding: "3rem 0" }}>

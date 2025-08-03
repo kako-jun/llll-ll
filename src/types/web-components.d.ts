@@ -8,7 +8,6 @@ declare module 'react' {
         type?: 'total' | 'today' | 'yesterday' | 'week' | 'month';
         theme?: 'classic' | 'modern' | 'retro';
         digits?: string;
-        'api-base'?: string;
       };
     }
   }

@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect } from "react";
 import { Language } from "@/types";
 
 interface VisitorCounterProps {
@@ -8,21 +5,6 @@ interface VisitorCounterProps {
 }
 
 const VisitorCounter = ({ language }: VisitorCounterProps) => {
-  useEffect(() => {
-    // Web Componentのスクリプトを動的に読み込み
-    const script = document.createElement("script");
-    script.src = "https://nostalgic-counter.llll-ll.com/components/display.js";
-    script.async = true;
-    document.head.appendChild(script);
-
-    return () => {
-      // クリーンアップ
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
-    };
-  }, []);
-
   return (
     <div
       style={{

@@ -1,26 +1,25 @@
 id: nostalgic-counter
 title:
-  en: "Nostalgic Counter: Retro Web Counter Service with Modern Technology"
-  ja: "Nostalgic Counter: 最新技術で復活した懐かしのWebカウンター"
-  zh: "Nostalgic Counter: 使用现代技术复活的怀旧网页计数器"
-  es: "Nostalgic Counter: Servicio de contador web retro con tecnología moderna"
+  en: "Nostalgic Counter: Retro Free Access Counter Revived with Modern Technology"
+  ja: "Nostalgic Counter: 最新技術で復活したレトロな無料アクセスカウンター"
+  zh: "Nostalgic Counter: 用现代技术复活的复古免费访问计数器"
+  es: "Nostalgic Counter: Contador de Acceso Gratuito Retro Revivido con Tecnología Moderna"
 description:
-  en: "A nostalgic web counter service that brings back the 90s internet culture with modern technology. Features multiple time periods (total, today, yesterday, weekly, monthly), 3 retro styles (classic, modern, retro), 24-hour duplicate prevention, and easy Web Components integration. No registration required - just provide a URL and secret token."
-  ja: "90年代のインターネット文化を最新技術で復活させた懐かしいWebカウンターサービス。複数期間統計（累計・今日・昨日・週間・月間）、3つのレトロスタイル（クラシック・モダン・レトロ）、24時間重複防止、Web Components簡単統合が特徴。登録不要でURLと秘密トークンのみで利用可能。"
-  zh: "使用现代技术复活90年代互联网文化的怀旧网页计数器服务。具备多时间段统计（总计、今日、昨日、每周、每月）、3种复古风格（经典、现代、复古）、24小时重复防护和Web Components轻松集成功能。无需注册，仅需提供URL和密钥令牌。"
-  es: "Un servicio de contador web nostálgico que revive la cultura de internet de los 90 con tecnología moderna. Incluye estadísticas de múltiples períodos (total, hoy, ayer, semanal, mensual), 3 estilos retro (clásico, moderno, retro), prevención de duplicados de 24 horas e integración fácil con Web Components. No requiere registro, solo URL y token secreto."
+  en: "A nostalgic web counter service that recreates 1990s internet culture. Displays total, today, yesterday, weekly, and monthly counts.\n\nNo user registration required. Just provide the URL to measure and a secret token. Open source, so you can also host it on Vercel for personal use."
+  ja: "1990年代のインターネット文化を再現した懐かしいWebカウンターサービス。累計・今日・昨日・週間・月間を表示可能。\n\nユーザー登録なし。計測したいURLと合言葉トークンのみで利用可能。オープンソースなので、自分専用としてVercelにホストすることも可能。"
+  zh: "重现1990年代互联网文化的怀旧网页计数器服务。可显示累计、今日、昨日、本周、本月访问数。\n\n无需用户注册。仅需提供要测量的URL和密码令牌即可使用。开源项目，也可以在Vercel上搭建个人专用版本。"
+  es: "Servicio de contador web nostálgico que recrea la cultura de internet de los años 1990. Muestra conteos totales, de hoy, ayer, semanales y mensuales.\n\nSin registro de usuario requerido. Solo proporciona la URL a medir y un token secreto. Es de código abierto, así que también puedes alojarlo en Vercel para uso personal."
 tags:
+  - "Free"
   - "Next.js"
   - "TypeScript"
   - "Redis"
   - "Web Components"
-  - "SVG"
-  - "Vercel"
   - "OSS"
 images:
-  - "https://opengraph.githubassets.com/1/kako-jun/nostalgic-counter"
+  - "https://github.com/kako-jun/nostalgic-counter/blob/main/public/favicon-48x48.png?raw=true"
 demoUrl: "https://nostalgic-counter.llll-ll.com/"
 repositoryUrl: "https://github.com/kako-jun/nostalgic-counter"
 createdAt: "2025-01-20"
-updatedAt: "2025-01-20"
+updatedAt: "2025-08-07"
 featured: true

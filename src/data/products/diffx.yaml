@@ -18,6 +18,7 @@ tags:
   - "TOML"
   - "OSS"
 images:
+  - "/images/cli-terminal.webp"
   - "https://opengraph.githubassets.com/1/kako-jun/diffx"
   - "https://storage.googleapis.com/zenn-user-upload/a82eab0d5859-20250706.png"
 repositoryUrl: "https://github.com/kako-jun/diffx"

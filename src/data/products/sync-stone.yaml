@@ -1,25 +1,26 @@
 id: sync-stone
 title:
-  en: "SyncStone: FINAL FANTASY XIV Lodestone Diary Export Tool"
-  ja: "SyncStone: FINAL FANTASY XIV ロドスト日記エクスポートツール"
-  zh: "SyncStone: FINAL FANTASY XIV Lodestone日记导出工具"
-  es: "SyncStone: Herramienta de exportación de diario de FINAL FANTASY XIV Lodestone"
+  en: "SyncStone - Stardustmemoir: FF14 Lodestone Export Tool"
+  ja: "SyncStone - 星紡のメモワール: FF14 ロドストのエクスポートツール"
+  zh: "SyncStone - Stardustmemoir: FF14陆行鸟站导出工具"
+  es: "SyncStone - Stardustmemoir: Herramienta de Exportación de FF14 Lodestone"
 description:
-  en: "Chrome extension for exporting diary entries from The Lodestone into Markdown format. Features bulk download of images and comments, multi-language support, and privacy-conscious design for backing up FFXIV memories."
-  ja: "ロードストーンの日記エントリーをMarkdown形式でエクスポートするChrome拡張機能。画像とコメントの一括ダウンロード、多言語対応、FFXIVの思い出をバックアップするプライバシー配慮設計。"
-  zh: "用于将Lodestone日记条目导出为Markdown格式的Chrome扩展。支持批量下载图片和评论、多语言支持，以及注重隐私的设计来备份FFXIV回忆。"
-  es: "Extensión de Chrome para exportar entradas de diario desde Lodestone al formato Markdown. Incluye descarga masiva de imágenes y comentarios, soporte multilingüe, y diseño consciente de la privacidad para respaldar recuerdos de FFXIV."
+  en: "The official blog service for FINAL FANTASY XIV, The Lodestone, doesn't have an export function. This Chrome extension allows you to export entries in Markdown format.\n\nIncludes images and comments. Supports both individual entry export and bulk export of all entries. Back up your FFXIV memories."
+  ja: "FINAL FANTASY XIV の公式ブログサービスであるロドストには、エクスポート機能がありません。このChrome拡張機能を使うと、エントリーをMarkdown形式でエクスポートできます。\n\n画像、コメントも対象。記事ごとのエクスポートにも、全記事の一括エクスポートにも対応。FFXIVの思い出をバックアップしましょう。"
+  zh: "FINAL FANTASY XIV 的官方博客服务 The Lodestone 没有导出功能。这个Chrome扩展可以让您将日志条目导出为Markdown格式。\n\n包括图片和评论。支持单篇导出和全部条目的批量导出。备份您的FFXIV回忆。"
+  es: "El servicio oficial de blog de FINAL FANTASY XIV, The Lodestone, no tiene función de exportación. Esta extensión de Chrome te permite exportar entradas en formato Markdown.\n\nIncluye imágenes y comentarios. Compatible con exportación individual y exportación masiva de todas las entradas. Guarda tus recuerdos de FFXIV."
 tags:
-  - "TypeScript"
+  - "Free"
   - "Chrome Extension"
-  - "FFXIV"
-  - "Markdown"
+  - "TypeScript"
   - "Export Tool"
   - "Gaming"
   - "OSS"
 images:
-  - "https://opengraph.githubassets.com/1/kako-jun/sync-stone"
+  - "https://raw.githubusercontent.com/kako-jun/sync-stone/refs/heads/main/chrome-extension/icons/icon128.png"
 repositoryUrl: "https://github.com/kako-jun/sync-stone"
+developmentRecordUrl:
+  - "https://zenn.dev/kako_jun/scraps/38ef9ae285ed5b"
 createdAt: "2025-01-15"
 updatedAt: "2025-07-29"
 featured: false

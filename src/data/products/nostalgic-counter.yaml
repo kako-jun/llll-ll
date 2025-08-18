@@ -17,9 +17,9 @@ tags:
   - "Web Components"
   - "OSS"
 images:
-  - "https://github.com/kako-jun/nostalgic-counter/blob/main/public/favicon-48x48.png?raw=true"
-demoUrl: "https://nostalgic-counter.llll-ll.com/"
-repositoryUrl: "https://github.com/kako-jun/nostalgic-counter"
+  - "https://github.com/kako-jun/nostalgic/blob/main/public/favicon-48x48.png?raw=true"
+demoUrl: "https://nostalgic.llll-ll.com/"
+repositoryUrl: "https://github.com/kako-jun/nostalgic"
 createdAt: "2025-01-20"
 updatedAt: "2025-08-07"
 featured: true

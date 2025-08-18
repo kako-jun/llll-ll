@@ -1,0 +1,29 @@
+id: noun-gender
+title:
+  en: "Noun Gender: Multilingual Gender Learning App"
+  ja: "Noun Gender: 名詞性別学習アプリ"
+  zh: "名词性别：多语言性别学习应用"
+  es: "Noun Gender: Aplicación de Aprendizaje de Género de Sustantivos"
+description:
+  en: "A web application for learning and searching gendered nouns in languages like French, German, and Spanish. Features 4,651 multilingual words with interactive search, A-Z dictionary browsing, gender quizzes, speech synthesis, memory tricks, and 11-language UI support."
+  ja: "フランス語、ドイツ語、スペイン語などの名詞に性別のある言語の学習・検索用Webアプリケーション。4,651語の多言語データベース、インタラクティブ検索、A-Z辞書ブラウズ、性別クイズ、音声読み上げ、暗記術、11言語UI対応を備えています。"
+  zh: "用于学习和搜索法语、德语、西班牙语等语言中有性别的名词的Web应用程序。拥有4,651个多语言单词数据库，支持交互式搜索、A-Z词典浏览、性别测验、语音合成、记忆技巧和11种语言UI。"
+  es: "Una aplicación web para aprender y buscar sustantivos con género en idiomas como francés, alemán y español. Cuenta con una base de datos multilingüe de 4,651 palabras con búsqueda interactiva, navegación de diccionario A-Z, cuestionarios de género, síntesis de voz, trucos de memoria y soporte de UI en 11 idiomas."
+tags:
+  - "Free"
+  - "Next.js"
+  - "TypeScript"
+  - "SQLite"
+  - "Web App"
+  - "Education"
+  - "Language Learning"
+  - "Dictionary"
+  - "Multilingual"
+  - "OSS"
+images:
+  - "https://raw.githubusercontent.com/kako-jun/noun-gender/refs/heads/main/public/apple-touch-icon.png"
+demoUrl: "https://noun-gender.llll-ll.com"
+repositoryUrl: "https://github.com/kako-jun/noun-gender"
+createdAt: "2024-01-01"
+updatedAt: "2025-08-08"
+featured: true

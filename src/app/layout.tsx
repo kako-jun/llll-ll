@@ -78,7 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         {/* Nostalgic Counter Web Component */}
-        <script src="https://nostalgic-counter.llll-ll.com/components/display.js" async />
+        <script src="https://nostalgic.llll-ll.com/components/counter.js" async />
         {/* Structured Data */}
         <script
           type="application/ld+json"

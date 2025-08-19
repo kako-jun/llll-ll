@@ -76,9 +76,7 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
                 overflow: "hidden",
                 border: "1px solid var(--border-color)",
                 borderRadius: "4px", // 角ばった見た目に
-                cursor: "pointer",
               }}
-              onClick={(e) => handleImageClick(product.images[0], e)}
             >
               <img
                 src={product.images[0]}

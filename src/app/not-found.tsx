@@ -20,6 +20,8 @@ export default function NotFound() {
   const [gameCompleted, setGameCompleted] = useState(false);
   const [startTime, setStartTime] = useState<number>(0);
   const [endTime, setEndTime] = useState<number>(0);
+  const [rankingSubmitted, setRankingSubmitted] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   // ゲーム初期化
   const initializeGame = () => {
@@ -37,8 +39,11 @@ export default function NotFound() {
   const handleNumberClick = (clickedNumber: number) => {
     if (clickedNumber === currentNumber) {
       if (currentNumber === 16) {
+        const completionTime = Date.now();
         setGameCompleted(true);
-        setEndTime(Date.now());
+        setEndTime(completionTime);
+        // ゲーム完了時に自動でランキング送信
+        autoSubmitToRanking(completionTime - startTime);
       } else {
         setCurrentNumber(currentNumber + 1);
       }
@@ -53,6 +58,47 @@ export default function NotFound() {
     setGameCompleted(false);
     setStartTime(0);
     setEndTime(0);
+    setRankingSubmitted(false);
+    setSubmitMessage('');
+  };
+
+  // プレイヤー名生成（IP+UserAgentベース）
+  const generatePlayerName = (): string => {
+    const adjectives = ['Swift', 'Clever', 'Brave', 'Quick', 'Smart', 'Fast', 'Sharp', 'Wise', 'Cool', 'Super'];
+    const animals = ['Fox', 'Eagle', 'Tiger', 'Wolf', 'Lion', 'Hawk', 'Bear', 'Cat', 'Dog', 'Owl'];
+    
+    // IP+UserAgentの代わりにnavigatorのプロパティを使用してハッシュ生成
+    const userString = `${navigator.userAgent}-${navigator.language}-${screen.width}x${screen.height}`;
+    let hash = 0;
+    for (let i = 0; i < userString.length; i++) {
+      const char = userString.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // 32bit整数に変換
+    }
+    
+    const adjIndex = Math.abs(hash) % adjectives.length;
+    const animalIndex = Math.abs(hash >> 8) % animals.length;
+    const number = (Math.abs(hash >> 16) % 999) + 1;
+    
+    return `${adjectives[adjIndex]}${animals[animalIndex]}${number}`;
+  };
+
+  // 自動ランキング送信
+  const autoSubmitToRanking = async (timeInMs: number) => {
+    const playerName = generatePlayerName();
+    const timeInSeconds = (timeInMs / 1000).toFixed(2);
+    const displayScore = `${timeInSeconds}秒`;
+    
+    const rankingId = "llll-ll-a235b610";
+    
+    try {
+      // 正しいAPI呼び出し: 公開IDのみ使用
+      await fetch(`https://nostalgic.llll-ll.com/api/ranking?action=submit&id=${rankingId}&name=${encodeURIComponent(playerName)}&score=${timeInMs}`);
+      setRankingSubmitted(true);
+    } catch (error) {
+      // エラーも静かに無視
+      console.debug('Ranking submission failed, but continuing...', error);
+    }
   };
   // 数字を言葉で表現するマッピング
   const numberWords = {
@@ -444,6 +490,11 @@ export default function NotFound() {
               {gameCompleted && (
                 <div style={{ fontSize: "0.9rem", color: "var(--primary-color)", fontWeight: "bold" }}>
                   {messages.gameCompleted} {messages.gameTime} {((endTime - startTime) / 1000).toFixed(2)}s
+                  {rankingSubmitted && (
+                    <div style={{ fontSize: "0.8rem", marginTop: "0.25rem", color: "#10b981" }}>
+                      ✨ Submitted to global ranking!
+                    </div>
+                  )}
                 </div>
               )}
             </div>

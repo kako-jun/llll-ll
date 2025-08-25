@@ -492,7 +492,7 @@ export default function NotFound() {
                   {messages.gameCompleted} {messages.gameTime} {((endTime - startTime) / 1000).toFixed(2)}s
                   {rankingSubmitted && (
                     <div style={{ fontSize: "0.8rem", marginTop: "0.25rem", color: "#10b981" }}>
-                      ✨ Submitted to global ranking!
+                      ✨ Submitted to <a href="https://nostalgic.llll-ll.com" target="_blank" rel="noopener noreferrer" style={{ color: "#3b82f6", textDecoration: "underline" }}>global ranking</a>!
                     </div>
                   )}
                 </div>

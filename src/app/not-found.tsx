@@ -87,13 +87,13 @@ export default function NotFound() {
   const autoSubmitToRanking = async (timeInMs: number) => {
     const playerName = generatePlayerName();
     const timeInSeconds = (timeInMs / 1000).toFixed(2);
-    const displayScore = `${timeInSeconds}秒`;
+    const displayScore = `${timeInSeconds}s`;
     
     const rankingId = "llll-ll-a235b610";
     
     try {
-      // 正しいAPI呼び出し: 公開IDのみ使用
-      await fetch(`https://nostalgic.llll-ll.com/api/ranking?action=submit&id=${rankingId}&name=${encodeURIComponent(playerName)}&score=${timeInMs}`);
+      // 正しいAPI呼び出し: 公開IDのみ使用、秒数フォーマットで送信
+      await fetch(`https://nostalgic.llll-ll.com/api/ranking?action=submit&id=${rankingId}&name=${encodeURIComponent(playerName)}&score=${encodeURIComponent(displayScore)}`);
       setRankingSubmitted(true);
     } catch (error) {
       // エラーも静かに無視

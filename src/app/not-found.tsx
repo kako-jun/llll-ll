@@ -92,8 +92,8 @@ export default function NotFound() {
     const rankingId = "llll-ll-a235b610";
     
     try {
-      // 正しいAPI呼び出し: 公開IDのみ使用、秒数フォーマットで送信
-      await fetch(`https://nostalgic.llll-ll.com/api/ranking?action=submit&id=${rankingId}&name=${encodeURIComponent(playerName)}&score=${encodeURIComponent(displayScore)}`);
+      // 正しいAPI呼び出し: 数値（ソート用）と文字列（表示用）の両方を送信
+      await fetch(`https://nostalgic.llll-ll.com/api/ranking?action=submit&id=${rankingId}&name=${encodeURIComponent(playerName)}&score=${timeInMs}&displayScore=${encodeURIComponent(displayScore)}`);
       setRankingSubmitted(true);
     } catch (error) {
       // エラーも静かに無視

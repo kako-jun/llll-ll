@@ -2,12 +2,14 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { Language } from "@/types";
+import { useTranslation } from "@/lib/i18n";
 
 interface HeaderProps {
   language: Language;
 }
 
 export default function Header({ language }: HeaderProps) {
+  const t = useTranslation(language);
   const BLOCK_SIZE = 16;
   const GRID_HEIGHT = 4;
   const MAX_STACK = 3; // 縦3つまで、4つ目で全消し
@@ -387,7 +389,7 @@ export default function Header({ language }: HeaderProps) {
         }}
       >
         <div className="container">
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline", gap: "0.5rem" }}>
             <h1
               onClick={scrollToTop}
               className="logo-font"
@@ -402,6 +404,16 @@ export default function Header({ language }: HeaderProps) {
             >
               llll-ll
             </h1>
+            <span
+              style={{
+                fontSize: "0.65rem",
+                color: "var(--text-accent)",
+                userSelect: "none",
+                opacity: 0.8,
+              }}
+            >
+              {t.siteSubtitle}
+            </span>
           </div>
         </div>
       </header>
@@ -425,7 +437,7 @@ export default function Header({ language }: HeaderProps) {
       }}
     >
       <div className="container">
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline", gap: "0.5rem" }}>
           <h1
             className="logo-font"
             style={{
@@ -439,6 +451,16 @@ export default function Header({ language }: HeaderProps) {
           >
             llll-ll
           </h1>
+          <span
+            style={{
+              fontSize: "0.65rem",
+              color: "var(--text-accent)",
+              userSelect: "none",
+              opacity: 0.8,
+            }}
+          >
+            {t.siteSubtitle}
+          </span>
         </div>
       </div>
 

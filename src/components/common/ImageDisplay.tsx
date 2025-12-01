@@ -27,7 +27,6 @@ export default function ImageDisplay({ language: _language }: ImageDisplayProps)
               height: "200px",
               borderRadius: "8px",
               objectFit: "cover",
-              border: "2px solid var(--border-color)",
               position: "relative",
               zIndex: 1,
               cursor: "pointer",

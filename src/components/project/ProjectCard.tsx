@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createPortal } from "react-dom";
 import { Product, Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
-import ArrowIcon from "./ArrowIcon";
+import { ArrowIcon } from "@/components/common";
 
 interface ProjectCardProps {
   product: Product;

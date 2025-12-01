@@ -1,7 +1,7 @@
 import { Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
 import { useTetrisGame } from "@/hooks/useTetrisGame";
-import { TetrisBlockGrid, FallingBlocks } from "./TetrisBlock";
+import { TetrisBlockGrid, FallingBlocks } from "@/components/game";
 
 interface HeaderProps {
   language: Language;

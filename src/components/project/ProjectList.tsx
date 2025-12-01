@@ -3,7 +3,7 @@ import { Product, Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
 import ProjectCard from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
-import ArrowIcon from "./ArrowIcon";
+import { ArrowIcon } from "@/components/common";
 
 interface ProjectListProps {
   products: Product[];

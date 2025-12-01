@@ -5,3 +5,7 @@ export { default as MediaPopup } from "./MediaPopup";
 export { default as MediaGrid } from "./MediaGrid";
 export { default as TagList } from "./TagList";
 export { default as ActionButtons } from "./ActionButtons";
+export { default as SearchBox } from "./SearchBox";
+export { default as TagCloud } from "./TagCloud";
+export { default as SortSwitch } from "./SortSwitch";
+export { default as NoResults } from "./NoResults";

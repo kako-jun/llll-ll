@@ -1,10 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 interface ImageDisplayProps {
   language: string;
 }
 
 export default function ImageDisplay({ language: _language }: ImageDisplayProps) {
+  const navigate = useNavigate();
+
   const handleImageClick = () => {
-    window.location.href = "/easter-egg";
+    navigate("/easter-egg");
   };
 
   return (

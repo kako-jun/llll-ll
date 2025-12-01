@@ -1,41 +1,24 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Language, Product } from "@/types";
 import { translations } from "@/lib/i18n";
 import { LanguageSelector, Header, Footer } from "@/components/layout";
 import { IntroSection, ImageDisplay, VisitorCounter, ScrollToTop } from "@/components/common";
 import { ProjectList } from "@/components/project";
 import { BackgroundDots } from "@/components/game";
+import NotFound from "@/pages/NotFound";
 
-export default function App() {
-  const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(null);
+function HomePage({
+  selectedLanguage,
+  handleLanguageSelect,
+  checkingVisited,
+}: {
+  selectedLanguage: Language | null;
+  handleLanguageSelect: (lang: Language) => void;
+  checkingVisited: boolean;
+}) {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
-  const [checkingVisited, setCheckingVisited] = useState(true);
-
-  // 初回訪問チェック：2回目以降は保存された言語で自動遷移
-  useEffect(() => {
-    const visited = localStorage.getItem("visited");
-    const savedLanguage = localStorage.getItem("language") as Language;
-
-    if (visited && savedLanguage && ["en", "ja", "zh", "es"].includes(savedLanguage)) {
-      setSelectedLanguage(savedLanguage);
-    }
-    setCheckingVisited(false);
-  }, []);
-
-  // 言語選択時にvisitedフラグを保存
-  const handleLanguageSelect = (lang: Language) => {
-    localStorage.setItem("visited", "true");
-    setSelectedLanguage(lang);
-  };
-
-  // 言語が決まったらタイトルを更新
-  useEffect(() => {
-    if (selectedLanguage) {
-      const t = translations[selectedLanguage];
-      document.title = `llll-ll - ${t.siteSubtitle}`;
-    }
-  }, [selectedLanguage]);
 
   useEffect(() => {
     if (selectedLanguage) {
@@ -96,5 +79,54 @@ export default function App() {
 
       <BackgroundDots />
     </>
+  );
+}
+
+export default function App() {
+  const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(null);
+  const [checkingVisited, setCheckingVisited] = useState(true);
+
+  // 初回訪問チェック：2回目以降は保存された言語で自動遷移
+  useEffect(() => {
+    const visited = localStorage.getItem("visited");
+    const savedLanguage = localStorage.getItem("language") as Language;
+
+    if (visited && savedLanguage && ["en", "ja", "zh", "es"].includes(savedLanguage)) {
+      setSelectedLanguage(savedLanguage);
+    }
+    setCheckingVisited(false);
+  }, []);
+
+  // 言語選択時にvisitedフラグを保存
+  const handleLanguageSelect = (lang: Language) => {
+    localStorage.setItem("visited", "true");
+    setSelectedLanguage(lang);
+  };
+
+  // 言語が決まったらタイトルを更新
+  useEffect(() => {
+    if (selectedLanguage) {
+      const t = translations[selectedLanguage];
+      document.title = `llll-ll - ${t.siteSubtitle}`;
+    }
+  }, [selectedLanguage]);
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              selectedLanguage={selectedLanguage}
+              handleLanguageSelect={handleLanguageSelect}
+              checkingVisited={checkingVisited}
+            />
+          }
+        />
+        <Route path="/easter-egg" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

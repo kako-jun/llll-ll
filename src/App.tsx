@@ -1,28 +1,42 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Language, Product } from "@/types";
 import { translations } from "@/lib/i18n";
-import { LanguageSelector, Header, Footer } from "@/components/layout";
+import { LanguageBar, Header, Footer } from "@/components/layout";
 import { IntroSection, ImageDisplay, VisitorCounter, ScrollToTop } from "@/components/common";
 import { ProjectList } from "@/components/project";
 import { BackgroundDots } from "@/components/game";
+import { useTheme } from "@/hooks/useTheme";
+import { useLanguage } from "@/hooks/useLanguage";
 import NotFound from "@/pages/NotFound";
+import Welcome from "@/pages/Welcome";
 
-function HomePage({
-  selectedLanguage,
-  handleLanguageSelect,
-  checkingVisited,
-}: {
-  selectedLanguage: Language | null;
-  handleLanguageSelect: (lang: Language) => void;
-  checkingVisited: boolean;
-}) {
+function HomePage() {
+  const { theme, toggleTheme, mounted } = useTheme();
+  const { language, changeLanguage } = useLanguage();
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [checkingVisited, setCheckingVisited] = useState(true);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
+  // 初回訪問チェック
   useEffect(() => {
-    if (selectedLanguage) {
-      setLoading(true);
+    const visited = localStorage.getItem("visited");
+    const savedLanguage = localStorage.getItem("language") as Language;
+
+    if (!visited) {
+      // 初回訪問：/welcome にリダイレクト
+      setShouldRedirect(true);
+    } else if (savedLanguage && ["en", "ja", "zh", "es"].includes(savedLanguage)) {
+      // 2回目以降：保存された言語を復元
+      changeLanguage(savedLanguage);
+    }
+    setCheckingVisited(false);
+  }, [changeLanguage]);
+
+  // プロダクトデータ読み込み
+  useEffect(() => {
+    if (!shouldRedirect) {
       fetch("/data/products.json")
         .then((res) => res.json())
         .then((data: Product[]) => {
@@ -34,96 +48,75 @@ function HomePage({
           setLoading(false);
         });
     }
-  }, [selectedLanguage]);
+  }, [shouldRedirect]);
+
+  // タイトル更新
+  useEffect(() => {
+    const t = translations[language];
+    document.title = `llll-ll - ${t.siteSubtitle}`;
+  }, [language]);
+
+  // 言語変更ハンドラ（localStorageも更新）
+  const handleLanguageChange = (lang: Language) => {
+    changeLanguage(lang);
+    localStorage.setItem("language", lang);
+  };
 
   // 訪問チェック中は何も表示しない（ちらつき防止）
   if (checkingVisited) {
     return null;
   }
 
+  // 初回訪問時は /welcome にリダイレクト
+  if (shouldRedirect) {
+    return <Navigate to="/welcome" replace />;
+  }
+
   return (
     <>
-      <LanguageSelector
-        onLanguageSelect={handleLanguageSelect}
-        selectedLanguage={selectedLanguage}
+      <LanguageBar
+        selectedLanguage={language}
+        theme={theme}
+        mounted={mounted}
+        onLanguageSelect={handleLanguageChange}
+        onThemeToggle={toggleTheme}
       />
 
-      {selectedLanguage && (
-        <>
-          <Header language={selectedLanguage} />
+      <Header language={language} />
 
-          <main
-            style={{
-              backgroundColor: "var(--background-color)",
-              minHeight: "calc(100vh - 200px)",
-              transition: "background-color 0.3s ease",
-            }}
-          >
-            <IntroSection language={selectedLanguage} />
-            <ImageDisplay language={selectedLanguage} />
-            <VisitorCounter language={selectedLanguage} />
+      <main
+        style={{
+          backgroundColor: "var(--background-color)",
+          minHeight: "calc(100vh - 200px)",
+          transition: "background-color 0.3s ease",
+        }}
+      >
+        <IntroSection language={language} />
+        <ImageDisplay language={language} />
+        <VisitorCounter language={language} />
 
-            {loading ? (
-              <div style={{ textAlign: "center", padding: "3rem 0" }}>
-                <div style={{ color: "#6c757d" }}>Loading...</div>
-              </div>
-            ) : (
-              <ProjectList products={products} language={selectedLanguage} />
-            )}
-          </main>
+        {loading ? (
+          <div style={{ textAlign: "center", padding: "3rem 0" }}>
+            <div style={{ color: "#6c757d" }}>Loading...</div>
+          </div>
+        ) : (
+          <ProjectList products={products} language={language} />
+        )}
+      </main>
 
-          <Footer language={selectedLanguage} />
-          <ScrollToTop />
-        </>
-      )}
-
+      <Footer language={language} />
+      <ScrollToTop />
       <BackgroundDots />
     </>
   );
 }
 
 export default function App() {
-  const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(null);
-  const [checkingVisited, setCheckingVisited] = useState(true);
-
-  // 初回訪問チェック：2回目以降は保存された言語で自動遷移
-  useEffect(() => {
-    const visited = localStorage.getItem("visited");
-    const savedLanguage = localStorage.getItem("language") as Language;
-
-    if (visited && savedLanguage && ["en", "ja", "zh", "es"].includes(savedLanguage)) {
-      setSelectedLanguage(savedLanguage);
-    }
-    setCheckingVisited(false);
-  }, []);
-
-  // 言語選択時にvisitedフラグを保存
-  const handleLanguageSelect = (lang: Language) => {
-    localStorage.setItem("visited", "true");
-    setSelectedLanguage(lang);
-  };
-
-  // 言語が決まったらタイトルを更新
-  useEffect(() => {
-    if (selectedLanguage) {
-      const t = translations[selectedLanguage];
-      document.title = `llll-ll - ${t.siteSubtitle}`;
-    }
-  }, [selectedLanguage]);
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <HomePage
-              selectedLanguage={selectedLanguage}
-              handleLanguageSelect={handleLanguageSelect}
-              checkingVisited={checkingVisited}
-            />
-          }
-        />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/welcome" element={<Welcome />} />
         <Route path="/easter-egg" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

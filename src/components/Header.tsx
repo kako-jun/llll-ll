@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useCallback } from "react";
 import { Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
@@ -17,7 +16,9 @@ export default function Header({ language }: HeaderProps) {
   const [grid, setGrid] = useState<boolean[][]>([]);
   const [gridWidth, setGridWidth] = useState(0);
   const [fallingBlocks, setFallingBlocks] = useState<{ id: number; x: number; y: number }[]>([]);
-  const [disappearingBlocks, setDisappearingBlocks] = useState<{ id: number; x: number; y: number }[]>([]);
+  const [disappearingBlocks, setDisappearingBlocks] = useState<
+    { id: number; x: number; y: number }[]
+  >([]);
   const [mounted, setMounted] = useState(false);
 
   const scrollToTop = () => {
@@ -198,6 +199,7 @@ export default function Header({ language }: HeaderProps) {
 
     const animationInterval = setInterval(animate, 33); // 30fps
     return () => clearInterval(animationInterval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getBottomEmptyRow]);
 
   // ライン消去判定（横一列すべてtrueのチェック）
@@ -388,7 +390,14 @@ export default function Header({ language }: HeaderProps) {
         }}
       >
         <div className="container">
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline", gap: "0.5rem" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "baseline",
+              gap: "0.5rem",
+            }}
+          >
             <h1
               onClick={scrollToTop}
               className="logo-font"
@@ -436,7 +445,14 @@ export default function Header({ language }: HeaderProps) {
       }}
     >
       <div className="container">
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "baseline", gap: "0.5rem" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "baseline",
+            gap: "0.5rem",
+          }}
+        >
           <h1
             className="logo-font"
             style={{

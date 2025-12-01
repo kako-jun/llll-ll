@@ -131,9 +131,9 @@ export default function BackgroundDots() {
     setMounted(true);
 
     // Inject keyframes CSS
-    const styleId = 'background-dots-keyframes';
+    const styleId = "background-dots-keyframes";
     if (!document.getElementById(styleId)) {
-      const style = document.createElement('style');
+      const style = document.createElement("style");
       style.id = styleId;
       style.textContent = keyframesCSS;
       document.head.appendChild(style);

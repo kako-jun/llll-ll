@@ -1,5 +1,13 @@
 // 画像最適化用ローダー
-export default function customImageLoader({ src, width, quality }: { src: string; width: number; quality?: number }) {
+export default function customImageLoader({
+  src,
+  width,
+  quality,
+}: {
+  src: string;
+  width: number;
+  quality?: number;
+}) {
   // 品質設定（デフォルト75%）
   const q = quality || 75;
 

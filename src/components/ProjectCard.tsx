@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { Product, Language } from "@/types";
@@ -148,12 +147,14 @@ export default function ProjectCard({ product, language, isExpanded, onToggle }:
               }}
               dangerouslySetInnerHTML={{
                 __html: (() => {
-                  const description = product.description[language] || product.description["en"] || "";
-                  const truncatedDescription = description.length > 80 && !isExpanded
-                    ? `${description.substring(0, 80)}...`
-                    : description;
+                  const description =
+                    product.description[language] || product.description["en"] || "";
+                  const truncatedDescription =
+                    description.length > 80 && !isExpanded
+                      ? `${description.substring(0, 80)}...`
+                      : description;
                   return truncatedDescription.replace(/\n/g, "<br>");
-                })()
+                })(),
               }}
             />
 
@@ -250,7 +251,9 @@ export default function ProjectCard({ product, language, isExpanded, onToggle }:
                         }}
                       >
                         <iframe
-                          src={video.replace("watch?v=", "embed/").replace("youtu.be/", "youtube.com/embed/")}
+                          src={video
+                            .replace("watch?v=", "embed/")
+                            .replace("youtu.be/", "youtube.com/embed/")}
                           style={{
                             width: "100%",
                             height: "100%",
@@ -523,169 +526,174 @@ export default function ProjectCard({ product, language, isExpanded, onToggle }:
       )}
 
       {/* 画像ポップアップ */}
-      {typeof window !== "undefined" && popupImage && createPortal(
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.8)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 1001,
-            padding: "2rem",
-          }}
-          onClick={closePopup}
-        >
+      {typeof window !== "undefined" &&
+        popupImage &&
+        createPortal(
           <div
             style={{
-              position: "relative",
-              maxWidth: "90%",
-              maxHeight: "90%",
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundColor: "rgba(0, 0, 0, 0.8)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              zIndex: 1001,
+              padding: "2rem",
             }}
-            onClick={(e) => e.stopPropagation()}
+            onClick={closePopup}
           >
-            <img
-              src={popupImage}
-              alt="拡大画像"
+            <div
               style={{
-                maxWidth: "100%",
-                maxHeight: "100%",
-                objectFit: "contain",
-                border: "2px solid var(--primary-color)",
-                borderRadius: "4px",
-              }}
-            />
-            <button
-              onClick={closePopup}
-              style={{
-                position: "absolute",
-                top: "-10px",
-                right: "-10px",
-                width: "32px",
-                height: "32px",
-                backgroundColor: "var(--primary-color)",
-                color: "#ffffff",
-                border: "none",
-                borderRadius: "50%",
-                fontSize: "1.2rem",
-                fontWeight: "bold",
-                cursor: "pointer",
+                position: "relative",
+                maxWidth: "90%",
+                maxHeight: "90%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                transition: "background-color 0.2s",
               }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--text-color)";
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--primary-color)";
-              }}
+              onClick={(e) => e.stopPropagation()}
             >
-              <ArrowIcon direction="close" size={16} strokeWidth={2} />
-            </button>
-          </div>
-        </div>,
-        document.body
-      )}
-
-      {/* 動画ポップアップ */}
-      {typeof window !== "undefined" && popupVideo && createPortal(
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.8)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            zIndex: 1001,
-            padding: "2rem",
-          }}
-          onClick={closePopup}
-        >
-          <div
-            style={{
-              position: "relative",
-              width: "95vw",
-              height: "95vh",
-              maxWidth: "1200px",
-              maxHeight: "675px", // 16:9 ratio for 1200px width
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {popupVideo.includes("youtube.com") || popupVideo.includes("youtu.be") ? (
-              <iframe
-                src={popupVideo.replace("watch?v=", "embed/").replace("youtu.be/", "youtube.com/embed/")}
+              <img
+                src={popupImage}
+                alt="拡大画像"
                 style={{
-                  width: "100%",
-                  height: "100%",
-                  border: "2px solid var(--primary-color)",
-                  borderRadius: "4px",
-                }}
-                allowFullScreen
-              />
-            ) : (
-              <video
-                src={popupVideo}
-                style={{
-                  width: "100%",
-                  height: "100%",
+                  maxWidth: "100%",
+                  maxHeight: "100%",
                   objectFit: "contain",
                   border: "2px solid var(--primary-color)",
                   borderRadius: "4px",
                 }}
-                controls
-                autoPlay
               />
-            )}
-            <button
-              onClick={closePopup}
+              <button
+                onClick={closePopup}
+                style={{
+                  position: "absolute",
+                  top: "-10px",
+                  right: "-10px",
+                  width: "32px",
+                  height: "32px",
+                  backgroundColor: "var(--primary-color)",
+                  color: "#ffffff",
+                  border: "none",
+                  borderRadius: "50%",
+                  fontSize: "1.2rem",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "background-color 0.2s",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.backgroundColor = "var(--text-color)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.backgroundColor = "var(--primary-color)";
+                }}
+              >
+                <ArrowIcon direction="close" size={16} strokeWidth={2} />
+              </button>
+            </div>
+          </div>,
+          document.body
+        )}
+
+      {/* 動画ポップアップ */}
+      {typeof window !== "undefined" &&
+        popupVideo &&
+        createPortal(
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              backgroundColor: "rgba(0, 0, 0, 0.8)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 1001,
+              padding: "2rem",
+            }}
+            onClick={closePopup}
+          >
+            <div
               style={{
-                position: "absolute",
-                top: "-10px",
-                right: "-10px",
-                width: "32px",
-                height: "32px",
-                backgroundColor: "var(--primary-color)",
-                color: "#ffffff",
-                border: "none",
-                borderRadius: "50%",
-                fontSize: "1.2rem",
-                fontWeight: "bold",
-                cursor: "pointer",
+                position: "relative",
+                width: "95vw",
+                height: "95vh",
+                maxWidth: "1200px",
+                maxHeight: "675px", // 16:9 ratio for 1200px width
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                transition: "background-color 0.2s",
               }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--text-color)";
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--primary-color)";
-              }}
+              onClick={(e) => e.stopPropagation()}
             >
-              <ArrowIcon direction="close" size={16} strokeWidth={2} />
-            </button>
-          </div>
-        </div>,
-        document.body
-      )}
-
+              {popupVideo.includes("youtube.com") || popupVideo.includes("youtu.be") ? (
+                <iframe
+                  src={popupVideo
+                    .replace("watch?v=", "embed/")
+                    .replace("youtu.be/", "youtube.com/embed/")}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    border: "2px solid var(--primary-color)",
+                    borderRadius: "4px",
+                  }}
+                  allowFullScreen
+                />
+              ) : (
+                <video
+                  src={popupVideo}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                    border: "2px solid var(--primary-color)",
+                    borderRadius: "4px",
+                  }}
+                  controls
+                  autoPlay
+                />
+              )}
+              <button
+                onClick={closePopup}
+                style={{
+                  position: "absolute",
+                  top: "-10px",
+                  right: "-10px",
+                  width: "32px",
+                  height: "32px",
+                  backgroundColor: "var(--primary-color)",
+                  color: "#ffffff",
+                  border: "none",
+                  borderRadius: "50%",
+                  fontSize: "1.2rem",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "background-color 0.2s",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.backgroundColor = "var(--text-color)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.backgroundColor = "var(--primary-color)";
+                }}
+              >
+                <ArrowIcon direction="close" size={16} strokeWidth={2} />
+              </button>
+            </div>
+          </div>,
+          document.body
+        )}
     </div>
   );
 }

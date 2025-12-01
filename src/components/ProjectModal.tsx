@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Product, Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
@@ -37,7 +36,9 @@ export default function ProjectModal({ product, language, onClose }: ProjectModa
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
       <div className="max-w-4xl w-full max-h-[90vh] overflow-y-auto pixel-border bg-bg-primary">
         <div className="sticky top-0 bg-bg-primary border-b border-border-color p-4 flex justify-between items-center">
-          <h2 className="text-lg glow">{product.title[language] || product.title["en"] || "Untitled"}</h2>
+          <h2 className="text-lg glow">
+            {product.title[language] || product.title["en"] || "Untitled"}
+          </h2>
           <button
             onClick={onClose}
             className="text-text-accent hover:text-text-primary text-xl flex items-center justify-center w-8 h-8 rounded-full hover:bg-hover-background transition-colors"
@@ -74,7 +75,11 @@ export default function ProjectModal({ product, language, onClose }: ProjectModa
                 {product.images.length > 1 && (
                   <>
                     <button
-                      onClick={() => setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : product.images.length - 1))}
+                      onClick={() =>
+                        setCurrentImageIndex((prev) =>
+                          prev > 0 ? prev - 1 : product.images.length - 1
+                        )
+                      }
                       className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-8 h-8 flex items-center justify-center transition-colors"
                       title="前の画像"
                     >
@@ -82,7 +87,11 @@ export default function ProjectModal({ product, language, onClose }: ProjectModa
                     </button>
 
                     <button
-                      onClick={() => setCurrentImageIndex((prev) => (prev < product.images.length - 1 ? prev + 1 : 0))}
+                      onClick={() =>
+                        setCurrentImageIndex((prev) =>
+                          prev < product.images.length - 1 ? prev + 1 : 0
+                        )
+                      }
                       className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full w-8 h-8 flex items-center justify-center transition-colors"
                       title="次の画像"
                     >
@@ -133,7 +142,11 @@ export default function ProjectModal({ product, language, onClose }: ProjectModa
               <div
                 className="text-sm text-text-secondary leading-relaxed mb-4"
                 dangerouslySetInnerHTML={{
-                  __html: (product.description[language] || product.description["en"] || "").replace(/\n/g, "<br>"),
+                  __html: (
+                    product.description[language] ||
+                    product.description["en"] ||
+                    ""
+                  ).replace(/\n/g, "<br>"),
                 }}
               />
 

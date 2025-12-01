@@ -1,6 +1,5 @@
-
-import { useState, useEffect } from 'react';
-import { SimplePool, Event, Filter, nip19 } from 'nostr-tools';
+import { useState, useEffect } from "react";
+import { SimplePool, Event, Filter, nip19 } from "nostr-tools";
 
 export interface NostrPost {
   id: string;
@@ -19,10 +18,10 @@ export function useNostr(pubkey: string) {
 
     const pool = new SimplePool();
     const relays = [
-      'wss://relay.damus.io',
-      'wss://nos.lol',
-      'wss://relay.snort.social',
-      'wss://relay.nostr.band',
+      "wss://relay.damus.io",
+      "wss://nos.lol",
+      "wss://relay.snort.social",
+      "wss://relay.nostr.band",
     ];
 
     async function fetchPosts() {
@@ -32,13 +31,13 @@ export function useNostr(pubkey: string) {
 
         // npub形式をhex形式に変換
         let hexPubkey: string;
-        if (pubkey.startsWith('npub')) {
+        if (pubkey.startsWith("npub")) {
           const decoded = nip19.decode(pubkey);
           hexPubkey = decoded.data as string;
         } else {
           hexPubkey = pubkey;
         }
-        
+
         const filter: Filter = {
           authors: [hexPubkey],
           kinds: [1], // text notes
@@ -60,8 +59,10 @@ export function useNostr(pubkey: string) {
 
         setPosts(nostrPosts);
       } catch (err) {
-        console.error('Nostr fetch error:', err);
-        setError(`Failed to fetch Nostr posts: ${err instanceof Error ? err.message : String(err)}`);
+        console.error("Nostr fetch error:", err);
+        setError(
+          `Failed to fetch Nostr posts: ${err instanceof Error ? err.message : String(err)}`
+        );
       } finally {
         setLoading(false);
         pool.close(relays);

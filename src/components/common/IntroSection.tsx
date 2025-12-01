@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
+import { useElementRect } from "@/hooks/useElementRect";
 import ArrowIcon from "./ArrowIcon";
 import AboutPopup from "./AboutPopup";
 
@@ -10,19 +11,12 @@ interface IntroSectionProps {
 
 export default function IntroSection({ language }: IntroSectionProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [buttonRect, setButtonRect] = useState<DOMRect | null>(null);
+  const { rect: buttonRect, updateRect } = useElementRect(".about-button");
   const t = useTranslation(language);
-
-  const updateButtonPosition = () => {
-    const button = document.querySelector(".about-button") as HTMLElement;
-    if (button) {
-      setButtonRect(button.getBoundingClientRect());
-    }
-  };
 
   const handleButtonClick = () => {
     if (!isExpanded) {
-      updateButtonPosition();
+      updateRect();
     }
     setIsExpanded(!isExpanded);
   };

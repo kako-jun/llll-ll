@@ -1,13 +1,12 @@
 import { Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
 import { useTetrisGame } from "@/hooks/useTetrisGame";
+import { HEADER_ID } from "@/constants";
 import { TetrisBlockGrid, FallingBlocks } from "@/components/game";
 
 interface HeaderProps {
   language: Language;
 }
-
-const HEADER_ID = "main-header";
 
 export default function Header({ language }: HeaderProps) {
   const t = useTranslation(language);

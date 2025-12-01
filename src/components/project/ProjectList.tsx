@@ -1,7 +1,16 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { Product, Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
 import { ArrowIcon } from "@/components/common";
+import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
+import { useUrlHash, setUrlHash, clearUrlHash } from "@/hooks/useUrlHash";
+import {
+  INITIAL_VISIBLE_COUNT,
+  LOAD_MORE_COUNT,
+  SCROLL_THRESHOLD,
+  HEADER_OFFSET,
+  SCROLL_DELAY,
+} from "@/constants";
 import ProjectCard from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
 import SearchBox from "./SearchBox";
@@ -14,10 +23,6 @@ interface ProjectListProps {
   language: Language;
 }
 
-const INITIAL_VISIBLE_COUNT = 18;
-const LOAD_MORE_COUNT = 18;
-const SCROLL_THRESHOLD = 1500;
-
 export default function ProjectList({ products, language }: ProjectListProps) {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [expandedProductId, setExpandedProductId] = useState<string | null>(null);
@@ -29,33 +34,32 @@ export default function ProjectList({ products, language }: ProjectListProps) {
   const t = useTranslation(language);
 
   // URLハッシュからプロダクトIDを取得して展開
-  useEffect(() => {
-    const hash = window.location.hash.slice(1);
-    if (hash && products.length > 0) {
+  useUrlHash({
+    onHashChange: (hash) => {
       const product = products.find((p) => p.id === hash);
       if (product) {
         setExpandedProductId(hash);
         setTimeout(() => {
           const element = document.getElementById(hash);
           if (element) {
-            const headerOffset = 120;
             const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            const offsetPosition = elementPosition + window.pageYOffset - HEADER_OFFSET;
             window.scrollTo({ top: offsetPosition, behavior: "smooth" });
           }
-        }, 100);
+        }, SCROLL_DELAY);
       }
-    }
-  }, [products]);
+    },
+    deps: [products],
+  });
 
   // プロダクト展開/閉じる時にURLハッシュを更新
   const handleToggleProduct = (productId: string) => {
     if (expandedProductId === productId) {
       setExpandedProductId(null);
-      window.history.replaceState(null, "", window.location.pathname);
+      clearUrlHash();
     } else {
       setExpandedProductId(productId);
-      window.history.replaceState(null, "", `#${productId}`);
+      setUrlHash(productId);
     }
   };
 
@@ -108,18 +112,11 @@ export default function ProjectList({ products, language }: ProjectListProps) {
   };
 
   // 無限スクロール
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - SCROLL_THRESHOLD) {
-        if (visibleCount < filteredProducts.length) {
-          loadMore();
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [visibleCount, filteredProducts.length]);
+  useInfiniteScroll({
+    threshold: SCROLL_THRESHOLD,
+    onLoadMore: loadMore,
+    hasMore: visibleCount < filteredProducts.length,
+  });
 
   return (
     <section style={{ padding: "2rem 0" }}>

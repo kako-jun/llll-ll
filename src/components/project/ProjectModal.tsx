@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Product, Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
-import ArrowIcon from "./ArrowIcon";
+import { ArrowIcon } from "@/components/common";
 
 interface ProjectModalProps {
   product: Product | null;

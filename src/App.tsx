@@ -1,15 +1,10 @@
 import { useState, useEffect } from "react";
 import { Language, Product } from "@/types";
 import { translations } from "@/lib/i18n";
-import LanguageSelector from "@/components/LanguageSelector";
-import Header from "@/components/Header";
-import IntroSection from "@/components/IntroSection";
-import ImageDisplay from "@/components/ImageDisplay";
-import VisitorCounter from "@/components/VisitorCounter";
-import ProjectList from "@/components/ProjectList";
-import Footer from "@/components/Footer";
-import ScrollToTop from "@/components/ScrollToTop";
-import BackgroundDots from "@/components/BackgroundDots";
+import { LanguageSelector, Header, Footer } from "@/components/layout";
+import { IntroSection, ImageDisplay, VisitorCounter, ScrollToTop } from "@/components/common";
+import { ProjectList } from "@/components/project";
+import { BackgroundDots } from "@/components/game";
 
 export default function App() {
   const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(null);

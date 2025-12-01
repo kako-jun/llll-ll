@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Language } from "@/types";
-import NostrPopup from "./NostrPopup";
+import { NostrPopup } from "@/components/nostr";
 
 interface FooterProps {
   language: Language;

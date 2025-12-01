@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Language } from "@/types";
 import { useTheme } from "@/hooks/useTheme";
+import { useLanguage } from "@/hooks/useLanguage";
 import { ArrowIcon } from "@/components/common";
 import { BackgroundDots } from "@/components/game";
 
 export default function NotFound() {
-  const [language, setLanguage] = useState<Language>("ja");
+  const { language, changeLanguage } = useLanguage();
   const { theme, toggleTheme, mounted } = useTheme();
 
   // ミニゲーム用の状態
@@ -198,8 +199,7 @@ export default function NotFound() {
               )}
               <button
                 onClick={() => {
-                  setLanguage(lang);
-                  document.documentElement.lang = lang;
+                  changeLanguage(lang);
                 }}
                 className="btn-link"
                 style={{

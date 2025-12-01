@@ -1,0 +1,421 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Inter:wght@700&display=swap");
+
+:root {
+  /* デフォルトはダークテーマ（白い点滅防止） */
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-accent: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-accent: #34d058;
+  --border-color: #404040;
+  --link-color: #60a5fa;
+  --link-hover: #3b82f6;
+
+  /* Additional variables for components */
+  --text-color: #ffffff;
+  --background-color: #121212;
+  --primary-color: #34d058;
+  --accent-color: #ef4444;
+  --muted-text: #b0b0b0;
+  --input-background: #1e1e1e;
+  --hover-background: #2d2d2d;
+  --hover-color: rgba(255, 255, 255, 0.1);
+  --icon-filter: invert(1);
+  --footer-background: #1a2e1a;
+  --footer-gradient: linear-gradient(rgba(26, 46, 26, 0.1), rgba(26, 46, 26, 0.1));
+  --footer-blend-mode: overlay;
+}
+
+/* ライトテーマ変数 */
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-accent: #e9ecef;
+  --text-primary: #000000;
+  --text-secondary: #6c757d;
+  --text-accent: #218838;
+  --border-color: #dee2e6;
+  --link-color: #007bff;
+  --link-hover: #0056b3;
+
+  /* Additional variables for components */
+  --text-color: #000000;
+  --background-color: #ffffff;
+  --primary-color: #218838;
+  --accent-color: #dc3545;
+  --muted-text: #6c757d;
+  --input-background: #f8f9fa;
+  --hover-background: #e9ecef;
+  --hover-color: rgba(0, 0, 0, 0.1);
+  --icon-filter: none;
+  --footer-background: #d4edda;
+  --footer-gradient: linear-gradient(rgba(40, 167, 69, 0.4), rgba(40, 167, 69, 0.4));
+  --footer-blend-mode: screen;
+}
+
+/* HTML要素のデフォルト設定 */
+html {
+  transition:
+    background 0.6s ease-out,
+    color 0.6s ease-out;
+}
+
+/* 初期表示は常にダークテーマ（白い点滅完全防止） */
+html:not([data-theme]),
+html {
+  background: #121212 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="light"] {
+  background: #ffffff !important;
+  color: #000000 !important;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+html[data-theme="dark"] {
+  background: #121212 !important;
+  color: #ffffff !important;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition:
+    background-color 0.8s ease-out,
+    color 0.8s ease-out,
+    border-color 0.8s ease-out;
+}
+
+/* Critical CSS - Above the fold optimization */
+html {
+  font-display: swap; /* フォント読み込み最適化 */
+  scroll-behavior: smooth;
+  line-height: 1.6;
+  font-family: "Noto Sans", sans-serif;
+}
+
+/* 言語別フォント指定 */
+html[lang="ja"] {
+  font-family: "Noto Sans JP", "Noto Sans", sans-serif;
+}
+
+html[lang="zh"] {
+  font-family: "Noto Sans SC", "Noto Sans", sans-serif;
+}
+
+html[lang="en"] {
+  font-family: "Noto Sans", sans-serif;
+}
+
+body {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+  font-family: inherit; /* htmlから継承 */
+  line-height: 1.6;
+  font-size: 16px;
+  overflow-x: hidden;
+  transition:
+    background-color 0.6s ease-out,
+    color 0.6s ease-out;
+}
+
+/* ライトテーマが確定した時のみライト背景 */
+html[data-theme="light"] body {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* テーマが確定した後のトランジション */
+html[data-theme] body {
+  transition:
+    background-color 0.6s ease-out,
+    color 0.6s ease-out;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+  transition:
+    background-color 0.6s ease-out,
+    color 0.6s ease-out;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  color: var(--text-primary, #000000);
+  transition: color 0.8s ease-out;
+}
+
+p {
+  margin-bottom: 1em;
+  color: var(--text-primary, #000000);
+  transition: color 0.8s ease-out;
+}
+
+.text-green {
+  color: var(--text-accent);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-gray {
+  color: var(--text-secondary);
+}
+
+/* Chinese text styling */
+.chinese-text {
+  font-family: "Noto Sans SC", sans-serif;
+}
+
+/* ロゴ専用フォントクラス - 完全直線のl */
+.logo-font {
+  font-family:
+    "Arial Black", "Arial", "Helvetica Neue", "Helvetica", "Impact", sans-serif !important;
+  font-weight: 900 !important; /* 最大の太さ */
+  letter-spacing: 0.2em;
+  font-feature-settings: "liga" 0; /* リガチャを無効化 */
+  text-transform: none;
+  font-variant: normal;
+  font-style: normal;
+  /* さらに太くするためのCSS効果 */
+  text-shadow:
+    0.5px 0 0 currentColor,
+    -0.5px 0 0 currentColor,
+    0 0.5px 0 currentColor,
+    0 -0.5px 0 currentColor;
+}
+
+/* ブロック消去アニメーション */
+@keyframes shrinkToCenter {
+  0% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(0.3);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Nostrコンテンツスクロールバーのダーク化 */
+.nostr-content::-webkit-scrollbar {
+  width: 20px;
+}
+
+.nostr-content::-webkit-scrollbar-track {
+  background: var(--input-background);
+}
+
+.nostr-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+.nostr-content::-webkit-scrollbar-thumb:hover {
+  background: var(--link-color);
+}
+
+/* Utility Classes */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.gap-half {
+  gap: 0.5rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mb-half {
+  margin-bottom: 0.5rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+.p-2 {
+  padding: 2rem;
+}
+
+/* Button Styles */
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--link-color);
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.2s ease;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+/* Text Styles */
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-muted {
+  color: var(--muted-text);
+}
+
+.text-sm {
+  font-size: 0.9rem;
+}
+
+.text-lg {
+  font-size: 1.2rem;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+/* Border & Background */
+.border-default {
+  border: 1px solid var(--border-color);
+}
+
+.border-radius {
+  border-radius: 4px;
+}
+
+.bg-primary {
+  background-color: var(--background-color);
+}
+
+.bg-hover {
+  background-color: var(--hover-background);
+}
+
+/* Transitions */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.transition-colors {
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}

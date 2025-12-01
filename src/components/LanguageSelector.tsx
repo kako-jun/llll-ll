@@ -15,6 +15,7 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
   const { theme, toggleTheme, mounted } = useTheme();
   const { language: currentLang, changeLanguage } = useLanguage();
   const [isChanging, setIsChanging] = useState(false);
+  const t = useTranslation(currentLang);
 
   // 言語変更時のフェード効果付き関数
   const changeLanguageWithFade = (lang: Language) => {
@@ -274,8 +275,6 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
   }
 
   // 言語が未選択の場合は、フルスクリーンの選択画面
-  const t = useTranslation(currentLang);
-
   return (
     <div
       style={{
@@ -294,12 +293,26 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
             style={{
               fontSize: "2.5rem",
               fontWeight: "bold",
-              marginBottom: "2rem",
+              margin: "0",
+              lineHeight: "1",
               color: "var(--primary-color)",
             }}
           >
             llll-ll
           </h1>
+          <p
+            style={{
+              fontSize: "0.9rem",
+              margin: "0.6rem 0 2rem 0",
+              lineHeight: "1",
+              color: "var(--primary-color)",
+              fontFamily: currentLang === "zh" || currentLang === "ja" ? "'Noto Sans SC', sans-serif" : "inherit",
+              transition: "opacity 0.2s ease-out",
+              opacity: isChanging ? 0 : 1,
+            }}
+          >
+            {t.siteSubtitle}
+          </p>
 
           <p
             style={{

@@ -2,6 +2,7 @@ import { Language } from "@/types";
 
 export const translations = {
   en: {
+    siteSubtitle: "Planning Division 42",
     welcome: "Welcome to",
     intro: "Hi! I'm kako-jun from Kanazawa. I blend nostalgia with modern technology to create apps and games.",
     aboutTitle: "About Me",
@@ -32,6 +33,7 @@ export const translations = {
     hideNostrPosts: "Hide Notes",
   },
   zh: {
+    siteSubtitle: "企划42课",
     welcome: "欢迎来到",
     intro: "你好！我是kako-jun，来自金泽。我将怀旧与现代技术相结合，制作应用和游戏。",
     aboutTitle: "关于我",
@@ -62,6 +64,7 @@ export const translations = {
     hideNostrPosts: "隐藏动态",
   },
   ja: {
+    siteSubtitle: "企画42課",
     welcome: "へようこそ",
     intro: "はじめまして！金沢のkako-junです。ノスタルジーと最新技術を組み合わせて、アプリやゲームを作ってます。",
     aboutTitle: "このサイトについて",
@@ -92,6 +95,7 @@ export const translations = {
     hideNostrPosts: "つぶやきを閉じる",
   },
   es: {
+    siteSubtitle: "División de Planificación 42",
     welcome: "Bienvenido a",
     intro:
       "¡Hola! Soy kako-jun de Kanazawa. Combino nostalgia con tecnología moderna para crear aplicaciones y juegos.",

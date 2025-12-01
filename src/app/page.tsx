@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Language, Product } from "@/types";
+import { useTranslation } from "@/lib/i18n";
 import LanguageSelector from "@/components/LanguageSelector";
 import Header from "@/components/Header";
 import IntroSection from "@/components/IntroSection";
@@ -16,6 +17,36 @@ export default function HomePage() {
   const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
+  const [checkingVisited, setCheckingVisited] = useState(true);
+
+  // 初回訪問チェック：2回目以降は保存された言語で自動遷移
+  useEffect(() => {
+    const visited = localStorage.getItem("visited");
+    const savedLanguage = localStorage.getItem("language") as Language;
+
+    if (visited && savedLanguage && ["en", "ja", "zh", "es"].includes(savedLanguage)) {
+      setSelectedLanguage(savedLanguage);
+    }
+    setCheckingVisited(false);
+  }, []);
+
+  // 言語選択時にvisitedフラグを保存
+  const handleLanguageSelect = (lang: Language) => {
+    localStorage.setItem("visited", "true");
+    setSelectedLanguage(lang);
+  };
+
+  // 言語が決まったらタイトルを更新
+  useEffect(() => {
+    if (selectedLanguage) {
+      const t = useTranslation(selectedLanguage);
+      const newTitle = `llll-ll - ${t.siteSubtitle}`;
+      // 少し遅延させてNext.jsの初期化後に設定
+      setTimeout(() => {
+        document.title = newTitle;
+      }, 100);
+    }
+  }, [selectedLanguage]);
 
   useEffect(() => {
     if (selectedLanguage) {
@@ -33,9 +64,14 @@ export default function HomePage() {
     }
   }, [selectedLanguage]);
 
+  // 訪問チェック中は何も表示しない（ちらつき防止）
+  if (checkingVisited) {
+    return null;
+  }
+
   return (
     <>
-      <LanguageSelector onLanguageSelect={setSelectedLanguage} selectedLanguage={selectedLanguage} />
+      <LanguageSelector onLanguageSelect={handleLanguageSelect} selectedLanguage={selectedLanguage} />
 
       {selectedLanguage && (
         <>

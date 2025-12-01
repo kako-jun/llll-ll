@@ -20,9 +20,9 @@ export default function HomePage() {
   useEffect(() => {
     if (selectedLanguage) {
       setLoading(true);
-      fetch("/api/products")
+      fetch("/data/products.json")
         .then((res) => res.json())
-        .then((data) => {
+        .then((data: Product[]) => {
           setProducts(data);
           setLoading(false);
         })

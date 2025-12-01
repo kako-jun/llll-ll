@@ -1,0 +1,279 @@
+[
+  {
+    "id": "noun-gender",
+    "title": {
+      "en": "Noun Gender: Multilingual Gender Learning App",
+      "ja": "Noun Gender: 名詞性別学習アプリ",
+      "zh": "名词性别：多语言性别学习应用",
+      "es": "Noun Gender: Aplicación de Aprendizaje de Género de Sustantivos"
+    },
+    "description": {
+      "en": "A web application for learning and searching gendered nouns in languages like French, German, and Spanish. Features 4,651 multilingual words with interactive search, A-Z dictionary browsing, gender quizzes, speech synthesis, memory tricks, and 11-language UI support.",
+      "ja": "フランス語、ドイツ語、スペイン語などの名詞に性別のある言語の学習・検索用Webアプリケーション。4,651語の多言語データベース、インタラクティブ検索、A-Z辞書ブラウズ、性別クイズ、音声読み上げ、暗記術、11言語UI対応を備えています。",
+      "zh": "用于学习和搜索法语、德语、西班牙语等语言中有性别的名词的Web应用程序。拥有4,651个多语言单词数据库，支持交互式搜索、A-Z词典浏览、性别测验、语音合成、记忆技巧和11种语言UI。",
+      "es": "Una aplicación web para aprender y buscar sustantivos con género en idiomas como francés, alemán y español. Cuenta con una base de datos multilingüe de 4,651 palabras con búsqueda interactiva, navegación de diccionario A-Z, cuestionarios de género, síntesis de voz, trucos de memoria y soporte de UI en 11 idiomas."
+    },
+    "tags": [
+      "Free",
+      "Next.js",
+      "TypeScript",
+      "SQLite",
+      "Web App",
+      "Education",
+      "Language Learning",
+      "Dictionary",
+      "Multilingual",
+      "OSS"
+    ],
+    "images": [
+      "https://raw.githubusercontent.com/kako-jun/noun-gender/refs/heads/main/public/apple-touch-icon.png"
+    ],
+    "demoUrl": "https://noun-gender.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/noun-gender",
+    "createdAt": "2024-01-01",
+    "updatedAt": "2025-08-08",
+    "featured": true
+  },
+  {
+    "id": "nostalgic-counter",
+    "title": {
+      "en": "Nostalgic Counter: Retro Free Access Counter Revived with Modern Technology",
+      "ja": "Nostalgic Counter: 最新技術で復活したレトロな無料アクセスカウンター",
+      "zh": "Nostalgic Counter: 用现代技术复活的复古免费访问计数器",
+      "es": "Nostalgic Counter: Contador de Acceso Gratuito Retro Revivido con Tecnología Moderna"
+    },
+    "description": {
+      "en": "A nostalgic web counter service that recreates 1990s internet culture. Displays total, today, yesterday, weekly, and monthly counts.\n\nNo user registration required. Just provide the URL to measure and a secret token. Open source, so you can also host it on Vercel for personal use.",
+      "ja": "1990年代のインターネット文化を再現した懐かしいWebカウンターサービス。累計・今日・昨日・週間・月間を表示可能。\n\nユーザー登録なし。計測したいURLと合言葉トークンのみで利用可能。オープンソースなので、自分専用としてVercelにホストすることも可能。",
+      "zh": "重现1990年代互联网文化的怀旧网页计数器服务。可显示累计、今日、昨日、本周、本月访问数。\n\n无需用户注册。仅需提供要测量的URL和密码令牌即可使用。开源项目，也可以在Vercel上搭建个人专用版本。",
+      "es": "Servicio de contador web nostálgico que recrea la cultura de internet de los años 1990. Muestra conteos totales, de hoy, ayer, semanales y mensuales.\n\nSin registro de usuario requerido. Solo proporciona la URL a medir y un token secreto. Es de código abierto, así que también puedes alojarlo en Vercel para uso personal."
+    },
+    "tags": [
+      "Free",
+      "Next.js",
+      "TypeScript",
+      "Redis",
+      "Web Components",
+      "OSS"
+    ],
+    "images": [
+      "https://github.com/kako-jun/nostalgic/blob/main/public/favicon-48x48.png?raw=true"
+    ],
+    "demoUrl": "https://nostalgic.llll-ll.com/",
+    "repositoryUrl": "https://github.com/kako-jun/nostalgic",
+    "createdAt": "2025-01-20",
+    "updatedAt": "2025-08-07",
+    "featured": true
+  },
+  {
+    "id": "lawkit",
+    "title": {
+      "en": "lawkit: Multi-Law Statistical Analysis Toolkit",
+      "ja": "lawkit: 多法則統計解析ツールキット",
+      "zh": "lawkit: 多法则统计分析工具包",
+      "es": "lawkit: Kit de herramientas de análisis estadístico multi-ley"
+    },
+    "description": {
+      "en": "High-performance statistical analysis toolkit for uncovering hidden patterns and detecting anomalies automatically. Supports multiple distribution laws (Benford, Pareto, Zipf, Normal, Poisson) with parallel processing and visual ASCII charts. Built in Rust for 11.7x performance improvement.",
+      "ja": "隠れたパターンの発見と異常の自動検出を行う高性能統計解析ツールキット。複数の分布法則（ベンフォード、パレート、ジップ、正規、ポアソン）をサポートし、並列処理とビジュアルASCIIチャートを提供。11.7倍の性能向上を実現するRust製。",
+      "zh": "用于发现隐藏模式和自动检测异常的高性能统计分析工具包。支持多种分布法则（本福德、帕累托、齐普夫、正态、泊松），具备并行处理和可视化ASCII图表功能。使用Rust构建，性能提升11.7倍。",
+      "es": "Kit de herramientas de análisis estadístico de alto rendimiento para descubrir patrones ocultos y detectar anomalías automáticamente. Soporta múltiples leyes de distribución (Benford, Pareto, Zipf, Normal, Poisson) con procesamiento paralelo y gráficos ASCII visuales. Construido en Rust para una mejora de rendimiento de 11.7x."
+    },
+    "tags": [
+      "Rust",
+      "CLI",
+      "Statistics",
+      "Data Analysis",
+      "Fraud Detection",
+      "Business Intelligence",
+      "Cross-Platform",
+      "OSS"
+    ],
+    "images": [
+      "/images/cli-terminal.webp"
+    ],
+    "repositoryUrl": "https://github.com/kako-jun/lawkit",
+    "createdAt": "2025-01-10",
+    "updatedAt": "2025-07-29",
+    "featured": true
+  },
+  {
+    "id": "sync-stone",
+    "title": {
+      "en": "SyncStone - Stardustmemoir: FF14 Lodestone Export Tool",
+      "ja": "SyncStone - 星紡のメモワール: FF14 ロドストのエクスポートツール",
+      "zh": "SyncStone - Stardustmemoir: FF14陆行鸟站导出工具",
+      "es": "SyncStone - Stardustmemoir: Herramienta de Exportación de FF14 Lodestone"
+    },
+    "description": {
+      "en": "The official blog service for FINAL FANTASY XIV, The Lodestone, doesn't have an export function. This Chrome extension allows you to export entries in Markdown format.\n\nIncludes images and comments. Supports both individual entry export and bulk export of all entries. Back up your FFXIV memories.",
+      "ja": "FINAL FANTASY XIV の公式ブログサービスであるロドストには、エクスポート機能がありません。このChrome拡張機能を使うと、エントリーをMarkdown形式でエクスポートできます。\n\n画像、コメントも対象。記事ごとのエクスポートにも、全記事の一括エクスポートにも対応。FFXIVの思い出をバックアップしましょう。",
+      "zh": "FINAL FANTASY XIV 的官方博客服务 The Lodestone 没有导出功能。这个Chrome扩展可以让您将日志条目导出为Markdown格式。\n\n包括图片和评论。支持单篇导出和全部条目的批量导出。备份您的FFXIV回忆。",
+      "es": "El servicio oficial de blog de FINAL FANTASY XIV, The Lodestone, no tiene función de exportación. Esta extensión de Chrome te permite exportar entradas en formato Markdown.\n\nIncluye imágenes y comentarios. Compatible con exportación individual y exportación masiva de todas las entradas. Guarda tus recuerdos de FFXIV."
+    },
+    "tags": [
+      "Free",
+      "Chrome Extension",
+      "TypeScript",
+      "Export Tool",
+      "Gaming",
+      "OSS"
+    ],
+    "images": [
+      "https://raw.githubusercontent.com/kako-jun/sync-stone/refs/heads/main/chrome-extension/icons/icon128.png"
+    ],
+    "repositoryUrl": "https://github.com/kako-jun/sync-stone",
+    "developmentRecordUrl": [
+      "https://zenn.dev/kako_jun/scraps/38ef9ae285ed5b"
+    ],
+    "createdAt": "2025-01-15",
+    "updatedAt": "2025-07-29",
+    "featured": false
+  },
+  {
+    "id": "diffai",
+    "title": {
+      "en": "diffai: ML-Specialized Diff Tool for PyTorch, Safetensors & Scientific Data",
+      "ja": "diffai: PyTorch、Safetensors、科学データ対応のML特化差分ツール",
+      "zh": "diffai: 针对PyTorch、Safetensors和科学数据的ML专用差异比较工具",
+      "es": "diffai: Herramienta de diferencias especializada en ML para PyTorch, Safetensors y datos científicos"
+    },
+    "description": {
+      "en": "Next-generation diff tool specialized for AI/ML workflows. Provides deep, semantic analysis of PyTorch models, Safetensors, NumPy arrays, and MATLAB files. Features 30+ ML analysis capabilities including tensor-level comparisons, quantization analysis, and deployment readiness assessment. Built in Rust for performance.",
+      "ja": "AI/MLワークフロー専用の次世代差分ツールです。PyTorchモデル、Safetensors、NumPy配列、MATLABファイルの深いセマンティック解析を提供します。テンソルレベル比較、量子化解析、デプロイメント準備評価など30以上のML解析機能を搭載。高性能のRust製。",
+      "zh": "专为AI/ML工作流程设计的下一代差异比较工具。提供PyTorch模型、Safetensors、NumPy数组和MATLAB文件的深度语义分析。具备30多种ML分析功能，包括张量级比较、量化分析和部署就绪评估。使用Rust构建以确保高性能。",
+      "es": "Herramienta de diferencias de próxima generación especializada en flujos de trabajo de IA/ML. Proporciona análisis semántico profundo de modelos PyTorch, Safetensors, arrays NumPy y archivos MATLAB. Cuenta con más de 30 capacidades de análisis ML incluyendo comparaciones a nivel de tensor, análisis de cuantización y evaluación de preparación para despliegue. Construido en Rust para alto rendimiento."
+    },
+    "tags": [
+      "Rust",
+      "CLI",
+      "AI",
+      "ML",
+      "PyTorch",
+      "Safetensors",
+      "NumPy",
+      "MATLAB",
+      "OSS"
+    ],
+    "images": [
+      "/images/cli-terminal.webp"
+    ],
+    "repositoryUrl": "https://github.com/kako-jun/diffai",
+    "createdAt": "2025-01-20",
+    "updatedAt": "2025-01-20",
+    "featured": true
+  },
+  {
+    "id": "osaka-kenpo",
+    "title": {
+      "en": "Osaka-Kenpo: Legal Text Translation in Osaka Dialect",
+      "ja": "おおさかけんぽう: 大阪弁による法律条文翻訳サイト",
+      "zh": "大阪宪法: 大阪方言法律条文翻译网站",
+      "es": "Osaka-Kenpo: Traducción de Textos Legales al Dialecto de Osaka"
+    },
+    "description": {
+      "en": "A web application that translates complex legal texts into friendly Osaka dialect explanations. Features comprehensive coverage of Japanese laws, foreign laws, historical laws, and international treaties with warm, accessible Osaka-ben translations inspired by Kasuga Ayumu from 'Azumanga Daioh'.",
+      "ja": "難解な法律条文を親しみやすい大阪弁に翻訳して解説するWebアプリケーション。日本の現行法・歴史法、外国法、国際条約を幅広くカバーし、『あずまんが大王』の春日歩をイメージした温かい口調で法律を身近に感じられます。",
+      "zh": "将复杂的法律条文翻译成亲切的大阪方言解说的Web应用程序。全面覆盖日本现行法律、历史法律、外国法律和国际条约，以《阿兹漫画大王》中春日步为灵感的温暖语调让法律更加亲近。",
+      "es": "Una aplicación web que traduce textos legales complejos en explicaciones amigables del dialecto de Osaka. Ofrece cobertura integral de leyes japonesas, leyes extranjeras, leyes históricas y tratados internacionales con traducciones cálidas y accesibles en dialecto de Osaka inspiradas en Kasuga Ayumu de 'Azumanga Daioh'."
+    },
+    "tags": [
+      "Free",
+      "Next.js",
+      "TypeScript",
+      "Web App",
+      "Education",
+      "Legal",
+      "Translation",
+      "Japanese Culture",
+      "OSS"
+    ],
+    "images": [
+      "https://raw.githubusercontent.com/kako-jun/osaka-kenpo/refs/heads/main/public/favicon.webp"
+    ],
+    "demoUrl": "https://osaka-kenpo.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/osaka-kenpo",
+    "createdAt": "2024-01-01",
+    "updatedAt": "2025-01-18",
+    "featured": true
+  },
+  {
+    "id": "sid-note",
+    "title": {
+      "en": "Sid Note: A bass fretboard visualization app for practice",
+      "ja": "Sid Note: ベース指板の可視化練習アプリ",
+      "zh": "Sid Note: 贝斯指板可视化练习应用",
+      "es": "Sid Note: Aplicación de visualización del diapasón de bajo para práctica"
+    },
+    "description": {
+      "en": "A bass fretboard visualization app for practice.\n\nShows the role of chords you're about to play within the song. Displays the function of each note within the chord.\n\nProvides information not found in TAB notation (muting fingers, positions, etc.). Shows correspondence with staff notation and keyboard.\n\nExport custom fretboard images to share fingering ideas like 'This fingering pattern might be easier!'",
+      "ja": "ベースの指板を表示して、練習に使えるアプリです。\n\nいま弾こうとしているコードの、曲の中での役割が表示されます。いま弾こうとしている音の、コードの中での役割が表示されます。\n\nTAB譜にない情報（ミュートに使う指、位置など）が分かります。五線譜、キーボードとの対応が分かります。\n\n指板を自由に画像化できるので、「こんな押弦、運指ならば簡単なのでは？」みたいなアイデアを共有してみてください。",
+      "zh": "贝斯指板可视化练习应用。\n\n显示即将演奏的和弦在歌曲中的作用。展示每个音符在和弦中的功能。\n\n提供TAB谱中没有的信息（消音用的手指、位置等）。显示与五线谱、键盘的对应关系。\n\n可以自由导出指板图像，分享「这样的按弦、指法可能更简单」之类的想法。",
+      "es": "Aplicación de visualización del diapasón de bajo para práctica.\n\nMuestra el papel de los acordes que vas a tocar dentro de la canción. Muestra la función de cada nota dentro del acorde.\n\nProporciona información no encontrada en la notación TAB (dedos para silenciar, posiciones, etc.). Muestra correspondencia con notación en pentagrama y teclado.\n\nExporta imágenes personalizadas del diapasón para compartir ideas de digitación como '¡Esta digitación podría ser más fácil!'"
+    },
+    "tags": [
+      "Free",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Web App",
+      "Music",
+      "Bass",
+      "Practice",
+      "OSS"
+    ],
+    "images": [
+      "https://sid-note.llll-ll.com/favicon.drawio.svg",
+      "https://storage.googleapis.com/zenn-user-upload/5f02c372318d-20250622.png",
+      "https://storage.googleapis.com/zenn-user-upload/10b0af181da2-20250622.png"
+    ],
+    "videos": [
+      "https://youtu.be/bE_fR3AcX78",
+      "https://youtu.be/MatsIe3Pgoc"
+    ],
+    "demoUrl": "https://sid-note.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/sid-note",
+    "developmentRecordUrl": [
+      "https://zenn.dev/kako_jun/articles/00dde8f9a28524"
+    ],
+    "createdAt": "2024-01-01",
+    "updatedAt": "2024-12-01",
+    "featured": true
+  },
+  {
+    "id": "diffx",
+    "title": {
+      "en": "diffx: A Structure-Aware, AI-First Diff Tool",
+      "ja": "diffx: 構造を理解するAIファーストな差分ツール",
+      "zh": "diffx: 一款结构感知、AI优先的差异比较工具",
+      "es": "diffx: Una herramienta de diferencias orientada a la IA y consciente de la estructura"
+    },
+    "description": {
+      "en": "Compares structured data files like JSON and YAML by understanding their semantic structure, rather than traditional line-by-line comparison. Designed for use in automated tasks by AI agents. Built in Rust, with wrappers available for Python (pip) and Node.js (npm).",
+      "ja": "JSONやYAMLなどの構造化データファイルの差分を、従来の行単位の比較ではなく、意味的な構造を理解して表示します。AIエージェントによる自動化タスクでの利用も想定して設計されています。Rust製で、Python (pip) と Node.js (npm) のラッパーも提供しています。",
+      "zh": "通过理解JSON和YAML等结构化数据文件的语义结构来比较它们，而不是传统的逐行比较。专为AI代理在自动化任务中使用而设计。使用Rust构建，并提供Python (pip) 和 Node.js (npm) 的包装器。",
+      "es": "Compara archivos de datos estructurados como JSON y YAML entendiendo su estructura semántica, en lugar de la comparación tradicional línea por línea. Diseñado para su uso en tareas automatizadas por agentes de IA. Construido en Rust, con envoltorios disponibles para Python (pip) y Node.js (npm)."
+    },
+    "tags": [
+      "Rust",
+      "CLI",
+      "AI",
+      "JSON",
+      "YAML",
+      "TOML",
+      "OSS"
+    ],
+    "images": [
+      "/images/cli-terminal.webp",
+      "https://storage.googleapis.com/zenn-user-upload/a82eab0d5859-20250706.png"
+    ],
+    "repositoryUrl": "https://github.com/kako-jun/diffx",
+    "developmentRecordUrl": [
+      "https://dev.to/kako-jun/i-built-diffx-a-structure-aware-ai-first-diff-tool-in-rust-lets-end-the-comma-induced-suffering-491h",
+      "https://zenn.dev/kako_jun/articles/1d518f47225f42"
+    ],
+    "createdAt": "2024-07-20",
+    "updatedAt": "2024-07-20",
+    "featured": true
+  }
+]

@@ -1,9 +1,6 @@
-"use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import { Language } from "@/types";
-import { useTranslation } from "@/lib/i18n";
 import NostrPopup from "./NostrPopup";
 
 interface FooterProps {
@@ -108,7 +105,7 @@ export default function Footer({ language }: FooterProps) {
             e.currentTarget.style.backgroundColor = "var(--input-background)";
           }}
         >
-          <Image
+          <img
             src="https://imgproxy.snort.social/vuUNpu_hJg6Re01upRTRvP4BvB7224CZYXyL0hZhbDA/dpr:2/aHR0cHM6Ly9pbWFnZS5ub3N0ci5idWlsZC9mMGM3YzdhMDk1ZDFiZThlM2FhYmNmN2QxZTg1YjlhNGEwYjI4NjUzMjQxN2UyNjY3ODViN2QwZThkYjQ3MzllLmpwZw"
             alt="kako-jun profile"
             width={80}
@@ -162,7 +159,7 @@ export default function Footer({ language }: FooterProps) {
                   e.currentTarget.style.backgroundColor = "transparent";
                 }}
               >
-                <Image
+                <img
                   src={link.icon}
                   alt={link.name}
                   width={link.size}

@@ -1,7 +1,27 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import ArrowIcon from "./ArrowIcon";
+
+// Inject fadeInUp keyframes
+const injectKeyframes = () => {
+  const styleId = 'scroll-to-top-keyframes';
+  if (!document.getElementById(styleId)) {
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.textContent = `
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+};
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -9,6 +29,8 @@ export default function ScrollToTop() {
 
   // スクロール位置を監視
   useEffect(() => {
+    injectKeyframes();
+
     const toggleVisibility = () => {
       // ページの上部から300px以上スクロールしたら表示
       if (window.pageYOffset > 300) {
@@ -69,31 +91,9 @@ export default function ScrollToTop() {
       onMouseUp={(e) => {
         e.currentTarget.style.transform = isHovered ? "scale(1.1) translateY(-2px)" : "scale(1) translateY(0)";
       }}
-      onTouchStart={(e) => {
-        e.currentTarget.style.transform = "scale(0.95) translateY(0)";
-      }}
-      onTouchEnd={(e) => {
-        e.currentTarget.style.transform = "scale(1) translateY(0)";
-        // タッチ終了時は必ず元の状態に戻す
-        setTimeout(() => setIsHovered(false), 100);
-      }}
       title="ページトップに戻る"
     >
       <ArrowIcon direction="up" size={20} strokeWidth={2.5} />
-
-      {/* CSS アニメーション */}
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </button>
   );
 }

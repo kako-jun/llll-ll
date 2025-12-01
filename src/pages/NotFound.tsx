@@ -353,52 +353,59 @@ export default function NotFound() {
                 zIndex: 10,
               }}
             >
-              {gridNumbers.map((number, index) => {
-                const getButtonColor = () => {
-                  if (number < currentNumber) return "var(--primary-color)";
-                  if (number === currentNumber) return "#fbbf24";
-                  return "var(--input-background)";
-                };
-
-                return (
-                  <button
-                    key={index}
-                    onClick={() => handleNumberClick(number)}
-                    disabled={gameCompleted}
-                    className="transition-all"
-                    style={{
-                      width: "70px",
-                      height: "50px",
-                      backgroundColor: getButtonColor(),
-                      color:
-                        number < currentNumber
-                          ? "#ffffff"
-                          : number === currentNumber
-                            ? "#000000"
-                            : "var(--text-color)",
-                      border: "1px solid var(--border-color)",
-                      borderRadius: "4px",
-                      fontSize: "0.8rem",
-                      fontWeight: "bold",
-                      cursor: gameCompleted ? "default" : "pointer",
-                      opacity: gameCompleted ? 0.7 : 1,
-                      position: "relative",
-                      zIndex: 10,
-                    }}
-                    onMouseEnter={(e) => {
-                      if (gameCompleted || number < currentNumber) return;
+              {gridNumbers.map((number, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleNumberClick(number)}
+                  disabled={gameCompleted}
+                  style={{
+                    width: "70px",
+                    height: "50px",
+                    backgroundColor:
+                      number < currentNumber
+                        ? "var(--primary-color)"
+                        : number === currentNumber
+                          ? "#fbbf24"
+                          : "var(--input-background)",
+                    color:
+                      number < currentNumber
+                        ? "#ffffff"
+                        : number === currentNumber
+                          ? "#000000"
+                          : "var(--text-color)",
+                    border: "1px solid var(--border-color)",
+                    borderRadius: "4px",
+                    fontSize: "0.8rem",
+                    fontWeight: "bold",
+                    cursor: gameCompleted ? "default" : "pointer",
+                    transition: "all 0.2s ease",
+                    opacity: gameCompleted ? 0.7 : 1,
+                    position: "relative",
+                    zIndex: 10,
+                  }}
+                  onMouseOver={(e) => {
+                    if (!gameCompleted && number >= currentNumber) {
+                      if (number === currentNumber) {
+                        e.currentTarget.style.backgroundColor = "#f59e0b";
+                      } else {
+                        e.currentTarget.style.backgroundColor = "var(--hover-background)";
+                      }
+                    }
+                  }}
+                  onMouseOut={(e) => {
+                    if (!gameCompleted) {
                       e.currentTarget.style.backgroundColor =
-                        number === currentNumber ? "#f59e0b" : "var(--hover-background)";
-                    }}
-                    onMouseLeave={(e) => {
-                      if (gameCompleted) return;
-                      e.currentTarget.style.backgroundColor = getButtonColor();
-                    }}
-                  >
-                    {numberWords[language][number - 1]}
-                  </button>
-                );
-              })}
+                        number < currentNumber
+                          ? "var(--primary-color)"
+                          : number === currentNumber
+                            ? "#fbbf24"
+                            : "var(--input-background)";
+                    }
+                  }}
+                >
+                  {numberWords[language][number - 1]}
+                </button>
+              ))}
             </div>
 
             <button

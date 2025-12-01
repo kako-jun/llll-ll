@@ -50,12 +50,88 @@ export default function NotFound() {
     setEndTime(0);
   };
 
+  // 数字を言葉で表現するマッピング
+  const numberWords = {
+    en: [
+      "one",
+      "two",
+      "three",
+      "four",
+      "five",
+      "six",
+      "seven",
+      "eight",
+      "nine",
+      "ten",
+      "eleven",
+      "twelve",
+      "thirteen",
+      "fourteen",
+      "fifteen",
+      "sixteen",
+    ],
+    ja: [
+      "壱",
+      "弐",
+      "参",
+      "肆",
+      "伍",
+      "陸",
+      "漆",
+      "捌",
+      "玖",
+      "拾",
+      "拾壱",
+      "拾弐",
+      "拾参",
+      "拾肆",
+      "拾伍",
+      "拾陸",
+    ],
+    zh: [
+      "一",
+      "二",
+      "三",
+      "四",
+      "五",
+      "六",
+      "七",
+      "八",
+      "九",
+      "十",
+      "十一",
+      "十二",
+      "十三",
+      "十四",
+      "十五",
+      "十六",
+    ],
+    es: [
+      "uno",
+      "dos",
+      "tres",
+      "cuatro",
+      "cinco",
+      "seis",
+      "siete",
+      "ocho",
+      "nueve",
+      "diez",
+      "once",
+      "doce",
+      "trece",
+      "catorce",
+      "quince",
+      "dieciséis",
+    ],
+  };
+
   const notFoundMessages = {
     en: {
       title: "404 - Page Not Found",
       message: "The page you are looking for could not be found.",
       backHome: "Back to Home",
-      gameTitle: "Mini Game: Click 1 to 16 in order!",
+      gameTitle: "Mini Game: Click in order!",
       gameStart: "Start Game",
       gameReset: "Reset",
       gameCompleted: "Completed!",
@@ -66,7 +142,7 @@ export default function NotFound() {
       title: "404 - ページが見つかりません",
       message: "お探しのページは見つかりませんでした。",
       backHome: "ホームに戻る",
-      gameTitle: "ミニゲーム: 1から順番にクリック！",
+      gameTitle: "ミニゲーム: 順番にクリック！",
       gameStart: "ゲーム開始",
       gameReset: "リセット",
       gameCompleted: "クリア！",
@@ -77,7 +153,7 @@ export default function NotFound() {
       title: "404 - 页面未找到",
       message: "您查找的页面未找到。",
       backHome: "返回首页",
-      gameTitle: "小游戏：按顺序点击1到16！",
+      gameTitle: "小游戏：按顺序点击！",
       gameStart: "开始游戏",
       gameReset: "重置",
       gameCompleted: "完成！",
@@ -88,7 +164,7 @@ export default function NotFound() {
       title: "404 - Página No Encontrada",
       message: "La página que buscas no se pudo encontrar.",
       backHome: "Volver al Inicio",
-      gameTitle: "Mini Juego: ¡Haz clic del 1 al 16 en orden!",
+      gameTitle: "Mini Juego: ¡Haz clic en orden!",
       gameStart: "Iniciar Juego",
       gameReset: "Reiniciar",
       gameCompleted: "¡Completado!",
@@ -211,32 +287,12 @@ export default function NotFound() {
           className="text-primary font-bold"
           style={{
             fontSize: "3rem",
-            marginBottom: "1rem",
+            marginBottom: "2rem",
             fontFamily: language === "zh" ? "'Noto Sans SC', sans-serif" : "inherit",
           }}
         >
           404
         </h1>
-        <h2
-          className="font-bold mb-1"
-          style={{
-            fontSize: "1.5rem",
-            fontFamily: language === "zh" ? "'Noto Sans SC', sans-serif" : "inherit",
-          }}
-        >
-          {messages.title}
-        </h2>
-        <p
-          className="text-muted mb-2"
-          style={{
-            fontSize: "1rem",
-            maxWidth: "400px",
-            lineHeight: "1.6",
-            fontFamily: language === "zh" ? "'Noto Sans SC', sans-serif" : "inherit",
-          }}
-        >
-          {messages.message}
-        </p>
       </div>
 
       {/* ミニゲーム */}
@@ -289,7 +345,7 @@ export default function NotFound() {
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(4, 50px)",
+                gridTemplateColumns: "repeat(4, 70px)",
                 gap: "8px",
                 justifyContent: "center",
                 marginBottom: "1rem",
@@ -298,13 +354,11 @@ export default function NotFound() {
               }}
             >
               {gridNumbers.map((number, index) => {
-                const isClicked = number < currentNumber;
-                const isNext = number === currentNumber;
-                const baseColor = isClicked
-                  ? "var(--primary-color)"
-                  : isNext
-                    ? "#fbbf24"
-                    : "var(--input-background)";
+                const getButtonColor = () => {
+                  if (number < currentNumber) return "var(--primary-color)";
+                  if (number === currentNumber) return "#fbbf24";
+                  return "var(--input-background)";
+                };
 
                 return (
                   <button
@@ -313,33 +367,35 @@ export default function NotFound() {
                     disabled={gameCompleted}
                     className="transition-all"
                     style={{
-                      width: "50px",
+                      width: "70px",
                       height: "50px",
-                      backgroundColor: baseColor,
-                      color: isClicked ? "#ffffff" : isNext ? "#000000" : "var(--text-color)",
+                      backgroundColor: getButtonColor(),
+                      color:
+                        number < currentNumber
+                          ? "#ffffff"
+                          : number === currentNumber
+                            ? "#000000"
+                            : "var(--text-color)",
                       border: "1px solid var(--border-color)",
                       borderRadius: "4px",
-                      fontSize: "1rem",
+                      fontSize: "0.8rem",
                       fontWeight: "bold",
                       cursor: gameCompleted ? "default" : "pointer",
                       opacity: gameCompleted ? 0.7 : 1,
                       position: "relative",
                       zIndex: 10,
                     }}
-                    onMouseOver={(e) => {
-                      if (!gameCompleted && !isClicked) {
-                        e.currentTarget.style.backgroundColor = isNext
-                          ? "#f59e0b"
-                          : "var(--hover-background)";
-                      }
+                    onMouseEnter={(e) => {
+                      if (gameCompleted || number < currentNumber) return;
+                      e.currentTarget.style.backgroundColor =
+                        number === currentNumber ? "#f59e0b" : "var(--hover-background)";
                     }}
-                    onMouseOut={(e) => {
-                      if (!gameCompleted) {
-                        e.currentTarget.style.backgroundColor = baseColor;
-                      }
+                    onMouseLeave={(e) => {
+                      if (gameCompleted) return;
+                      e.currentTarget.style.backgroundColor = getButtonColor();
                     }}
                   >
-                    {number}
+                    {numberWords[language][number - 1]}
                   </button>
                 );
               })}

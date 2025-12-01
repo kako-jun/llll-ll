@@ -5,3 +5,7 @@ export { default as LanguageBar } from "./LanguageBar";
 export { default as LanguageButtons } from "./LanguageButtons";
 export { default as ThemeToggle } from "./ThemeToggle";
 export { default as WelcomeScreen } from "./WelcomeScreen";
+export { default as ContinueButton } from "./ContinueButton";
+export { default as QRCodeSection } from "./QRCodeSection";
+export { default as SocialLinks } from "./SocialLinks";
+export { default as ProfileIcon } from "./ProfileIcon";

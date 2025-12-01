@@ -1,16 +1,21 @@
 import { useState, useEffect } from "react";
 import { Language } from "@/types";
 import { NostrPopup } from "@/components/nostr";
+import SocialLinks from "./SocialLinks";
+import ProfileIcon from "./ProfileIcon";
 
 interface FooterProps {
   language: Language;
 }
 
+// kako-junのNostr公開鍵
+const KAKO_JUN_PUBKEY = "npub1d7rmrw3zmzn9jpcqpzhk6helu8t3rcqk93ja39sh9rgylwr9007q83kemm";
+const PROFILE_URL = `https://iris.to/${KAKO_JUN_PUBKEY}`;
+const PROFILE_IMAGE_URL =
+  "https://imgproxy.snort.social/vuUNpu_hJg6Re01upRTRvP4BvB7224CZYXyL0hZhbDA/dpr:2/aHR0cHM6Ly9pbWFnZS5ub3N0ci5idWlsZC9mMGM3YzdhMDk1ZDFiZThlM2FhYmNmN2QxZTg1YjlhNGEwYjI4NjUzMjQxN2UyNjY3ODViN2QwZThkYjQ3MzllLmpwZw";
+
 export default function Footer({ language }: FooterProps) {
   const [profileRect, setProfileRect] = useState<DOMRect | null>(null);
-
-  // kako-junのNostr公開鍵
-  const KAKO_JUN_PUBKEY = "npub1d7rmrw3zmzn9jpcqpzhk6helu8t3rcqk93ja39sh9rgylwr9007q83kemm";
 
   useEffect(() => {
     const updateProfilePosition = () => {
@@ -33,24 +38,6 @@ export default function Footer({ language }: FooterProps) {
       window.removeEventListener("resize", handleScroll);
     };
   }, []);
-  const socialLinks = [
-    { name: "GitHub", url: "https://github.com/kako-jun", icon: "/icons/github.svg", size: 20 },
-    { name: "X", url: "https://x.com/kako_jun_42", icon: "/icons/x-twitter.svg", size: 20 },
-    {
-      name: "Instagram",
-      url: "https://www.instagram.com/kako_jun_42",
-      icon: "/icons/instagram.svg",
-      size: 20,
-    },
-    {
-      name: "Dev.to",
-      url: "https://dev.to/kako-jun",
-      icon: "/icons/dev-to-wide-final.png",
-      size: 20,
-    },
-    { name: "Zenn", url: "https://zenn.dev/kako_jun", icon: "/icons/zenn.svg", size: 20 },
-    { name: "Note", url: "https://note.com/kako_jun", icon: "/icons/note.svg", size: 24 }, // noteだけ大きく
-  ];
 
   return (
     <>
@@ -68,7 +55,7 @@ export default function Footer({ language }: FooterProps) {
           backgroundColor: "var(--footer-background)",
           borderTop: "1px solid var(--border-color)",
           marginTop: "0",
-          padding: "2rem 0 4rem 0", // 下のパディングを増やしてScrollToTopボタンとの重複を避ける
+          padding: "2rem 0 4rem 0",
           position: "relative",
           zIndex: 2,
           backgroundImage: `url('/images/footer-bg.webp'), var(--footer-gradient)`,
@@ -79,107 +66,10 @@ export default function Footer({ language }: FooterProps) {
           transition: "background-color 0.3s ease, background-image 0.3s ease",
         }}
       >
-        {/* プロフィール画像 */}
-        <a
-          href="https://iris.to/npub1d7rmrw3zmzn9jpcqpzhk6helu8t3rcqk93ja39sh9rgylwr9007q83kemm"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="profile-icon"
-          style={{
-            position: "absolute",
-            top: "-30px", // フッター線より上に1/3程度はみ出す
-            left: "50%",
-            transform: "translateX(-183px)", // kako-junテキストの真上に配置（1px右にずらす）
-            width: "80px",
-            height: "80px",
-            backgroundColor: "var(--input-background)",
-            border: "2px solid var(--border-color)",
-            borderRadius: "4px", // 四角いデザインに合わせて角を少し丸く
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "0.7rem",
-            color: "var(--muted-text)",
-            textAlign: "center",
-            textDecoration: "none",
-            zIndex: 10,
-            transition: "all 0.2s ease",
-          }}
-          onMouseOver={(e) => {
-            e.currentTarget.style.transform = "translateX(-183px) scale(1.05)";
-            e.currentTarget.style.backgroundColor = "var(--hover-color, rgba(0,0,0,0.1))";
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.transform = "translateX(-183px) scale(1)";
-            e.currentTarget.style.backgroundColor = "var(--input-background)";
-          }}
-        >
-          <img
-            src="https://imgproxy.snort.social/vuUNpu_hJg6Re01upRTRvP4BvB7224CZYXyL0hZhbDA/dpr:2/aHR0cHM6Ly9pbWFnZS5ub3N0ci5idWlsZC9mMGM3YzdhMDk1ZDFiZThlM2FhYmNmN2QxZTg1YjlhNGEwYjI4NjUzMjQxN2UyNjY3ODViN2QwZThkYjQ3MzllLmpwZw"
-            alt="kako-jun profile"
-            width={80}
-            height={80}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              borderRadius: "4px",
-            }}
-          />
-        </a>
+        <ProfileIcon imageUrl={PROFILE_IMAGE_URL} profileUrl={PROFILE_URL} alt="kako-jun profile" />
 
         <div className="container">
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "1rem",
-              marginBottom: "2rem", // 下マージンを増やしてScrollToTopボタンとの重複を防ぐ
-              marginTop: "20px", // プロフィール画像分のスペースを確保
-            }}
-          >
-            <span style={{ color: "var(--muted-text)", fontSize: "0.9rem" }}>© kako-jun</span>
-
-            {socialLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "32px",
-                  height: "32px",
-                  textDecoration: "none",
-                  color: "var(--text-color)",
-                  transition: "all 0.2s ease",
-                  borderRadius: "4px",
-                }}
-                title={link.name}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.transform = "scale(1.1)";
-                  e.currentTarget.style.backgroundColor = "var(--hover-color, rgba(0,0,0,0.1))";
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.transform = "scale(1)";
-                  e.currentTarget.style.backgroundColor = "transparent";
-                }}
-              >
-                <img
-                  src={link.icon}
-                  alt={link.name}
-                  width={link.size}
-                  height={link.size}
-                  style={{
-                    filter: "var(--icon-filter, none)",
-                  }}
-                />
-              </a>
-            ))}
-          </div>
+          <SocialLinks />
         </div>
       </footer>
     </>

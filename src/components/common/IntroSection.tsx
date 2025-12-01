@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
 import ArrowIcon from "./ArrowIcon";
+import AboutPopup from "./AboutPopup";
 
 interface IntroSectionProps {
   language: Language;
@@ -99,79 +100,13 @@ export default function IntroSection({ language }: IntroSectionProps) {
         </div>
       </section>
 
-      {/* 絶対確実な吹き出し */}
       {isExpanded && buttonRect && (
-        <div
-          style={{
-            position: "fixed",
-            top: `${buttonRect.bottom + 20}px`,
-            left: "50%",
-            transform: "translateX(-50%)",
-            backgroundColor: "var(--input-background)",
-            border: "2px solid var(--primary-color)",
-            borderRadius: "16px",
-            padding: "2rem",
-            width: "500px",
-            maxWidth: "95vw",
-            zIndex: 5,
-          }}
-        >
-          {/* 確実な三角形 */}
-          <div
-            style={{
-              position: "absolute",
-              top: "-14px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "0",
-              height: "0",
-              borderLeft: "14px solid transparent",
-              borderRight: "14px solid transparent",
-              borderBottom: "14px solid var(--primary-color)",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              top: "-12px",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "0",
-              height: "0",
-              borderLeft: "12px solid transparent",
-              borderRight: "12px solid transparent",
-              borderBottom: "12px solid var(--input-background)",
-            }}
-          />
-
-          <h3
-            style={{
-              fontSize: "1.4rem",
-              fontWeight: "bold",
-              marginBottom: "1.5rem",
-              textAlign: "center",
-              color: "var(--primary-color)",
-            }}
-          >
-            {t.aboutTitle}
-          </h3>
-          <div
-            style={{
-              color: "var(--text-color)",
-              textAlign: "left",
-              lineHeight: "1.8",
-              fontSize: "1.1rem",
-              fontFamily: language === "zh" ? "'Noto Sans SC', sans-serif" : "inherit",
-              whiteSpace: "pre-wrap",
-              wordBreak: "break-word",
-              maxHeight: "300px",
-              overflowY: "auto",
-              padding: "0 1rem",
-            }}
-          >
-            {t.intro}
-          </div>
-        </div>
+        <AboutPopup
+          title={t.aboutTitle}
+          content={t.intro}
+          language={language}
+          buttonRect={buttonRect}
+        />
       )}
     </>
   );

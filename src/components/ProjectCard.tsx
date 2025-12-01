@@ -9,18 +9,19 @@ import ArrowIcon from "./ArrowIcon";
 interface ProjectCardProps {
   product: Product;
   language: Language;
+  isExpanded: boolean;
+  onToggle: (productId: string) => void;
   onSelect?: (product: Product) => void;
 }
 
-export default function ProjectCard({ product, language, onSelect }: ProjectCardProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
+export default function ProjectCard({ product, language, isExpanded, onToggle, onSelect }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [popupImage, setPopupImage] = useState<string | null>(null);
   const [popupVideo, setPopupVideo] = useState<string | null>(null);
   const t = useTranslation(language);
 
   const handleToggle = () => {
-    setIsExpanded(!isExpanded);
+    onToggle(product.id);
   };
 
   const handleImageClick = (imageSrc: string, e: React.MouseEvent) => {
@@ -40,6 +41,7 @@ export default function ProjectCard({ product, language, onSelect }: ProjectCard
 
   return (
     <div
+      id={product.id}
       style={{
         backgroundColor: "var(--background-color)",
         border: "1px solid var(--border-color)",

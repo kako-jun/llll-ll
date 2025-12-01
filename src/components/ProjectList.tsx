@@ -14,12 +14,50 @@ interface ProjectListProps {
 
 export default function ProjectList({ products, language }: ProjectListProps) {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [expandedProductId, setExpandedProductId] = useState<string | null>(null);
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [visibleCount, setVisibleCount] = useState(18); // 12から18に増加
 
   const t = useTranslation(language);
+
+  // URLハッシュからプロダクトIDを取得して展開
+  useEffect(() => {
+    const hash = window.location.hash.slice(1); // #を除去
+    if (hash && products.length > 0) {
+      const product = products.find(p => p.id === hash);
+      if (product) {
+        setExpandedProductId(hash);
+        // 少し遅延してからスクロール（DOMが描画されるのを待つ）
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            const headerOffset = 120; // ヘッダー + 言語バーの高さ分
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          }
+        }, 100);
+      }
+    }
+  }, [products]);
+
+  // プロダクト展開/閉じる時にURLハッシュを更新
+  const handleToggleProduct = (productId: string) => {
+    if (expandedProductId === productId) {
+      // 閉じる
+      setExpandedProductId(null);
+      window.history.replaceState(null, "", window.location.pathname);
+    } else {
+      // 開く
+      setExpandedProductId(productId);
+      window.history.replaceState(null, "", `#${productId}`);
+    }
+  };
 
   // 全タグを抽出
   const allTags = useMemo(() => {
@@ -347,7 +385,14 @@ export default function ProjectList({ products, language }: ProjectListProps) {
               }}
             >
               {visibleProducts.map((product) => (
-                <ProjectCard key={product.id} product={product} language={language} onSelect={setSelectedProduct} />
+                <ProjectCard
+                  key={product.id}
+                  product={product}
+                  language={language}
+                  isExpanded={expandedProductId === product.id}
+                  onToggle={handleToggleProduct}
+                  onSelect={setSelectedProduct}
+                />
               ))}
             </div>
 

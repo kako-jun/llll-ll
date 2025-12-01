@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Language, Product } from "@/types";
-import { useTranslation } from "@/lib/i18n";
 import LanguageSelector from "@/components/LanguageSelector";
 import Header from "@/components/Header";
 import IntroSection from "@/components/IntroSection";
@@ -37,9 +36,11 @@ export default function App() {
   // 言語が決まったらタイトルを更新
   useEffect(() => {
     if (selectedLanguage) {
-      const t = useTranslation(selectedLanguage);
-      const newTitle = `llll-ll - ${t.siteSubtitle}`;
-      document.title = newTitle;
+      import("@/lib/i18n").then(({ translations }) => {
+        const t = translations[selectedLanguage];
+        const newTitle = `llll-ll - ${t.siteSubtitle}`;
+        document.title = newTitle;
+      });
     }
   }, [selectedLanguage]);
 
@@ -66,7 +67,10 @@ export default function App() {
 
   return (
     <>
-      <LanguageSelector onLanguageSelect={handleLanguageSelect} selectedLanguage={selectedLanguage} />
+      <LanguageSelector
+        onLanguageSelect={handleLanguageSelect}
+        selectedLanguage={selectedLanguage}
+      />
 
       {selectedLanguage && (
         <>

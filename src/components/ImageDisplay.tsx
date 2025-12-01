@@ -1,9 +1,8 @@
-
 interface ImageDisplayProps {
   language: string;
 }
 
-export default function ImageDisplay({}: ImageDisplayProps) {
+export default function ImageDisplay({ language: _language }: ImageDisplayProps) {
   const handleImageClick = () => {
     window.location.href = "/easter-egg";
   };

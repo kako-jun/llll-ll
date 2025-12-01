@@ -4,7 +4,7 @@ interface VisitorCounterProps {
   language: Language;
 }
 
-const VisitorCounter = ({}: VisitorCounterProps) => {
+const VisitorCounter = ({ language: _language }: VisitorCounterProps) => {
   return (
     <div
       style={{
@@ -18,7 +18,12 @@ const VisitorCounter = ({}: VisitorCounterProps) => {
       }}
     >
       <div style={{ transform: "scale(1.5)", display: "inline-block" }}>
-        <nostalgic-counter id="llll-ll-f843ad67" type="total" theme="classic" digits="5"></nostalgic-counter>
+        <nostalgic-counter
+          id="llll-ll-f843ad67"
+          type="total"
+          theme="classic"
+          digits="5"
+        ></nostalgic-counter>
       </div>
     </div>
   );

@@ -3,9 +3,9 @@ import ArrowIcon from "./ArrowIcon";
 
 // Inject fadeInUp keyframes
 const injectKeyframes = () => {
-  const styleId = 'scroll-to-top-keyframes';
+  const styleId = "scroll-to-top-keyframes";
   if (!document.getElementById(styleId)) {
-    const style = document.createElement('style');
+    const style = document.createElement("style");
     style.id = styleId;
     style.textContent = `
       @keyframes fadeInUp {
@@ -89,7 +89,9 @@ export default function ScrollToTop() {
         e.currentTarget.style.transform = "scale(0.95) translateY(0)";
       }}
       onMouseUp={(e) => {
-        e.currentTarget.style.transform = isHovered ? "scale(1.1) translateY(-2px)" : "scale(1) translateY(0)";
+        e.currentTarget.style.transform = isHovered
+          ? "scale(1.1) translateY(-2px)"
+          : "scale(1) translateY(0)";
       }}
       title="ページトップに戻る"
     >

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Language } from "@/types";
 import { useTheme } from "@/hooks/useTheme";
@@ -10,7 +9,10 @@ interface LanguageSelectorProps {
   selectedLanguage?: Language | null;
 }
 
-export default function LanguageSelector({ onLanguageSelect, selectedLanguage }: LanguageSelectorProps) {
+export default function LanguageSelector({
+  onLanguageSelect,
+  selectedLanguage,
+}: LanguageSelectorProps) {
   const { theme, toggleTheme, mounted } = useTheme();
   const { language: currentLang, changeLanguage } = useLanguage();
   const [isChanging, setIsChanging] = useState(false);
@@ -220,7 +222,11 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
                   position: "relative",
                   width: "50px",
                   height: "24px",
-                  backgroundColor: mounted ? (theme === "dark" ? "var(--primary-color)" : "#ccc") : "#ccc",
+                  backgroundColor: mounted
+                    ? theme === "dark"
+                      ? "var(--primary-color)"
+                      : "#ccc"
+                    : "#ccc",
                   border: "none",
                   borderRadius: "2px", // 4pxから2pxに変更してラウンドを少なく
                   cursor: "pointer",
@@ -305,7 +311,10 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
               margin: "0.6rem 0 2rem 0",
               lineHeight: "1",
               color: "var(--primary-color)",
-              fontFamily: currentLang === "zh" || currentLang === "ja" ? "'Noto Sans SC', sans-serif" : "inherit",
+              fontFamily:
+                currentLang === "zh" || currentLang === "ja"
+                  ? "'Noto Sans SC', sans-serif"
+                  : "inherit",
               transition: "opacity 0.2s ease-out",
               opacity: isChanging ? 0 : 1,
             }}
@@ -355,7 +364,9 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
               English
             </button>
 
-            <span style={{ color: "var(--muted-text)", fontSize: "0.9rem", margin: "0 0.25rem" }}>|</span>
+            <span style={{ color: "var(--muted-text)", fontSize: "0.9rem", margin: "0 0.25rem" }}>
+              |
+            </span>
 
             <button
               onClick={() => changeLanguageWithFade("ja")}
@@ -376,7 +387,9 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
               日本語
             </button>
 
-            <span style={{ color: "var(--muted-text)", fontSize: "0.9rem", margin: "0 0.25rem" }}>|</span>
+            <span style={{ color: "var(--muted-text)", fontSize: "0.9rem", margin: "0 0.25rem" }}>
+              |
+            </span>
 
             <button
               onClick={() => changeLanguageWithFade("zh")}
@@ -397,7 +410,9 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
               中文
             </button>
 
-            <span style={{ color: "var(--muted-text)", fontSize: "0.9rem", margin: "0 0.25rem" }}>|</span>
+            <span style={{ color: "var(--muted-text)", fontSize: "0.9rem", margin: "0 0.25rem" }}>
+              |
+            </span>
 
             <button
               onClick={() => changeLanguageWithFade("es")}
@@ -451,7 +466,13 @@ export default function LanguageSelector({ onLanguageSelect, selectedLanguage }:
                   opacity: isChanging ? 0 : 1,
                 }}
               >
-                {currentLang === "en" ? "Continue" : currentLang === "ja" ? "続行" : currentLang === "zh" ? "继续" : "Continuar"}
+                {currentLang === "en"
+                  ? "Continue"
+                  : currentLang === "ja"
+                    ? "続行"
+                    : currentLang === "zh"
+                      ? "继续"
+                      : "Continuar"}
               </span>
             </button>
           </div>

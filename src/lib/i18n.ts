@@ -4,7 +4,8 @@ export const translations = {
   en: {
     siteSubtitle: "Planning Division 42",
     welcome: "Welcome to",
-    intro: "Hi! I'm kako-jun from Kanazawa. I blend nostalgia with modern technology to create apps and games.",
+    intro:
+      "Hi! I'm kako-jun from Kanazawa. I blend nostalgia with modern technology to create apps and games.",
     aboutTitle: "About Me",
     projectsTitle: "Things I Made",
     sortNewest: "Newest First",
@@ -66,7 +67,8 @@ export const translations = {
   ja: {
     siteSubtitle: "企画42課",
     welcome: "へようこそ",
-    intro: "はじめまして！金沢のkako-junです。ノスタルジーと最新技術を組み合わせて、アプリやゲームを作ってます。",
+    intro:
+      "はじめまして！金沢のkako-junです。ノスタルジーと最新技術を組み合わせて、アプリやゲームを作ってます。",
     aboutTitle: "このサイトについて",
     projectsTitle: "作ったもの",
     sortNewest: "新しい順",

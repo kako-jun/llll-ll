@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Language } from "@/types";
 import NostrPopup from "./NostrPopup";
@@ -9,36 +8,46 @@ interface FooterProps {
 
 export default function Footer({ language }: FooterProps) {
   const [profileRect, setProfileRect] = useState<DOMRect | null>(null);
-  
+
   // kako-junのNostr公開鍵
   const KAKO_JUN_PUBKEY = "npub1d7rmrw3zmzn9jpcqpzhk6helu8t3rcqk93ja39sh9rgylwr9007q83kemm";
 
   useEffect(() => {
     const updateProfilePosition = () => {
-      const profile = document.querySelector('.profile-icon') as HTMLElement;
+      const profile = document.querySelector(".profile-icon") as HTMLElement;
       if (profile) {
         setProfileRect(profile.getBoundingClientRect());
       }
     };
 
     updateProfilePosition();
-    
+
     const handleScroll = () => {
       updateProfilePosition();
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
   }, []);
   const socialLinks = [
     { name: "GitHub", url: "https://github.com/kako-jun", icon: "/icons/github.svg", size: 20 },
     { name: "X", url: "https://x.com/kako_jun_42", icon: "/icons/x-twitter.svg", size: 20 },
-    { name: "Instagram", url: "https://www.instagram.com/kako_jun_42", icon: "/icons/instagram.svg", size: 20 },
-    { name: "Dev.to", url: "https://dev.to/kako-jun", icon: "/icons/dev-to-wide-final.png", size: 20 },
+    {
+      name: "Instagram",
+      url: "https://www.instagram.com/kako_jun_42",
+      icon: "/icons/instagram.svg",
+      size: 20,
+    },
+    {
+      name: "Dev.to",
+      url: "https://dev.to/kako-jun",
+      icon: "/icons/dev-to-wide-final.png",
+      size: 20,
+    },
     { name: "Zenn", url: "https://zenn.dev/kako_jun", icon: "/icons/zenn.svg", size: 20 },
     { name: "Note", url: "https://note.com/kako_jun", icon: "/icons/note.svg", size: 24 }, // noteだけ大きく
   ];
@@ -53,7 +62,7 @@ export default function Footer({ language }: FooterProps) {
           pubkey={KAKO_JUN_PUBKEY}
         />
       </div>
-      
+
       <footer
         style={{
           backgroundColor: "var(--footer-background)",

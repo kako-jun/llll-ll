@@ -7,7 +7,13 @@ interface ArrowIconProps {
   style?: React.CSSProperties;
 }
 
-export default function ArrowIcon({ direction = "up", size = 20, strokeWidth = 2, className, style }: ArrowIconProps) {
+export default function ArrowIcon({
+  direction = "up",
+  size = 20,
+  strokeWidth = 2,
+  className,
+  style,
+}: ArrowIconProps) {
   const getPath = () => {
     switch (direction) {
       case "up":

@@ -1,7 +1,7 @@
 import { Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
 import { useNostr } from "@/hooks/useNostr";
-import { nip19 } from 'nostr-tools';
+import { nip19 } from "nostr-tools";
 
 interface NostrPopupProps {
   language: Language;
@@ -21,7 +21,7 @@ export default function NostrPopup({ language, isExpanded, profileRect, pubkey }
   // 実際のポップアップ幅を計算（maxWidthの影響を考慮）
   const actualPopupWidth = Math.min(500, window.innerWidth * 0.95);
   // ポップアップの左端位置
-  const popupLeftX = (window.innerWidth / 2) - (actualPopupWidth / 2);
+  const popupLeftX = window.innerWidth / 2 - actualPopupWidth / 2;
   // ポップアップ内での三角形の相対位置（PC用微調整）
   const trianglePosition = iconCenterX - popupLeftX + 6;
 
@@ -72,7 +72,7 @@ export default function NostrPopup({ language, isExpanded, profileRect, pubkey }
           />
         </>
       )}
-      
+
       <h3
         style={{
           fontSize: "1.4rem",
@@ -84,7 +84,7 @@ export default function NostrPopup({ language, isExpanded, profileRect, pubkey }
       >
         {t.nostrPosts}
       </h3>
-      
+
       <div
         className="nostr-content"
         style={{
@@ -119,25 +119,28 @@ export default function NostrPopup({ language, isExpanded, profileRect, pubkey }
                 <div style={{ marginBottom: "0.5rem" }}>
                   {(() => {
                     // 画像URLを抽出
-                    const imageUrls = post.content.match(/https?:\/\/[^\s]+\.(jpg|jpeg|png|gif|webp)/gi) || [];
+                    const imageUrls =
+                      post.content.match(/https?:\/\/[^\s]+\.(jpg|jpeg|png|gif|webp)/gi) || [];
                     // 画像URL以外のテキスト
                     let textContent = post.content;
-                    imageUrls.forEach(url => {
-                      textContent = textContent.replace(url, '').trim();
+                    imageUrls.forEach((url) => {
+                      textContent = textContent.replace(url, "").trim();
                     });
-                    
+
                     return (
                       <>
                         {textContent && (
-                          <p style={{ 
-                            fontSize: "0.9rem", 
-                            lineHeight: "1.6",
-                            wordBreak: "break-word",
-                            marginBottom: imageUrls.length > 0 ? "1rem" : "0",
-                            whiteSpace: "pre-wrap"
-                          }}>
+                          <p
+                            style={{
+                              fontSize: "0.9rem",
+                              lineHeight: "1.6",
+                              wordBreak: "break-word",
+                              marginBottom: imageUrls.length > 0 ? "1rem" : "0",
+                              whiteSpace: "pre-wrap",
+                            }}
+                          >
                             {textContent.split(/(#[^\s#]+)/g).map((part, index) => {
-                              if (part.startsWith('#')) {
+                              if (part.startsWith("#")) {
                                 return (
                                   <a
                                     key={index}
@@ -146,7 +149,7 @@ export default function NostrPopup({ language, isExpanded, profileRect, pubkey }
                                     rel="noopener noreferrer"
                                     style={{
                                       color: "var(--primary-color)",
-                                      textDecoration: "none"
+                                      textDecoration: "none",
                                     }}
                                     onMouseOver={(e) => {
                                       e.currentTarget.style.textDecoration = "underline";
@@ -164,11 +167,13 @@ export default function NostrPopup({ language, isExpanded, profileRect, pubkey }
                           </p>
                         )}
                         {imageUrls.length > 0 && (
-                          <div style={{ 
-                            display: "flex", 
-                            flexDirection: "column", 
-                            gap: "0.5rem" 
-                          }}>
+                          <div
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              gap: "0.5rem",
+                            }}
+                          >
                             {imageUrls.map((url, index) => (
                               <img
                                 key={index}
@@ -178,10 +183,10 @@ export default function NostrPopup({ language, isExpanded, profileRect, pubkey }
                                   maxWidth: "100%",
                                   height: "auto",
                                   borderRadius: "4px",
-                                  border: "1px solid var(--border-color)"
+                                  border: "1px solid var(--border-color)",
                                 }}
                                 onError={(e) => {
-                                  e.currentTarget.style.display = 'none';
+                                  e.currentTarget.style.display = "none";
                                 }}
                               />
                             ))}
@@ -191,16 +196,20 @@ export default function NostrPopup({ language, isExpanded, profileRect, pubkey }
                     );
                   })()}
                 </div>
-                <div style={{ 
-                  display: "flex", 
-                  justifyContent: "space-between", 
-                  alignItems: "center" 
-                }}>
-                  <small style={{ 
-                    color: "var(--muted-text)", 
-                    fontSize: "0.8rem" 
-                  }}>
-                    {new Date(post.created_at * 1000).toISOString().split('T')[0]}
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <small
+                    style={{
+                      color: "var(--muted-text)",
+                      fontSize: "0.8rem",
+                    }}
+                  >
+                    {new Date(post.created_at * 1000).toISOString().split("T")[0]}
                   </small>
                   <a
                     href={`https://iris.to/${nip19.noteEncode(post.id)}`}
@@ -213,7 +222,7 @@ export default function NostrPopup({ language, isExpanded, profileRect, pubkey }
                       padding: "0.2rem 0.5rem",
                       border: "1px solid var(--border-color)",
                       borderRadius: "4px",
-                      transition: "all 0.2s ease"
+                      transition: "all 0.2s ease",
                     }}
                     onMouseOver={(e) => {
                       e.currentTarget.style.backgroundColor = "var(--hover-color, rgba(0,0,0,0.1))";

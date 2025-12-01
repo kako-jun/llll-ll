@@ -1,8 +1,9 @@
-
 import { useEffect, useState } from "react";
 
 export function TetrisBlock() {
-  const [blocks, setBlocks] = useState<Array<{ id: number; x: number; y: number; opacity: number }>>([]);
+  const [blocks, setBlocks] = useState<
+    Array<{ id: number; x: number; y: number; opacity: number }>
+  >([]);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

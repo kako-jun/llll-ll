@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useMemo } from "react";
 import { Product, Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
@@ -25,7 +24,7 @@ export default function ProjectList({ products, language }: ProjectListProps) {
   useEffect(() => {
     const hash = window.location.hash.slice(1); // #を除去
     if (hash && products.length > 0) {
-      const product = products.find(p => p.id === hash);
+      const product = products.find((p) => p.id === hash);
       if (product) {
         setExpandedProductId(hash);
         // 少し遅延してからスクロール（DOMが描画されるのを待つ）
@@ -37,7 +36,7 @@ export default function ProjectList({ products, language }: ProjectListProps) {
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
             window.scrollTo({
               top: offsetPosition,
-              behavior: "smooth"
+              behavior: "smooth",
             });
           }
         }, 100);
@@ -68,16 +67,17 @@ export default function ProjectList({ products, language }: ProjectListProps) {
   }, [products]);
 
   const filteredProducts = useMemo(() => {
-    let filtered = products.filter((product) => {
+    const filtered = products.filter((product) => {
       const title = product.title[language] || product.title["en"] || "";
       const description = product.description[language] || product.description["en"] || "";
-      
+
       const matchesSearch =
         title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         description.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()));
 
-      const matchesTags = selectedTags.length === 0 || selectedTags.every((tag) => product.tags.includes(tag));
+      const matchesTags =
+        selectedTags.length === 0 || selectedTags.every((tag) => product.tags.includes(tag));
 
       return matchesSearch && matchesTags;
     });
@@ -98,7 +98,9 @@ export default function ProjectList({ products, language }: ProjectListProps) {
   };
 
   const toggleTag = (tag: string) => {
-    setSelectedTags((prev) => (prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]));
+    setSelectedTags((prev) =>
+      prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+    );
   };
 
   const clearAllTags = () => {
@@ -152,7 +154,14 @@ export default function ProjectList({ products, language }: ProjectListProps) {
                 height: "100%",
               }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <circle cx="10" cy="10" r="7"></circle>
                 <path d="M15.24 15.24L21 21"></path>
               </svg>
@@ -245,7 +254,9 @@ export default function ProjectList({ products, language }: ProjectListProps) {
                   key={tag}
                   onClick={() => toggleTag(tag)}
                   style={{
-                    background: selectedTags.includes(tag) ? "var(--primary-color)" : "var(--input-background)",
+                    background: selectedTags.includes(tag)
+                      ? "var(--primary-color)"
+                      : "var(--input-background)",
                     color: selectedTags.includes(tag) ? "#ffffff" : "var(--muted-text)",
                     border: "1px solid var(--border-color)",
                     borderRadius: "4px", // 1remから4pxに変更してより角ばった見た目に
@@ -310,7 +321,8 @@ export default function ProjectList({ products, language }: ProjectListProps) {
                 position: "relative",
                 width: "60px",
                 height: "30px",
-                backgroundColor: sortOrder === "newest" ? "var(--primary-color)" : "var(--border-color)",
+                backgroundColor:
+                  sortOrder === "newest" ? "var(--primary-color)" : "var(--border-color)",
                 borderRadius: "2px", // 15pxから2pxに変更
                 cursor: "pointer",
                 transition: "background-color 0.3s ease",
@@ -366,7 +378,14 @@ export default function ProjectList({ products, language }: ProjectListProps) {
             }}
           >
             <div style={{ marginBottom: "1rem", display: "flex", justifyContent: "center" }}>
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <svg
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              >
                 <circle cx="11" cy="11" r="8"></circle>
                 <path d="m21 21-4.35-4.35"></path>
               </svg>
@@ -422,7 +441,11 @@ export default function ProjectList({ products, language }: ProjectListProps) {
         )}
       </div>
 
-      <ProjectModal product={selectedProduct} language={language} onClose={() => setSelectedProduct(null)} />
+      <ProjectModal
+        product={selectedProduct}
+        language={language}
+        onClose={() => setSelectedProduct(null)}
+      />
     </section>
   );
 }

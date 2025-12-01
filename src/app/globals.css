@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Inter:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+SC:wght@400;700&family=Inter:wght@700&display=swap");
 
 :root {
   /* デフォルトはダークテーマ（白い点滅防止） */
@@ -11,7 +11,7 @@
   --border-color: #404040;
   --link-color: #60a5fa;
   --link-hover: #3b82f6;
-  
+
   /* Additional variables for components */
   --text-color: #ffffff;
   --background-color: #121212;
@@ -20,7 +20,7 @@
   --muted-text: #b0b0b0;
   --input-background: #1e1e1e;
   --hover-background: #2d2d2d;
-  --hover-color: rgba(255,255,255,0.1);
+  --hover-color: rgba(255, 255, 255, 0.1);
   --icon-filter: invert(1);
   --footer-background: #1a2e1a;
   --footer-gradient: linear-gradient(rgba(26, 46, 26, 0.1), rgba(26, 46, 26, 0.1));
@@ -38,7 +38,7 @@
   --border-color: #dee2e6;
   --link-color: #007bff;
   --link-hover: #0056b3;
-  
+
   /* Additional variables for components */
   --text-color: #000000;
   --background-color: #ffffff;
@@ -47,7 +47,7 @@
   --muted-text: #6c757d;
   --input-background: #f8f9fa;
   --hover-background: #e9ecef;
-  --hover-color: rgba(0,0,0,0.1);
+  --hover-color: rgba(0, 0, 0, 0.1);
   --icon-filter: none;
   --footer-background: #d4edda;
   --footer-gradient: linear-gradient(rgba(40, 167, 69, 0.4), rgba(40, 167, 69, 0.4));
@@ -56,7 +56,9 @@
 
 /* HTML要素のデフォルト設定 */
 html {
-  transition: background 0.6s ease-out, color 0.6s ease-out;
+  transition:
+    background 0.6s ease-out,
+    color 0.6s ease-out;
 }
 
 /* 初期表示は常にダークテーマ（白い点滅完全防止） */
@@ -69,20 +71,27 @@ html {
 html[data-theme="light"] {
   background: #ffffff !important;
   color: #000000 !important;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 html[data-theme="dark"] {
   background: #121212 !important;
   color: #ffffff !important;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: background-color 0.8s ease-out, color 0.8s ease-out, border-color 0.8s ease-out;
+  transition:
+    background-color 0.8s ease-out,
+    color 0.8s ease-out,
+    border-color 0.8s ease-out;
 }
 
 /* Critical CSS - Above the fold optimization */
@@ -90,20 +99,20 @@ html {
   font-display: swap; /* フォント読み込み最適化 */
   scroll-behavior: smooth;
   line-height: 1.6;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
 /* 言語別フォント指定 */
 html[lang="ja"] {
-  font-family: 'Noto Sans JP', 'Noto Sans', sans-serif;
+  font-family: "Noto Sans JP", "Noto Sans", sans-serif;
 }
 
 html[lang="zh"] {
-  font-family: 'Noto Sans SC', 'Noto Sans', sans-serif;
+  font-family: "Noto Sans SC", "Noto Sans", sans-serif;
 }
 
 html[lang="en"] {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
 body {
@@ -113,7 +122,9 @@ body {
   line-height: 1.6;
   font-size: 16px;
   overflow-x: hidden;
-  transition: background-color 0.6s ease-out, color 0.6s ease-out;
+  transition:
+    background-color 0.6s ease-out,
+    color 0.6s ease-out;
 }
 
 /* ライトテーマが確定した時のみライト背景 */
@@ -124,9 +135,10 @@ html[data-theme="light"] body {
 
 /* テーマが確定した後のトランジション */
 html[data-theme] body {
-  transition: background-color 0.6s ease-out, color 0.6s ease-out;
+  transition:
+    background-color 0.6s ease-out,
+    color 0.6s ease-out;
 }
-
 
 .container {
   max-width: 800px;
@@ -134,7 +146,9 @@ html[data-theme] body {
   padding: 0 20px;
   position: relative;
   z-index: 1;
-  transition: background-color 0.6s ease-out, color 0.6s ease-out;
+  transition:
+    background-color 0.6s ease-out,
+    color 0.6s ease-out;
 }
 
 .fade-in {
@@ -171,7 +185,12 @@ a:hover {
   color: var(--link-hover);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   margin-bottom: 0.5em;
   color: var(--text-primary, #000000);
@@ -198,20 +217,21 @@ p {
 
 /* Chinese text styling */
 .chinese-text {
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: "Noto Sans SC", sans-serif;
 }
 
 /* ロゴ専用フォントクラス - 完全直線のl */
 .logo-font {
-  font-family: 'Arial Black', 'Arial', 'Helvetica Neue', 'Helvetica', 'Impact', sans-serif !important;
+  font-family:
+    "Arial Black", "Arial", "Helvetica Neue", "Helvetica", "Impact", sans-serif !important;
   font-weight: 900 !important; /* 最大の太さ */
   letter-spacing: 0.2em;
-  font-feature-settings: 'liga' 0; /* リガチャを無効化 */
+  font-feature-settings: "liga" 0; /* リガチャを無効化 */
   text-transform: none;
   font-variant: normal;
   font-style: normal;
   /* さらに太くするためのCSS効果 */
-  text-shadow: 
+  text-shadow:
     0.5px 0 0 currentColor,
     -0.5px 0 0 currentColor,
     0 0.5px 0 currentColor,
@@ -253,7 +273,7 @@ p {
   .container {
     padding: 0 15px;
   }
-  
+
   body {
     font-size: 14px;
   }
@@ -276,4 +296,3 @@ p {
 .nostr-content::-webkit-scrollbar-thumb:hover {
   background: var(--link-color);
 }
-

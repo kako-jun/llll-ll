@@ -2,6 +2,8 @@ import { memo } from "react";
 import { Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
 import LanguageButtons from "./LanguageButtons";
+import ContinueButton from "./ContinueButton";
+import QRCodeSection from "./QRCodeSection";
 
 interface WelcomeScreenProps {
   currentLang: Language;
@@ -9,13 +11,6 @@ interface WelcomeScreenProps {
   onLanguageChange: (lang: Language) => void;
   onContinue: () => void;
 }
-
-const CONTINUE_LABELS: Record<Language, string> = {
-  en: "Continue",
-  ja: "続行",
-  zh: "继续",
-  es: "Continuar",
-};
 
 export default memo(function WelcomeScreen({
   currentLang,
@@ -101,76 +96,10 @@ export default memo(function WelcomeScreen({
           </div>
 
           {/* Continue Button */}
-          <div style={{ marginBottom: "2rem" }}>
-            <button
-              onClick={onContinue}
-              style={{
-                backgroundColor: "var(--primary-color)",
-                color: "#ffffff",
-                border: "none",
-                padding: "0.75rem 2rem",
-                fontSize: "1.1rem",
-                cursor: "pointer",
-                fontFamily: currentLang === "zh" ? "'Noto Sans SC', sans-serif" : "inherit",
-                fontWeight: "bold",
-                borderRadius: "0.25rem",
-                transition: "all 0.3s ease",
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = "scale(1.05)";
-                e.currentTarget.style.opacity = "0.9";
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = "scale(1)";
-                e.currentTarget.style.opacity = "1";
-              }}
-            >
-              <span
-                style={{
-                  minWidth: "60px",
-                  display: "inline-block",
-                  transition: "opacity 0.2s ease-out",
-                  opacity: isChanging ? 0 : 1,
-                }}
-              >
-                {CONTINUE_LABELS[currentLang]}
-              </span>
-            </button>
-          </div>
+          <ContinueButton currentLang={currentLang} isChanging={isChanging} onClick={onContinue} />
 
           {/* QR Code Section */}
-          <div
-            style={{
-              fontSize: "0.9rem",
-              color: "var(--muted-text)",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "1rem",
-            }}
-          >
-            <div
-              style={{
-                transition: "opacity 0.2s ease-out",
-                minHeight: "1.2rem",
-                opacity: isChanging ? 0 : 1,
-              }}
-            >
-              {t.forMobileDevices}
-            </div>
-            <img
-              src="/qrcode.webp"
-              alt="QR Code for mobile access"
-              style={{
-                width: "120px",
-                height: "120px",
-                border: "none",
-                borderRadius: "0",
-                opacity: "0.7",
-                filter: "brightness(0.8)",
-              }}
-            />
-          </div>
+          <QRCodeSection currentLang={currentLang} isChanging={isChanging} />
         </div>
       </div>
     </div>

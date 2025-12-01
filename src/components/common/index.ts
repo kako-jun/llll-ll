@@ -4,3 +4,5 @@ export { default as ImageDisplay } from "./ImageDisplay";
 export { default as IntroSection } from "./IntroSection";
 export { default as VisitorCounter } from "./VisitorCounter";
 export { default as CriticalCSS } from "./CriticalCSS";
+export { default as PopupTriangle } from "./PopupTriangle";
+export { default as AboutPopup } from "./AboutPopup";

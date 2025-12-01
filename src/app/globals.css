@@ -296,3 +296,126 @@ p {
 .nostr-content::-webkit-scrollbar-thumb:hover {
   background: var(--link-color);
 }
+
+/* Utility Classes */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.gap-half {
+  gap: 0.5rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mb-half {
+  margin-bottom: 0.5rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+.p-2 {
+  padding: 2rem;
+}
+
+/* Button Styles */
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--link-color);
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.2s ease;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+/* Text Styles */
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-muted {
+  color: var(--muted-text);
+}
+
+.text-sm {
+  font-size: 0.9rem;
+}
+
+.text-lg {
+  font-size: 1.2rem;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+/* Border & Background */
+.border-default {
+  border: 1px solid var(--border-color);
+}
+
+.border-radius {
+  border-radius: 4px;
+}
+
+.bg-primary {
+  background-color: var(--background-color);
+}
+
+.bg-hover {
+  background-color: var(--hover-background);
+}
+
+/* Transitions */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.transition-colors {
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}

@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
 import { Language } from "@/types";
 import { NostrPopup } from "@/components/nostr";
+import { useElementRect } from "@/hooks/useElementRect";
 import SocialLinks from "./SocialLinks";
 import ProfileIcon from "./ProfileIcon";
 
@@ -15,29 +15,7 @@ const PROFILE_IMAGE_URL =
   "https://imgproxy.snort.social/vuUNpu_hJg6Re01upRTRvP4BvB7224CZYXyL0hZhbDA/dpr:2/aHR0cHM6Ly9pbWFnZS5ub3N0ci5idWlsZC9mMGM3YzdhMDk1ZDFiZThlM2FhYmNmN2QxZTg1YjlhNGEwYjI4NjUzMjQxN2UyNjY3ODViN2QwZThkYjQ3MzllLmpwZw";
 
 export default function Footer({ language }: FooterProps) {
-  const [profileRect, setProfileRect] = useState<DOMRect | null>(null);
-
-  useEffect(() => {
-    const updateProfilePosition = () => {
-      const profile = document.querySelector(".profile-icon") as HTMLElement;
-      if (profile) {
-        setProfileRect(profile.getBoundingClientRect());
-      }
-    };
-
-    updateProfilePosition();
-
-    const handleScroll = () => {
-      updateProfilePosition();
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
-    };
-  }, []);
+  const { rect: profileRect } = useElementRect(".profile-icon");
 
   return (
     <>

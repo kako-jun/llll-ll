@@ -1,6 +1,5 @@
-"use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Language } from "@/types";
 import { useTheme } from "@/hooks/useTheme";
 import { useTranslation } from "@/lib/i18n";

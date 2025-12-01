@@ -1,4 +1,3 @@
-"use client";
 
 import { useState } from "react";
 import { createPortal } from "react-dom";
@@ -14,7 +13,7 @@ interface ProjectCardProps {
   onSelect?: (product: Product) => void;
 }
 
-export default function ProjectCard({ product, language, isExpanded, onToggle, onSelect }: ProjectCardProps) {
+export default function ProjectCard({ product, language, isExpanded, onToggle }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [popupImage, setPopupImage] = useState<string | null>(null);
   const [popupVideo, setPopupVideo] = useState<string | null>(null);
@@ -490,9 +489,9 @@ export default function ProjectCard({ product, language, isExpanded, onToggle, o
               </a>
             )}
 
-            {product.developmentRecordUrl && (
+            {product.developmentRecordUrl && product.developmentRecordUrl.length > 0 && (
               <a
-                href={product.developmentRecordUrl}
+                href={product.developmentRecordUrl[0]}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -687,18 +686,6 @@ export default function ProjectCard({ product, language, isExpanded, onToggle, o
         document.body
       )}
 
-      <style jsx>{`
-        @keyframes slideDown {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </div>
   );
 }

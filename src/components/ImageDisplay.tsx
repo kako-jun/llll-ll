@@ -1,16 +1,11 @@
-"use client";
-
-import { useRouter } from "next/navigation";
 
 interface ImageDisplayProps {
   language: string;
 }
 
-export default function ImageDisplay({ language }: ImageDisplayProps) {
-  const router = useRouter();
-
+export default function ImageDisplay({}: ImageDisplayProps) {
   const handleImageClick = () => {
-    router.push("/easter-egg");
+    window.location.href = "/easter-egg";
   };
 
   return (

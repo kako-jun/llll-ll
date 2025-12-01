@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState } from "react";
 
 interface Dot {
@@ -104,11 +102,42 @@ const predefinedDots: Dot[] = [
   },
 ];
 
+// Generate keyframes CSS
+const keyframesCSS = predefinedDots
+  .map(
+    (dot) => `
+  @keyframes float-${dot.id} {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    25% {
+      transform: translateY(-${dot.animation.y25}px) translateX(${dot.animation.x25}px);
+    }
+    50% {
+      transform: translateY(-${dot.animation.y50}px) translateX(${dot.animation.x50}px);
+    }
+    75% {
+      transform: translateY(-${dot.animation.y75}px) translateX(${dot.animation.x75}px);
+    }
+  }
+`
+  )
+  .join("");
+
 export default function BackgroundDots() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+
+    // Inject keyframes CSS
+    const styleId = 'background-dots-keyframes';
+    if (!document.getElementById(styleId)) {
+      const style = document.createElement('style');
+      style.id = styleId;
+      style.textContent = keyframesCSS;
+      document.head.appendChild(style);
+    }
   }, []);
 
   // SSR中は何も表示しない
@@ -138,29 +167,6 @@ export default function BackgroundDots() {
           }}
         />
       ))}
-
-      <style jsx>{`
-        ${predefinedDots
-          .map(
-            (dot) => `
-          @keyframes float-${dot.id} {
-            0%, 100% { 
-              transform: translateY(0px) translateX(0px); 
-            }
-            25% { 
-              transform: translateY(-${dot.animation.y25}px) translateX(${dot.animation.x25}px); 
-            }
-            50% { 
-              transform: translateY(-${dot.animation.y50}px) translateX(${dot.animation.x50}px); 
-            }
-            75% { 
-              transform: translateY(-${dot.animation.y75}px) translateX(${dot.animation.x75}px); 
-            }
-          }
-        `
-          )
-          .join("")}
-      `}</style>
     </>
   );
 }

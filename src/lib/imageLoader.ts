@@ -4,7 +4,7 @@ export default function customImageLoader({ src, width, quality }: { src: string
   const q = quality || 75;
 
   // 本番環境では画像最適化サービスを使用可能
-  if (process.env.NODE_ENV === "production") {
+  if (import.meta.env.PROD) {
     // 例：Vercel Image Optimization
     return `${src}?w=${width}&q=${q}`;
   }

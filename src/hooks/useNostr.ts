@@ -1,4 +1,3 @@
-"use client";
 
 import { useState, useEffect } from 'react';
 import { SimplePool, Event, Filter, nip19 } from 'nostr-tools';
@@ -48,11 +47,11 @@ export function useNostr(pubkey: string) {
 
         const events = await pool.querySync(relays, filter);
 
-        const validEvents = events.filter((event): event is Event => event !== null);
-        
-        const sortedEvents = validEvents.sort((a, b) => b.created_at - a.created_at);
-        
-        const nostrPosts: NostrPost[] = sortedEvents.map(event => ({
+        const validEvents = events.filter((event: Event | null): event is Event => event !== null);
+
+        const sortedEvents = validEvents.sort((a: Event, b: Event) => b.created_at - a.created_at);
+
+        const nostrPosts: NostrPost[] = sortedEvents.map((event: Event) => ({
           id: event.id,
           content: event.content,
           created_at: event.created_at,

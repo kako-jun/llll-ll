@@ -1,4 +1,3 @@
-"use client";
 
 import { useState, useEffect } from "react";
 import { Product, Language } from "@/types";
@@ -206,7 +205,7 @@ export default function ProjectModal({ product, language, onClose }: ProjectModa
                       className="block px-4 py-2 border border-text-accent text-text-accent hover:bg-text-accent hover:text-bg-primary transition-colors text-center text-sm"
                     >
                       {t.viewDevelopmentRecord}
-                      {product.developmentRecordUrl.length > 1
+                      {product.developmentRecordUrl && product.developmentRecordUrl.length > 1
                         ? ` ${index + 1}`
                         : ""}
                     </a>

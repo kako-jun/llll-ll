@@ -9,9 +9,8 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
+# vite
+/dist
 
 # production
 /build
@@ -27,11 +26,14 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts.claude/settings.local.json
+
+# claude/serena
+.claude/settings.local.json
 .serena/

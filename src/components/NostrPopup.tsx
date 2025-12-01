@@ -1,6 +1,3 @@
-"use client";
-
-import Image from "next/image";
 import { Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
 import { useNostr } from "@/hooks/useNostr";

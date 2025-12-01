@@ -4,7 +4,7 @@ interface VisitorCounterProps {
   language: Language;
 }
 
-const VisitorCounter = ({ language }: VisitorCounterProps) => {
+const VisitorCounter = ({}: VisitorCounterProps) => {
   return (
     <div
       style={{

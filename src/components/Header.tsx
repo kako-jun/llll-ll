@@ -1,4 +1,3 @@
-"use client";
 
 import { useState, useEffect, useCallback } from "react";
 import { Language } from "@/types";
@@ -285,7 +284,7 @@ export default function Header({ language }: HeaderProps) {
     }
 
     if (shouldClear) {
-      setGrid((prev) => {
+      setGrid(() => {
         const newGrid: boolean[][] = [];
         for (let x = 0; x < gridWidth; x++) {
           newGrid[x] = new Array(GRID_HEIGHT).fill(false);
@@ -503,8 +502,6 @@ export default function Header({ language }: HeaderProps) {
 
       {/* 落下中ブロック */}
       {fallingBlocks.map((block) => {
-        const header = document.getElementById("main-header");
-        const headerHeight = header?.getBoundingClientRect().height || 64;
         const pixelY = block.y * BLOCK_SIZE; // ヘッダーの上端を基準に
 
         return (
@@ -525,8 +522,6 @@ export default function Header({ language }: HeaderProps) {
 
       {/* 消えるブロック（アニメーション） */}
       {disappearingBlocks.map((block) => {
-        const header = document.getElementById("main-header");
-        const headerHeight = header?.getBoundingClientRect().height || 64;
         const pixelY = block.y * BLOCK_SIZE;
 
         return (

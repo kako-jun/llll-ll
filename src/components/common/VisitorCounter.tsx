@@ -23,6 +23,7 @@ const VisitorCounter = ({ language: _language }: VisitorCounterProps) => {
           type="total"
           theme="classic"
           digits="5"
+          format="image"
         ></nostalgic-counter>
       </div>
     </div>

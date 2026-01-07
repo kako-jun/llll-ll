@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
 import { PopupTriangle } from "@/components/common";
@@ -13,43 +13,37 @@ interface NostrPopupProps {
 
 export default function NostrPopup({ language, isExpanded, profileRect, pubkey, theme = "dark" }: NostrPopupProps) {
   const t = useTranslation(language);
-  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Load embed.js script and create mypace-card element
+  // Load embed.js script
   useEffect(() => {
-    if (!isExpanded || !containerRef.current) return;
-
-    const container = containerRef.current;
-
-    const createCard = () => {
-      container.innerHTML = "";
-      const card = document.createElement("mypace-card");
-      card.setAttribute("latest", "");
-      card.setAttribute("pubkey", pubkey);
-      card.setAttribute("theme", theme);
-      container.appendChild(card);
-    };
-
-    // Check if script already loaded
     const scriptId = "mypace-embed-script";
-    const existingScript = document.getElementById(scriptId);
+    if (document.getElementById(scriptId)) return;
 
-    if (existingScript) {
-      // Script already exists, create card
-      createCard();
-    } else {
-      // Load script first, then create card
-      const script = document.createElement("script");
-      script.id = scriptId;
-      script.src = "https://mypace.llll-ll.com/embed.js";
-      script.onload = createCard;
-      document.body.appendChild(script);
-    }
+    const script = document.createElement("script");
+    script.id = scriptId;
+    script.src = "https://mypace.llll-ll.com/embed.js";
+    document.body.appendChild(script);
+  }, []);
 
-    return () => {
-      container.innerHTML = "";
+  // Create mypace-card element using callback ref
+  const setContainerRef = (node: HTMLDivElement | null) => {
+    if (!node) return;
+
+    // Wait for custom element to be defined
+    const tryCreateCard = () => {
+      if (customElements.get("mypace-card")) {
+        node.innerHTML = "";
+        const card = document.createElement("mypace-card");
+        card.setAttribute("latest", "");
+        card.setAttribute("pubkey", pubkey);
+        card.setAttribute("theme", theme);
+        node.appendChild(card);
+      } else {
+        setTimeout(tryCreateCard, 100);
+      }
     };
-  }, [isExpanded, pubkey, theme]);
+    tryCreateCard();
+  };
 
   if (!isExpanded || !profileRect) return null;
 
@@ -93,7 +87,7 @@ export default function NostrPopup({ language, isExpanded, profileRect, pubkey, 
       </h3>
 
       <div
-        ref={containerRef}
+        ref={setContainerRef}
         style={{
           maxHeight: "300px",
           overflowY: "auto",

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useCallback, useRef } from "react";
 import { Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
 import { PopupTriangle } from "@/components/common";
@@ -13,6 +13,7 @@ interface NostrPopupProps {
 
 export default function NostrPopup({ language, isExpanded, profileRect, pubkey, theme = "dark" }: NostrPopupProps) {
   const t = useTranslation(language);
+  const cardCreatedRef = useRef(false);
 
   // Load embed.js script
   useEffect(() => {
@@ -26,8 +27,8 @@ export default function NostrPopup({ language, isExpanded, profileRect, pubkey, 
   }, []);
 
   // Create mypace-card element using callback ref
-  const setContainerRef = (node: HTMLDivElement | null) => {
-    if (!node) return;
+  const setContainerRef = useCallback((node: HTMLDivElement | null) => {
+    if (!node || cardCreatedRef.current) return;
 
     // Wait for custom element to be defined
     const tryCreateCard = () => {
@@ -38,12 +39,13 @@ export default function NostrPopup({ language, isExpanded, profileRect, pubkey, 
         card.setAttribute("pubkey", pubkey);
         card.setAttribute("theme", theme);
         node.appendChild(card);
+        cardCreatedRef.current = true;
       } else {
         setTimeout(tryCreateCard, 100);
       }
     };
     tryCreateCard();
-  };
+  }, [pubkey, theme]);
 
   if (!isExpanded || !profileRect) return null;
 

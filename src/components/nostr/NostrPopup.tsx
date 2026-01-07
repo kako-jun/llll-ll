@@ -15,34 +15,36 @@ export default function NostrPopup({ language, isExpanded, profileRect, pubkey, 
   const t = useTranslation(language);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Load embed.js script
-  useEffect(() => {
-    if (!isExpanded) return;
-
-    const scriptId = "mypace-embed-script";
-    if (document.getElementById(scriptId)) return;
-
-    const script = document.createElement("script");
-    script.id = scriptId;
-    script.src = "https://mypace.llll-ll.com/embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-  }, [isExpanded]);
-
-  // Create mypace-card element
+  // Load embed.js script and create mypace-card element
   useEffect(() => {
     if (!isExpanded || !containerRef.current) return;
 
     const container = containerRef.current;
-    // Clear existing content
-    container.innerHTML = "";
 
-    // Create mypace-card element
-    const card = document.createElement("mypace-card");
-    card.setAttribute("latest", "");
-    card.setAttribute("pubkey", pubkey);
-    card.setAttribute("theme", theme);
-    container.appendChild(card);
+    const createCard = () => {
+      container.innerHTML = "";
+      const card = document.createElement("mypace-card");
+      card.setAttribute("latest", "");
+      card.setAttribute("pubkey", pubkey);
+      card.setAttribute("theme", theme);
+      container.appendChild(card);
+    };
+
+    // Check if script already loaded
+    const scriptId = "mypace-embed-script";
+    const existingScript = document.getElementById(scriptId);
+
+    if (existingScript) {
+      // Script already exists, create card
+      createCard();
+    } else {
+      // Load script first, then create card
+      const script = document.createElement("script");
+      script.id = scriptId;
+      script.src = "https://mypace.llll-ll.com/embed.js";
+      script.onload = createCard;
+      document.body.appendChild(script);
+    }
 
     return () => {
       container.innerHTML = "";

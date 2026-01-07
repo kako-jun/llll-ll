@@ -1,19 +1,53 @@
+import { useEffect, useRef } from "react";
 import { Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
-import { useNostr } from "@/hooks/useNostr";
 import { PopupTriangle } from "@/components/common";
-import NostrPostCard from "./NostrPostCard";
 
 interface NostrPopupProps {
   language: Language;
   isExpanded: boolean;
   profileRect: DOMRect | null;
   pubkey: string;
+  theme?: "light" | "dark";
 }
 
-export default function NostrPopup({ language, isExpanded, profileRect, pubkey }: NostrPopupProps) {
+export default function NostrPopup({ language, isExpanded, profileRect, pubkey, theme = "dark" }: NostrPopupProps) {
   const t = useTranslation(language);
-  const { posts, loading, error } = useNostr(pubkey);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Load embed.js script
+  useEffect(() => {
+    if (!isExpanded) return;
+
+    const scriptId = "mypace-embed-script";
+    if (document.getElementById(scriptId)) return;
+
+    const script = document.createElement("script");
+    script.id = scriptId;
+    script.src = "https://mypace.llll-ll.com/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, [isExpanded]);
+
+  // Create mypace-card element
+  useEffect(() => {
+    if (!isExpanded || !containerRef.current) return;
+
+    const container = containerRef.current;
+    // Clear existing content
+    container.innerHTML = "";
+
+    // Create mypace-card element
+    const card = document.createElement("mypace-card");
+    card.setAttribute("latest", "");
+    card.setAttribute("pubkey", pubkey);
+    card.setAttribute("theme", theme);
+    container.appendChild(card);
+
+    return () => {
+      container.innerHTML = "";
+    };
+  }, [isExpanded, pubkey, theme]);
 
   if (!isExpanded || !profileRect) return null;
 
@@ -57,32 +91,12 @@ export default function NostrPopup({ language, isExpanded, profileRect, pubkey }
       </h3>
 
       <div
-        className="nostr-content"
+        ref={containerRef}
         style={{
-          color: "var(--text-color)",
-          textAlign: "left",
-          lineHeight: "1.8",
-          fontSize: "1rem",
-          fontFamily: language === "zh" ? "'Noto Sans SC', sans-serif" : "inherit",
           maxHeight: "300px",
           overflowY: "auto",
-          padding: "0 0.5rem",
-          scrollbarColor: "var(--primary-color) var(--input-background)",
         }}
-      >
-        {loading && <p>{t.loading}</p>}
-        {error && <p style={{ color: "var(--error-color, #ff6b6b)" }}>Error: {error}</p>}
-        {!loading && !error && posts.length === 0 && (
-          <p style={{ color: "var(--muted-text)" }}>No posts found.</p>
-        )}
-        {!loading && !error && posts.length > 0 && (
-          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-            {posts.slice(0, 1).map((post) => (
-              <NostrPostCard key={post.id} post={post} />
-            ))}
-          </div>
-        )}
-      </div>
+      />
     </div>
   );
 }

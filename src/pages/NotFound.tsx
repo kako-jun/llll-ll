@@ -33,8 +33,10 @@ export default function NotFound() {
   const handleNumberClick = (clickedNumber: number) => {
     if (clickedNumber === currentNumber) {
       if (currentNumber === 16) {
+        const now = Date.now();
         setGameCompleted(true);
-        setEndTime(Date.now());
+        setEndTime(now);
+        submitScore(now - startTime);
       } else {
         setCurrentNumber(currentNumber + 1);
       }
@@ -49,6 +51,46 @@ export default function NotFound() {
     setGameCompleted(false);
     setStartTime(0);
     setEndTime(0);
+  };
+
+  // プレイヤー名生成
+  const generatePlayerName = (): string => {
+    const adjectives = [
+      "Swift",
+      "Clever",
+      "Brave",
+      "Quick",
+      "Smart",
+      "Fast",
+      "Sharp",
+      "Wise",
+      "Cool",
+      "Super",
+    ];
+    const animals = ["Fox", "Eagle", "Tiger", "Wolf", "Lion", "Hawk", "Bear", "Cat", "Dog", "Owl"];
+    const userString = `${navigator.userAgent}-${navigator.language}-${screen.width}x${screen.height}`;
+    let hash = 0;
+    for (let i = 0; i < userString.length; i++) {
+      const char = userString.charCodeAt(i);
+      hash = (hash << 5) - hash + char;
+      hash = hash & hash;
+    }
+    const adjIndex = Math.abs(hash) % adjectives.length;
+    const animalIndex = Math.abs(hash >> 8) % animals.length;
+    const number = (Math.abs(hash >> 16) % 999) + 1;
+    return `${adjectives[adjIndex]}${animals[animalIndex]}${number}`;
+  };
+
+  // スコア送信
+  const submitScore = async (timeMs: number) => {
+    const displayScore = (timeMs / 1000).toFixed(2) + "s";
+    const playerName = generatePlayerName();
+    const url = `https://api.nostalgic.llll-ll.com/ranking?action=submit&id=llll-ll-a235b610&name=${encodeURIComponent(playerName)}&score=${timeMs}&displayScore=${encodeURIComponent(displayScore)}`;
+    try {
+      await fetch(url);
+    } catch {
+      // Silent fail
+    }
   };
 
   // 数字を言葉で表現するマッピング

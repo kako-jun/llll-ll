@@ -105,7 +105,12 @@ function HomePage() {
 
         {/* Support BBS */}
         <section
-          style={{ padding: "2rem 1rem 4rem 1rem", display: "flex", justifyContent: "center" }}
+          style={{
+            padding: "2rem 1rem 4rem 1rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "flex-start",
+          }}
         >
           {/* @ts-expect-error - nostalgic-bbs is a custom element */}
           <nostalgic-bbs id="llll-ll-f843ad67" theme="retro" />

@@ -102,6 +102,20 @@ function HomePage() {
         ) : (
           <ProjectList products={products} language={language} />
         )}
+
+        {/* Support BBS */}
+        <section style={{ padding: "2rem 1rem", maxWidth: "800px", margin: "0 auto" }}>
+          <div
+            style={{
+              background: "radial-gradient(ellipse, #666666 60%, rgba(102, 102, 102, 0.3) 100%)",
+              padding: "10px",
+              borderRadius: "8px",
+            }}
+          >
+            {/* @ts-expect-error - nostalgic-bbs is a custom element */}
+            <nostalgic-bbs id="llll-ll-f843ad67" theme="retro" />
+          </div>
+        </section>
       </main>
 
       <Footer language={language} />

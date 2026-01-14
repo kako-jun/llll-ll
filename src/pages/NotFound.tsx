@@ -69,7 +69,17 @@ export default function NotFound() {
     ];
     const animals = ["Fox", "Eagle", "Tiger", "Wolf", "Lion", "Hawk", "Bear", "Cat", "Dog", "Owl"];
     // より多くのデバイス情報を使って異なる端末を区別する
-    const userString = `${navigator.userAgent}-${navigator.language}-${screen.width}x${screen.height}-${screen.colorDepth}-${navigator.hardwareConcurrency || 0}-${(navigator as Navigator & { deviceMemory?: number }).deviceMemory || 0}-${navigator.maxTouchPoints || 0}-${window.devicePixelRatio || 1}`;
+    // WebGL renderer情報を取得（GPUの違いで区別）
+    let renderer = '';
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl');
+      const debugInfo = gl?.getExtension('WEBGL_debug_renderer_info');
+      renderer = debugInfo ? gl?.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) || '' : '';
+    } catch {
+      renderer = '';
+    }
+    const userString = `${navigator.userAgent}-${navigator.language}-${screen.width}x${screen.height}-${screen.availWidth}x${screen.availHeight}-${screen.colorDepth}-${navigator.hardwareConcurrency || 0}-${(navigator as Navigator & { deviceMemory?: number }).deviceMemory || 0}-${navigator.maxTouchPoints || 0}-${window.devicePixelRatio || 1}-${renderer}`;
     let hash = 0;
     for (let i = 0; i < userString.length; i++) {
       const char = userString.charCodeAt(i);

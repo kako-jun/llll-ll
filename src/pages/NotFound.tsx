@@ -79,29 +79,8 @@ export default function NotFound() {
     } catch {
       renderer = "";
     }
-    // Canvas fingerprint（フォントレンダリングの微妙な違いで区別）
-    let canvasFingerprint = "";
-    try {
-      const canvas = document.createElement("canvas");
-      canvas.width = 200;
-      canvas.height = 50;
-      const ctx = canvas.getContext("2d");
-      if (ctx) {
-        ctx.textBaseline = "top";
-        ctx.font = "14px Arial";
-        ctx.fillStyle = "#f60";
-        ctx.fillRect(0, 0, 100, 30);
-        ctx.fillStyle = "#069";
-        ctx.fillText("Hello, world!", 2, 15);
-        ctx.fillStyle = "rgba(102, 204, 0, 0.7)";
-        ctx.fillText("Canvas fp", 4, 30);
-        canvasFingerprint = canvas.toDataURL().slice(-50);
-      }
-    } catch {
-      canvasFingerprint = "";
-    }
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
-    const userString = `${navigator.userAgent}-${navigator.language}-${screen.width}x${screen.height}-${screen.availWidth}x${screen.availHeight}-${screen.colorDepth}-${navigator.hardwareConcurrency || 0}-${(navigator as Navigator & { deviceMemory?: number }).deviceMemory || 0}-${navigator.maxTouchPoints || 0}-${window.devicePixelRatio || 1}-${renderer}-${canvasFingerprint}-${timezone}`;
+    const userString = `${navigator.userAgent}-${navigator.language}-${screen.width}x${screen.height}-${screen.availWidth}x${screen.availHeight}-${screen.colorDepth}-${navigator.hardwareConcurrency || 0}-${(navigator as Navigator & { deviceMemory?: number }).deviceMemory || 0}-${navigator.maxTouchPoints || 0}-${window.devicePixelRatio || 1}-${renderer}-${timezone}`;
     let hash = 0;
     for (let i = 0; i < userString.length; i++) {
       const char = userString.charCodeAt(i);

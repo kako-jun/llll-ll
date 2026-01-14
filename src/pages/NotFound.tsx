@@ -53,51 +53,10 @@ export default function NotFound() {
     setEndTime(0);
   };
 
-  // プレイヤー名生成
-  const generatePlayerName = (): string => {
-    const adjectives = [
-      "Swift",
-      "Clever",
-      "Brave",
-      "Quick",
-      "Smart",
-      "Fast",
-      "Sharp",
-      "Wise",
-      "Cool",
-      "Super",
-    ];
-    const animals = ["Fox", "Eagle", "Tiger", "Wolf", "Lion", "Hawk", "Bear", "Cat", "Dog", "Owl"];
-    // より多くのデバイス情報を使って異なる端末を区別する
-    // WebGL renderer情報を取得（GPUの違いで区別）
-    let renderer = "";
-    try {
-      const canvas = document.createElement("canvas");
-      const gl = canvas.getContext("webgl");
-      const debugInfo = gl?.getExtension("WEBGL_debug_renderer_info");
-      renderer = debugInfo ? gl?.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) || "" : "";
-    } catch {
-      renderer = "";
-    }
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
-    const userString = `${navigator.userAgent}-${navigator.language}-${screen.width}x${screen.height}-${screen.availWidth}x${screen.availHeight}-${screen.colorDepth}-${navigator.hardwareConcurrency || 0}-${(navigator as Navigator & { deviceMemory?: number }).deviceMemory || 0}-${navigator.maxTouchPoints || 0}-${window.devicePixelRatio || 1}-${renderer}-${timezone}`;
-    let hash = 0;
-    for (let i = 0; i < userString.length; i++) {
-      const char = userString.charCodeAt(i);
-      hash = (hash << 5) - hash + char;
-      hash = hash & hash;
-    }
-    const adjIndex = Math.abs(hash) % adjectives.length;
-    const animalIndex = Math.abs(hash >> 8) % animals.length;
-    const number = (Math.abs(hash >> 16) % 999) + 1;
-    return `${adjectives[adjIndex]}${animals[animalIndex]}${String(number).padStart(3, '0')}`;
-  };
-
-  // スコア送信
+  // スコア送信（名前はサーバー側で自動生成）
   const submitScore = async (timeMs: number) => {
     const displayScore = (timeMs / 1000).toFixed(2) + "s";
-    const playerName = generatePlayerName();
-    const url = `https://api.nostalgic.llll-ll.com/ranking?action=submit&id=llll-ll-a235b610&name=${encodeURIComponent(playerName)}&score=${timeMs}&displayScore=${encodeURIComponent(displayScore)}`;
+    const url = `https://api.nostalgic.llll-ll.com/ranking?action=submit&id=llll-ll-a235b610&score=${timeMs}&displayScore=${encodeURIComponent(displayScore)}`;
     try {
       await fetch(url);
     } catch {

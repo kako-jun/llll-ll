@@ -25,6 +25,10 @@ export default memo(function MediaItem({
     borderRadius: "4px",
     position: "relative",
     cursor: onClick ? "pointer" : "default",
+    backgroundColor: "var(--input-background)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   };
 
   const handleError = (e: React.SyntheticEvent<HTMLImageElement | HTMLVideoElement>) => {
@@ -103,9 +107,9 @@ export default memo(function MediaItem({
         src={src}
         alt={`${title} ${type === "animation" ? "animation" : ""} ${index + 1}`}
         style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
+          maxWidth: "100%",
+          maxHeight: "100%",
+          objectFit: "contain",
           transition: type !== "animation" ? "transform 0.2s ease" : undefined,
         }}
         loading="lazy"

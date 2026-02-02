@@ -14,7 +14,7 @@
       "es": "Una red social descentralizada que funciona con el protocolo Nostr. Sin instalación, sin registro de cuenta, solo abre en tu navegador. Características: descentralizado (no depende de ningún servidor específico), enfocado en privacidad (claves privadas solo almacenadas localmente), colores personales con gradiente de 4 esquinas estilo FF7, herramientas creativas (dibujo, notas de voz, stickers)."
     },
     "tags": ["Free", "OSS", "Web", "TypeScript", "Nostr"],
-    "images": ["https://mypace.llll-ll.com/icon-512x512.png"],
+    "images": ["https://mypace.llll-ll.com/apple-touch-icon.webp"],
     "demoUrl": "https://mypace.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/mypace",
     "createdAt": "2025-02-01",
@@ -195,7 +195,7 @@
       "es": "Ahorra tiempo para propietarios de pequeños negocios ocupados. Crea calendarios de negocios con detección automática de días festivos japoneses. Comparte instantáneamente en Instagram o LINE con edición de arrastrar y soltar."
     },
     "tags": ["Free", "OSS", "Web", "TypeScript", "Business"],
-    "images": ["https://3min.llll-ll.com/favicon.webp"],
+    "images": ["https://3min.llll-ll.com/icon-512.webp"],
     "demoUrl": "https://3min.llll-ll.com/",
     "repositoryUrl": "https://github.com/kako-jun/3min",
     "createdAt": "2025-01-05",

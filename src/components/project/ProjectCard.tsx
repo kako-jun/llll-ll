@@ -75,11 +75,10 @@ export default function ProjectCard({ product, language, isExpanded, onToggle }:
           noImageText={t.noImage}
           demoUrl={product.demoUrl}
           repositoryUrl={product.repositoryUrl}
-          developmentRecordUrl={product.developmentRecordUrl}
+          articles={product.articles}
           labels={{
             viewDemo: t.viewDemo,
             viewCode: t.viewCode,
-            viewDevelopmentRecord: t.viewDevelopmentRecord,
           }}
           onImageClick={handleImageClick}
           onVideoClick={handleVideoClick}

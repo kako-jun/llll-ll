@@ -79,13 +79,12 @@ export default function ProjectModal({ product, language, onClose }: ProjectModa
                 demoUrl={product.demoUrl}
                 repositoryUrl={product.repositoryUrl}
                 blogUrl={product.blogUrl}
-                developmentRecordUrl={product.developmentRecordUrl}
+                articles={product.articles}
                 supportUrl={product.supportUrl}
                 labels={{
                   viewDemo: t.viewDemo,
                   viewCode: t.viewCode,
                   viewBlog: t.viewBlog,
-                  viewDevelopmentRecord: t.viewDevelopmentRecord,
                   support: t.support,
                 }}
               />

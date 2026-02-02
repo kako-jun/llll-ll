@@ -3,6 +3,11 @@ import MediaGrid from "./MediaGrid";
 import TagList from "./TagList";
 import ActionButtons from "./ActionButtons";
 
+interface Article {
+  label: string;
+  url: string;
+}
+
 interface ExpandedViewProps {
   images: string[];
   videos?: string[];
@@ -12,11 +17,10 @@ interface ExpandedViewProps {
   noImageText: string;
   demoUrl?: string;
   repositoryUrl?: string;
-  developmentRecordUrl?: string[];
+  articles?: Article[];
   labels: {
     viewDemo: string;
     viewCode: string;
-    viewDevelopmentRecord: string;
   };
   onImageClick: (src: string, e: React.MouseEvent) => void;
   onVideoClick: (src: string, e: React.MouseEvent) => void;
@@ -31,7 +35,7 @@ export default memo(function ExpandedView({
   noImageText,
   demoUrl,
   repositoryUrl,
-  developmentRecordUrl,
+  articles,
   labels,
   onImageClick,
   onVideoClick,
@@ -60,7 +64,7 @@ export default memo(function ExpandedView({
       <ActionButtons
         demoUrl={demoUrl}
         repositoryUrl={repositoryUrl}
-        developmentRecordUrl={developmentRecordUrl}
+        articles={articles}
         labels={labels}
       />
     </div>

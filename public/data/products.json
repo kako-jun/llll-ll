@@ -1,114 +1,46 @@
 [
   {
-    "id": "noun-gender",
+    "id": "mypace",
     "title": {
-      "en": "Noun Gender: Learn Grammatical Gender in 8 Languages",
-      "ja": "Noun Gender: 8言語の名詞の性を学ぶ",
-      "zh": "Noun Gender: 学习8种语言的名词性别",
-      "es": "Noun Gender: Aprende el Género Gramatical en 8 Idiomas"
+      "en": "MY PACE: A Decentralized SNS on Nostr Protocol",
+      "ja": "MY PACE: マイペースでいいミディアムレアSNS",
+      "zh": "MY PACE: 基于Nostr协议的去中心化社交网络",
+      "es": "MY PACE: Una Red Social Descentralizada en el Protocolo Nostr"
     },
     "description": {
-      "en": "4,600+ words in French, German, Spanish, Italian, Portuguese, Russian, Arabic, Hindi with m/f/n gender systems. Search in English or target language with translations, meanings, memory tricks. Gender quiz shows score/streak. Web Speech API pronunciation. A-Z browse with infinite scroll. REST API (/api/search). 11-language UI.",
-      "ja": "フランス語、ドイツ語、スペイン語、イタリア語、ポルトガル語、ロシア語、アラビア語、ヒンディー語の4,600語以上。男性/女性/中性に対応。英語または対象言語で検索、翻訳・意味・記憶術付き。性クイズでスコアと連続正解数表示。Web Speech APIで発音。A-Zブラウズ（無限スクロール）。REST API (/api/search)。11言語UI。",
-      "zh": "法语、德语、西班牙语、意大利语、葡萄牙语、俄语、阿拉伯语、印地语4,600多个词汇，支持m/f/n性别系统。用英语或目标语言搜索，带翻译、释义、记忆技巧。性别测验显示分数和连续正确数。Web Speech API发音。A-Z浏览（无限滚动）。REST API (/api/search)。11种语言UI。",
-      "es": "4,600+ palabras en francés, alemán, español, italiano, portugués, ruso, árabe, hindi con sistemas de género m/f/n. Busca en inglés o idioma objetivo con traducciones, significados, trucos de memoria. Quiz de género muestra puntuación/racha. Pronunciación Web Speech API. Navegación A-Z con scroll infinito. REST API (/api/search). UI en 11 idiomas."
+      "en": "A decentralized SNS running on the Nostr protocol. No installation required, no account registration, just open in your browser. Features: decentralized (not dependent on any specific server), privacy-focused (private keys stored locally only), FF7-style 4-corner gradient personal colors, creative tools (drawing, voice memos, stickers).",
+      "ja": "Nostrプロトコル上で動作する分散型SNS。インストール不要、アカウント登録不要、ブラウザで開くだけ。特長：分散型（特定サーバーに依存しない）、プライバシー重視（秘密鍵はローカルのみに保存）、FF7風4隅グラデーションのパーソナルカラー、クリエイティブツール（お絵かき、ボイスメモ、ステッカー）。",
+      "zh": "运行在Nostr协议上的去中心化社交网络。无需安装、无需注册账户，只需在浏览器中打开。特点：去中心化（不依赖特定服务器）、注重隐私（私钥仅本地保存）、FF7风格4角渐变个人色彩、创意工具（绘图、语音备忘录、贴纸）。",
+      "es": "Una red social descentralizada que funciona con el protocolo Nostr. Sin instalación, sin registro de cuenta, solo abre en tu navegador. Características: descentralizado (no depende de ningún servidor específico), enfocado en privacidad (claves privadas solo almacenadas localmente), colores personales con gradiente de 4 esquinas estilo FF7, herramientas creativas (dibujo, notas de voz, stickers)."
     },
-    "tags": ["Free", "OSS", "Web", "TypeScript", "Language"],
-    "images": [
-      "https://raw.githubusercontent.com/kako-jun/noun-gender/refs/heads/main/public/apple-touch-icon.png"
-    ],
-    "demoUrl": "https://noun-gender.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/noun-gender",
-    "createdAt": "2024-01-01",
-    "updatedAt": "2025-08-08",
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Nostr"],
+    "images": ["https://raw.githubusercontent.com/kako-jun/mypace/main/public/icon-512x512.png"],
+    "demoUrl": "https://mypace.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/mypace",
+    "createdAt": "2025-02-01",
+    "updatedAt": "2025-02-01",
     "featured": true
   },
   {
-    "id": "nostalgic",
+    "id": "sasso",
     "title": {
-      "en": "Nostalgic: Revive 1990s Internet with 5 Retro Web Features",
-      "ja": "Nostalgic: 5つのレトロ機能で1990年代のインターネットを現代に",
-      "zh": "Nostalgic: 用5个复古功能复活1990年代互联网",
-      "es": "Nostalgic: Revive el Internet de los 90 con 5 Funciones Web Retro"
+      "en": "Sasso: Calculator Meets Puzzle - Eliminate Digits",
+      "ja": "Sasso: 電卓×パズル。数字を消す新感覚ゲーム",
+      "zh": "Sasso: 计算器遇上益智游戏。消除数字",
+      "es": "Sasso: Calculadora y puzzle - Elimina dígitos"
     },
     "description": {
-      "en": "Bring back 1990s internet culture with 5 nostalgic features: Counter, Like button, BBS, Ranking, and Lucky Cat widget. Simple GET API with no registration required. Web Components ready for easy integration into any static site.",
-      "ja": "カウンター、いいねボタン、掲示板、ランキング、招き猫ウィジェットの5つの懐かしい機能で1990年代のインターネット文化を再現。登録不要のシンプルなGET API。Web Components対応で静的サイトへの導入も簡単。",
-      "zh": "用5个怀旧功能重现1990年代互联网文化：计数器、点赞按钮、留言板、排行榜、招财猫小部件。无需注册的简单GET API。支持Web Components，轻松集成到任何静态网站。",
-      "es": "Revive la cultura de internet de los 90 con 5 funciones nostálgicas: Contador, botón Me gusta, BBS, Ranking y widget de Gato de la Suerte. API GET simple sin registro. Web Components listo para fácil integración en cualquier sitio estático."
+      "en": "A calculator-based puzzle game. Create adjacent identical digits to eliminate them. Master arithmetic for chain reactions. Features Calculator, Practice, and Endless modes with chain/preparation/risk score multipliers.",
+      "ja": "隣り合う同じ数字を消す電卓パズル。四則演算を駆使して連鎖を狙え。電卓モード、練習モード、エンドレスモードの3つのモード。連鎖・準備・リスクでスコア倍率アップ。",
+      "zh": "基于计算器的益智游戏。创造相邻的相同数字来消除它们。掌握四则运算实现连锁反应。提供计算器模式、练习模式、无尽模式，连锁、准备、风险倍率加成。",
+      "es": "Un juego de puzzle basado en calculadora. Crea dígitos idénticos adyacentes para eliminarlos. Domina la aritmética para reacciones en cadena. Incluye modos Calculadora, Práctica e Infinito con multiplicadores de puntuación por cadena/preparación/riesgo."
     },
-    "tags": ["Free", "OSS", "Web", "TypeScript", "Retro"],
-    "images": ["https://github.com/kako-jun/nostalgic/blob/main/public/favicon-48x48.png?raw=true"],
-    "demoUrl": "https://nostalgic.llll-ll.com/",
-    "repositoryUrl": "https://github.com/kako-jun/nostalgic",
-    "createdAt": "2025-01-20",
-    "updatedAt": "2025-08-07",
-    "featured": true
-  },
-  {
-    "id": "lawkit",
-    "title": {
-      "en": "lawkit: Detect Data Fraud with Statistical Laws",
-      "ja": "lawkit: データの不正を統計法則で見抜く",
-      "zh": "lawkit: 用统计法则检测数据欺诈",
-      "es": "lawkit: Detecta Fraude de Datos con Leyes Estadísticas"
-    },
-    "description": {
-      "en": "5 statistical laws for anomaly detection: Benford's Law (first digit for accounting/election fraud), Pareto (80/20 rule for sales), Zipf's Law (linguistics, web analytics), Normal/Poisson (QC, predictions). ASCII charts with risk level judgment. Built in Rust.",
-      "ja": "異常検出のための5つの統計法則：ベンフォードの法則（会計・選挙不正の第一桁分析）、パレートの法則（売上の80/20）、ジップの法則（言語学・Webアクセス解析）、正規分布・ポアソン分布（品質管理・予測）。ASCIIチャートでリスクレベル判定。Rust製。",
-      "zh": "5种统计法则用于异常检测：本福德法则（会计/选举欺诈的第一位数字分析）、帕累托法则（销售的80/20法则）、齐普夫法则（语言学、Web分析）、正态/泊松分布（质量控制、预测）。ASCII图表带风险级别判断。Rust构建。",
-      "es": "5 leyes estadísticas para detección de anomalías: Ley de Benford (primer dígito para fraude contable/electoral), Pareto (regla 80/20 para ventas), Ley de Zipf (lingüística, analítica web), Normal/Poisson (QC, predicciones). Gráficos ASCII con nivel de riesgo. Construido en Rust."
-    },
-    "tags": ["Free", "OSS", "CLI", "Rust", "Statistics"],
-    "images": ["/images/cli-terminal.webp"],
-    "repositoryUrl": "https://github.com/kako-jun/lawkit",
-    "createdAt": "2025-01-10",
-    "updatedAt": "2025-07-29",
-    "featured": true
-  },
-  {
-    "id": "sync-stone",
-    "title": {
-      "en": "SyncStone - Stardustmemoir: FF14 Lodestone Export Tool",
-      "ja": "SyncStone - 星紡のメモワール: FF14 ロドストのエクスポートツール",
-      "zh": "SyncStone - Stardustmemoir: FF14陆行鸟站导出工具",
-      "es": "SyncStone - Stardustmemoir: Herramienta de Exportación de FF14 Lodestone"
-    },
-    "description": {
-      "en": "Lodestone has no export function. This Chrome extension exports diary to Markdown+ZIP. Complete backup: title, body, images, comments, likes, date, tags. Bulk export with auto-generated index.md. 5 regions (JP/NA/EU/FR/DE). Can export friends' entries too. Server-friendly 2s interval.",
-      "ja": "ロドストにはエクスポート機能がない。このChrome拡張で日記をMarkdown+ZIPで保存。完全バックアップ：タイトル、本文、画像、コメント、いいね数、日付、タグ。一括エクスポートでindex.md自動生成。5リージョン（JP/NA/EU/FR/DE）対応。フレンドの記事もエクスポート可。サーバー負荷を考慮した2秒間隔。",
-      "zh": "陆行鸟站没有导出功能。这个Chrome扩展将日记导出为Markdown+ZIP。完整备份：标题、正文、图片、评论、点赞数、日期、标签。批量导出自动生成index.md。5个区域（JP/NA/EU/FR/DE）。可导出好友的条目。服务器友好的2秒间隔。",
-      "es": "Lodestone no tiene función de exportación. Esta extensión Chrome exporta diarios a Markdown+ZIP. Respaldo completo: título, cuerpo, imágenes, comentarios, likes, fecha, etiquetas. Exportación masiva con index.md auto-generado. 5 regiones (JP/NA/EU/FR/DE). Puede exportar entradas de amigos. Intervalo de 2s respetuoso con servidores."
-    },
-    "tags": ["Free", "OSS", "Extension", "TypeScript", "Gaming"],
-    "images": [
-      "https://raw.githubusercontent.com/kako-jun/sync-stone/refs/heads/main/chrome-extension/icons/icon128.png"
-    ],
-    "repositoryUrl": "https://github.com/kako-jun/sync-stone",
-    "developmentRecordUrl": ["https://zenn.dev/kako_jun/scraps/38ef9ae285ed5b"],
-    "createdAt": "2025-01-15",
-    "updatedAt": "2025-07-29",
-    "featured": false
-  },
-  {
-    "id": "diffai",
-    "title": {
-      "en": "diffai: \"Binary files differ\" Is Not Enough",
-      "ja": "diffai: 「Binary files differ」で終わらない",
-      "zh": "diffai: 「Binary files differ」不够用",
-      "es": "diffai: \"Binary files differ\" No Es Suficiente"
-    },
-    "description": {
-      "en": "Shows meaningful diffs for ML model files. 11 automatic analyses: learning rate, optimizer, loss, accuracy, model version, gradient, quantization, convergence, activation, attention, ensemble. Compares tensor statistics (mean, std). Supports PyTorch, Safetensors, NumPy, MATLAB. JSON/YAML output for CI/CD.",
-      "ja": "MLモデルファイルの意味ある差分を表示。11種類の自動分析：学習率、オプティマイザ、損失、精度、モデルバージョン、勾配、量子化、収束、アクティベーション、アテンション、アンサンブル。テンソル統計(mean, std)を比較。PyTorch、Safetensors、NumPy、MATLAB対応。CI/CD用JSON/YAML出力。",
-      "zh": "显示ML模型文件的有意义差异。11种自动分析：学习率、优化器、损失、精度、模型版本、梯度、量化、收敛、激活、注意力、集成。比较张量统计(mean, std)。支持PyTorch、Safetensors、NumPy、MATLAB。CI/CD用JSON/YAML输出。",
-      "es": "Muestra diferencias significativas para archivos de modelos ML. 11 análisis automáticos: learning rate, optimizador, pérdida, precisión, versión del modelo, gradiente, cuantización, convergencia, activación, atención, ensemble. Compara estadísticas de tensor (mean, std). Soporta PyTorch, Safetensors, NumPy, MATLAB. Salida JSON/YAML para CI/CD."
-    },
-    "tags": ["Free", "OSS", "CLI", "Rust", "ML"],
-    "images": ["/images/cli-terminal.webp"],
-    "repositoryUrl": "https://github.com/kako-jun/diffai",
-    "createdAt": "2025-01-20",
-    "updatedAt": "2025-01-20",
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Puzzle"],
+    "images": ["https://raw.githubusercontent.com/kako-jun/sasso/main/public/icon.svg"],
+    "demoUrl": "https://sasso.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/sasso",
+    "createdAt": "2025-01-25",
+    "updatedAt": "2025-01-25",
     "featured": true
   },
   {
@@ -131,8 +63,237 @@
     ],
     "demoUrl": "https://osaka-kenpo.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/osaka-kenpo",
-    "createdAt": "2024-01-01",
+    "createdAt": "2025-01-20",
+    "updatedAt": "2025-01-20",
+    "featured": true
+  },
+  {
+    "id": "noun-gender",
+    "title": {
+      "en": "Noun Gender: Learn Grammatical Gender in 8 Languages",
+      "ja": "Noun Gender: 8言語の名詞の性を学ぶ",
+      "zh": "Noun Gender: 学习8种语言的名词性别",
+      "es": "Noun Gender: Aprende el Género Gramatical en 8 Idiomas"
+    },
+    "description": {
+      "en": "4,600+ words in French, German, Spanish, Italian, Portuguese, Russian, Arabic, Hindi with m/f/n gender systems. Search in English or target language with translations, meanings, memory tricks. Gender quiz shows score/streak. Web Speech API pronunciation. A-Z browse with infinite scroll. REST API (/api/search). 11-language UI.",
+      "ja": "フランス語、ドイツ語、スペイン語、イタリア語、ポルトガル語、ロシア語、アラビア語、ヒンディー語の4,600語以上。男性/女性/中性に対応。英語または対象言語で検索、翻訳・意味・記憶術付き。性クイズでスコアと連続正解数表示。Web Speech APIで発音。A-Zブラウズ（無限スクロール）。REST API (/api/search)。11言語UI。",
+      "zh": "法语、德语、西班牙语、意大利语、葡萄牙语、俄语、阿拉伯语、印地语4,600多个词汇，支持m/f/n性别系统。用英语或目标语言搜索，带翻译、释义、记忆技巧。性别测验显示分数和连续正确数。Web Speech API发音。A-Z浏览（无限滚动）。REST API (/api/search)。11种语言UI。",
+      "es": "4,600+ palabras en francés, alemán, español, italiano, portugués, ruso, árabe, hindi con sistemas de género m/f/n. Busca en inglés o idioma objetivo con traducciones, significados, trucos de memoria. Quiz de género muestra puntuación/racha. Pronunciación Web Speech API. Navegación A-Z con scroll infinito. REST API (/api/search). UI en 11 idiomas."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Language"],
+    "images": [
+      "https://raw.githubusercontent.com/kako-jun/noun-gender/refs/heads/main/public/apple-touch-icon.png"
+    ],
+    "demoUrl": "https://noun-gender.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/noun-gender",
+    "createdAt": "2025-01-18",
     "updatedAt": "2025-01-18",
+    "featured": true
+  },
+  {
+    "id": "nostalgic",
+    "title": {
+      "en": "Nostalgic: Revive 1990s Internet with 5 Retro Web Features",
+      "ja": "Nostalgic: 5つのレトロ機能で1990年代のインターネットを現代に",
+      "zh": "Nostalgic: 用5个复古功能复活1990年代互联网",
+      "es": "Nostalgic: Revive el Internet de los 90 con 5 Funciones Web Retro"
+    },
+    "description": {
+      "en": "Bring back 1990s internet culture with 5 nostalgic features: Counter, Like button, BBS, Ranking, and Lucky Cat widget. Simple GET API with no registration required. Web Components ready for easy integration into any static site.",
+      "ja": "カウンター、いいねボタン、掲示板、ランキング、招き猫ウィジェットの5つの懐かしい機能で1990年代のインターネット文化を再現。登録不要のシンプルなGET API。Web Components対応で静的サイトへの導入も簡単。",
+      "zh": "用5个怀旧功能重现1990年代互联网文化：计数器、点赞按钮、留言板、排行榜、招财猫小部件。无需注册的简单GET API。支持Web Components，轻松集成到任何静态网站。",
+      "es": "Revive la cultura de internet de los 90 con 5 funciones nostálgicas: Contador, botón Me gusta, BBS, Ranking y widget de Gato de la Suerte. API GET simple sin registro. Web Components listo para fácil integración en cualquier sitio estático."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Retro"],
+    "images": ["https://github.com/kako-jun/nostalgic/blob/main/public/favicon-48x48.png?raw=true"],
+    "demoUrl": "https://nostalgic.llll-ll.com/",
+    "repositoryUrl": "https://github.com/kako-jun/nostalgic",
+    "createdAt": "2025-01-15",
+    "updatedAt": "2025-01-15",
+    "featured": true
+  },
+  {
+    "id": "chunkundo",
+    "title": {
+      "en": "chunkundo.nvim: Smart Undo Chunking for Neovim",
+      "ja": "chunkundo.nvim: Neovimのundoを賢くチャンク化",
+      "zh": "chunkundo.nvim: Neovim智能撤销分块",
+      "es": "chunkundo.nvim: Fragmentación inteligente de deshacer para Neovim"
+    },
+    "description": {
+      "en": "Neovim treats an entire insert session as one undo unit. This plugin breaks it into smaller chunks by time (default 300ms) and word boundaries (space/tab/enter/punctuation). Auto-adjusts to your typing pattern. Statusline shows u+5 (growing), u=12 (confirmed). A showcase for chillout.nvim's debounce/throttle/batch.",
+      "ja": "Neovimは挿入セッション全体を1つのundoにする。このプラグインは時間（デフォルト300ms）と単語境界（スペース/タブ/Enter/句読点）で小分けにする。タイピングパターンを学習して自動調整。ステータスラインでu+5（成長中）、u=12（確定）を表示。chillout.nvimのdebounce/throttle/batchのショーケース。",
+      "zh": "Neovim将整个插入会话作为一个撤销单位。这个插件按时间（默认300ms）和单词边界（空格/Tab/回车/标点）分割成小块。学习你的打字模式自动调整。状态栏显示u+5（增长中）、u=12（已确认）。chillout.nvim的debounce/throttle/batch展示案例。",
+      "es": "Neovim trata una sesión de inserción completa como una unidad de deshacer. Este plugin la divide en fragmentos más pequeños por tiempo (300ms por defecto) y límites de palabras (espacio/tab/enter/puntuación). Se auto-ajusta a tu patrón de escritura. Statusline muestra u+5 (creciendo), u=12 (confirmado). Demostración de debounce/throttle/batch de chillout.nvim."
+    },
+    "tags": ["Free", "OSS", "Plugin", "Lua", "Neovim"],
+    "images": ["/images/cli-terminal.webp"],
+    "repositoryUrl": "https://github.com/kako-jun/chunkundo.nvim",
+    "createdAt": "2025-01-12",
+    "updatedAt": "2025-01-12",
+    "featured": false
+  },
+  {
+    "id": "riscfetch",
+    "title": {
+      "en": "riscfetch: RISC-V Only. Exits on Other Architectures.",
+      "ja": "riscfetch: RISC-V専用。他のアーキテクチャでは動かない。",
+      "zh": "riscfetch: 仅限RISC-V。其他架构上会退出。",
+      "es": "riscfetch: Solo RISC-V. Sale en Otras Arquitecturas."
+    },
+    "description": {
+      "en": "Display RISC-V info in neofetch style. 144 extensions (98 Z + 46 S) grouped by category. 13 vendor logos: Pine64, SiFive, StarFive, Milk-V, Sipeed, T-Head, Kendryte, Allwinner, Espressif, SpacemiT, Sophgo, WCH. -e explains extensions, -a shows all 144 with ✓/✗, -j for JSON, -b for benchmarks. Complements fastfetch with -r.",
+      "ja": "neofetchスタイルでRISC-V情報を表示。144拡張（98 Z + 46 S）をカテゴリ別表示。13ベンダーロゴ：Pine64、SiFive、StarFive、Milk-V、Sipeed、T-Head、Kendryte、Allwinner、Espressif、SpacemiT、Sophgo、WCH。-eで拡張説明、-aで144全て✓/✗表示、-jでJSON、-bでベンチマーク。-rでfastfetchと併用可。",
+      "zh": "以neofetch风格显示RISC-V信息。144种扩展（98 Z + 46 S）按类别分组。13种厂商Logo：Pine64、SiFive、StarFive、Milk-V、Sipeed、T-Head、Kendryte、Allwinner、Espressif、SpacemiT、Sophgo、WCH。-e说明扩展、-a显示全部144种✓/✗、-j输出JSON、-b基准测试。-r配合fastfetch使用。",
+      "es": "Muestra info RISC-V en estilo neofetch. 144 extensiones (98 Z + 46 S) agrupadas por categoría. 13 logos de vendedores: Pine64, SiFive, StarFive, Milk-V, Sipeed, T-Head, Kendryte, Allwinner, Espressif, SpacemiT, Sophgo, WCH. -e explica extensiones, -a muestra 144 con ✓/✗, -j para JSON, -b para benchmarks. Complementa fastfetch con -r."
+    },
+    "tags": ["Free", "OSS", "CLI", "Rust", "RISC-V"],
+    "images": ["https://raw.githubusercontent.com/kako-jun/riscfetch/main/assets/screenshot.webp"],
+    "repositoryUrl": "https://github.com/kako-jun/riscfetch",
+    "createdAt": "2025-01-10",
+    "updatedAt": "2025-01-10",
+    "featured": false
+  },
+  {
+    "id": "agasteer",
+    "title": {
+      "en": "Agasteer: The Simplest Markdown App That Never Conflicts",
+      "ja": "Agasteer: コンフリクトしない最もシンプルなMarkdownノートアプリ",
+      "zh": "Agasteer: 永不冲突的最简Markdown笔记应用",
+      "es": "Agasteer: La aplicación Markdown más simple que nunca tiene conflictos"
+    },
+    "description": {
+      "en": "Direct GitHub sync without intermediate servers. Save directly to your GitHub repository with unique merge algorithm that safely syncs edits from multiple devices. No worry about data loss.",
+      "ja": "中間サーバーを介さずGitHubと直接同期。独自のマージアルゴリズムで複数デバイスからの編集も安全に同期。データは常にあなたの管理下に。",
+      "zh": "无需中间服务器直接同步GitHub。独特的合并算法可安全同步来自多个设备的编辑。数据始终在您的掌控之中。",
+      "es": "Sincronización directa con GitHub sin servidores intermedios. Guarda directamente en tu repositorio de GitHub con un algoritmo de fusión único que sincroniza ediciones de múltiples dispositivos de forma segura. Sin preocupaciones por pérdida de datos."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Markdown"],
+    "images": ["https://raw.githubusercontent.com/kako-jun/agasteer/main/public/favicon.png"],
+    "demoUrl": "https://agasteer.llll-ll.com/",
+    "repositoryUrl": "https://github.com/kako-jun/agasteer",
+    "createdAt": "2025-01-08",
+    "updatedAt": "2025-01-08",
+    "featured": true
+  },
+  {
+    "id": "3min",
+    "title": {
+      "en": "3 min. Calendar: Create Your Business Calendar in 3 Minutes",
+      "ja": "3 min. Calendar: 3分で営業カレンダー完成",
+      "zh": "3 min. Calendar: 3分钟完成营业日历",
+      "es": "3 min. Calendar: Crea tu calendario de negocios en 3 minutos"
+    },
+    "description": {
+      "en": "Save time for busy small business owners. Create business calendars with automatic Japanese holiday detection. Share instantly on Instagram or LINE with drag & drop editing.",
+      "ja": "がんばる個人経営者の時短に。日本の祝日を自動検出して営業カレンダーを作成。ドラッグ＆ドロップで簡単編集、InstagramやLINEでサッと共有できます。",
+      "zh": "为忙碌的个体经营者节省时间。自动检测日本节假日并创建营业日历。拖放编辑，轻松分享到Instagram或LINE。",
+      "es": "Ahorra tiempo para propietarios de pequeños negocios ocupados. Crea calendarios de negocios con detección automática de días festivos japoneses. Comparte instantáneamente en Instagram o LINE con edición de arrastrar y soltar."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Business"],
+    "images": ["https://raw.githubusercontent.com/kako-jun/3min/main/public/logo.webp"],
+    "demoUrl": "https://3min.llll-ll.com/",
+    "repositoryUrl": "https://github.com/kako-jun/3min",
+    "createdAt": "2025-01-05",
+    "updatedAt": "2025-01-05",
+    "featured": true
+  },
+  {
+    "id": "sync-stone",
+    "title": {
+      "en": "SyncStone - Stardustmemoir: FF14 Lodestone Export Tool",
+      "ja": "SyncStone - 星紡のメモワール: FF14 ロドストのエクスポートツール",
+      "zh": "SyncStone - Stardustmemoir: FF14陆行鸟站导出工具",
+      "es": "SyncStone - Stardustmemoir: Herramienta de Exportación de FF14 Lodestone"
+    },
+    "description": {
+      "en": "Lodestone has no export function. This Chrome extension exports diary to Markdown+ZIP. Complete backup: title, body, images, comments, likes, date, tags. Bulk export with auto-generated index.md. 5 regions (JP/NA/EU/FR/DE). Can export friends' entries too. Server-friendly 2s interval.",
+      "ja": "ロドストにはエクスポート機能がない。このChrome拡張で日記をMarkdown+ZIPで保存。完全バックアップ：タイトル、本文、画像、コメント、いいね数、日付、タグ。一括エクスポートでindex.md自動生成。5リージョン（JP/NA/EU/FR/DE）対応。フレンドの記事もエクスポート可。サーバー負荷を考慮した2秒間隔。",
+      "zh": "陆行鸟站没有导出功能。这个Chrome扩展将日记导出为Markdown+ZIP。完整备份：标题、正文、图片、评论、点赞数、日期、标签。批量导出自动生成index.md。5个区域（JP/NA/EU/FR/DE）。可导出好友的条目。服务器友好的2秒间隔。",
+      "es": "Lodestone no tiene función de exportación. Esta extensión Chrome exporta diarios a Markdown+ZIP. Respaldo completo: título, cuerpo, imágenes, comentarios, likes, fecha, etiquetas. Exportación masiva con index.md auto-generado. 5 regiones (JP/NA/EU/FR/DE). Puede exportar entradas de amigos. Intervalo de 2s respetuoso con servidores."
+    },
+    "tags": ["Free", "OSS", "Extension", "TypeScript", "Gaming"],
+    "images": [
+      "https://raw.githubusercontent.com/kako-jun/sync-stone/refs/heads/main/chrome-extension/icons/icon128.png"
+    ],
+    "repositoryUrl": "https://github.com/kako-jun/sync-stone",
+    "articles": [{ "label": "Zenn", "url": "https://zenn.dev/kako_jun/scraps/38ef9ae285ed5b" }],
+    "createdAt": "2025-01-01",
+    "updatedAt": "2025-01-01",
+    "featured": false
+  },
+  {
+    "id": "lawkit",
+    "title": {
+      "en": "lawkit: Detect Data Fraud with Statistical Laws",
+      "ja": "lawkit: データの不正を統計法則で見抜く",
+      "zh": "lawkit: 用统计法则检测数据欺诈",
+      "es": "lawkit: Detecta Fraude de Datos con Leyes Estadísticas"
+    },
+    "description": {
+      "en": "5 statistical laws for anomaly detection: Benford's Law (first digit for accounting/election fraud), Pareto (80/20 rule for sales), Zipf's Law (linguistics, web analytics), Normal/Poisson (QC, predictions). ASCII charts with risk level judgment. Built in Rust.",
+      "ja": "異常検出のための5つの統計法則：ベンフォードの法則（会計・選挙不正の第一桁分析）、パレートの法則（売上の80/20）、ジップの法則（言語学・Webアクセス解析）、正規分布・ポアソン分布（品質管理・予測）。ASCIIチャートでリスクレベル判定。Rust製。",
+      "zh": "5种统计法则用于异常检测：本福德法则（会计/选举欺诈的第一位数字分析）、帕累托法则（销售的80/20法则）、齐普夫法则（语言学、Web分析）、正态/泊松分布（质量控制、预测）。ASCII图表带风险级别判断。Rust构建。",
+      "es": "5 leyes estadísticas para detección de anomalías: Ley de Benford (primer dígito para fraude contable/electoral), Pareto (regla 80/20 para ventas), Ley de Zipf (lingüística, analítica web), Normal/Poisson (QC, predicciones). Gráficos ASCII con nivel de riesgo. Construido en Rust."
+    },
+    "tags": ["Free", "OSS", "CLI", "Rust", "Statistics"],
+    "images": ["/images/cli-terminal.webp"],
+    "repositoryUrl": "https://github.com/kako-jun/lawkit",
+    "createdAt": "2024-12-20",
+    "updatedAt": "2024-12-20",
+    "featured": true
+  },
+  {
+    "id": "diffai",
+    "title": {
+      "en": "diffai: \"Binary files differ\" Is Not Enough",
+      "ja": "diffai: 「Binary files differ」で終わらない",
+      "zh": "diffai: 「Binary files differ」不够用",
+      "es": "diffai: \"Binary files differ\" No Es Suficiente"
+    },
+    "description": {
+      "en": "Shows meaningful diffs for ML model files. 11 automatic analyses: learning rate, optimizer, loss, accuracy, model version, gradient, quantization, convergence, activation, attention, ensemble. Compares tensor statistics (mean, std). Supports PyTorch, Safetensors, NumPy, MATLAB. JSON/YAML output for CI/CD.",
+      "ja": "MLモデルファイルの意味ある差分を表示。11種類の自動分析：学習率、オプティマイザ、損失、精度、モデルバージョン、勾配、量子化、収束、アクティベーション、アテンション、アンサンブル。テンソル統計(mean, std)を比較。PyTorch、Safetensors、NumPy、MATLAB対応。CI/CD用JSON/YAML出力。",
+      "zh": "显示ML模型文件的有意义差异。11种自动分析：学习率、优化器、损失、精度、模型版本、梯度、量化、收敛、激活、注意力、集成。比较张量统计(mean, std)。支持PyTorch、Safetensors、NumPy、MATLAB。CI/CD用JSON/YAML输出。",
+      "es": "Muestra diferencias significativas para archivos de modelos ML. 11 análisis automáticos: learning rate, optimizador, pérdida, precisión, versión del modelo, gradiente, cuantización, convergencia, activación, atención, ensemble. Compara estadísticas de tensor (mean, std). Soporta PyTorch, Safetensors, NumPy, MATLAB. Salida JSON/YAML para CI/CD."
+    },
+    "tags": ["Free", "OSS", "CLI", "Rust", "ML"],
+    "images": ["/images/cli-terminal.webp"],
+    "repositoryUrl": "https://github.com/kako-jun/diffai",
+    "createdAt": "2024-12-15",
+    "updatedAt": "2024-12-15",
+    "featured": true
+  },
+  {
+    "id": "diffx",
+    "title": {
+      "en": "diffx: Shows Only Meaningful Changes",
+      "ja": "diffx: 意味のある変更だけを表示",
+      "zh": "diffx: 只显示有意义的变更",
+      "es": "diffx: Muestra Solo Cambios Significativos"
+    },
+    "description": {
+      "en": "When key ordering changes in JSON/YAML, traditional diff shows every line as changed. diffx understands structure and shows what actually changed. Supports 6 formats (JSON, YAML, TOML, XML, INI, CSV) with auto-detection, array element ID-key comparison, recursive directory diff, and JSON/YAML output for CI/CD.",
+      "ja": "JSON/YAMLでキー順序が変わると従来のdiffは全行が変更として表示される。diffxは構造を理解し、本当に変わった部分だけを表示。6形式（JSON、YAML、TOML、XML、INI、CSV）自動検出対応、配列要素のIDキー比較、ディレクトリ再帰比較、CI/CD用JSON/YAML出力。",
+      "zh": "JSON/YAML的键顺序改变时，传统diff显示每行都变了。diffx理解结构，只显示真正变化的部分。支持6种格式（JSON、YAML、TOML、XML、INI、CSV）自动检测、数组元素ID键比较、目录递归比较、CI/CD用JSON/YAML输出。",
+      "es": "Cuando el orden de claves en JSON/YAML cambia, diff tradicional muestra cada línea como modificada. diffx entiende la estructura y muestra lo que realmente cambió. Soporta 6 formatos (JSON, YAML, TOML, XML, INI, CSV) con autodetección, comparación de arrays por ID-key, diff recursivo de directorios, y salida JSON/YAML para CI/CD."
+    },
+    "tags": ["Free", "OSS", "CLI", "Rust", "Diff"],
+    "images": [
+      "/images/cli-terminal.webp",
+      "https://storage.googleapis.com/zenn-user-upload/a82eab0d5859-20250706.png"
+    ],
+    "repositoryUrl": "https://github.com/kako-jun/diffx",
+    "articles": [
+      {
+        "label": "Dev.to",
+        "url": "https://dev.to/kako-jun/i-built-diffx-a-structure-aware-ai-first-diff-tool-in-rust-lets-end-the-comma-induced-suffering-491h"
+      },
+      { "label": "Zenn", "url": "https://zenn.dev/kako_jun/articles/1d518f47225f42" }
+    ],
+    "createdAt": "2024-12-10",
+    "updatedAt": "2024-12-10",
     "featured": true
   },
   {
@@ -158,145 +319,9 @@
     "videos": ["https://youtu.be/bE_fR3AcX78", "https://youtu.be/MatsIe3Pgoc"],
     "demoUrl": "https://sid-note.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/sid-note",
-    "developmentRecordUrl": ["https://zenn.dev/kako_jun/articles/00dde8f9a28524"],
+    "articles": [{ "label": "Zenn", "url": "https://zenn.dev/kako_jun/articles/00dde8f9a28524" }],
     "createdAt": "2024-01-01",
     "updatedAt": "2024-12-01",
-    "featured": true
-  },
-  {
-    "id": "diffx",
-    "title": {
-      "en": "diffx: Shows Only Meaningful Changes",
-      "ja": "diffx: 意味のある変更だけを表示",
-      "zh": "diffx: 只显示有意义的变更",
-      "es": "diffx: Muestra Solo Cambios Significativos"
-    },
-    "description": {
-      "en": "When key ordering changes in JSON/YAML, traditional diff shows every line as changed. diffx understands structure and shows what actually changed. Supports 6 formats (JSON, YAML, TOML, XML, INI, CSV) with auto-detection, array element ID-key comparison, recursive directory diff, and JSON/YAML output for CI/CD.",
-      "ja": "JSON/YAMLでキー順序が変わると従来のdiffは全行が変更として表示される。diffxは構造を理解し、本当に変わった部分だけを表示。6形式（JSON、YAML、TOML、XML、INI、CSV）自動検出対応、配列要素のIDキー比較、ディレクトリ再帰比較、CI/CD用JSON/YAML出力。",
-      "zh": "JSON/YAML的键顺序改变时，传统diff显示每行都变了。diffx理解结构，只显示真正变化的部分。支持6种格式（JSON、YAML、TOML、XML、INI、CSV）自动检测、数组元素ID键比较、目录递归比较、CI/CD用JSON/YAML输出。",
-      "es": "Cuando el orden de claves en JSON/YAML cambia, diff tradicional muestra cada línea como modificada. diffx entiende la estructura y muestra lo que realmente cambió. Soporta 6 formatos (JSON, YAML, TOML, XML, INI, CSV) con autodetección, comparación de arrays por ID-key, diff recursivo de directorios, y salida JSON/YAML para CI/CD."
-    },
-    "tags": ["Free", "OSS", "CLI", "Rust", "Diff"],
-    "images": [
-      "/images/cli-terminal.webp",
-      "https://storage.googleapis.com/zenn-user-upload/a82eab0d5859-20250706.png"
-    ],
-    "repositoryUrl": "https://github.com/kako-jun/diffx",
-    "developmentRecordUrl": [
-      "https://dev.to/kako-jun/i-built-diffx-a-structure-aware-ai-first-diff-tool-in-rust-lets-end-the-comma-induced-suffering-491h",
-      "https://zenn.dev/kako_jun/articles/1d518f47225f42"
-    ],
-    "createdAt": "2024-07-20",
-    "updatedAt": "2024-07-20",
-    "featured": true
-  },
-  {
-    "id": "3min",
-    "title": {
-      "en": "3 min. Calendar: Create Your Business Calendar in 3 Minutes",
-      "ja": "3 min. Calendar: 3分で営業カレンダー完成",
-      "zh": "3 min. Calendar: 3分钟完成营业日历",
-      "es": "3 min. Calendar: Crea tu calendario de negocios en 3 minutos"
-    },
-    "description": {
-      "en": "Save time for busy small business owners. Create business calendars with automatic Japanese holiday detection. Share instantly on Instagram or LINE with drag & drop editing.",
-      "ja": "がんばる個人経営者の時短に。日本の祝日を自動検出して営業カレンダーを作成。ドラッグ＆ドロップで簡単編集、InstagramやLINEでサッと共有できます。",
-      "zh": "为忙碌的个体经营者节省时间。自动检测日本节假日并创建营业日历。拖放编辑，轻松分享到Instagram或LINE。",
-      "es": "Ahorra tiempo para propietarios de pequeños negocios ocupados. Crea calendarios de negocios con detección automática de días festivos japoneses. Comparte instantáneamente en Instagram o LINE con edición de arrastrar y soltar."
-    },
-    "tags": ["Free", "OSS", "Web", "TypeScript", "Business"],
-    "images": ["https://raw.githubusercontent.com/kako-jun/3min/main/public/logo.webp"],
-    "demoUrl": "https://3min.llll-ll.com/",
-    "repositoryUrl": "https://github.com/kako-jun/3min",
-    "createdAt": "2025-01-01",
-    "updatedAt": "2025-01-01",
-    "featured": true
-  },
-  {
-    "id": "agasteer",
-    "title": {
-      "en": "Agasteer: The Simplest Markdown App That Never Conflicts",
-      "ja": "Agasteer: コンフリクトしない最もシンプルなMarkdownノートアプリ",
-      "zh": "Agasteer: 永不冲突的最简Markdown笔记应用",
-      "es": "Agasteer: La aplicación Markdown más simple que nunca tiene conflictos"
-    },
-    "description": {
-      "en": "Direct GitHub sync without intermediate servers. Save directly to your GitHub repository with unique merge algorithm that safely syncs edits from multiple devices. No worry about data loss.",
-      "ja": "中間サーバーを介さずGitHubと直接同期。独自のマージアルゴリズムで複数デバイスからの編集も安全に同期。データは常にあなたの管理下に。",
-      "zh": "无需中间服务器直接同步GitHub。独特的合并算法可安全同步来自多个设备的编辑。数据始终在您的掌控之中。",
-      "es": "Sincronización directa con GitHub sin servidores intermedios. Guarda directamente en tu repositorio de GitHub con un algoritmo de fusión único que sincroniza ediciones de múltiples dispositivos de forma segura. Sin preocupaciones por pérdida de datos."
-    },
-    "tags": ["Free", "OSS", "Web", "TypeScript", "Markdown"],
-    "images": ["https://raw.githubusercontent.com/kako-jun/agasteer/main/public/favicon.png"],
-    "demoUrl": "https://agasteer.llll-ll.com/",
-    "repositoryUrl": "https://github.com/kako-jun/agasteer",
-    "createdAt": "2025-01-01",
-    "updatedAt": "2025-01-01",
-    "featured": true
-  },
-  {
-    "id": "chunkundo",
-    "title": {
-      "en": "chunkundo.nvim: Smart Undo Chunking for Neovim",
-      "ja": "chunkundo.nvim: Neovimのundoを賢くチャンク化",
-      "zh": "chunkundo.nvim: Neovim智能撤销分块",
-      "es": "chunkundo.nvim: Fragmentación inteligente de deshacer para Neovim"
-    },
-    "description": {
-      "en": "Neovim treats an entire insert session as one undo unit. This plugin breaks it into smaller chunks by time (default 300ms) and word boundaries (space/tab/enter/punctuation). Auto-adjusts to your typing pattern. Statusline shows u+5 (growing), u=12 (confirmed). A showcase for chillout.nvim's debounce/throttle/batch.",
-      "ja": "Neovimは挿入セッション全体を1つのundoにする。このプラグインは時間（デフォルト300ms）と単語境界（スペース/タブ/Enter/句読点）で小分けにする。タイピングパターンを学習して自動調整。ステータスラインでu+5（成長中）、u=12（確定）を表示。chillout.nvimのdebounce/throttle/batchのショーケース。",
-      "zh": "Neovim将整个插入会话作为一个撤销单位。这个插件按时间（默认300ms）和单词边界（空格/Tab/回车/标点）分割成小块。学习你的打字模式自动调整。状态栏显示u+5（增长中）、u=12（已确认）。chillout.nvim的debounce/throttle/batch展示案例。",
-      "es": "Neovim trata una sesión de inserción completa como una unidad de deshacer. Este plugin la divide en fragmentos más pequeños por tiempo (300ms por defecto) y límites de palabras (espacio/tab/enter/puntuación). Se auto-ajusta a tu patrón de escritura. Statusline muestra u+5 (creciendo), u=12 (confirmado). Demostración de debounce/throttle/batch de chillout.nvim."
-    },
-    "tags": ["Free", "OSS", "Plugin", "Lua", "Neovim"],
-    "images": ["/images/cli-terminal.webp"],
-    "repositoryUrl": "https://github.com/kako-jun/chunkundo.nvim",
-    "createdAt": "2025-01-01",
-    "updatedAt": "2025-01-01",
-    "featured": false
-  },
-  {
-    "id": "riscfetch",
-    "title": {
-      "en": "riscfetch: RISC-V Only. Exits on Other Architectures.",
-      "ja": "riscfetch: RISC-V専用。他のアーキテクチャでは動かない。",
-      "zh": "riscfetch: 仅限RISC-V。其他架构上会退出。",
-      "es": "riscfetch: Solo RISC-V. Sale en Otras Arquitecturas."
-    },
-    "description": {
-      "en": "Display RISC-V info in neofetch style. 144 extensions (98 Z + 46 S) grouped by category. 13 vendor logos: Pine64, SiFive, StarFive, Milk-V, Sipeed, T-Head, Kendryte, Allwinner, Espressif, SpacemiT, Sophgo, WCH. -e explains extensions, -a shows all 144 with ✓/✗, -j for JSON, -b for benchmarks. Complements fastfetch with -r.",
-      "ja": "neofetchスタイルでRISC-V情報を表示。144拡張（98 Z + 46 S）をカテゴリ別表示。13ベンダーロゴ：Pine64、SiFive、StarFive、Milk-V、Sipeed、T-Head、Kendryte、Allwinner、Espressif、SpacemiT、Sophgo、WCH。-eで拡張説明、-aで144全て✓/✗表示、-jでJSON、-bでベンチマーク。-rでfastfetchと併用可。",
-      "zh": "以neofetch风格显示RISC-V信息。144种扩展（98 Z + 46 S）按类别分组。13种厂商Logo：Pine64、SiFive、StarFive、Milk-V、Sipeed、T-Head、Kendryte、Allwinner、Espressif、SpacemiT、Sophgo、WCH。-e说明扩展、-a显示全部144种✓/✗、-j输出JSON、-b基准测试。-r配合fastfetch使用。",
-      "es": "Muestra info RISC-V en estilo neofetch. 144 extensiones (98 Z + 46 S) agrupadas por categoría. 13 logos de vendedores: Pine64, SiFive, StarFive, Milk-V, Sipeed, T-Head, Kendryte, Allwinner, Espressif, SpacemiT, Sophgo, WCH. -e explica extensiones, -a muestra 144 con ✓/✗, -j para JSON, -b para benchmarks. Complementa fastfetch con -r."
-    },
-    "tags": ["Free", "OSS", "CLI", "Rust", "RISC-V"],
-    "images": ["https://raw.githubusercontent.com/kako-jun/riscfetch/main/assets/screenshot.webp"],
-    "repositoryUrl": "https://github.com/kako-jun/riscfetch",
-    "createdAt": "2025-01-01",
-    "updatedAt": "2025-01-01",
-    "featured": false
-  },
-  {
-    "id": "sasso",
-    "title": {
-      "en": "Sasso: Calculator Meets Puzzle - Eliminate Digits",
-      "ja": "Sasso: 電卓×パズル。数字を消す新感覚ゲーム",
-      "zh": "Sasso: 计算器遇上益智游戏。消除数字",
-      "es": "Sasso: Calculadora y puzzle - Elimina dígitos"
-    },
-    "description": {
-      "en": "A calculator-based puzzle game. Create adjacent identical digits to eliminate them. Master arithmetic for chain reactions. Features Calculator, Practice, and Endless modes with chain/preparation/risk score multipliers.",
-      "ja": "隣り合う同じ数字を消す電卓パズル。四則演算を駆使して連鎖を狙え。電卓モード、練習モード、エンドレスモードの3つのモード。連鎖・準備・リスクでスコア倍率アップ。",
-      "zh": "基于计算器的益智游戏。创造相邻的相同数字来消除它们。掌握四则运算实现连锁反应。提供计算器模式、练习模式、无尽模式，连锁、准备、风险倍率加成。",
-      "es": "Un juego de puzzle basado en calculadora. Crea dígitos idénticos adyacentes para eliminarlos. Domina la aritmética para reacciones en cadena. Incluye modos Calculadora, Práctica e Infinito con multiplicadores de puntuación por cadena/preparación/riesgo."
-    },
-    "tags": ["Free", "OSS", "Web", "TypeScript", "Puzzle"],
-    "images": ["https://raw.githubusercontent.com/kako-jun/sasso/main/public/icon.svg"],
-    "demoUrl": "https://sasso.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/sasso",
-    "createdAt": "2025-01-01",
-    "updatedAt": "2025-01-01",
     "featured": true
   }
 ]

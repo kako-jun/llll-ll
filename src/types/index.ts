@@ -1,5 +1,10 @@
 export type Language = "en" | "zh" | "ja" | "es";
 
+export interface Article {
+  label: string;
+  url: string;
+}
+
 export interface Product {
   id: string;
   title: Record<Language, string>;
@@ -10,7 +15,7 @@ export interface Product {
   videos?: string[];
   demoUrl?: string;
   repositoryUrl?: string;
-  developmentRecordUrl?: string[];
+  articles?: Article[];
   blogUrl?: string[];
   supportUrl?: string;
   createdAt: string;

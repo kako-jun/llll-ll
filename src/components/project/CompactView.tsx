@@ -98,7 +98,7 @@ export default memo(function CompactView({
             }}
           />
 
-          {!isExpanded && <TagList tags={tags} compact maxTags={4} />}
+          {!isExpanded && <TagList tags={tags} compact />}
         </div>
       </div>
     </div>

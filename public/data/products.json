@@ -14,7 +14,7 @@
       "es": "Una red social descentralizada que funciona con el protocolo Nostr. Sin instalación, sin registro de cuenta, solo abre en tu navegador. Características: descentralizado (no depende de ningún servidor específico), enfocado en privacidad (claves privadas solo almacenadas localmente), colores personales con gradiente de 4 esquinas estilo FF7, herramientas creativas (dibujo, notas de voz, stickers)."
     },
     "tags": ["Free", "OSS", "Web", "TypeScript", "Nostr"],
-    "images": ["https://raw.githubusercontent.com/kako-jun/mypace/main/public/icon-512x512.png"],
+    "images": ["https://mypace.llll-ll.com/icon-512x512.png"],
     "demoUrl": "https://mypace.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/mypace",
     "createdAt": "2025-02-01",
@@ -106,7 +106,7 @@
       "es": "Revive la cultura de internet de los 90 con 5 funciones nostálgicas: Contador, botón Me gusta, BBS, Ranking y widget de Gato de la Suerte. API GET simple sin registro. Web Components listo para fácil integración en cualquier sitio estático."
     },
     "tags": ["Free", "OSS", "Web", "TypeScript", "Retro"],
-    "images": ["https://github.com/kako-jun/nostalgic/blob/main/public/favicon-48x48.png?raw=true"],
+    "images": ["https://nostalgic.llll-ll.com/favicon-48x48.png"],
     "demoUrl": "https://nostalgic.llll-ll.com/",
     "repositoryUrl": "https://github.com/kako-jun/nostalgic",
     "createdAt": "2025-01-15",
@@ -192,7 +192,7 @@
       "es": "Ahorra tiempo para propietarios de pequeños negocios ocupados. Crea calendarios de negocios con detección automática de días festivos japoneses. Comparte instantáneamente en Instagram o LINE con edición de arrastrar y soltar."
     },
     "tags": ["Free", "OSS", "Web", "TypeScript", "Business"],
-    "images": ["https://raw.githubusercontent.com/kako-jun/3min/main/public/logo.webp"],
+    "images": ["https://3min.llll-ll.com/favicon.webp"],
     "demoUrl": "https://3min.llll-ll.com/",
     "repositoryUrl": "https://github.com/kako-jun/3min",
     "createdAt": "2025-01-05",

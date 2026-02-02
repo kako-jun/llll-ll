@@ -4,7 +4,7 @@
     "title": {
       "en": "Noun Gender: Multilingual Gender Learning App",
       "ja": "Noun Gender: 名詞性別学習アプリ",
-      "zh": "名词性别：多语言性别学习应用",
+      "zh": "Noun Gender: 多语言性别学习应用",
       "es": "Noun Gender: Aplicación de Aprendizaje de Género de Sustantivos"
     },
     "description": {
@@ -35,30 +35,21 @@
     "featured": true
   },
   {
-    "id": "nostalgic-counter",
+    "id": "nostalgic",
     "title": {
-      "en": "Nostalgic Counter: Retro Free Access Counter Revived with Modern Technology",
-      "ja": "Nostalgic Counter: 最新技術で復活したレトロな無料アクセスカウンター",
-      "zh": "Nostalgic Counter: 用现代技术复活的复古免费访问计数器",
-      "es": "Nostalgic Counter: Contador de Acceso Gratuito Retro Revivido con Tecnología Moderna"
+      "en": "Nostalgic: Revive 1990s Internet with 5 Retro Web Features",
+      "ja": "Nostalgic: 5つのレトロ機能で1990年代のインターネットを現代に",
+      "zh": "Nostalgic: 用5个复古功能复活1990年代互联网",
+      "es": "Nostalgic: Revive el Internet de los 90 con 5 Funciones Web Retro"
     },
     "description": {
-      "en": "A nostalgic web counter service that recreates 1990s internet culture. Displays total, today, yesterday, weekly, and monthly counts.\n\nNo user registration required. Just provide the URL to measure and a secret token. Open source, so you can also host it on Vercel for personal use.",
-      "ja": "1990年代のインターネット文化を再現した懐かしいWebカウンターサービス。累計・今日・昨日・週間・月間を表示可能。\n\nユーザー登録なし。計測したいURLと合言葉トークンのみで利用可能。オープンソースなので、自分専用としてVercelにホストすることも可能。",
-      "zh": "重现1990年代互联网文化的怀旧网页计数器服务。可显示累计、今日、昨日、本周、本月访问数。\n\n无需用户注册。仅需提供要测量的URL和密码令牌即可使用。开源项目，也可以在Vercel上搭建个人专用版本。",
-      "es": "Servicio de contador web nostálgico que recrea la cultura de internet de los años 1990. Muestra conteos totales, de hoy, ayer, semanales y mensuales.\n\nSin registro de usuario requerido. Solo proporciona la URL a medir y un token secreto. Es de código abierto, así que también puedes alojarlo en Vercel para uso personal."
+      "en": "Bring back 1990s internet culture with 5 nostalgic features: Counter, Like button, BBS, Ranking, and Lucky Cat widget. Simple GET API with no registration required. Web Components ready for easy integration into any static site.",
+      "ja": "カウンター、いいねボタン、掲示板、ランキング、招き猫ウィジェットの5つの懐かしい機能で1990年代のインターネット文化を再現。登録不要のシンプルなGET API。Web Components対応で静的サイトへの導入も簡単。",
+      "zh": "用5个怀旧功能重现1990年代互联网文化：计数器、点赞按钮、留言板、排行榜、招财猫小部件。无需注册的简单GET API。支持Web Components，轻松集成到任何静态网站。",
+      "es": "Revive la cultura de internet de los 90 con 5 funciones nostálgicas: Contador, botón Me gusta, BBS, Ranking y widget de Gato de la Suerte. API GET simple sin registro. Web Components listo para fácil integración en cualquier sitio estático."
     },
-    "tags": [
-      "Free",
-      "Next.js",
-      "TypeScript",
-      "Redis",
-      "Web Components",
-      "OSS"
-    ],
-    "images": [
-      "https://github.com/kako-jun/nostalgic/blob/main/public/favicon-48x48.png?raw=true"
-    ],
+    "tags": ["Free", "Next.js", "TypeScript", "Redis", "Web Components", "OSS"],
+    "images": ["https://github.com/kako-jun/nostalgic/blob/main/public/favicon-48x48.png?raw=true"],
     "demoUrl": "https://nostalgic.llll-ll.com/",
     "repositoryUrl": "https://github.com/kako-jun/nostalgic",
     "createdAt": "2025-01-20",
@@ -89,9 +80,7 @@
       "Cross-Platform",
       "OSS"
     ],
-    "images": [
-      "/images/cli-terminal.webp"
-    ],
+    "images": ["/images/cli-terminal.webp"],
     "repositoryUrl": "https://github.com/kako-jun/lawkit",
     "createdAt": "2025-01-10",
     "updatedAt": "2025-07-29",
@@ -111,21 +100,12 @@
       "zh": "FINAL FANTASY XIV 的官方博客服务 The Lodestone 没有导出功能。这个Chrome扩展可以让您将日志条目导出为Markdown格式。\n\n包括图片和评论。支持单篇导出和全部条目的批量导出。备份您的FFXIV回忆。",
       "es": "El servicio oficial de blog de FINAL FANTASY XIV, The Lodestone, no tiene función de exportación. Esta extensión de Chrome te permite exportar entradas en formato Markdown.\n\nIncluye imágenes y comentarios. Compatible con exportación individual y exportación masiva de todas las entradas. Guarda tus recuerdos de FFXIV."
     },
-    "tags": [
-      "Free",
-      "Chrome Extension",
-      "TypeScript",
-      "Export Tool",
-      "Gaming",
-      "OSS"
-    ],
+    "tags": ["Free", "Chrome Extension", "TypeScript", "Export Tool", "Gaming", "OSS"],
     "images": [
       "https://raw.githubusercontent.com/kako-jun/sync-stone/refs/heads/main/chrome-extension/icons/icon128.png"
     ],
     "repositoryUrl": "https://github.com/kako-jun/sync-stone",
-    "developmentRecordUrl": [
-      "https://zenn.dev/kako_jun/scraps/38ef9ae285ed5b"
-    ],
+    "developmentRecordUrl": ["https://zenn.dev/kako_jun/scraps/38ef9ae285ed5b"],
     "createdAt": "2025-01-15",
     "updatedAt": "2025-07-29",
     "featured": false
@@ -144,20 +124,8 @@
       "zh": "专为AI/ML工作流程设计的下一代差异比较工具。提供PyTorch模型、Safetensors、NumPy数组和MATLAB文件的深度语义分析。具备30多种ML分析功能，包括张量级比较、量化分析和部署就绪评估。使用Rust构建以确保高性能。",
       "es": "Herramienta de diferencias de próxima generación especializada en flujos de trabajo de IA/ML. Proporciona análisis semántico profundo de modelos PyTorch, Safetensors, arrays NumPy y archivos MATLAB. Cuenta con más de 30 capacidades de análisis ML incluyendo comparaciones a nivel de tensor, análisis de cuantización y evaluación de preparación para despliegue. Construido en Rust para alto rendimiento."
     },
-    "tags": [
-      "Rust",
-      "CLI",
-      "AI",
-      "ML",
-      "PyTorch",
-      "Safetensors",
-      "NumPy",
-      "MATLAB",
-      "OSS"
-    ],
-    "images": [
-      "/images/cli-terminal.webp"
-    ],
+    "tags": ["Rust", "CLI", "AI", "ML", "PyTorch", "Safetensors", "NumPy", "MATLAB", "OSS"],
+    "images": ["/images/cli-terminal.webp"],
     "repositoryUrl": "https://github.com/kako-jun/diffai",
     "createdAt": "2025-01-20",
     "updatedAt": "2025-01-20",
@@ -166,10 +134,10 @@
   {
     "id": "osaka-kenpo",
     "title": {
-      "en": "Osaka-Kenpo: Legal Text Translation in Osaka Dialect",
+      "en": "Osaka Kenpo: Legal Text Translation in Osaka Dialect",
       "ja": "おおさかけんぽう: 大阪弁による法律条文翻訳サイト",
       "zh": "大阪宪法: 大阪方言法律条文翻译网站",
-      "es": "Osaka-Kenpo: Traducción de Textos Legales al Dialecto de Osaka"
+      "es": "Osaka Kenpo: Traducción de Textos Legales al Dialecto de Osaka"
     },
     "description": {
       "en": "A web application that translates complex legal texts into friendly Osaka dialect explanations. Features comprehensive coverage of Japanese laws, foreign laws, historical laws, and international treaties with warm, accessible Osaka-ben translations inspired by Kasuga Ayumu from 'Azumanga Daioh'.",
@@ -227,15 +195,10 @@
       "https://storage.googleapis.com/zenn-user-upload/5f02c372318d-20250622.png",
       "https://storage.googleapis.com/zenn-user-upload/10b0af181da2-20250622.png"
     ],
-    "videos": [
-      "https://youtu.be/bE_fR3AcX78",
-      "https://youtu.be/MatsIe3Pgoc"
-    ],
+    "videos": ["https://youtu.be/bE_fR3AcX78", "https://youtu.be/MatsIe3Pgoc"],
     "demoUrl": "https://sid-note.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/sid-note",
-    "developmentRecordUrl": [
-      "https://zenn.dev/kako_jun/articles/00dde8f9a28524"
-    ],
+    "developmentRecordUrl": ["https://zenn.dev/kako_jun/articles/00dde8f9a28524"],
     "createdAt": "2024-01-01",
     "updatedAt": "2024-12-01",
     "featured": true
@@ -254,15 +217,7 @@
       "zh": "通过理解JSON和YAML等结构化数据文件的语义结构来比较它们，而不是传统的逐行比较。专为AI代理在自动化任务中使用而设计。使用Rust构建，并提供Python (pip) 和 Node.js (npm) 的包装器。",
       "es": "Compara archivos de datos estructurados como JSON y YAML entendiendo su estructura semántica, en lugar de la comparación tradicional línea por línea. Diseñado para su uso en tareas automatizadas por agentes de IA. Construido en Rust, con envoltorios disponibles para Python (pip) y Node.js (npm)."
     },
-    "tags": [
-      "Rust",
-      "CLI",
-      "AI",
-      "JSON",
-      "YAML",
-      "TOML",
-      "OSS"
-    ],
+    "tags": ["Rust", "CLI", "AI", "JSON", "YAML", "TOML", "OSS"],
     "images": [
       "/images/cli-terminal.webp",
       "https://storage.googleapis.com/zenn-user-upload/a82eab0d5859-20250706.png"
@@ -274,6 +229,123 @@
     ],
     "createdAt": "2024-07-20",
     "updatedAt": "2024-07-20",
+    "featured": true
+  },
+  {
+    "id": "3min",
+    "title": {
+      "en": "3 min. Calendar: Create Your Business Calendar in 3 Minutes",
+      "ja": "3 min. Calendar: 3分で営業カレンダー完成",
+      "zh": "3 min. Calendar: 3分钟完成营业日历",
+      "es": "3 min. Calendar: Crea tu calendario de negocios en 3 minutos"
+    },
+    "description": {
+      "en": "Save time for busy small business owners. Create business calendars with automatic Japanese holiday detection. Share instantly on Instagram or LINE with drag & drop editing.",
+      "ja": "がんばる個人経営者の時短に。日本の祝日を自動検出して営業カレンダーを作成。ドラッグ＆ドロップで簡単編集、InstagramやLINEでサッと共有できます。",
+      "zh": "为忙碌的个体经营者节省时间。自动检测日本节假日并创建营业日历。拖放编辑，轻松分享到Instagram或LINE。",
+      "es": "Ahorra tiempo para propietarios de pequeños negocios ocupados. Crea calendarios de negocios con detección automática de días festivos japoneses. Comparte instantáneamente en Instagram o LINE con edición de arrastrar y soltar."
+    },
+    "tags": ["Free", "Next.js", "TypeScript", "Web App", "Business", "Calendar", "OSS"],
+    "images": ["https://raw.githubusercontent.com/kako-jun/3min/main/public/logo.webp"],
+    "demoUrl": "https://3min.llll-ll.com/",
+    "repositoryUrl": "https://github.com/kako-jun/3min",
+    "createdAt": "2025-01-01",
+    "updatedAt": "2025-01-01",
+    "featured": true
+  },
+  {
+    "id": "agasteer",
+    "title": {
+      "en": "Agasteer: The Simplest Markdown App That Never Conflicts",
+      "ja": "Agasteer: コンフリクトしない最もシンプルなMarkdownノートアプリ",
+      "zh": "Agasteer: 永不冲突的最简Markdown笔记应用",
+      "es": "Agasteer: La aplicación Markdown más simple que nunca tiene conflictos"
+    },
+    "description": {
+      "en": "Direct GitHub sync without intermediate servers. Save directly to your GitHub repository with unique merge algorithm that safely syncs edits from multiple devices. No worry about data loss.",
+      "ja": "中間サーバーを介さずGitHubと直接同期。独自のマージアルゴリズムで複数デバイスからの編集も安全に同期。データは常にあなたの管理下に。",
+      "zh": "无需中间服务器直接同步GitHub。独特的合并算法可安全同步来自多个设备的编辑。数据始终在您的掌控之中。",
+      "es": "Sincronización directa con GitHub sin servidores intermedios. Guarda directamente en tu repositorio de GitHub con un algoritmo de fusión único que sincroniza ediciones de múltiples dispositivos de forma segura. Sin preocupaciones por pérdida de datos."
+    },
+    "tags": [
+      "Free",
+      "Next.js",
+      "TypeScript",
+      "Web App",
+      "Markdown",
+      "GitHub",
+      "Note Taking",
+      "OSS"
+    ],
+    "images": ["https://raw.githubusercontent.com/kako-jun/agasteer/main/public/favicon.png"],
+    "demoUrl": "https://agasteer.llll-ll.com/",
+    "repositoryUrl": "https://github.com/kako-jun/agasteer",
+    "createdAt": "2025-01-01",
+    "updatedAt": "2025-01-01",
+    "featured": true
+  },
+  {
+    "id": "chunkundo",
+    "title": {
+      "en": "chunkundo.nvim: Smart Undo Chunking for Neovim",
+      "ja": "chunkundo.nvim: Neovimのundoを賢くチャンク化",
+      "zh": "chunkundo.nvim: Neovim智能撤销分块",
+      "es": "chunkundo.nvim: Fragmentación inteligente de deshacer para Neovim"
+    },
+    "description": {
+      "en": "Undo incrementally even in long edit sessions. Detects typing pauses and splits undo units automatically. Learns your typing pattern and adjusts interval. Built on chillout.nvim's debounce/throttle/batch library.",
+      "ja": "長い編集セッションでもインクリメンタルにundo可能。タイピングの間を検出して自動でundo単位を分割。あなたのタイピングパターンを学習し最適な間隔を自動調整。chillout.nvimのdebounce/throttle/batchを活用。",
+      "zh": "即使在长时间编辑中也能增量撤销。检测打字间隔自动分割撤销单位。学习你的打字模式并自动调整间隔。基于chillout.nvim的debounce/throttle/batch库。",
+      "es": "Deshaz incrementalmente incluso en sesiones de edición largas. Detecta pausas de escritura y divide unidades de deshacer automáticamente. Aprende tu patrón de escritura y ajusta el intervalo. Construido sobre la biblioteca debounce/throttle/batch de chillout.nvim."
+    },
+    "tags": ["Free", "Neovim", "Lua", "Plugin", "Editor", "OSS"],
+    "images": ["/images/cli-terminal.webp"],
+    "repositoryUrl": "https://github.com/kako-jun/chunkundo.nvim",
+    "createdAt": "2025-01-01",
+    "updatedAt": "2025-01-01",
+    "featured": false
+  },
+  {
+    "id": "riscfetch",
+    "title": {
+      "en": "riscfetch: System Info Tool for RISC-V Architecture",
+      "ja": "riscfetch: RISC-V専用システム情報ツール",
+      "zh": "riscfetch: RISC-V专用系统信息工具",
+      "es": "riscfetch: Herramienta de información del sistema para arquitectura RISC-V"
+    },
+    "description": {
+      "en": "Display RISC-V specific information in neofetch style. Supports 144 RISC-V extensions (98 Z-extensions and 46 S-extensions) with category display. Features 13 vendor ASCII art logos including Pine64, SiFive, StarFive, WCH. JSON output for CI/CD integration.",
+      "ja": "neofetchスタイルでRISC-V固有の情報を表示。144種類のRISC-V拡張（98のZ拡張と46のS拡張）をカテゴリ別に表示。Pine64、SiFive、StarFive、WCHなど13種のベンダーロゴをアスキーアートで表示。CI/CD連携用JSON出力対応。",
+      "zh": "以neofetch风格显示RISC-V特定信息。支持144种RISC-V扩展（98个Z扩展和46个S扩展）分类显示。包含Pine64、SiFive、StarFive、WCH等13种厂商ASCII艺术Logo。支持JSON输出用于CI/CD集成。",
+      "es": "Muestra información específica de RISC-V en estilo neofetch. Soporta 144 extensiones RISC-V (98 extensiones Z y 46 extensiones S) con visualización por categorías. Incluye 13 logos ASCII de vendedores incluyendo Pine64, SiFive, StarFive, WCH. Salida JSON para integración CI/CD."
+    },
+    "tags": ["Free", "Rust", "CLI", "RISC-V", "System Info", "Cross-Platform", "OSS"],
+    "images": ["https://raw.githubusercontent.com/kako-jun/riscfetch/main/assets/screenshot.webp"],
+    "repositoryUrl": "https://github.com/kako-jun/riscfetch",
+    "createdAt": "2025-01-01",
+    "updatedAt": "2025-01-01",
+    "featured": false
+  },
+  {
+    "id": "sasso",
+    "title": {
+      "en": "Sasso: Calculator Meets Puzzle - Eliminate Digits",
+      "ja": "Sasso: 電卓×パズル。数字を消す新感覚ゲーム",
+      "zh": "Sasso: 计算器遇上益智游戏。消除数字",
+      "es": "Sasso: Calculadora y puzzle - Elimina dígitos"
+    },
+    "description": {
+      "en": "A calculator-based puzzle game. Create adjacent identical digits to eliminate them. Master arithmetic for chain reactions. Features Calculator, Practice, and Endless modes with chain/preparation/risk score multipliers.",
+      "ja": "隣り合う同じ数字を消す電卓パズル。四則演算を駆使して連鎖を狙え。電卓モード、練習モード、エンドレスモードの3つのモード。連鎖・準備・リスクでスコア倍率アップ。",
+      "zh": "基于计算器的益智游戏。创造相邻的相同数字来消除它们。掌握四则运算实现连锁反应。提供计算器模式、练习模式、无尽模式，连锁、准备、风险倍率加成。",
+      "es": "Un juego de puzzle basado en calculadora. Crea dígitos idénticos adyacentes para eliminarlos. Domina la aritmética para reacciones en cadena. Incluye modos Calculadora, Práctica e Infinito con multiplicadores de puntuación por cadena/preparación/riesgo."
+    },
+    "tags": ["Free", "Next.js", "TypeScript", "Web App", "Game", "Puzzle", "OSS"],
+    "images": ["https://raw.githubusercontent.com/kako-jun/sasso/main/public/icon.svg"],
+    "demoUrl": "https://sasso.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/sasso",
+    "createdAt": "2025-01-01",
+    "updatedAt": "2025-01-01",
     "featured": true
   }
 ]

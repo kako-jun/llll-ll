@@ -2,16 +2,16 @@
   {
     "id": "noun-gender",
     "title": {
-      "en": "Noun Gender: Multilingual Gender Learning App",
-      "ja": "Noun Gender: 名詞性別学習アプリ",
-      "zh": "Noun Gender: 多语言性别学习应用",
-      "es": "Noun Gender: Aplicación de Aprendizaje de Género de Sustantivos"
+      "en": "Noun Gender: Learn Grammatical Gender in 8 Languages",
+      "ja": "Noun Gender: 8言語の名詞の性を学ぶ",
+      "zh": "Noun Gender: 学习8种语言的名词性别",
+      "es": "Noun Gender: Aprende el Género Gramatical en 8 Idiomas"
     },
     "description": {
-      "en": "A web application for learning and searching gendered nouns in languages like French, German, and Spanish. Features 4,651 multilingual words with interactive search, A-Z dictionary browsing, gender quizzes, speech synthesis, memory tricks, and 11-language UI support.",
-      "ja": "フランス語、ドイツ語、スペイン語などの名詞に性別のある言語の学習・検索用Webアプリケーション。4,651語の多言語データベース、インタラクティブ検索、A-Z辞書ブラウズ、性別クイズ、音声読み上げ、暗記術、11言語UI対応を備えています。",
-      "zh": "用于学习和搜索法语、德语、西班牙语等语言中有性别的名词的Web应用程序。拥有4,651个多语言单词数据库，支持交互式搜索、A-Z词典浏览、性别测验、语音合成、记忆技巧和11种语言UI。",
-      "es": "Una aplicación web para aprender y buscar sustantivos con género en idiomas como francés, alemán y español. Cuenta con una base de datos multilingüe de 4,651 palabras con búsqueda interactiva, navegación de diccionario A-Z, cuestionarios de género, síntesis de voz, trucos de memoria y soporte de UI en 11 idiomas."
+      "en": "4,600+ words in French, German, Spanish, Italian, Portuguese, Russian, Arabic, Hindi with m/f/n gender systems. Search in English or target language with translations, meanings, memory tricks. Gender quiz shows score/streak. Web Speech API pronunciation. A-Z browse with infinite scroll. REST API (/api/search). 11-language UI.",
+      "ja": "フランス語、ドイツ語、スペイン語、イタリア語、ポルトガル語、ロシア語、アラビア語、ヒンディー語の4,600語以上。男性/女性/中性に対応。英語または対象言語で検索、翻訳・意味・記憶術付き。性クイズでスコアと連続正解数表示。Web Speech APIで発音。A-Zブラウズ（無限スクロール）。REST API (/api/search)。11言語UI。",
+      "zh": "法语、德语、西班牙语、意大利语、葡萄牙语、俄语、阿拉伯语、印地语4,600多个词汇，支持m/f/n性别系统。用英语或目标语言搜索，带翻译、释义、记忆技巧。性别测验显示分数和连续正确数。Web Speech API发音。A-Z浏览（无限滚动）。REST API (/api/search)。11种语言UI。",
+      "es": "4,600+ palabras en francés, alemán, español, italiano, portugués, ruso, árabe, hindi con sistemas de género m/f/n. Busca en inglés o idioma objetivo con traducciones, significados, trucos de memoria. Quiz de género muestra puntuación/racha. Pronunciación Web Speech API. Navegación A-Z con scroll infinito. REST API (/api/search). UI en 11 idiomas."
     },
     "tags": [
       "Free",
@@ -59,16 +59,16 @@
   {
     "id": "lawkit",
     "title": {
-      "en": "lawkit: Multi-Law Statistical Analysis Toolkit",
-      "ja": "lawkit: 多法則統計解析ツールキット",
-      "zh": "lawkit: 多法则统计分析工具包",
-      "es": "lawkit: Kit de herramientas de análisis estadístico multi-ley"
+      "en": "lawkit: Detect Data Fraud with Statistical Laws",
+      "ja": "lawkit: データの不正を統計法則で見抜く",
+      "zh": "lawkit: 用统计法则检测数据欺诈",
+      "es": "lawkit: Detecta Fraude de Datos con Leyes Estadísticas"
     },
     "description": {
-      "en": "High-performance statistical analysis toolkit for uncovering hidden patterns and detecting anomalies automatically. Supports multiple distribution laws (Benford, Pareto, Zipf, Normal, Poisson) with parallel processing and visual ASCII charts. Built in Rust for 11.7x performance improvement.",
-      "ja": "隠れたパターンの発見と異常の自動検出を行う高性能統計解析ツールキット。複数の分布法則（ベンフォード、パレート、ジップ、正規、ポアソン）をサポートし、並列処理とビジュアルASCIIチャートを提供。11.7倍の性能向上を実現するRust製。",
-      "zh": "用于发现隐藏模式和自动检测异常的高性能统计分析工具包。支持多种分布法则（本福德、帕累托、齐普夫、正态、泊松），具备并行处理和可视化ASCII图表功能。使用Rust构建，性能提升11.7倍。",
-      "es": "Kit de herramientas de análisis estadístico de alto rendimiento para descubrir patrones ocultos y detectar anomalías automáticamente. Soporta múltiples leyes de distribución (Benford, Pareto, Zipf, Normal, Poisson) con procesamiento paralelo y gráficos ASCII visuales. Construido en Rust para una mejora de rendimiento de 11.7x."
+      "en": "5 statistical laws for anomaly detection: Benford's Law (first digit for accounting/election fraud), Pareto (80/20 rule for sales), Zipf's Law (linguistics, web analytics), Normal/Poisson (QC, predictions). ASCII charts with risk level judgment. Built in Rust.",
+      "ja": "異常検出のための5つの統計法則：ベンフォードの法則（会計・選挙不正の第一桁分析）、パレートの法則（売上の80/20）、ジップの法則（言語学・Webアクセス解析）、正規分布・ポアソン分布（品質管理・予測）。ASCIIチャートでリスクレベル判定。Rust製。",
+      "zh": "5种统计法则用于异常检测：本福德法则（会计/选举欺诈的第一位数字分析）、帕累托法则（销售的80/20法则）、齐普夫法则（语言学、Web分析）、正态/泊松分布（质量控制、预测）。ASCII图表带风险级别判断。Rust构建。",
+      "es": "5 leyes estadísticas para detección de anomalías: Ley de Benford (primer dígito para fraude contable/electoral), Pareto (regla 80/20 para ventas), Ley de Zipf (lingüística, analítica web), Normal/Poisson (QC, predicciones). Gráficos ASCII con nivel de riesgo. Construido en Rust."
     },
     "tags": [
       "Rust",
@@ -95,10 +95,10 @@
       "es": "SyncStone - Stardustmemoir: Herramienta de Exportación de FF14 Lodestone"
     },
     "description": {
-      "en": "The official blog service for FINAL FANTASY XIV, The Lodestone, doesn't have an export function. This Chrome extension allows you to export entries in Markdown format.\n\nIncludes images and comments. Supports both individual entry export and bulk export of all entries. Back up your FFXIV memories.",
-      "ja": "FINAL FANTASY XIV の公式ブログサービスであるロドストには、エクスポート機能がありません。このChrome拡張機能を使うと、エントリーをMarkdown形式でエクスポートできます。\n\n画像、コメントも対象。記事ごとのエクスポートにも、全記事の一括エクスポートにも対応。FFXIVの思い出をバックアップしましょう。",
-      "zh": "FINAL FANTASY XIV 的官方博客服务 The Lodestone 没有导出功能。这个Chrome扩展可以让您将日志条目导出为Markdown格式。\n\n包括图片和评论。支持单篇导出和全部条目的批量导出。备份您的FFXIV回忆。",
-      "es": "El servicio oficial de blog de FINAL FANTASY XIV, The Lodestone, no tiene función de exportación. Esta extensión de Chrome te permite exportar entradas en formato Markdown.\n\nIncluye imágenes y comentarios. Compatible con exportación individual y exportación masiva de todas las entradas. Guarda tus recuerdos de FFXIV."
+      "en": "Lodestone has no export function. This Chrome extension exports diary to Markdown+ZIP. Complete backup: title, body, images, comments, likes, date, tags. Bulk export with auto-generated index.md. 5 regions (JP/NA/EU/FR/DE). Can export friends' entries too. Server-friendly 2s interval.",
+      "ja": "ロドストにはエクスポート機能がない。このChrome拡張で日記をMarkdown+ZIPで保存。完全バックアップ：タイトル、本文、画像、コメント、いいね数、日付、タグ。一括エクスポートでindex.md自動生成。5リージョン（JP/NA/EU/FR/DE）対応。フレンドの記事もエクスポート可。サーバー負荷を考慮した2秒間隔。",
+      "zh": "陆行鸟站没有导出功能。这个Chrome扩展将日记导出为Markdown+ZIP。完整备份：标题、正文、图片、评论、点赞数、日期、标签。批量导出自动生成index.md。5个区域（JP/NA/EU/FR/DE）。可导出好友的条目。服务器友好的2秒间隔。",
+      "es": "Lodestone no tiene función de exportación. Esta extensión Chrome exporta diarios a Markdown+ZIP. Respaldo completo: título, cuerpo, imágenes, comentarios, likes, fecha, etiquetas. Exportación masiva con index.md auto-generado. 5 regiones (JP/NA/EU/FR/DE). Puede exportar entradas de amigos. Intervalo de 2s respetuoso con servidores."
     },
     "tags": ["Free", "Chrome Extension", "TypeScript", "Export Tool", "Gaming", "OSS"],
     "images": [
@@ -113,16 +113,16 @@
   {
     "id": "diffai",
     "title": {
-      "en": "diffai: ML-Specialized Diff Tool for PyTorch, Safetensors & Scientific Data",
-      "ja": "diffai: PyTorch、Safetensors、科学データ対応のML特化差分ツール",
-      "zh": "diffai: 针对PyTorch、Safetensors和科学数据的ML专用差异比较工具",
-      "es": "diffai: Herramienta de diferencias especializada en ML para PyTorch, Safetensors y datos científicos"
+      "en": "diffai: \"Binary files differ\" Is Not Enough",
+      "ja": "diffai: 「Binary files differ」で終わらない",
+      "zh": "diffai: 「Binary files differ」不够用",
+      "es": "diffai: \"Binary files differ\" No Es Suficiente"
     },
     "description": {
-      "en": "Next-generation diff tool specialized for AI/ML workflows. Provides deep, semantic analysis of PyTorch models, Safetensors, NumPy arrays, and MATLAB files. Features 30+ ML analysis capabilities including tensor-level comparisons, quantization analysis, and deployment readiness assessment. Built in Rust for performance.",
-      "ja": "AI/MLワークフロー専用の次世代差分ツールです。PyTorchモデル、Safetensors、NumPy配列、MATLABファイルの深いセマンティック解析を提供します。テンソルレベル比較、量子化解析、デプロイメント準備評価など30以上のML解析機能を搭載。高性能のRust製。",
-      "zh": "专为AI/ML工作流程设计的下一代差异比较工具。提供PyTorch模型、Safetensors、NumPy数组和MATLAB文件的深度语义分析。具备30多种ML分析功能，包括张量级比较、量化分析和部署就绪评估。使用Rust构建以确保高性能。",
-      "es": "Herramienta de diferencias de próxima generación especializada en flujos de trabajo de IA/ML. Proporciona análisis semántico profundo de modelos PyTorch, Safetensors, arrays NumPy y archivos MATLAB. Cuenta con más de 30 capacidades de análisis ML incluyendo comparaciones a nivel de tensor, análisis de cuantización y evaluación de preparación para despliegue. Construido en Rust para alto rendimiento."
+      "en": "Shows meaningful diffs for ML model files. 11 automatic analyses: learning rate, optimizer, loss, accuracy, model version, gradient, quantization, convergence, activation, attention, ensemble. Compares tensor statistics (mean, std). Supports PyTorch, Safetensors, NumPy, MATLAB. JSON/YAML output for CI/CD.",
+      "ja": "MLモデルファイルの意味ある差分を表示。11種類の自動分析：学習率、オプティマイザ、損失、精度、モデルバージョン、勾配、量子化、収束、アクティベーション、アテンション、アンサンブル。テンソル統計(mean, std)を比較。PyTorch、Safetensors、NumPy、MATLAB対応。CI/CD用JSON/YAML出力。",
+      "zh": "显示ML模型文件的有意义差异。11种自动分析：学习率、优化器、损失、精度、模型版本、梯度、量化、收敛、激活、注意力、集成。比较张量统计(mean, std)。支持PyTorch、Safetensors、NumPy、MATLAB。CI/CD用JSON/YAML输出。",
+      "es": "Muestra diferencias significativas para archivos de modelos ML. 11 análisis automáticos: learning rate, optimizador, pérdida, precisión, versión del modelo, gradiente, cuantización, convergencia, activación, atención, ensemble. Compara estadísticas de tensor (mean, std). Soporta PyTorch, Safetensors, NumPy, MATLAB. Salida JSON/YAML para CI/CD."
     },
     "tags": ["Rust", "CLI", "AI", "ML", "PyTorch", "Safetensors", "NumPy", "MATLAB", "OSS"],
     "images": ["/images/cli-terminal.webp"],
@@ -134,16 +134,16 @@
   {
     "id": "osaka-kenpo",
     "title": {
-      "en": "Osaka Kenpo: Legal Text Translation in Osaka Dialect",
-      "ja": "おおさかけんぽう: 大阪弁による法律条文翻訳サイト",
-      "zh": "大阪宪法: 大阪方言法律条文翻译网站",
-      "es": "Osaka Kenpo: Traducción de Textos Legales al Dialecto de Osaka"
+      "en": "Osaka Kenpo: Legal Texts in Friendly Osaka Dialect",
+      "ja": "おおさかけんぽう: 難解な法律を、親しみやすい大阪弁で。",
+      "zh": "大阪宪法: 用亲切的大阪方言解读法律",
+      "es": "Osaka Kenpo: Textos Legales en Dialecto de Osaka Amigable"
     },
     "description": {
-      "en": "A web application that translates complex legal texts into friendly Osaka dialect explanations. Features comprehensive coverage of Japanese laws, foreign laws, historical laws, and international treaties with warm, accessible Osaka-ben translations inspired by Kasuga Ayumu from 'Azumanga Daioh'.",
-      "ja": "難解な法律条文を親しみやすい大阪弁に翻訳して解説するWebアプリケーション。日本の現行法・歴史法、外国法、国際条約を幅広くカバーし、『あずまんが大王』の春日歩をイメージした温かい口調で法律を身近に感じられます。",
-      "zh": "将复杂的法律条文翻译成亲切的大阪方言解说的Web应用程序。全面覆盖日本现行法律、历史法律、外国法律和国际条约，以《阿兹漫画大王》中春日步为灵感的温暖语调让法律更加亲近。",
-      "es": "Una aplicación web que traduce textos legales complejos en explicaciones amigables del dialecto de Osaka. Ofrece cobertura integral de leyes japonesas, leyes extranjeras, leyes históricas y tratados internacionales con traducciones cálidas y accesibles en dialecto de Osaka inspiradas en Kasuga Ayumu de 'Azumanga Daioh'."
+      "en": "Inspired by Osaka-san from Azumanga Daioh. 5 categories: Modern Japanese law (Constitution, Civil, Criminal, Commercial, Procedure), Historical Japanese law (17-Article, Meiji Constitution, Taiho Code, etc.), Foreign law (German Basic Law, US/PRC Constitution), Historical law (Hammurabi, Magna Carta, Napoleon), International treaties (UN Charter, Antarctic, NPT, Ramsar, Space, Olympic). One-click toggle original/Osaka.",
+      "ja": "あずまんが大王の大阪さんをイメージ。5つのカテゴリ：日本の現行法（憲法、民法、刑法、商法、訴訟法）、日本の歴史法（十七条憲法、明治憲法、大宝律令など）、外国法（ドイツ基本法、米中憲法）、歴史的法律（ハンムラビ、マグナカルタ、ナポレオン）、国際条約（国連憲章、南極条約、NPT、ラムサール、宇宙、オリンピック）。ワンクリックで原文/大阪弁切り替え。",
+      "zh": "灵感来自《阿滋漫画大王》的大阪。5个类别：日本现行法（宪法、民法、刑法、商法、诉讼法）、日本历史法（十七条宪法、明治宪法、大宝律令等）、外国法（德国基本法、美中宪法）、历史法律（汉谟拉比、大宪章、拿破仑）、国际条约（联合国宪章、南极条约、NPT、拉姆萨尔、宇宙、奥林匹克）。一键切换原文/大阪方言。",
+      "es": "Inspirado en Osaka-san de Azumanga Daioh. 5 categorías: Ley japonesa moderna (Constitución, Civil, Penal, Comercial, Procedimiento), Ley histórica japonesa (17 Artículos, Constitución Meiji, Código Taiho, etc.), Ley extranjera (Ley Fundamental alemana, Constitución EE.UU./RPC), Ley histórica (Hammurabi, Carta Magna, Napoleón), Tratados internacionales (Carta ONU, Antártico, TNP, Ramsar, Espacio, Olímpico). Un clic para alternar original/Osaka."
     },
     "tags": [
       "Free",
@@ -206,18 +206,18 @@
   {
     "id": "diffx",
     "title": {
-      "en": "diffx: A Structure-Aware, AI-First Diff Tool",
-      "ja": "diffx: 構造を理解するAIファーストな差分ツール",
-      "zh": "diffx: 一款结构感知、AI优先的差异比较工具",
-      "es": "diffx: Una herramienta de diferencias orientada a la IA y consciente de la estructura"
+      "en": "diffx: Shows Only Meaningful Changes",
+      "ja": "diffx: 意味のある変更だけを表示",
+      "zh": "diffx: 只显示有意义的变更",
+      "es": "diffx: Muestra Solo Cambios Significativos"
     },
     "description": {
-      "en": "Compares structured data files like JSON and YAML by understanding their semantic structure, rather than traditional line-by-line comparison. Designed for use in automated tasks by AI agents. Built in Rust, with wrappers available for Python (pip) and Node.js (npm).",
-      "ja": "JSONやYAMLなどの構造化データファイルの差分を、従来の行単位の比較ではなく、意味的な構造を理解して表示します。AIエージェントによる自動化タスクでの利用も想定して設計されています。Rust製で、Python (pip) と Node.js (npm) のラッパーも提供しています。",
-      "zh": "通过理解JSON和YAML等结构化数据文件的语义结构来比较它们，而不是传统的逐行比较。专为AI代理在自动化任务中使用而设计。使用Rust构建，并提供Python (pip) 和 Node.js (npm) 的包装器。",
-      "es": "Compara archivos de datos estructurados como JSON y YAML entendiendo su estructura semántica, en lugar de la comparación tradicional línea por línea. Diseñado para su uso en tareas automatizadas por agentes de IA. Construido en Rust, con envoltorios disponibles para Python (pip) y Node.js (npm)."
+      "en": "When key ordering changes in JSON/YAML, traditional diff shows every line as changed. diffx understands structure and shows what actually changed. Supports 6 formats (JSON, YAML, TOML, XML, INI, CSV) with auto-detection, array element ID-key comparison, recursive directory diff, and JSON/YAML output for CI/CD.",
+      "ja": "JSON/YAMLでキー順序が変わると従来のdiffは全行が変更として表示される。diffxは構造を理解し、本当に変わった部分だけを表示。6形式（JSON、YAML、TOML、XML、INI、CSV）自動検出対応、配列要素のIDキー比較、ディレクトリ再帰比較、CI/CD用JSON/YAML出力。",
+      "zh": "JSON/YAML的键顺序改变时，传统diff显示每行都变了。diffx理解结构，只显示真正变化的部分。支持6种格式（JSON、YAML、TOML、XML、INI、CSV）自动检测、数组元素ID键比较、目录递归比较、CI/CD用JSON/YAML输出。",
+      "es": "Cuando el orden de claves en JSON/YAML cambia, diff tradicional muestra cada línea como modificada. diffx entiende la estructura y muestra lo que realmente cambió. Soporta 6 formatos (JSON, YAML, TOML, XML, INI, CSV) con autodetección, comparación de arrays por ID-key, diff recursivo de directorios, y salida JSON/YAML para CI/CD."
     },
-    "tags": ["Rust", "CLI", "AI", "JSON", "YAML", "TOML", "OSS"],
+    "tags": ["Rust", "CLI", "JSON", "YAML", "TOML", "XML", "INI", "CSV", "OSS"],
     "images": [
       "/images/cli-terminal.webp",
       "https://storage.googleapis.com/zenn-user-upload/a82eab0d5859-20250706.png"
@@ -293,10 +293,10 @@
       "es": "chunkundo.nvim: Fragmentación inteligente de deshacer para Neovim"
     },
     "description": {
-      "en": "Undo incrementally even in long edit sessions. Detects typing pauses and splits undo units automatically. Learns your typing pattern and adjusts interval. Built on chillout.nvim's debounce/throttle/batch library.",
-      "ja": "長い編集セッションでもインクリメンタルにundo可能。タイピングの間を検出して自動でundo単位を分割。あなたのタイピングパターンを学習し最適な間隔を自動調整。chillout.nvimのdebounce/throttle/batchを活用。",
-      "zh": "即使在长时间编辑中也能增量撤销。检测打字间隔自动分割撤销单位。学习你的打字模式并自动调整间隔。基于chillout.nvim的debounce/throttle/batch库。",
-      "es": "Deshaz incrementalmente incluso en sesiones de edición largas. Detecta pausas de escritura y divide unidades de deshacer automáticamente. Aprende tu patrón de escritura y ajusta el intervalo. Construido sobre la biblioteca debounce/throttle/batch de chillout.nvim."
+      "en": "Neovim treats an entire insert session as one undo unit. This plugin breaks it into smaller chunks by time (default 300ms) and word boundaries (space/tab/enter/punctuation). Auto-adjusts to your typing pattern. Statusline shows u+5 (growing), u=12 (confirmed). A showcase for chillout.nvim's debounce/throttle/batch.",
+      "ja": "Neovimは挿入セッション全体を1つのundoにする。このプラグインは時間（デフォルト300ms）と単語境界（スペース/タブ/Enter/句読点）で小分けにする。タイピングパターンを学習して自動調整。ステータスラインでu+5（成長中）、u=12（確定）を表示。chillout.nvimのdebounce/throttle/batchのショーケース。",
+      "zh": "Neovim将整个插入会话作为一个撤销单位。这个插件按时间（默认300ms）和单词边界（空格/Tab/回车/标点）分割成小块。学习你的打字模式自动调整。状态栏显示u+5（增长中）、u=12（已确认）。chillout.nvim的debounce/throttle/batch展示案例。",
+      "es": "Neovim trata una sesión de inserción completa como una unidad de deshacer. Este plugin la divide en fragmentos más pequeños por tiempo (300ms por defecto) y límites de palabras (espacio/tab/enter/puntuación). Se auto-ajusta a tu patrón de escritura. Statusline muestra u+5 (creciendo), u=12 (confirmado). Demostración de debounce/throttle/batch de chillout.nvim."
     },
     "tags": ["Free", "Neovim", "Lua", "Plugin", "Editor", "OSS"],
     "images": ["/images/cli-terminal.webp"],
@@ -308,16 +308,16 @@
   {
     "id": "riscfetch",
     "title": {
-      "en": "riscfetch: System Info Tool for RISC-V Architecture",
-      "ja": "riscfetch: RISC-V専用システム情報ツール",
-      "zh": "riscfetch: RISC-V专用系统信息工具",
-      "es": "riscfetch: Herramienta de información del sistema para arquitectura RISC-V"
+      "en": "riscfetch: RISC-V Only. Exits on Other Architectures.",
+      "ja": "riscfetch: RISC-V専用。他のアーキテクチャでは動かない。",
+      "zh": "riscfetch: 仅限RISC-V。其他架构上会退出。",
+      "es": "riscfetch: Solo RISC-V. Sale en Otras Arquitecturas."
     },
     "description": {
-      "en": "Display RISC-V specific information in neofetch style. Supports 144 RISC-V extensions (98 Z-extensions and 46 S-extensions) with category display. Features 13 vendor ASCII art logos including Pine64, SiFive, StarFive, WCH. JSON output for CI/CD integration.",
-      "ja": "neofetchスタイルでRISC-V固有の情報を表示。144種類のRISC-V拡張（98のZ拡張と46のS拡張）をカテゴリ別に表示。Pine64、SiFive、StarFive、WCHなど13種のベンダーロゴをアスキーアートで表示。CI/CD連携用JSON出力対応。",
-      "zh": "以neofetch风格显示RISC-V特定信息。支持144种RISC-V扩展（98个Z扩展和46个S扩展）分类显示。包含Pine64、SiFive、StarFive、WCH等13种厂商ASCII艺术Logo。支持JSON输出用于CI/CD集成。",
-      "es": "Muestra información específica de RISC-V en estilo neofetch. Soporta 144 extensiones RISC-V (98 extensiones Z y 46 extensiones S) con visualización por categorías. Incluye 13 logos ASCII de vendedores incluyendo Pine64, SiFive, StarFive, WCH. Salida JSON para integración CI/CD."
+      "en": "Display RISC-V info in neofetch style. 144 extensions (98 Z + 46 S) grouped by category. 13 vendor logos: Pine64, SiFive, StarFive, Milk-V, Sipeed, T-Head, Kendryte, Allwinner, Espressif, SpacemiT, Sophgo, WCH. -e explains extensions, -a shows all 144 with ✓/✗, -j for JSON, -b for benchmarks. Complements fastfetch with -r.",
+      "ja": "neofetchスタイルでRISC-V情報を表示。144拡張（98 Z + 46 S）をカテゴリ別表示。13ベンダーロゴ：Pine64、SiFive、StarFive、Milk-V、Sipeed、T-Head、Kendryte、Allwinner、Espressif、SpacemiT、Sophgo、WCH。-eで拡張説明、-aで144全て✓/✗表示、-jでJSON、-bでベンチマーク。-rでfastfetchと併用可。",
+      "zh": "以neofetch风格显示RISC-V信息。144种扩展（98 Z + 46 S）按类别分组。13种厂商Logo：Pine64、SiFive、StarFive、Milk-V、Sipeed、T-Head、Kendryte、Allwinner、Espressif、SpacemiT、Sophgo、WCH。-e说明扩展、-a显示全部144种✓/✗、-j输出JSON、-b基准测试。-r配合fastfetch使用。",
+      "es": "Muestra info RISC-V en estilo neofetch. 144 extensiones (98 Z + 46 S) agrupadas por categoría. 13 logos de vendedores: Pine64, SiFive, StarFive, Milk-V, Sipeed, T-Head, Kendryte, Allwinner, Espressif, SpacemiT, Sophgo, WCH. -e explica extensiones, -a muestra 144 con ✓/✗, -j para JSON, -b para benchmarks. Complementa fastfetch con -r."
     },
     "tags": ["Free", "Rust", "CLI", "RISC-V", "System Info", "Cross-Platform", "OSS"],
     "images": ["https://raw.githubusercontent.com/kako-jun/riscfetch/main/assets/screenshot.webp"],

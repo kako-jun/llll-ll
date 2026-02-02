@@ -149,7 +149,10 @@
       "es": "Muestra info RISC-V en estilo neofetch. 144 extensiones (98 Z + 46 S) agrupadas por categoría. 13 logos de vendedores: Pine64, SiFive, StarFive, Milk-V, Sipeed, T-Head, Kendryte, Allwinner, Espressif, SpacemiT, Sophgo, WCH. -e explica extensiones, -a muestra 144 con ✓/✗, -j para JSON, -b para benchmarks. Complementa fastfetch con -r."
     },
     "tags": ["Free", "OSS", "CLI", "Rust", "RISC-V"],
-    "images": ["https://raw.githubusercontent.com/kako-jun/riscfetch/main/assets/screenshot.webp"],
+    "images": [
+      "/images/cli-terminal.webp",
+      "https://raw.githubusercontent.com/kako-jun/riscfetch/main/assets/screenshot.webp"
+    ],
     "repositoryUrl": "https://github.com/kako-jun/riscfetch",
     "createdAt": "2025-01-10",
     "updatedAt": "2025-01-10",

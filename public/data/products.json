@@ -36,7 +36,7 @@
       "es": "Un juego de puzzle basado en calculadora. Crea dígitos idénticos adyacentes para eliminarlos. Domina la aritmética para reacciones en cadena. Incluye modos Calculadora, Práctica e Infinito con multiplicadores de puntuación por cadena/preparación/riesgo."
     },
     "tags": ["Free", "OSS", "Web", "TypeScript", "Puzzle"],
-    "images": ["https://raw.githubusercontent.com/kako-jun/sasso/main/public/icon.svg"],
+    "images": ["https://raw.githubusercontent.com/kako-jun/sasso/main/public/icon-512.png"],
     "demoUrl": "https://sasso.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/sasso",
     "createdAt": "2025-01-25",
@@ -173,7 +173,7 @@
       "es": "Sincronización directa con GitHub sin servidores intermedios. Guarda directamente en tu repositorio de GitHub con un algoritmo de fusión único que sincroniza ediciones de múltiples dispositivos de forma segura. Sin preocupaciones por pérdida de datos."
     },
     "tags": ["Free", "OSS", "Web", "TypeScript", "Markdown"],
-    "images": ["https://raw.githubusercontent.com/kako-jun/agasteer/main/public/favicon.png"],
+    "images": ["https://raw.githubusercontent.com/kako-jun/agasteer/main/public/icon-512.png"],
     "demoUrl": "https://agasteer.llll-ll.com/",
     "repositoryUrl": "https://github.com/kako-jun/agasteer",
     "createdAt": "2025-01-08",

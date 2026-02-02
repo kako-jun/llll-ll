@@ -13,18 +13,7 @@
       "zh": "法语、德语、西班牙语、意大利语、葡萄牙语、俄语、阿拉伯语、印地语4,600多个词汇，支持m/f/n性别系统。用英语或目标语言搜索，带翻译、释义、记忆技巧。性别测验显示分数和连续正确数。Web Speech API发音。A-Z浏览（无限滚动）。REST API (/api/search)。11种语言UI。",
       "es": "4,600+ palabras en francés, alemán, español, italiano, portugués, ruso, árabe, hindi con sistemas de género m/f/n. Busca en inglés o idioma objetivo con traducciones, significados, trucos de memoria. Quiz de género muestra puntuación/racha. Pronunciación Web Speech API. Navegación A-Z con scroll infinito. REST API (/api/search). UI en 11 idiomas."
     },
-    "tags": [
-      "Free",
-      "Next.js",
-      "TypeScript",
-      "SQLite",
-      "Web App",
-      "Education",
-      "Language Learning",
-      "Dictionary",
-      "Multilingual",
-      "OSS"
-    ],
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Language"],
     "images": [
       "https://raw.githubusercontent.com/kako-jun/noun-gender/refs/heads/main/public/apple-touch-icon.png"
     ],
@@ -48,7 +37,7 @@
       "zh": "用5个怀旧功能重现1990年代互联网文化：计数器、点赞按钮、留言板、排行榜、招财猫小部件。无需注册的简单GET API。支持Web Components，轻松集成到任何静态网站。",
       "es": "Revive la cultura de internet de los 90 con 5 funciones nostálgicas: Contador, botón Me gusta, BBS, Ranking y widget de Gato de la Suerte. API GET simple sin registro. Web Components listo para fácil integración en cualquier sitio estático."
     },
-    "tags": ["Free", "Next.js", "TypeScript", "Redis", "Web Components", "OSS"],
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Retro"],
     "images": ["https://github.com/kako-jun/nostalgic/blob/main/public/favicon-48x48.png?raw=true"],
     "demoUrl": "https://nostalgic.llll-ll.com/",
     "repositoryUrl": "https://github.com/kako-jun/nostalgic",
@@ -70,16 +59,7 @@
       "zh": "5种统计法则用于异常检测：本福德法则（会计/选举欺诈的第一位数字分析）、帕累托法则（销售的80/20法则）、齐普夫法则（语言学、Web分析）、正态/泊松分布（质量控制、预测）。ASCII图表带风险级别判断。Rust构建。",
       "es": "5 leyes estadísticas para detección de anomalías: Ley de Benford (primer dígito para fraude contable/electoral), Pareto (regla 80/20 para ventas), Ley de Zipf (lingüística, analítica web), Normal/Poisson (QC, predicciones). Gráficos ASCII con nivel de riesgo. Construido en Rust."
     },
-    "tags": [
-      "Rust",
-      "CLI",
-      "Statistics",
-      "Data Analysis",
-      "Fraud Detection",
-      "Business Intelligence",
-      "Cross-Platform",
-      "OSS"
-    ],
+    "tags": ["Free", "OSS", "CLI", "Rust", "Statistics"],
     "images": ["/images/cli-terminal.webp"],
     "repositoryUrl": "https://github.com/kako-jun/lawkit",
     "createdAt": "2025-01-10",
@@ -100,7 +80,7 @@
       "zh": "陆行鸟站没有导出功能。这个Chrome扩展将日记导出为Markdown+ZIP。完整备份：标题、正文、图片、评论、点赞数、日期、标签。批量导出自动生成index.md。5个区域（JP/NA/EU/FR/DE）。可导出好友的条目。服务器友好的2秒间隔。",
       "es": "Lodestone no tiene función de exportación. Esta extensión Chrome exporta diarios a Markdown+ZIP. Respaldo completo: título, cuerpo, imágenes, comentarios, likes, fecha, etiquetas. Exportación masiva con index.md auto-generado. 5 regiones (JP/NA/EU/FR/DE). Puede exportar entradas de amigos. Intervalo de 2s respetuoso con servidores."
     },
-    "tags": ["Free", "Chrome Extension", "TypeScript", "Export Tool", "Gaming", "OSS"],
+    "tags": ["Free", "OSS", "Extension", "TypeScript", "Gaming"],
     "images": [
       "https://raw.githubusercontent.com/kako-jun/sync-stone/refs/heads/main/chrome-extension/icons/icon128.png"
     ],
@@ -124,7 +104,7 @@
       "zh": "显示ML模型文件的有意义差异。11种自动分析：学习率、优化器、损失、精度、模型版本、梯度、量化、收敛、激活、注意力、集成。比较张量统计(mean, std)。支持PyTorch、Safetensors、NumPy、MATLAB。CI/CD用JSON/YAML输出。",
       "es": "Muestra diferencias significativas para archivos de modelos ML. 11 análisis automáticos: learning rate, optimizador, pérdida, precisión, versión del modelo, gradiente, cuantización, convergencia, activación, atención, ensemble. Compara estadísticas de tensor (mean, std). Soporta PyTorch, Safetensors, NumPy, MATLAB. Salida JSON/YAML para CI/CD."
     },
-    "tags": ["Rust", "CLI", "AI", "ML", "PyTorch", "Safetensors", "NumPy", "MATLAB", "OSS"],
+    "tags": ["Free", "OSS", "CLI", "Rust", "ML"],
     "images": ["/images/cli-terminal.webp"],
     "repositoryUrl": "https://github.com/kako-jun/diffai",
     "createdAt": "2025-01-20",
@@ -145,17 +125,7 @@
       "zh": "灵感来自《阿滋漫画大王》的大阪。5个类别：日本现行法（宪法、民法、刑法、商法、诉讼法）、日本历史法（十七条宪法、明治宪法、大宝律令等）、外国法（德国基本法、美中宪法）、历史法律（汉谟拉比、大宪章、拿破仑）、国际条约（联合国宪章、南极条约、NPT、拉姆萨尔、宇宙、奥林匹克）。一键切换原文/大阪方言。",
       "es": "Inspirado en Osaka-san de Azumanga Daioh. 5 categorías: Ley japonesa moderna (Constitución, Civil, Penal, Comercial, Procedimiento), Ley histórica japonesa (17 Artículos, Constitución Meiji, Código Taiho, etc.), Ley extranjera (Ley Fundamental alemana, Constitución EE.UU./RPC), Ley histórica (Hammurabi, Carta Magna, Napoleón), Tratados internacionales (Carta ONU, Antártico, TNP, Ramsar, Espacio, Olímpico). Un clic para alternar original/Osaka."
     },
-    "tags": [
-      "Free",
-      "Next.js",
-      "TypeScript",
-      "Web App",
-      "Education",
-      "Legal",
-      "Translation",
-      "Japanese Culture",
-      "OSS"
-    ],
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Legal"],
     "images": [
       "https://raw.githubusercontent.com/kako-jun/osaka-kenpo/refs/heads/main/public/favicon.webp"
     ],
@@ -179,17 +149,7 @@
       "zh": "贝斯指板可视化练习应用。\n\n显示即将演奏的和弦在歌曲中的作用。展示每个音符在和弦中的功能。\n\n提供TAB谱中没有的信息（消音用的手指、位置等）。显示与五线谱、键盘的对应关系。\n\n可以自由导出指板图像，分享「这样的按弦、指法可能更简单」之类的想法。",
       "es": "Aplicación de visualización del diapasón de bajo para práctica.\n\nMuestra el papel de los acordes que vas a tocar dentro de la canción. Muestra la función de cada nota dentro del acorde.\n\nProporciona información no encontrada en la notación TAB (dedos para silenciar, posiciones, etc.). Muestra correspondencia con notación en pentagrama y teclado.\n\nExporta imágenes personalizadas del diapasón para compartir ideas de digitación como '¡Esta digitación podría ser más fácil!'"
     },
-    "tags": [
-      "Free",
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Web App",
-      "Music",
-      "Bass",
-      "Practice",
-      "OSS"
-    ],
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Music"],
     "images": [
       "https://sid-note.llll-ll.com/favicon.drawio.svg",
       "https://storage.googleapis.com/zenn-user-upload/5f02c372318d-20250622.png",
@@ -217,7 +177,7 @@
       "zh": "JSON/YAML的键顺序改变时，传统diff显示每行都变了。diffx理解结构，只显示真正变化的部分。支持6种格式（JSON、YAML、TOML、XML、INI、CSV）自动检测、数组元素ID键比较、目录递归比较、CI/CD用JSON/YAML输出。",
       "es": "Cuando el orden de claves en JSON/YAML cambia, diff tradicional muestra cada línea como modificada. diffx entiende la estructura y muestra lo que realmente cambió. Soporta 6 formatos (JSON, YAML, TOML, XML, INI, CSV) con autodetección, comparación de arrays por ID-key, diff recursivo de directorios, y salida JSON/YAML para CI/CD."
     },
-    "tags": ["Rust", "CLI", "JSON", "YAML", "TOML", "XML", "INI", "CSV", "OSS"],
+    "tags": ["Free", "OSS", "CLI", "Rust", "Diff"],
     "images": [
       "/images/cli-terminal.webp",
       "https://storage.googleapis.com/zenn-user-upload/a82eab0d5859-20250706.png"
@@ -245,7 +205,7 @@
       "zh": "为忙碌的个体经营者节省时间。自动检测日本节假日并创建营业日历。拖放编辑，轻松分享到Instagram或LINE。",
       "es": "Ahorra tiempo para propietarios de pequeños negocios ocupados. Crea calendarios de negocios con detección automática de días festivos japoneses. Comparte instantáneamente en Instagram o LINE con edición de arrastrar y soltar."
     },
-    "tags": ["Free", "Next.js", "TypeScript", "Web App", "Business", "Calendar", "OSS"],
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Business"],
     "images": ["https://raw.githubusercontent.com/kako-jun/3min/main/public/logo.webp"],
     "demoUrl": "https://3min.llll-ll.com/",
     "repositoryUrl": "https://github.com/kako-jun/3min",
@@ -267,16 +227,7 @@
       "zh": "无需中间服务器直接同步GitHub。独特的合并算法可安全同步来自多个设备的编辑。数据始终在您的掌控之中。",
       "es": "Sincronización directa con GitHub sin servidores intermedios. Guarda directamente en tu repositorio de GitHub con un algoritmo de fusión único que sincroniza ediciones de múltiples dispositivos de forma segura. Sin preocupaciones por pérdida de datos."
     },
-    "tags": [
-      "Free",
-      "Next.js",
-      "TypeScript",
-      "Web App",
-      "Markdown",
-      "GitHub",
-      "Note Taking",
-      "OSS"
-    ],
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Markdown"],
     "images": ["https://raw.githubusercontent.com/kako-jun/agasteer/main/public/favicon.png"],
     "demoUrl": "https://agasteer.llll-ll.com/",
     "repositoryUrl": "https://github.com/kako-jun/agasteer",
@@ -298,7 +249,7 @@
       "zh": "Neovim将整个插入会话作为一个撤销单位。这个插件按时间（默认300ms）和单词边界（空格/Tab/回车/标点）分割成小块。学习你的打字模式自动调整。状态栏显示u+5（增长中）、u=12（已确认）。chillout.nvim的debounce/throttle/batch展示案例。",
       "es": "Neovim trata una sesión de inserción completa como una unidad de deshacer. Este plugin la divide en fragmentos más pequeños por tiempo (300ms por defecto) y límites de palabras (espacio/tab/enter/puntuación). Se auto-ajusta a tu patrón de escritura. Statusline muestra u+5 (creciendo), u=12 (confirmado). Demostración de debounce/throttle/batch de chillout.nvim."
     },
-    "tags": ["Free", "Neovim", "Lua", "Plugin", "Editor", "OSS"],
+    "tags": ["Free", "OSS", "Plugin", "Lua", "Neovim"],
     "images": ["/images/cli-terminal.webp"],
     "repositoryUrl": "https://github.com/kako-jun/chunkundo.nvim",
     "createdAt": "2025-01-01",
@@ -319,7 +270,7 @@
       "zh": "以neofetch风格显示RISC-V信息。144种扩展（98 Z + 46 S）按类别分组。13种厂商Logo：Pine64、SiFive、StarFive、Milk-V、Sipeed、T-Head、Kendryte、Allwinner、Espressif、SpacemiT、Sophgo、WCH。-e说明扩展、-a显示全部144种✓/✗、-j输出JSON、-b基准测试。-r配合fastfetch使用。",
       "es": "Muestra info RISC-V en estilo neofetch. 144 extensiones (98 Z + 46 S) agrupadas por categoría. 13 logos de vendedores: Pine64, SiFive, StarFive, Milk-V, Sipeed, T-Head, Kendryte, Allwinner, Espressif, SpacemiT, Sophgo, WCH. -e explica extensiones, -a muestra 144 con ✓/✗, -j para JSON, -b para benchmarks. Complementa fastfetch con -r."
     },
-    "tags": ["Free", "Rust", "CLI", "RISC-V", "System Info", "Cross-Platform", "OSS"],
+    "tags": ["Free", "OSS", "CLI", "Rust", "RISC-V"],
     "images": ["https://raw.githubusercontent.com/kako-jun/riscfetch/main/assets/screenshot.webp"],
     "repositoryUrl": "https://github.com/kako-jun/riscfetch",
     "createdAt": "2025-01-01",
@@ -340,7 +291,7 @@
       "zh": "基于计算器的益智游戏。创造相邻的相同数字来消除它们。掌握四则运算实现连锁反应。提供计算器模式、练习模式、无尽模式，连锁、准备、风险倍率加成。",
       "es": "Un juego de puzzle basado en calculadora. Crea dígitos idénticos adyacentes para eliminarlos. Domina la aritmética para reacciones en cadena. Incluye modos Calculadora, Práctica e Infinito con multiplicadores de puntuación por cadena/preparación/riesgo."
     },
-    "tags": ["Free", "Next.js", "TypeScript", "Web App", "Game", "Puzzle", "OSS"],
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Puzzle"],
     "images": ["https://raw.githubusercontent.com/kako-jun/sasso/main/public/icon.svg"],
     "demoUrl": "https://sasso.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/sasso",

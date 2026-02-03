@@ -46,7 +46,6 @@ export default memo(function ExpandedView({
         padding: "1rem",
         borderTop: "1px solid var(--border-color)",
         backgroundColor: "var(--background-color)",
-        animation: "slideDown 0.3s ease-out",
       }}
     >
       <MediaGrid

@@ -9,11 +9,11 @@ Personal portfolio website for kako-jun, a game and app developer based in Kanaz
 - **Mobile-First**: Responsive design optimized for mobile devices
 - **No Page Transitions**: Single-page application with smooth interactions
 - **YAML-Based Content**: Easy content management through YAML files
-- **SSR Optimized**: Built with Next.js for fast loading
+- **SPA Architecture**: Built with Vite + React for fast loading
 
 ## Tech Stack
 
-- **Next.js 15** - React framework with SSR
+- **Vite + React** - Fast SPA with HMR
 - **TypeScript** - Type-safe development
 - **CSS3** - Custom pixel art styling
 - **YAML** - Content management system
@@ -45,7 +45,6 @@ To add a new product:
 
 ```
 src/
-├── app/           # Next.js app directory
 ├── components/    # React components
 ├── data/         # YAML product data
 ├── lib/          # Utility functions
@@ -54,7 +53,7 @@ src/
 
 ## Deployment
 
-This project is designed to be deployed on Vercel with a custom domain (llll-lll.com).
+This project is designed to be deployed on Vercel with a custom domain (llll-ll.com).
 
 ```bash
 npm run build

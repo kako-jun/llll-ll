@@ -4,11 +4,11 @@ Personal portfolio website for kako-jun, a game and app developer based in Kanaz
 
 ## Features
 
-- **Multi-language Support**: English, Chinese, and Japanese
+- **Multi-language Support**: English, Chinese, Japanese, and Spanish
 - **Pixel Art Design**: Dark retro aesthetic with cyberpunk elements
 - **Mobile-First**: Responsive design optimized for mobile devices
 - **No Page Transitions**: Single-page application with smooth interactions
-- **YAML-Based Content**: Easy content management through YAML files
+- **JSON-Based Content**: Easy content management through YAML files
 - **SPA Architecture**: Built with Vite + React for fast loading
 
 ## Tech Stack
@@ -16,7 +16,7 @@ Personal portfolio website for kako-jun, a game and app developer based in Kanaz
 - **Vite + React** - Fast SPA with HMR
 - **TypeScript** - Type-safe development
 - **CSS3** - Custom pixel art styling
-- **YAML** - Content management system
+- **JSON** - Content management system
 
 ## Getting Started
 
@@ -36,7 +36,7 @@ Personal portfolio website for kako-jun, a game and app developer based in Kanaz
 
 To add a new product:
 
-1. Create a new YAML file in `src/data/products/`
+1. Create a new entry in `public/data/products.json`
 2. Follow the structure of existing product files
 3. Include all required fields (id, title, description, etc.)
 4. Add any images to the `public/images/` directory
@@ -46,7 +46,7 @@ To add a new product:
 ```
 src/
 ├── components/    # React components
-├── data/         # YAML product data
+├── data/         # JSON product data
 ├── lib/          # Utility functions
 └── types/        # TypeScript definitions
 ```

@@ -2,6 +2,15 @@ import { memo } from "react";
 import { ArrowIcon } from "@/components/common";
 import TagList from "./TagList";
 
+function sanitizeText(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 interface CompactViewProps {
   productId: string;
   title: string;
@@ -94,7 +103,7 @@ export default memo(function CompactView({
               margin: 0,
             }}
             dangerouslySetInnerHTML={{
-              __html: truncatedDescription.replace(/\n/g, "<br>"),
+              __html: sanitizeText(truncatedDescription).replace(/\n/g, "<br>"),
             }}
           />
 

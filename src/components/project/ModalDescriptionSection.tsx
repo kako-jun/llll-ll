@@ -1,5 +1,14 @@
 import { memo } from "react";
 
+function sanitizeText(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 interface ModalDescriptionSectionProps {
   description: string;
   tags: string[];
@@ -21,7 +30,7 @@ export default memo(function ModalDescriptionSection({
       <div
         className="text-sm text-text-secondary leading-relaxed mb-4"
         dangerouslySetInnerHTML={{
-          __html: description.replace(/\n/g, "<br>"),
+          __html: sanitizeText(description).replace(/\n/g, "<br>"),
         }}
       />
 

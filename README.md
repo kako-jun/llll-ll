@@ -8,7 +8,7 @@ Personal portfolio website for kako-jun, a game and app developer based in Kanaz
 - **Pixel Art Design**: Dark retro aesthetic with cyberpunk elements
 - **Mobile-First**: Responsive design optimized for mobile devices
 - **No Page Transitions**: Single-page application with smooth interactions
-- **JSON-Based Content**: Easy content management through YAML files
+- **JSON-Based Content**: Easy content management through JSON files
 - **SPA Architecture**: Built with Vite + React for fast loading
 
 ## Tech Stack
@@ -30,7 +30,7 @@ Personal portfolio website for kako-jun, a game and app developer based in Kanaz
    npm run dev
    ```
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser
+3. Open [http://localhost:5173](http://localhost:5173) in your browser
 
 ## Adding Products
 
@@ -57,7 +57,7 @@ This project is designed to be deployed on Vercel with a custom domain (llll-ll.
 
 ```bash
 npm run build
-npm start
+npm run dev
 ```
 
 ## License

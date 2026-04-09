@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Language } from "@/types";
+import { getStorage, setStorage } from "@/lib/storage";
 
 // ブラウザ言語からデフォルト言語を決定
 function getDefaultLanguage(): Language {
@@ -23,7 +24,7 @@ export function useLanguage() {
 
   useEffect(() => {
     setMounted(true);
-    const savedLanguage = localStorage.getItem("language") as Language;
+    const savedLanguage = getStorage("language") as Language;
     if (savedLanguage && ["en", "ja", "zh", "es"].includes(savedLanguage)) {
       setLanguage(savedLanguage);
     } else {
@@ -34,7 +35,7 @@ export function useLanguage() {
 
   const changeLanguage = (newLanguage: Language) => {
     setLanguage(newLanguage);
-    localStorage.setItem("language", newLanguage);
+    setStorage("language", newLanguage);
     document.documentElement.lang = newLanguage;
   };
 

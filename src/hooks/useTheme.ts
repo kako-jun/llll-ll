@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { getStorage, setStorage } from "@/lib/storage";
 
 export type Theme = "light" | "dark";
 
@@ -9,7 +10,7 @@ export function useTheme() {
   useEffect(() => {
     // 少し遅延させてテーマを適用（トランジション用）
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const savedTheme = localStorage.getItem("theme") as Theme;
+    const savedTheme = getStorage("theme") as Theme;
     const initialTheme = savedTheme || (prefersDark ? "dark" : "light");
 
     // マウント完了後に状態を更新
@@ -33,7 +34,7 @@ export function useTheme() {
   const toggleTheme = () => {
     const newTheme: Theme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
+    setStorage("theme", newTheme);
     updateDocumentTheme(newTheme);
   };
 

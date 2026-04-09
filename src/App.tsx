@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Language, Product } from "@/types";
 import { translations } from "@/lib/i18n";
+import { getStorage, setStorage } from "@/lib/storage";
 import { LanguageBar, Header, Footer } from "@/components/layout";
 import { IntroSection, ImageDisplay, VisitorCounter, ScrollToTop } from "@/components/common";
 import { ProjectList } from "@/components/project";
@@ -21,8 +22,8 @@ function HomePage() {
 
   // 初回訪問チェック
   useEffect(() => {
-    const visited = localStorage.getItem("visited");
-    const savedLanguage = localStorage.getItem("language") as Language;
+    const visited = getStorage("visited");
+    const savedLanguage = getStorage("language") as Language;
 
     if (!visited) {
       // 初回訪問：/welcome にリダイレクト
@@ -59,7 +60,7 @@ function HomePage() {
   // 言語変更ハンドラ（localStorageも更新）
   const handleLanguageChange = (lang: Language) => {
     changeLanguage(lang);
-    localStorage.setItem("language", lang);
+    setStorage("language", lang);
   };
 
   // 訪問チェック中は何も表示しない（ちらつき防止）

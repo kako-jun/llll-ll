@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Language } from "@/types";
 import { translations } from "@/lib/i18n";
+import { setStorage } from "@/lib/storage";
 import { useLanguage } from "@/hooks/useLanguage";
 import { WelcomeScreen } from "@/components/layout";
 import { BackgroundDots } from "@/components/game";
@@ -25,8 +26,8 @@ export default function Welcome() {
   // 続行ボタン押下時
   const handleContinue = () => {
     // 訪問済みフラグと言語を保存
-    localStorage.setItem("visited", "true");
-    localStorage.setItem("language", language);
+    setStorage("visited", true);
+    setStorage("language", language);
     // ホームに遷移
     navigate("/");
   };

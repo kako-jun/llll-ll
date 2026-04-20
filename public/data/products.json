@@ -1,5 +1,135 @@
 [
   {
+    "id": "machigai-salad",
+    "title": {
+      "en": "Machigai Salad: Spot-the-Difference Comparison Tool",
+      "ja": "間違いサラダ: 2枚並べてフリックで見比べる間違い探しツール",
+      "zh": "Machigai Salad: 找不同图片对比工具",
+      "es": "Machigai Salad: Herramienta de Comparación para Encontrar Diferencias"
+    },
+    "description": {
+      "en": "A general-purpose spot-the-difference comparison tool. Take or upload two images, adjust corners with perspective warp, and flick between them to spot differences. Features loupe magnifier, undo (up to 50 steps), GIF/APNG export, LocalStorage save (5 slots), JA/EN i18n, PWA support, and Web Share integration. Runs entirely in your browser with OpenCV.js.",
+      "ja": "どんな間違い探しにも使える汎用比較ツール。2枚の画像を撮影またはアップロードし、角をドラッグして台形補正、フリックで見比べて違いを見つける。ルーペ拡大鏡、アンドゥ（最大50ステップ）、GIF/APNGエクスポート、LocalStorage保存（5枠）、日英i18n、PWA対応、Web Shareに対応。OpenCV.jsでブラウザ内完結。",
+      "zh": "通用的找不同比较工具。拍摄或上传两张图片，拖动角点进行透视校正，滑动切换对比找出差异。支持放大镜、撤销（最多50步）、GIF/APNG导出、LocalStorage保存（5个位置）、日英i18n、PWA、Web Share。基于OpenCV.js完全在浏览器中运行。",
+      "es": "Herramienta general de comparación para encontrar diferencias. Toma o sube dos imágenes, ajusta esquinas con corrección de perspectiva, y alterna entre ellas para detectar diferencias. Incluye lupa, deshacer (hasta 50 pasos), exportación GIF/APNG, guardado en LocalStorage (5 slots), i18n JA/EN, soporte PWA e integración Web Share. Funciona totalmente en tu navegador con OpenCV.js."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "PWA"],
+    "images": ["https://machigai-salad.llll-ll.com/apple-touch-icon.webp"],
+    "demoUrl": "https://machigai-salad.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/machigai-salad",
+    "createdAt": "2026-02-01",
+    "updatedAt": "2026-04-20",
+    "featured": true
+  },
+  {
+    "id": "tail-match",
+    "title": {
+      "en": "tail-match: Shelter Cat & Dog Matching for Ishikawa",
+      "ja": "ているまっち！: 石川県の保護猫・保護犬マッチングサイト",
+      "zh": "tail-match: 石川县保护猫犬领养匹配网站",
+      "es": "tail-match: Emparejamiento de Gatos y Perros de Refugio en Ishikawa"
+    },
+    "description": {
+      "en": "Aggregates protected cats and dogs from municipal shelters across Japan (Ishikawa first) to help find their new family. Urgency-tiered Instagram-style gallery, daily launchd-driven scraping with auto-repair via Claude, and a dynamic sitemap. Next.js 15 + MUI on Cloudflare Pages with a D1 SQLite backend. 34 facilities currently covered.",
+      "ja": "全国の自治体が保護している犬・猫の情報を集約し、新しい家族とのマッチングを支援するサービス（石川県から）。緊急度別のInstagram風ギャラリー、launchdによる毎日自動スクレイピング、Claudeによる異常自動修復、動的sitemap。Next.js 15 + MUIをCloudflare Pages + D1で運用、現在34施設対応。",
+      "zh": "汇总日本各自治体收容的猫狗信息（石川县起步），帮助它们找到新家。按紧急程度分级的Instagram风格画廊，launchd每日自动抓取+Claude异常自动修复，动态sitemap。Next.js 15 + MUI部署在Cloudflare Pages，后端为D1 SQLite。目前覆盖34家机构。",
+      "es": "Agrega información de gatos y perros protegidos por municipios de Japón (empezando por Ishikawa) para ayudarlos a encontrar familia. Galería estilo Instagram con niveles de urgencia, scraping diario vía launchd con auto-reparación por Claude, y sitemap dinámico. Next.js 15 + MUI sobre Cloudflare Pages con D1 SQLite. Cubre 34 instalaciones actualmente."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Cats"],
+    "images": ["https://tail-match.llll-ll.com/icon-512.png"],
+    "demoUrl": "https://tail-match.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/tail-match",
+    "createdAt": "2026-01-10",
+    "updatedAt": "2026-04-20",
+    "featured": true
+  },
+  {
+    "id": "ear-sky",
+    "title": {
+      "en": "Ear in the Sky Diamond: Cross-Lingual Soramimi Sharing",
+      "ja": "イヤスカ: 空耳をみんなで投稿・再生するサイト",
+      "zh": "Ear in the Sky Diamond: 跨语言空耳投稿分享网站",
+      "es": "Ear in the Sky Diamond: Comparte Soramimi Entre Idiomas"
+    },
+    "description": {
+      "en": "A posting site for soramimi — lyrics from one language that sound like phrases in another. Paste a YouTube, Niconico, or SoundCloud URL, set a start/end segment, enter the misheard text, and play it back with karaoke-style sweep subtitles and spoiler control. Fully anonymous (no signup), with emoji reactions, a Hall of Fame, tag filters, JA/EN i18n, and dynamic OGP per post.",
+      "ja": "空耳アワー的な「こう聞こえる」を投稿・再生・共有するサイト。YouTube/ニコニコ/SoundCloudのURLに開始〜終了秒と空耳テキストを設定すると、字幕が番組風にカラオケスイープで表示される。完全匿名（登録不要）、絵文字リアクション、殿堂ランキング、タグフィルタ、日英i18n、投稿ごとの動的OGPに対応。",
+      "zh": "空耳（一种语言的歌词听起来像另一种语言）的投稿与播放网站。粘贴YouTube、Niconico或SoundCloud链接，设置起止秒和空耳文本，卡拉OK风格扫光字幕+剧透控制播放。完全匿名（无需注册），支持表情回应、殿堂排行、标签筛选、日英i18n、每帖动态OGP。",
+      "es": "Sitio para publicar soramimi — letras de un idioma que suenan como frases en otro. Pega una URL de YouTube, Niconico o SoundCloud, define el segmento de inicio/fin y el texto mal oído, y reprodúcelo con subtítulos karaoke y control de spoiler. Totalmente anónimo (sin registro), con reacciones emoji, Salón de la Fama, filtros por etiqueta, i18n JA/EN y OGP dinámico por post."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Music"],
+    "images": ["https://ear-sky.llll-ll.com/icon-512.png"],
+    "demoUrl": "https://ear-sky.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/ear-sky",
+    "createdAt": "2026-03-01",
+    "updatedAt": "2026-04-20",
+    "featured": true
+  },
+  {
+    "id": "hacker-noroshi",
+    "title": {
+      "en": "Hacker Noroshi: A Japan-Focused Hacker News Clone",
+      "ja": "ハッカーのろし: 日本版Hacker Newsクローン",
+      "zh": "Hacker Noroshi: 日本版Hacker News克隆",
+      "es": "Hacker Noroshi: Un Clon de Hacker News Enfocado en Japón"
+    },
+    "description": {
+      "en": "A link aggregation and discussion site for Japanese indie developers and startups, modeled after Hacker News but Japanese-only. Supports submissions, threaded comments, voting, karma, Show HN, hide/favorites, downvotes, password reset, rate limiting, RSS, and search. Built on SvelteKit + Cloudflare Pages/Workers + D1.",
+      "ja": "本家Hacker Newsに倣った、日本の個人開発者・スタートアップ向けのリンク集約＋議論サイト。日本語・日本のサービス限定。投稿・スレッドコメント・投票・カルマ・Show系カテゴリ・hide/favorites・downvote・パスワードリセット・レート制限・RSS・検索に対応。SvelteKit + Cloudflare Pages/Workers + D1。",
+      "zh": "面向日本独立开发者和初创的链接聚合与讨论站点，仿照Hacker News但仅限日语和日本服务。支持投稿、楼中楼评论、投票、karma、Show分类、隐藏/收藏、踩、重置密码、限流、RSS和搜索。基于SvelteKit + Cloudflare Pages/Workers + D1。",
+      "es": "Sitio de agregación de enlaces y discusión para desarrolladores indie y startups japonesas, inspirado en Hacker News pero solo en japonés. Admite envíos, comentarios anidados, votos, karma, categoría Show, ocultar/favoritos, downvote, reset de contraseña, rate limit, RSS y búsqueda. Construido con SvelteKit + Cloudflare Pages/Workers + D1."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript"],
+    "images": ["https://hn.llll-ll.com/favicon.ico"],
+    "demoUrl": "https://hn.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/hacker-noroshi",
+    "createdAt": "2026-02-15",
+    "updatedAt": "2026-04-20",
+    "featured": true
+  },
+  {
+    "id": "gitpp",
+    "title": {
+      "en": "gitpp: Manage Multiple Git Repositories in Parallel",
+      "ja": "gitpp: 複数のGitリポジトリを一括管理するCLI",
+      "zh": "gitpp: 并行批量管理多个Git仓库的CLI",
+      "es": "gitpp: Gestiona Múltiples Repositorios Git en Paralelo"
+    },
+    "description": {
+      "en": "git + personal + parallel. Drive bulk operations across many repos from a single YAML config: clone, pull, push, status, diff, fetch, branch, switch, stash list, and gc. A ratatui-based TUI streams per-repo progress in real time. Written in Rust, published on crates.io.",
+      "ja": "git + personal + parallel。1つのYAML設定から複数リポジトリをまとめて操作するCLI。clone/pull/push/status/diff/fetch/branch/switch/stash list/gcの10コマンドを一括実行し、ratatui製TUIでリポジトリごとの進捗をリアルタイム表示。Rust製、crates.ioで公開中。",
+      "zh": "git + personal + parallel。用一个YAML配置批量操作多个仓库：clone/pull/push/status/diff/fetch/branch/switch/stash list/gc共10个命令，ratatui TUI实时显示每个仓库的进度。Rust编写，已发布到crates.io。",
+      "es": "git + personal + parallel. Ejecuta operaciones masivas sobre muchos repos desde un único archivo YAML: clone, pull, push, status, diff, fetch, branch, switch, stash list y gc. Una TUI basada en ratatui muestra el progreso por repositorio en tiempo real. Escrito en Rust y publicado en crates.io."
+    },
+    "tags": ["Free", "OSS", "CLI", "Rust", "Git"],
+    "images": ["/images/cli-terminal.webp"],
+    "repositoryUrl": "https://github.com/kako-jun/gitpp",
+    "createdAt": "2025-11-01",
+    "updatedAt": "2026-04-13",
+    "featured": true
+  },
+  {
+    "id": "chillout.nvim",
+    "title": {
+      "en": "chillout.nvim: Debounce, Throttle, and Batch for Neovim",
+      "ja": "chillout.nvim: Neovim向けのdebounce/throttle/batchライブラリ",
+      "zh": "chillout.nvim: 为Neovim提供debounce/throttle/batch的库",
+      "es": "chillout.nvim: Debounce, Throttle y Batch para Neovim"
+    },
+    "description": {
+      "en": "A tiny Neovim Lua library providing debounce, throttle, and batch primitives on top of vim.uv (libuv). Around 150 lines, zero dependencies, with maxWait, leading/trailing edge, maxSize, cancel and flush APIs. Ships with vimdoc, health check, argument validation, and lazy.nvim config=true support.",
+      "ja": "Neovim向けのごく小さなLuaライブラリ。vim.uv (libuv) の上にdebounce / throttle / batchを提供する。約150行・外部依存ゼロ。maxWait、leading/trailing edge、maxSize、cancel/flush APIに対応。vimdoc、health check、引数バリデーション、lazy.nvimのconfig=trueにも対応済み。",
+      "zh": "一个小巧的Neovim Lua库，基于vim.uv (libuv)提供debounce、throttle、batch原语。约150行，零依赖，支持maxWait、leading/trailing edge、maxSize、cancel/flush API。内置vimdoc、health check、参数校验，并兼容lazy.nvim的config=true。",
+      "es": "Una pequeña librería Lua para Neovim que ofrece primitivas de debounce, throttle y batch sobre vim.uv (libuv). Alrededor de 150 líneas, cero dependencias, con maxWait, leading/trailing edge, maxSize, y APIs cancel y flush. Incluye vimdoc, health check, validación de argumentos y soporte para lazy.nvim config=true."
+    },
+    "tags": ["Free", "OSS", "Plugin", "Lua", "Neovim"],
+    "images": ["/images/cli-terminal.webp"],
+    "repositoryUrl": "https://github.com/kako-jun/chillout.nvim",
+    "createdAt": "2025-11-20",
+    "updatedAt": "2025-12-02",
+    "featured": false
+  },
+  {
     "id": "mypace",
     "title": {
       "en": "MY PACE: A Decentralized SNS on Nostr Protocol",
@@ -221,7 +351,12 @@
       "https://raw.githubusercontent.com/kako-jun/sync-stone/refs/heads/main/chrome-extension/icons/icon128.png"
     ],
     "repositoryUrl": "https://github.com/kako-jun/sync-stone",
-    "articles": [{ "label": "Zenn", "url": "https://zenn.dev/kako_jun/scraps/38ef9ae285ed5b" }],
+    "articles": [
+      {
+        "label": "Zenn",
+        "url": "https://zenn.dev/kako_jun/scraps/38ef9ae285ed5b"
+      }
+    ],
     "createdAt": "2025-01-01",
     "updatedAt": "2025-01-01",
     "featured": false
@@ -293,7 +428,10 @@
         "label": "Dev.to",
         "url": "https://dev.to/kako-jun/i-built-diffx-a-structure-aware-ai-first-diff-tool-in-rust-lets-end-the-comma-induced-suffering-491h"
       },
-      { "label": "Zenn", "url": "https://zenn.dev/kako_jun/articles/1d518f47225f42" }
+      {
+        "label": "Zenn",
+        "url": "https://zenn.dev/kako_jun/articles/1d518f47225f42"
+      }
     ],
     "createdAt": "2024-12-10",
     "updatedAt": "2024-12-10",
@@ -322,7 +460,12 @@
     "videos": ["https://youtu.be/bE_fR3AcX78", "https://youtu.be/MatsIe3Pgoc"],
     "demoUrl": "https://sid-note.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/sid-note",
-    "articles": [{ "label": "Zenn", "url": "https://zenn.dev/kako_jun/articles/00dde8f9a28524" }],
+    "articles": [
+      {
+        "label": "Zenn",
+        "url": "https://zenn.dev/kako_jun/articles/00dde8f9a28524"
+      }
+    ],
     "createdAt": "2024-01-01",
     "updatedAt": "2024-12-01",
     "featured": true

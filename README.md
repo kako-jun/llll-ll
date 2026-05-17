@@ -1,65 +1,76 @@
 # llll-ll
 
-Personal portfolio website for kako-jun, a game and app developer based in Kanazawa.
+Personal portfolio for [kako-jun](https://github.com/kako-jun), a games and apps developer based in Kanazawa, Japan. Lives at [llll-ll.com](https://llll-ll.com).
 
 ## Features
 
-- **Multi-language Support**: English, Chinese, Japanese, and Spanish
-- **Pixel Art Design**: Dark retro aesthetic with cyberpunk elements
-- **Mobile-First**: Responsive design optimized for mobile devices
-- **No Page Transitions**: Single-page application with smooth interactions
-- **JSON-Based Content**: Easy content management through JSON files
-- **SPA Architecture**: Built with Vite + React for fast loading
+- **Multi-language**: English, Chinese, Japanese, and Spanish — automatic detection on first visit, persisted across sessions
+- **Light / dark theme**: detects `prefers-color-scheme`, overridable via the header toggle
+- **Interactive header**: the sticky header is also a tiny Tetris-style mini-game (tap to drop, click to remove, lines clear automatically)
+- **Mobile-first**: 800 px max container, responsive at every breakpoint
+- **JSON-driven content**: products are loaded at runtime from `public/data/products.json`
 
 ## Tech Stack
 
-- **Vite + React** - Fast SPA with HMR
-- **TypeScript** - Type-safe development
-- **CSS3** - Custom pixel art styling
-- **JSON** - Content management system
+- Vite + React 19 + TypeScript
+- react-router-dom v7 for the small route table (`/`, `/welcome`, `/easter-egg`)
+- Vanilla CSS with CSS custom properties for theming
+- Vitest for unit tests (pure-logic only)
+- nostr-tools for the Nostr posts popup
 
 ## Getting Started
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+npm run dev          # http://localhost:5173
+```
 
-2. Run the development server:
-   ```bash
-   npm run dev
-   ```
+## Scripts
 
-3. Open [http://localhost:5173](http://localhost:5173) in your browser
+| Script              | What it does                              |
+| ------------------- | ----------------------------------------- |
+| `npm run dev`       | Vite dev server with HMR                  |
+| `npm run build`     | `tsc && vite build` (type-check + bundle) |
+| `npm run preview`   | Serve `dist/` locally                     |
+| `npm run lint`      | ESLint over `src/`                        |
+| `npm run typecheck` | `tsc --noEmit`                            |
+| `npm test`          | Run the vitest suite once                 |
+| `npm run format`    | Prettier write                            |
 
-## Adding Products
+## Adding a Product
 
-To add a new product:
+Products are loaded from `public/data/products.json`. Each entry follows the `Product` interface in `src/types/index.ts`:
 
-1. Create a new entry in `public/data/products.json`
-2. Follow the structure of existing product files
-3. Include all required fields (id, title, description, etc.)
-4. Add any images to the `public/images/` directory
+- `title` and `description` are objects keyed by language (`en`, `ja`, `zh`, `es`)
+- `images`, `animations`, and `videos` are paths relative to `public/`
+- `tags` are free-form strings used both for display and search
+
+Drop any new media files into `public/images/` (or `public/animations/`, `public/videos/`) and reference them with their `/`-prefixed path.
 
 ## Project Structure
 
+See [`CLAUDE.md`](./CLAUDE.md) for a full directory tour; [`DESIGN.md`](./DESIGN.md) for the design system that any UI change must conform to.
+
 ```
 src/
-├── components/    # React components
-├── data/         # JSON product data
-├── lib/          # Utility functions
-└── types/        # TypeScript definitions
+├── App.tsx, main.tsx
+├── pages/        # Welcome (language picker), NotFound
+├── components/   # common, game, layout, nostr, project
+├── hooks/        # useTetrisGame, useTheme, useLanguage, ...
+├── lib/          # tetris (pure logic), i18n, storage
+├── constants/    # ids, sizes, durations
+├── styles/       # globals.css (CSS variables, base styles)
+└── types/        # Product, Language, web-components ambient types
 ```
 
 ## Deployment
 
-This project is designed to be deployed on Vercel with a custom domain (llll-ll.com).
+Built as a static SPA. Deployed via Vercel with the custom domain `llll-ll.com`.
 
 ```bash
-npm run build
-npm run dev
+npm run build       # outputs to dist/
 ```
 
 ## License
 
-© 2024 kako-jun. All rights reserved.
+© kako-jun. All rights reserved.

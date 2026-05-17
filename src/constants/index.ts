@@ -18,5 +18,5 @@ export const MEDIA_GRID_SIZE = 140;
 export const TOP_IMAGE_SIZE = 200;
 
 // Game Constants
-export const BLOCK_SIZE = 20;
-export const GRID_ROWS = 3;
+// Tetris uses its own BLOCK_SIZE/GRID_HEIGHT defined in src/lib/tetris.ts;
+// they are not duplicated here to avoid the values drifting apart.

@@ -190,24 +190,22 @@ Note: `Inter:wght@700` is imported via Google Fonts but not referenced in any fo
 
 ### Z-Index Hierarchy
 
-| Layer               | Z-Index | Element                                 |
-| ------------------- | ------- | --------------------------------------- |
-| Background          | 0       | Floating square pixels                  |
-| Content             | 1       | Page container                          |
-| Sections            | 2       | Footer                                  |
-| Popups              | 5       | About / Nostr popup                     |
-| Game (falling)      | 19      | Tetris falling blocks                   |
-| Game (grid)         | 20      | Tetris block grid                       |
-| Game (disappearing) | 21      | Tetris disappearing blocks              |
-| Header              | 50      | Sticky header                           |
-| Header game         | 1000    | PixelAnimations (header-spawned blocks) |
+| Layer               | Z-Index | Element                    |
+| ------------------- | ------- | -------------------------- |
+| Background          | 0       | Floating square pixels     |
+| Content             | 1       | Page container             |
+| Sections            | 2       | Footer                     |
+| Popups              | 5       | About / Nostr popup        |
+| Game (falling)      | 19      | Tetris falling blocks      |
+| Game (grid)         | 20      | Tetris block grid          |
+| Game (disappearing) | 21      | Tetris disappearing blocks |
+| Header              | 50      | Sticky header              |
 
 ### Shadows
 
 Minimal. Flat design aesthetic.
 
 - Theme toggle knob: `0 2px 4px rgba(0,0,0,0.2)`
-- PixelAnimations blocks: `0 1px 2px rgba(0,0,0,0.1)`
 - Cards: none (borders only)
 - Popups: none (thick border instead)
 

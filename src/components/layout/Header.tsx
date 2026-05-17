@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { Language } from "@/types";
 import { useTranslation } from "@/lib/i18n";
 import { useTetrisGame } from "@/hooks/useTetrisGame";
@@ -7,6 +8,8 @@ import { TetrisBlockGrid, FallingBlocks } from "@/components/game";
 interface HeaderProps {
   language: Language;
 }
+
+const FALLBACK_HEADER_HEIGHT = 64;
 
 export default function Header({ language }: HeaderProps) {
   const t = useTranslation(language);
@@ -20,6 +23,26 @@ export default function Header({ language }: HeaderProps) {
     getColumnFromClick,
     handleBlockClick,
   } = useTetrisGame(HEADER_ID);
+
+  // Track the header's rendered height for the block-grid layout. Re-reading
+  // the DOM in the render body causes layout thrash, so we measure on mount
+  // and on window resize and cache the value in state.
+  //
+  // The effect re-runs when `mounted` flips to true (the first real DOM is
+  // attached) and when `gridWidth` changes (the header switches between the
+  // pre-init layout and the game layout, which can change its height).
+  const headerRef = useRef<HTMLElement | null>(null);
+  const [headerHeight, setHeaderHeight] = useState(FALLBACK_HEADER_HEIGHT);
+  useEffect(() => {
+    const measure = () => {
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.getBoundingClientRect().height);
+      }
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [mounted, gridWidth]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -81,7 +104,7 @@ export default function Header({ language }: HeaderProps) {
   // 初期化前またはSSR中
   if (gridWidth === 0 || !mounted) {
     return (
-      <header id={HEADER_ID} style={headerStyle}>
+      <header id={HEADER_ID} ref={headerRef} style={headerStyle}>
         <div className="container">
           <div style={titleContainerStyle}>
             <h1 onClick={scrollToTop} className="logo-font" style={titleStyle}>
@@ -94,12 +117,10 @@ export default function Header({ language }: HeaderProps) {
     );
   }
 
-  const header = document.getElementById(HEADER_ID);
-  const headerHeight = header?.getBoundingClientRect().height || 64;
-
   return (
     <header
       id={HEADER_ID}
+      ref={headerRef}
       onClick={handleHeaderClick}
       style={{
         ...headerStyle,

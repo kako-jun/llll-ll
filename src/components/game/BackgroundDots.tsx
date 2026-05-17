@@ -124,20 +124,32 @@ const keyframesCSS = predefinedDots
   )
   .join("");
 
+// Module-scoped refcount for the injected <style>. Survives StrictMode's
+// double-mount (the second mount sees the first cleanup) and isn't sensitive
+// to external removal of the <style> element.
+let keyframesRefCount = 0;
+const KEYFRAMES_STYLE_ID = "background-dots-keyframes";
+
 export default function BackgroundDots() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
 
-    // Inject keyframes CSS
-    const styleId = "background-dots-keyframes";
-    if (!document.getElementById(styleId)) {
+    if (keyframesRefCount === 0 && !document.getElementById(KEYFRAMES_STYLE_ID)) {
       const style = document.createElement("style");
-      style.id = styleId;
+      style.id = KEYFRAMES_STYLE_ID;
       style.textContent = keyframesCSS;
       document.head.appendChild(style);
     }
+    keyframesRefCount++;
+
+    return () => {
+      keyframesRefCount = Math.max(0, keyframesRefCount - 1);
+      if (keyframesRefCount === 0) {
+        document.getElementById(KEYFRAMES_STYLE_ID)?.remove();
+      }
+    };
   }, []);
 
   // SSR中は何も表示しない

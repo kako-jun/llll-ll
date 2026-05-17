@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { BLOCK_SIZE } from "@/hooks/useTetrisGame";
+import { BLOCK_SIZE } from "@/lib/tetris";
 
 interface TetrisBlockProps {
   x: number;

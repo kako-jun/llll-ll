@@ -24,6 +24,7 @@ const VisitorCounter = ({ language: _language }: VisitorCounterProps) => {
           theme="classic"
           digits="5"
           format="image"
+          style={{ fontFamily: "inherit" }}
         ></nostalgic-counter>
       </div>
     </div>

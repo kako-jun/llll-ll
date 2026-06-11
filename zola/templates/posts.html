@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+{# posts.html — blog アーカイブ一覧 /posts/（Issue #10 Phase 3）。
+   - 黒×緑の btop 様式で自己完結（base.html は継承しない・index.html / app.html / post.html と同パレット）。
+   - section.pages（sort_by="date" → 新しい順）を日付＋タイトル＋タグで列挙する。
+   - 記事は普通のページスクロール（外枠は伸びる）。 #}
+{% if lang == config.default_language %}{% set nav_prefix = "" %}{% else %}{% set nav_prefix = "/" ~ lang %}{% endif %}
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>blog — llll-ll</title>
+  <meta name="description" content="{{ config.description }}" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="blog — llll-ll" />
+  <meta property="og:url" content="{{ section.permalink }}" />
+  <meta property="og:site_name" content="llll-ll" />
+  <style>
+    :root {
+      --bg: {{ config.extra.bg }};
+      --panel-bg: {{ config.extra.panel_bg }};
+      --border: {{ config.extra.border }};
+      --border-muted: {{ config.extra.border_muted }};
+      --text: {{ config.extra.text }};
+      --text-muted: {{ config.extra.text_muted }};
+      --link: {{ config.extra.link }};
+      --fs-base: 0.85rem;
+      --fs-sm: 0.72rem;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DejaVu Sans Mono", "Consolas", "Menlo", monospace;
+      font-size: var(--fs-base);
+      line-height: 1.5;
+    }
+    html[lang="ja"], html[lang="ja"] body {
+      font-family: "DejaVu Sans Mono", "Consolas", "Menlo",
+        "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", monospace, sans-serif;
+    }
+    html[lang="zh"], html[lang="zh"] body {
+      font-family: "DejaVu Sans Mono", "Consolas", "Menlo",
+        "Noto Sans SC", "PingFang SC", "Microsoft YaHei", monospace, sans-serif;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .desktop {
+      min-height: 100vh;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .post-topnav {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2em;
+      padding: 4px 4px 0;
+      flex-shrink: 0;
+    }
+    .post-topnav .brand {
+      font-family: "Arial Black", "Arial", "Impact", sans-serif;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: var(--border);
+      font-size: 1.1rem;
+    }
+    .post-topnav .back { color: var(--text-muted); font-size: var(--fs-sm); }
+
+    .panel {
+      position: relative;
+      border: 1px solid var(--border);
+      background: var(--panel-bg);
+      padding: 20px 18px 16px;
+    }
+    .panel > .label {
+      position: absolute;
+      top: -0.7em;
+      left: 0.8em;
+      background: var(--panel-bg);
+      padding: 0 0.4em;
+      color: var(--border);
+      font-size: var(--fs-sm);
+      letter-spacing: 0.05em;
+    }
+
+    /* 記事リスト（1件1行ブロック） */
+    .archive-list { display: flex; flex-direction: column; }
+    .archive-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-muted);
+    }
+    .archive-item:last-child { border-bottom: none; }
+    .archive-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4em 0.9em; }
+    .archive-date { color: var(--text-muted); font-size: var(--fs-sm); flex-shrink: 0; }
+    .archive-title a { color: var(--link); text-decoration: none; }
+    .archive-title a:hover { text-decoration: underline; }
+    .archive-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .archive-tag {
+      border: 1px solid var(--border-muted);
+      color: var(--text-muted);
+      padding: 1px 7px;
+      font-size: var(--fs-sm);
+    }
+    .archive-empty { color: var(--text-muted); text-align: center; padding: 16px; }
+  </style>
+</head>
+<body>
+  <div class="desktop">
+    <nav class="post-topnav" aria-label="{{ trans(key='nav_aria', lang=lang) }}">
+      <a class="brand" href="{{ nav_prefix | safe }}/">llll-ll</a>
+      <a class="back" href="{{ nav_prefix | safe }}/">{{ trans(key="back_to_list", lang=lang) }}</a>
+    </nav>
+
+    <section class="panel">
+      <span class="label">blog</span>
+      {% if section.pages and section.pages | length > 0 %}
+      <div class="archive-list">
+        {% for p in section.pages %}
+        <article class="archive-item">
+          <div class="archive-head">
+            {% if p.date %}<span class="archive-date">{{ p.date | date(format="%Y-%m-%d") }}</span>{% endif %}
+            <span class="archive-title"><a href="{{ p.permalink | safe }}">{{ p.title }}</a></span>
+          </div>
+          {% if p.extra.tags %}
+          <div class="archive-tags">{% for t in p.extra.tags %}<span class="archive-tag">{{ t }}</span>{% endfor %}</div>
+          {% endif %}
+        </article>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="archive-empty">{{ trans(key="blog_empty", lang=lang) }}</p>
+      {% endif %}
+    </section>
+  </div>
+</body>
+</html>

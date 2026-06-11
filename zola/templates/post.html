@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+{# post.html — 記事1本ページ /posts/{slug}/（Issue #10 Phase 3）。
+   - 黒×緑の btop 様式で自己完結（base.html は継承しない・index.html / app.html と同パレット）。
+   - 外枠＋nav は portal と同じ btop 枠。本文は「普通のページスクロール」（top の内部スクロールとは別扱い）。
+   - 記事本文 page.content（Markdown→HTML）を .post-body の中で描く。見出し/コード/引用/箇条/表/画像を btop 調にスタイルする。
+   - 前後ナビは sort_by="date" の page.higher / page.lower（avel の実績に合わせる）。
+   - タグは page.extra.tags の表示のみ（taxonomy 未設定。タグ別ページ・年別・関連は follow-up）。
+   - 軽い OGP（og:title/description/url）だけ出す。フル SEO（sitemap/JSON-LD/Atom）は #11 の領分。 #}
+{% if lang == config.default_language %}{% set nav_prefix = "" %}{% else %}{% set nav_prefix = "/" ~ lang %}{% endif %}
+{% set og_title = page.title %}
+{% set og_desc = page.content | striptags | trim | truncate(length=160) %}
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ og_title }} — llll-ll</title>
+  <meta name="description" content="{{ og_desc }}" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{ og_title }}" />
+  <meta property="og:description" content="{{ og_desc }}" />
+  <meta property="og:url" content="{{ page.permalink }}" />
+  <meta property="og:site_name" content="llll-ll" />
+  {% if page.date %}<meta property="article:published_time" content="{{ page.date }}" />{% endif %}
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="{{ og_title }}" />
+  <meta name="twitter:description" content="{{ og_desc }}" />
+  <style>
+    :root {
+      --bg: {{ config.extra.bg }};
+      --panel-bg: {{ config.extra.panel_bg }};
+      --border: {{ config.extra.border }};
+      --border-muted: {{ config.extra.border_muted }};
+      --text: {{ config.extra.text }};
+      --text-muted: {{ config.extra.text_muted }};
+      --link: {{ config.extra.link }};
+      --fs-base: 0.85rem;
+      --fs-sm: 0.72rem;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DejaVu Sans Mono", "Consolas", "Menlo", monospace;
+      font-size: var(--fs-base);
+      line-height: 1.5;
+    }
+    /* ── ロケール別フォント（#5）。CJK グリフのみ OS 内蔵へフォールバック（index.html / app.html と同方針）。 ── */
+    html[lang="ja"], html[lang="ja"] body {
+      font-family: "DejaVu Sans Mono", "Consolas", "Menlo",
+        "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", monospace, sans-serif;
+    }
+    html[lang="zh"], html[lang="zh"] body {
+      font-family: "DejaVu Sans Mono", "Consolas", "Menlo",
+        "Noto Sans SC", "PingFang SC", "Microsoft YaHei", monospace, sans-serif;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* 外枠＝緑ボーダーの btop ウィンドウ（index / app と同じ調子）。
+       記事は「普通のページスクロール」なので height は固定せず、本文に合わせて伸びる。 */
+    .desktop {
+      min-height: 100vh;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+    }
+    /* 上部のナビ（戻る導線） */
+    .post-topnav {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2em;
+      padding: 4px 4px 0;
+      flex-shrink: 0;
+    }
+    .post-topnav .brand {
+      font-family: "Arial Black", "Arial", "Impact", sans-serif;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: var(--border);
+      font-size: 1.1rem;
+    }
+    .post-topnav .back { color: var(--text-muted); font-size: var(--fs-sm); }
+
+    /* btop 風パネル（緑枠） */
+    .panel {
+      position: relative;
+      border: 1px solid var(--border);
+      background: var(--panel-bg);
+      padding: 20px 18px 16px;
+    }
+    .panel > .label {
+      position: absolute;
+      top: -0.7em;
+      left: 0.8em;
+      background: var(--panel-bg);
+      padding: 0 0.4em;
+      color: var(--border);
+      font-size: var(--fs-sm);
+      letter-spacing: 0.05em;
+    }
+
+    /* 記事ヘッダ（タイトル＋メタ） */
+    .post-title {
+      margin: 0 0 0.3em;
+      color: var(--border);
+      font-size: 1.3rem;
+      line-height: 1.4;
+    }
+    .post-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5em 1em;
+      color: var(--text-muted);
+      font-size: var(--fs-sm);
+      margin-bottom: 1.4em;
+      padding-bottom: 0.9em;
+      border-bottom: 1px solid var(--border-muted);
+    }
+    .post-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .post-tag {
+      border: 1px solid var(--border-muted);
+      color: var(--text-muted);
+      padding: 1px 7px;
+    }
+
+    /* ── 記事本文（Markdown→HTML）。読み物なので行間広め・等幅で btop 調。 ── */
+    .post-body { line-height: 1.85; color: var(--text); max-width: 70ch; }
+    .post-body h1, .post-body h2, .post-body h3, .post-body h4 {
+      color: var(--border);
+      line-height: 1.4;
+      margin: 1.8em 0 0.6em;
+    }
+    .post-body h1 { font-size: 1.2rem; }
+    .post-body h2 { font-size: 1.1rem; }
+    .post-body h3 { font-size: 1.0rem; }
+    .post-body h4 { font-size: 0.92rem; }
+    .post-body p { margin: 0 0 1em; }
+    .post-body a { color: var(--link); text-decoration: underline; }
+    .post-body strong { color: var(--text); font-weight: 700; }
+    .post-body em { font-style: italic; }
+    .post-body ul, .post-body ol { margin: 0 0 1em; padding-left: 1.6em; }
+    .post-body li { margin: 0.3em 0; }
+    .post-body blockquote {
+      margin: 0 0 1em;
+      padding: 0.2em 0 0.2em 1em;
+      border-left: 3px solid var(--border);
+      color: var(--text-muted);
+    }
+    .post-body code {
+      font-family: "DejaVu Sans Mono", "Consolas", "Menlo", monospace;
+      background: var(--bg);
+      border: 1px solid var(--border-muted);
+      padding: 0.05em 0.35em;
+      font-size: 0.92em;
+    }
+    .post-body pre {
+      background: var(--bg);
+      border: 1px solid var(--border-muted);
+      padding: 0.9em 1em;
+      margin: 0 0 1em;
+      overflow-x: auto;
+    }
+    .post-body pre code { background: none; border: none; padding: 0; }
+    .post-body hr { border: none; border-top: 1px solid var(--border-muted); margin: 1.6em 0; }
+    .post-body img { max-width: 100%; height: auto; border: 1px solid var(--border-muted); }
+    .post-body table { border-collapse: collapse; margin: 0 0 1em; }
+    .post-body th, .post-body td { border: 1px solid var(--border-muted); padding: 0.35em 0.6em; vertical-align: top; }
+    .post-body th { color: var(--border); text-align: left; }
+
+    /* 前後ナビ（記事末尾） */
+    .post-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 1em;
+      margin-top: 1.8em;
+      padding-top: 1em;
+      border-top: 1px solid var(--border-muted);
+      font-size: var(--fs-sm);
+    }
+    .post-nav span { max-width: 48%; overflow-wrap: anywhere; }
+    .post-nav span:last-child { text-align: right; }
+    .post-nav a { color: var(--link); }
+
+    @media (max-width: 600px) {
+      .post-body { max-width: none; }
+      .post-nav { flex-direction: column; gap: 0.4em; }
+      .post-nav span { max-width: none; }
+      .post-nav span:last-child { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <div class="desktop">
+    <nav class="post-topnav" aria-label="{{ trans(key='nav_aria', lang=lang) }}">
+      <a class="brand" href="{{ nav_prefix | safe }}/">llll-ll</a>
+      <a class="back" href="{{ nav_prefix | safe }}/posts/">← blog</a>
+    </nav>
+
+    <section class="panel">
+      <span class="label">post</span>
+      <article>
+        <h1 class="post-title">{{ page.title }}</h1>
+        <div class="post-meta">
+          {% if page.date %}<span>{{ page.date | date(format="%Y-%m-%d") }}</span>{% endif %}
+          {% if page.extra.tags %}
+          <span class="post-tags">{% for t in page.extra.tags %}<span class="post-tag">{{ t }}</span>{% endfor %}</span>
+          {% endif %}
+        </div>
+
+        <div class="post-body">
+          {{ page.content | safe }}
+        </div>
+
+        {% if page.higher or page.lower %}
+        <nav class="post-nav" aria-label="{{ trans(key='nav_aria', lang=lang) }}">
+          {% if page.higher %}<span><a href="{{ page.higher.permalink | safe }}">← {{ page.higher.title }}</a></span>{% else %}<span></span>{% endif %}
+          {% if page.lower %}<span><a href="{{ page.lower.permalink | safe }}">{{ page.lower.title }} →</a></span>{% else %}<span></span>{% endif %}
+        </nav>
+        {% endif %}
+      </article>
+    </section>
+  </div>
+</body>
+</html>

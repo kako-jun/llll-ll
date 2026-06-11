@@ -698,8 +698,8 @@
       <section class="panel panel-bbs" id="bbs">
         <span class="label">bbs</span>
         <nostalgic-bbs id="{{ config.extra.nostalgic_bbs_id }}" theme="retro" lang="{{ lang }}" width="100%"></nostalgic-bbs>
-        <!-- PE: JS 無効/コンポーネント未定義時はパネルが空にならないよう、i18n プレースホルダ文を残す。
-             JS 有効時は <noscript> が消え、コンポーネントが描画する。 -->
+        <!-- PE: JS 無効時はパネルが空にならないよう、i18n プレースホルダ文を残す。
+             JS 有効時は <noscript> の中身がレンダリングされず、コンポーネントが描画する。 -->
         <noscript><div class="blog-placeholder">{{ trans(key="bbs_placeholder", lang=lang) }}</div></noscript>
       </section>
 

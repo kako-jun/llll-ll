@@ -532,8 +532,7 @@
       max-height: 85vh;
       object-fit: contain;
     }
-    /* トリガ（日替わり絵）はタップで拡大できると分かるように cursor:pointer。配線は daily-art.js（PE）。 */
-    .daily-art-img { cursor: pointer; }
+    /* 日替わり絵の cursor:pointer は daily-art.js が JS 配線時に付与する（no-JS では非クリックなので嘘の pointer を出さない・PE）。 */
 
     /* ── スマホ: 100vh 固定を解除し、縦積み＋普通のスクロール ── */
     @media (max-width: 600px) {

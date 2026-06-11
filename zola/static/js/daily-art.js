@@ -66,14 +66,16 @@ if (typeof module !== "undefined" && module.exports) {
   const closeBtn = overlay.querySelector(".lightbox-close");
   if (!lightboxImg) return;
 
-  // トリガは figure（無ければ img 自体）。i18n ラベルは figure[data-lightbox-label] から読む。
+  // トリガは画像自体。figure は figcaption（『タイトル』）を含むので button 化に不適。
+  // i18n ラベルは figure[data-lightbox-label] から読む。
   const figure = img.closest(".daily-art");
-  const trigger = figure || img;
+  const trigger = img;
   const label = (figure && figure.getAttribute("data-lightbox-label")) || img.alt || "";
 
-  // トリガを interactive 化（PE: JS が動いたときだけ button 化する。素の HTML は plain image）。
+  // トリガを interactive 化（PE: JS が動いたときだけ button 化＋pointer 化する。素の HTML は plain image）。
   trigger.setAttribute("role", "button");
   trigger.setAttribute("tabindex", "0");
+  trigger.style.cursor = "pointer";
   if (label) trigger.setAttribute("aria-label", label);
 
   let isOpen = false;
@@ -107,7 +109,7 @@ if (typeof module !== "undefined" && module.exports) {
   // 開く: click と Enter/Space。Space はスクロール抑止のため preventDefault。
   trigger.addEventListener("click", openLightbox);
   trigger.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+    if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       openLightbox();
     }

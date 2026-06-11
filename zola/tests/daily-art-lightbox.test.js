@@ -6,6 +6,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 // DOM に開閉を配線する。よって各テストは「DOM を組む → vi.resetModules() → 動的 import（IIFE 実行）
 // → 操作 → 検証」の順にし、テストごとに再配線する（モジュールキャッシュ回避）。
 //
+// トリガは **画像自体（.daily-art-img）**。figure は figcaption（『タイトル』）を含むので button 化に不適。
 // markup は zola/templates/index.html の実テンプレに合わせた最小再現:
 //   <figure class="daily-art" data-lightbox-label="..."><img class="daily-art-img" ...>
 //     <figcaption class="daily-art-title">...</figcaption></figure>
@@ -69,18 +70,18 @@ afterEach(() => {
 
 describe("daily-art lightbox wiring (jsdom)", () => {
   describe("opening", () => {
-    it("opens the overlay on trigger click", async () => {
+    it("opens the overlay on trigger (image) click", async () => {
       await setupAndImport(fullMarkup());
-      const { figure, overlay } = getEls();
+      const { triggerImg, overlay } = getEls();
       expect(overlay.hidden).toBe(true); // 既定は隠れている
-      figure.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
+      triggerImg.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
       expect(overlay.hidden).toBe(false);
     });
 
     it("opens on Enter key on the trigger", async () => {
       await setupAndImport(fullMarkup());
-      const { figure, overlay } = getEls();
-      figure.dispatchEvent(
+      const { triggerImg, overlay } = getEls();
+      triggerImg.dispatchEvent(
         new window.KeyboardEvent("keydown", { key: "Enter", bubbles: true })
       );
       expect(overlay.hidden).toBe(false);
@@ -88,8 +89,8 @@ describe("daily-art lightbox wiring (jsdom)", () => {
 
     it("opens on Space key on the trigger", async () => {
       await setupAndImport(fullMarkup());
-      const { figure, overlay } = getEls();
-      figure.dispatchEvent(
+      const { triggerImg, overlay } = getEls();
+      triggerImg.dispatchEvent(
         new window.KeyboardEvent("keydown", { key: " ", bubbles: true })
       );
       expect(overlay.hidden).toBe(false);
@@ -97,9 +98,9 @@ describe("daily-art lightbox wiring (jsdom)", () => {
 
     it("syncs the lightbox image src to the current daily-art img src when opened", async () => {
       await setupAndImport(fullMarkup());
-      const { figure, triggerImg, lightboxImg } = getEls();
+      const { triggerImg, lightboxImg } = getEls();
       // daily-art.js が今日のエントリ（01.webp）に差し替えた後の src を拡大側へ同期する。
-      figure.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
+      triggerImg.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
       expect(lightboxImg.src).toBe(triggerImg.src);
       expect(lightboxImg.src).toContain("/images/daily/01.webp");
     });
@@ -108,8 +109,8 @@ describe("daily-art lightbox wiring (jsdom)", () => {
   describe("closing", () => {
     it("closes when the close (×) button is clicked", async () => {
       await setupAndImport(fullMarkup());
-      const { figure, overlay, closeBtn } = getEls();
-      figure.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
+      const { triggerImg, overlay, closeBtn } = getEls();
+      triggerImg.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
       expect(overlay.hidden).toBe(false);
       closeBtn.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
       expect(overlay.hidden).toBe(true);
@@ -117,8 +118,8 @@ describe("daily-art lightbox wiring (jsdom)", () => {
 
     it("closes on Escape keydown while open", async () => {
       await setupAndImport(fullMarkup());
-      const { figure, overlay } = getEls();
-      figure.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
+      const { triggerImg, overlay } = getEls();
+      triggerImg.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
       expect(overlay.hidden).toBe(false);
       document.dispatchEvent(
         new window.KeyboardEvent("keydown", { key: "Escape", bubbles: true })
@@ -128,8 +129,8 @@ describe("daily-art lightbox wiring (jsdom)", () => {
 
     it("closes when the overlay background itself is clicked", async () => {
       await setupAndImport(fullMarkup());
-      const { figure, overlay } = getEls();
-      figure.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
+      const { triggerImg, overlay } = getEls();
+      triggerImg.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
       expect(overlay.hidden).toBe(false);
       // e.target === overlay のときだけ閉じる（背景クリック）。
       overlay.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
@@ -138,8 +139,8 @@ describe("daily-art lightbox wiring (jsdom)", () => {
 
     it("does NOT close when the inner .lightbox is clicked (event bubbles but target isn't the overlay)", async () => {
       await setupAndImport(fullMarkup());
-      const { figure, overlay, inner } = getEls();
-      figure.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
+      const { triggerImg, overlay, inner } = getEls();
+      triggerImg.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
       expect(overlay.hidden).toBe(false);
       // 内側クリックは overlay まで伝播するが e.target が overlay でないので閉じない。
       inner.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
@@ -147,14 +148,36 @@ describe("daily-art lightbox wiring (jsdom)", () => {
     });
   });
 
+  describe("focus management", () => {
+    it("moves focus to the close button on open", async () => {
+      await setupAndImport(fullMarkup());
+      const { triggerImg, closeBtn } = getEls();
+      triggerImg.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
+      expect(document.activeElement).toBe(closeBtn);
+    });
+
+    it("returns focus to the trigger on close (keyboard path)", async () => {
+      await setupAndImport(fullMarkup());
+      const { triggerImg, closeBtn } = getEls();
+      // トリガに focus を置いてから開く → 閉じたら focus がトリガへ戻ること。
+      triggerImg.focus();
+      expect(document.activeElement).toBe(triggerImg);
+      triggerImg.dispatchEvent(
+        new window.KeyboardEvent("keydown", { key: "Enter", bubbles: true })
+      );
+      closeBtn.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
+      expect(document.activeElement).toBe(triggerImg);
+    });
+  });
+
   describe("ephemeral (no history pollution)", () => {
     it("keeps history.length and location.pathname unchanged across open and close", async () => {
       await setupAndImport(fullMarkup());
-      const { figure, overlay, closeBtn } = getEls();
+      const { triggerImg, overlay, closeBtn } = getEls();
       const lenBefore = window.history.length;
       const pathBefore = window.location.pathname;
 
-      figure.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
+      triggerImg.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
       expect(overlay.hidden).toBe(false);
       expect(window.history.length).toBe(lenBefore);
       expect(window.location.pathname).toBe(pathBefore);
@@ -169,9 +192,9 @@ describe("daily-art lightbox wiring (jsdom)", () => {
   describe("background scroll suppression", () => {
     it("adds body.modal-open on open and removes it on close", async () => {
       await setupAndImport(fullMarkup());
-      const { figure, closeBtn } = getEls();
+      const { triggerImg, closeBtn } = getEls();
       expect(document.body.classList.contains("modal-open")).toBe(false);
-      figure.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
+      triggerImg.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
       expect(document.body.classList.contains("modal-open")).toBe(true);
       closeBtn.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
       expect(document.body.classList.contains("modal-open")).toBe(false);
@@ -180,7 +203,7 @@ describe("daily-art lightbox wiring (jsdom)", () => {
 
   describe("progressive enhancement / guards", () => {
     it("does not throw when imported against a DOM without the overlay (trigger only)", async () => {
-      // overlay が無い → IIFE は line 64 で return（トリガは interactive 化されない）。例外を投げない。
+      // overlay が無い → IIFE は overlay ガードで return（トリガは interactive 化されない）。例外を投げない。
       const html = `
         <figure class="daily-art" data-lightbox-label="拡大して見る">
           <img class="daily-art-img" src="/images/daily/01.webp" alt="情報化社会" />
@@ -188,10 +211,11 @@ describe("daily-art lightbox wiring (jsdom)", () => {
         <script type="application/json" id="daily-data">[{"file":"01.webp","title":"情報化社会"}]</script>
       `;
       await expect(setupAndImport(html)).resolves.not.toThrow();
-      // 配線されていないので click しても overlay は無く、例外も起きない。
-      const figure = document.querySelector(".daily-art");
+      const triggerImg = document.querySelector(".daily-art-img");
+      // overlay 無しでは配線されない＝トリガは button 化されていない（PE）。
+      expect(triggerImg.getAttribute("role")).toBe(null);
       expect(() =>
-        figure.dispatchEvent(new window.MouseEvent("click", { bubbles: true }))
+        triggerImg.dispatchEvent(new window.MouseEvent("click", { bubbles: true }))
       ).not.toThrow();
     });
 
@@ -201,13 +225,21 @@ describe("daily-art lightbox wiring (jsdom)", () => {
   });
 
   describe("interactive enhancement of the trigger", () => {
-    it("upgrades the trigger figure to role=button, tabindex=0 and an aria-label", async () => {
+    it("upgrades the trigger image to role=button, tabindex=0, cursor:pointer and an aria-label", async () => {
+      await setupAndImport(fullMarkup());
+      const { triggerImg } = getEls();
+      expect(triggerImg.getAttribute("role")).toBe("button");
+      expect(triggerImg.getAttribute("tabindex")).toBe("0");
+      expect(triggerImg.style.cursor).toBe("pointer");
+      // aria-label は figure[data-lightbox-label] から取る（trans() 由来の表示言語ラベル）。
+      expect(triggerImg.getAttribute("aria-label")).toBe("拡大して見る");
+    });
+
+    it("does NOT upgrade the figure itself (avoids role=button on a figcaption-bearing element)", async () => {
       await setupAndImport(fullMarkup());
       const { figure } = getEls();
-      expect(figure.getAttribute("role")).toBe("button");
-      expect(figure.getAttribute("tabindex")).toBe("0");
-      // aria-label は figure[data-lightbox-label] から取る。
-      expect(figure.getAttribute("aria-label")).toBe("拡大して見る");
+      expect(figure.getAttribute("role")).toBe(null);
+      expect(figure.getAttribute("tabindex")).toBe(null);
     });
   });
 });

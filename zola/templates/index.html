@@ -306,6 +306,9 @@
       gap: 8px;
       transition: border-color 0.2s ease;
     }
+    /* hidden 属性で実際に消す: .card の display:flex が UA の [hidden]{display:none} を
+       詳細度タイ＋後勝ちで打ち消すため、.card[hidden]（詳細度 0,2,0）で明示的に上書きする。 */
+    .card[hidden] { display: none; }
     .card:hover { border-color: var(--border); }
     .card-head { display: flex; align-items: flex-start; gap: 8px; }
     .card-thumb {
@@ -337,7 +340,7 @@
       color: var(--text-muted);
       padding: 1px 6px;
     }
-    .card-links { display: flex; gap: 12px; margin-top: auto; }
+    .card-links { display: flex; justify-content: flex-end; gap: 12px; margin-top: auto; }
 
     /* ── blog パネル（apps 直下・footer 上）── */
     .panel-blog, .panel-bbs { padding-bottom: 12px; }

@@ -203,6 +203,14 @@
     .stat:first-child { border-left: none; }
     .stat-label { color: var(--text-muted); font-size: var(--fs-sm); }
     .stat-num { color: var(--border); font-weight: bold; font-size: 1.1rem; letter-spacing: 0.05em; }
+    /* 幅狭では5項目を「一斉に」縦積み（all-or-nothing・部分折返し禁止）。flex-nowrap なので
+       横一列 or 全縦積みの2状態だけ。縦罫(border-left)を横罫(border-top)へ切替し、先頭の打ち消しも縦向きに。
+       しきい値 560px は目安・ライブ blink で後調整する。 */
+    @media (max-width: 560px) {
+      .visits-stats { flex-direction: column; }
+      .stat { border-left: none; border-top: 1px solid var(--border); }
+      .stat:first-child { border-top: none; }
+    }
 
     /* ── フッタの SNS 並び ── */
     .social { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3em 1.2em; margin-bottom: 5px; }
@@ -549,15 +557,16 @@
 <body>
   <div class="desktop">
 
-    <!-- 最上段：訪問統計（ヘッダより上に堂々と）— 実カウントは Phase 2 #8 -->
-    <section class="panel visits-bar">
+    <!-- 最上段：訪問統計（ヘッダより上に堂々と）— 実カウントは Phase 2 #8（visits-counter.js が注入）。
+         data-visit-id を JS が読み、Nostalgic で increment する。各 stat-num の data-visit-stat が注入先。 -->
+    <section class="panel visits-bar" data-visit-id="{{ config.extra.nostalgic_visit_id }}">
       <span class="label">visits</span>
       <div class="visits-stats">
-        <span class="stat"><span class="stat-label">{{ trans(key="stat_total", lang=lang) }}</span><span class="stat-num">---</span></span>
-        <span class="stat"><span class="stat-label">{{ trans(key="stat_today", lang=lang) }}</span><span class="stat-num">---</span></span>
-        <span class="stat"><span class="stat-label">{{ trans(key="stat_yesterday", lang=lang) }}</span><span class="stat-num">---</span></span>
-        <span class="stat"><span class="stat-label">{{ trans(key="stat_week", lang=lang) }}</span><span class="stat-num">---</span></span>
-        <span class="stat"><span class="stat-label">{{ trans(key="stat_month", lang=lang) }}</span><span class="stat-num">---</span></span>
+        <span class="stat"><span class="stat-label">{{ trans(key="stat_total", lang=lang) }}</span><span class="stat-num" data-visit-stat="total">---</span></span>
+        <span class="stat"><span class="stat-label">{{ trans(key="stat_today", lang=lang) }}</span><span class="stat-num" data-visit-stat="today">---</span></span>
+        <span class="stat"><span class="stat-label">{{ trans(key="stat_yesterday", lang=lang) }}</span><span class="stat-num" data-visit-stat="yesterday">---</span></span>
+        <span class="stat"><span class="stat-label">{{ trans(key="stat_week", lang=lang) }}</span><span class="stat-num" data-visit-stat="week">---</span></span>
+        <span class="stat"><span class="stat-label">{{ trans(key="stat_month", lang=lang) }}</span><span class="stat-num" data-visit-stat="month">---</span></span>
       </div>
     </section>
 
@@ -732,5 +741,6 @@
   <script defer src="/js/app-popup.js"></script>
   <!-- 日替わりトップ絵の島（vanilla JS・defer）。読めなくてもサーバ既定（先頭=01）が見えたまま（PE）。 -->
   <script defer src="/js/daily-art.js"></script>
+  <script defer src="/js/visits-counter.js"></script>
 </body>
 </html>

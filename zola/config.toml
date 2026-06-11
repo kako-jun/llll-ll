@@ -161,6 +161,9 @@ nf_message = "No se encontró la página que buscas."
 nf_home = "Volver al inicio →"
 
 [extra]
+# Nostalgic 訪問カウンタ ID（#8 Phase 2）。visits バーの JS 島がこの ID で increment する。
+# 言語非依存なのでグローバル [extra] に置く（各 [languages.*] 配下ではない）。
+nostalgic_visit_id = "llll-ll-f843ad67"
 # 黒×緑 palette（DESIGN.md / epic 準拠）
 bg = "#121212"
 panel_bg = "#1e1e1e"

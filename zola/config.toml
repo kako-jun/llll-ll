@@ -167,6 +167,17 @@ nostalgic_visit_id = "llll-ll-f843ad67"
 # Nostalgic BBS ID（#8 Phase 2）。bbs パネルの <nostalgic-bbs> がこの ID で掲示板を出す。
 # React 版 BBS・visit と同一値。言語非依存なのでグローバル [extra] に置く。
 nostalgic_bbs_id = "llll-ll-f843ad67"
+# mypace 最新つぶやきフィード（#8 第3分割・案C＝自前 in-theme レンダリング）。
+# mypace パネルの JS 島 mypace-feed.js が Nostr relay からノートを取り、btop 黒×緑で自前描画する。
+# 言語非依存なのでグローバル [extra] に置く（各 [languages.*] 配下ではない）。
+# hex pubkey（npub のデコード済み。島では bech32 デコードせず hex を直に使う）。
+mypace_pubkey_hex = "6f87b1ba22d8a659070008af6d5f3fe1d711e0162c65d8961728d04fb8657bfc"
+# ノート実在を確認済みの relay（島が WebSocket で並列接続する）。
+mypace_relays = ["wss://relay.damus.io", "wss://nos.lol", "wss://relay.primal.net"]
+# 各つぶやきのリンク先ベース。mypace の個別投稿ルートは /post/:id（id は hex event id をそのまま使う）。
+mypace_post_url_base = "https://mypace.llll-ll.com/post/"
+# 表示するノート件数。
+mypace_note_limit = 3
 # 黒×緑 palette（DESIGN.md / epic 準拠）
 bg = "#121212"
 panel_bg = "#1e1e1e"

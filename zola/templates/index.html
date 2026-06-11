@@ -163,8 +163,21 @@
       text-align: center;
       padding: 8px;
     }
-    /* mypace つぶやき: 薄いダミー行 */
-    .mypace-feed { display: flex; flex-direction: column; gap: 6px; }
+    /* mypace つぶやき: プレースホルダ（薄いダミー行）と、島が置換する実つぶやき。
+       縦スクロール可（#8・session621「mypace 縦スクロール」）。溢れたら内部スクロール（btop 緑バー）。
+       top-row を押し上げないよう max-height は控えめ。 */
+    .mypace-feed {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 170px;
+      overflow-y: auto;
+      scrollbar-color: var(--border) var(--panel-bg);
+      scrollbar-width: thin;
+    }
+    .mypace-feed::-webkit-scrollbar { width: 10px; }
+    .mypace-feed::-webkit-scrollbar-track { background: var(--panel-bg); }
+    .mypace-feed::-webkit-scrollbar-thumb { background: var(--border); }
     .mypace-line {
       border: 1px dashed var(--border-muted);
       color: var(--text-muted);
@@ -172,6 +185,37 @@
       font-size: var(--fs-sm);
       text-align: left;
     }
+    /* 島が描画する実つぶやき（黒×緑・monospace）。本文は textContent で入る（innerHTML 禁止）。
+       各つぶやきは <a>（その投稿の mypace ページへ／案2）。リンク既定色・下線を打ち消し btop 調に。 */
+    /* 本文（左・flex:1）と時刻（右）を横並びにして1行分の高さを節約（時刻を改行で下に出さない）。 */
+    .mypace-note {
+      border: 1px solid var(--border-muted);
+      padding: 4px 8px;
+      font-size: var(--fs-sm);
+      text-align: left;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 6px;
+      color: inherit;
+      text-decoration: none;
+    }
+    a.mypace-note { cursor: pointer; }
+    a.mypace-note:hover { border-color: var(--border); text-decoration: none; }
+    .mypace-note-body {
+      flex: 1;
+      min-width: 0;
+      color: var(--text);
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      /* 長文は数行に truncate（line-clamp） */
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+    }
+    /* 時刻は本文の右に詰める（改行せず・縮まない）。 */
+    .mypace-note-time { flex-shrink: 0; color: var(--text-muted); font-size: var(--fs-sm); }
     /* 日替わりトップ絵（#6）。画像＝正方形・top-row 肥大を防ぐ控えめな max-height、下にタイトル『…』 */
     .daily-art { margin: 0; display: flex; flex-direction: column; gap: 4px; }
     .daily-art-img {
@@ -586,9 +630,17 @@
         </div>
       </section>
 
+      <!-- mypace 最新つぶやき（#8 第3分割・案C＝自前 in-theme レンダリング）。
+           プレースホルダ（.mypace-line ＋ mypace_placeholder）はサーバ側で描画し、JS 無効/失敗/0件でも見える（PE）。
+           島 mypace-feed.js が Nostr relay からノートを取り、成功時だけ .mypace-feed の中身を btop 黒×緑で置換する。
+           relays は json_encode で JSON 配列文字列にするため、ダブルクォートを含む。属性はシングルクォートで囲む。 -->
       <section class="panel panel-mypace">
         <span class="label">mypace</span>
-        <div class="mypace-feed">
+        <div class="mypace-feed"
+             data-mypace-pubkey="{{ config.extra.mypace_pubkey_hex }}"
+             data-mypace-relays='{{ config.extra.mypace_relays | json_encode }}'
+             data-mypace-post-base="{{ config.extra.mypace_post_url_base }}"
+             data-mypace-limit="{{ config.extra.mypace_note_limit }}">
           <div class="mypace-line">{{ trans(key="mypace_placeholder", lang=lang) }}</div>
           <div class="mypace-line">&nbsp;</div>
           <div class="mypace-line">&nbsp;</div>
@@ -747,6 +799,9 @@
   <!-- 日替わりトップ絵の島（vanilla JS・defer）。読めなくてもサーバ既定（先頭=01）が見えたまま（PE）。 -->
   <script defer src="/js/daily-art.js"></script>
   <script defer src="/js/visits-counter.js"></script>
+  <!-- mypace 最新つぶやきの島（vanilla JS・defer・依存ゼロ）。Nostr relay から取れたら btop 黒×緑で自前描画。
+       読めない/失敗/0件なら mypace_placeholder のプレースホルダが見えたまま（PE）。 -->
+  <script defer src="/js/mypace-feed.js"></script>
   <!-- Nostalgic BBS の Web コンポーネント本体（#8）。React 版 index.html と同経路・async。
        読めなくても <noscript> のプレースホルダが残る（PE）。 -->
   <script src="https://nostalgic.llll-ll.com/components/bbs.js" async></script>

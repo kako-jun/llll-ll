@@ -65,6 +65,7 @@
       position: absolute;
       top: -0.7em;
       left: 0.8em;
+      z-index: 2;
       background: var(--panel-bg);
       padding: 0 0.4em;
       color: var(--border);
@@ -83,11 +84,14 @@
     .panel-today  { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
 
     /* ロゴ背面に薄いテトリス帯を敷くバンド（縦長にしない） */
+    /* ロゴ＋タグライン（企画42課）の横並び行（テトリスは header 全体の背面） */
     .logo-band {
       position: relative;
+      z-index: 1;
       display: flex;
-      align-items: center;
-      min-height: 2.4rem;
+      flex-direction: row;
+      align-items: baseline;
+      gap: 0.7em;
     }
     .tetris-bg {
       position: absolute;
@@ -118,10 +122,23 @@
       font-feature-settings: "liga" 0;
       padding: 0 0.15em;
     }
-    .logo-sub {
+    /* タイトル直下のタグライン（企画42課）＝テトリス帯の内側 */
+    .tagline {
+      position: relative;
+      z-index: 1;
       color: var(--text-muted);
       font-size: var(--fs-sm);
+      letter-spacing: 0.15em;
     }
+    /* タイトルより下に文章で出す説明＋ウェルカム（テトリス背面の前に出す） */
+    .header-prose {
+      position: relative;
+      z-index: 1;
+      color: var(--text-muted);
+      font-size: var(--fs-base);
+      line-height: 1.55;
+    }
+    .header-prose p { margin: 0 0 4px; }
 
     /* プレースホルダ枠（mypace / daily image） */
     .placeholder {
@@ -148,34 +165,47 @@
       width: 100%;
       max-height: 170px;
     }
-    /* today パネル右上隅の緑枠カウンタバッジ */
-    .visits-badge {
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      z-index: 2;
-      border: 1px solid var(--border);
-      background: var(--panel-bg);
-      color: var(--text);
-      padding: 1px 6px;
-      font-size: var(--fs-sm);
-      letter-spacing: 0.05em;
+    /* ── 最上段：訪問統計バー（ヘッダより上に堂々と）── 実カウントは Phase 2 #8 */
+    .visits-bar { flex-shrink: 0; }
+    .visits-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em 1.6em;
+      align-items: baseline;
     }
+    .stat {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5em;
+      border: 1px solid var(--border);
+      padding: 3px 12px;
+    }
+    .stat-label { color: var(--text-muted); font-size: var(--fs-sm); }
+    .stat-num { color: var(--border); font-weight: bold; font-size: 1.1rem; letter-spacing: 0.05em; }
 
-    /* ── nav（全幅・緑帯）── */
-    .nav {
+    /* ── フッタの SNS 並び ── */
+    .social { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3em 1.2em; margin-bottom: 5px; }
+
+    /* ── ヘッダ下の言語切替バー（全幅・緑帯）── 実切替は Phase 1 (#5) */
+    .langbar {
       flex-shrink: 0;
       border: 1px solid var(--border);
       background: var(--panel-bg);
       display: flex;
-      gap: 1.5em;
+      gap: 1em;
       align-items: center;
       justify-content: flex-end;
-      padding: 8px 14px;
+      padding: 7px 14px;
       font-size: var(--fs-base);
     }
-    .nav a { color: var(--text); }
-    .nav a:hover { color: var(--border); text-decoration: none; }
+    .langbar .lang {
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+    .langbar .lang.active {
+      color: var(--border);
+      font-weight: bold;
+    }
 
     /* ── 中段スクロール領域（apps + blog を1領域に）── */
     .mid {
@@ -185,7 +215,7 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
-      padding-right: 6px;
+      padding: 14px 6px 0 0;
       scrollbar-color: var(--border) var(--panel-bg);
       scrollbar-width: thin;
     }
@@ -336,16 +366,33 @@
 <body>
   <div class="desktop">
 
+    <!-- 最上段：訪問統計（ヘッダより上に堂々と）— 実カウントは Phase 2 #8 -->
+    <section class="panel visits-bar">
+      <span class="label">visits</span>
+      <div class="visits-stats">
+        <span class="stat"><span class="stat-label">Total</span><span class="stat-num">---</span></span>
+        <span class="stat"><span class="stat-label">Today</span><span class="stat-num">---</span></span>
+        <span class="stat"><span class="stat-label">Yesterday</span><span class="stat-num">---</span></span>
+        <span class="stat"><span class="stat-label">Week</span><span class="stat-num">---</span></span>
+        <span class="stat"><span class="stat-label">Month</span><span class="stat-num">---</span></span>
+      </div>
+    </section>
+
     <!-- 上段3パネル -->
     <div class="top-row">
       <section class="panel panel-header">
         <span class="label">header</span>
-        <!-- ロゴ背面に薄いテトリス帯を敷くバンド -->
+        <!-- テトリスは header パネル全体の背面を覆う -->
+        <div class="tetris-bg"></div>
         <div class="logo-band">
-          <div class="tetris-bg"></div>
           <div class="logo">llll-ll</div>
+          <div class="tagline">企画42課</div>
         </div>
-        <div class="logo-sub">kako-jun's games &amp; apps portfolio</div>
+        <!-- タイトルより下に文章で：ウェルカム＋説明 -->
+        <div class="header-prose">
+          <p>ようこそ、llll-ll へ。</p>
+          <p>kako-jun の作ったゲーム、アプリを置いています。よければ使ってみてください。</p>
+        </div>
       </section>
 
       <section class="panel panel-mypace">
@@ -359,17 +406,19 @@
 
       <section class="panel panel-today">
         <span class="label">today</span>
-        <span class="visits-badge">visits: ---</span>
         <div class="placeholder today">daily image</div>
       </section>
     </div>
 
-    <!-- nav（全幅・緑帯）— GitHub のみ。緑帯は将来の言語/テーマ切替の置き場として残す -->
-    <nav class="nav">
-      <a href="https://github.com/kako-jun" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <!-- ヘッダ下の言語切替バー（全幅・緑帯）— Phase 0 はガワ。実切替は Phase 1 #5 -->
+    <nav class="langbar" aria-label="language">
+      <span class="lang">en</span>
+      <span class="lang active">ja</span>
+      <span class="lang">zh</span>
+      <span class="lang">es</span>
     </nav>
 
-    <!-- 中段スクロール領域: apps + blog を一緒にスクロール -->
+    <!-- 中段スクロール領域: apps + blog + BBS を一緒にスクロール -->
     <div class="mid">
 
       <!-- apps パネル -->
@@ -378,7 +427,7 @@
 
         <!-- フィルタの四角（ガワだけ） -->
         <div class="filter-bar">
-          <input type="search" placeholder="search apps..." disabled />
+          <input type="search" placeholder="filter apps..." disabled />
           <div class="filter-chips">
             <span class="filter-chip">All</span>
             <span class="filter-chip">Free</span>
@@ -426,12 +475,27 @@
         <div class="blog-placeholder">準備中（Phase 3）</div>
       </section>
 
+      <!-- Nostalgic BBS パネル（blog の下・footer の上） -->
+      <section class="panel panel-bbs" id="bbs">
+        <span class="label">bbs</span>
+        <div class="blog-placeholder">Nostalgic BBS 準備中（Phase 2 #8）</div>
+      </section>
+
     </div>
 
     <!-- footer（固定）— llll-ll ブランド移設先 -->
     <footer class="footer">
       <span class="label">footer</span>
-      <span class="footer-brand">llll-ll</span>© kako-jun
+      <div class="social">
+        <a href="https://mypace.llll-ll.com/user/npub1d7rmrw3zmzn9jpcqpzhk6helu8t3rcqk93ja39sh9rgylwr9007q83kemm" target="_blank" rel="noopener noreferrer">MY PACE</a>
+        <a href="https://x.com/kako_jun_42" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.instagram.com/kako_jun_42" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://note.com/kako_jun" target="_blank" rel="noopener noreferrer">Note</a>
+        <a href="https://zenn.dev/kako_jun" target="_blank" rel="noopener noreferrer">Zenn</a>
+        <a href="https://dev.to/kako-jun" target="_blank" rel="noopener noreferrer">Dev.to</a>
+        <a href="https://github.com/kako-jun" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+      <div><span class="footer-brand">llll-ll</span>© kako-jun</div>
     </footer>
 
   </div>

@@ -35,6 +35,8 @@ magick "input.png" -resize 640x640^ -gravity center -extent 640x640 -quality 82 
 
 新しい絵を足したら、`NN.webp` を置き、`daily.json` に `{ "file": "NN.webp", "title": "…" }` を追記する。
 
+> title はテンプレートで `<script type="application/json">` 島に埋め込まれる（自前データ前提）。`</script>` を含む文字列は入れないこと（将来 manifest を外部生成にするなら `<` を `<` にエスケープする）。
+
 ## 参考
 
 - 1枚あたり ~110KB 前後（q82・640px）。日に1枚しか読まないので体積は問題にならない。

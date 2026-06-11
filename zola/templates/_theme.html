@@ -1,0 +1,40 @@
+{# テーマトグル共通パーツ（#9）。各自己完結テンプレ（index/post/posts/app/404）の <head> 内、
+   各自の <style>（ダーク既定の :root）より後で include する。
+   - ライトパレット上書き: prefers-color-scheme:light で自動／data-theme で手動。
+   - 白フラッシュ防止: paint 前に保存テーマ（localStorage 'llll-theme'）を <html data-theme> へ反映。
+   テーマ切替の本体（トグル UI とその配線）は index の langbar ＋ js/theme-toggle.js。 #}
+<style>
+  /* OS がライト & 手動でダーク固定していない → 自動ライト（既定は prefers-color-scheme・#9） */
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: {{ config.extra.bg_light }};
+      --panel-bg: {{ config.extra.panel_bg_light }};
+      --border: {{ config.extra.border_light }};
+      --border-muted: {{ config.extra.border_muted_light }};
+      --text: {{ config.extra.text_light }};
+      --text-muted: {{ config.extra.text_muted_light }};
+      --link: {{ config.extra.link_light }};
+    }
+  }
+  /* 手動ライト（OS 設定より優先） */
+  :root[data-theme="light"] {
+    --bg: {{ config.extra.bg_light }};
+    --panel-bg: {{ config.extra.panel_bg_light }};
+    --border: {{ config.extra.border_light }};
+    --border-muted: {{ config.extra.border_muted_light }};
+    --text: {{ config.extra.text_light }};
+    --text-muted: {{ config.extra.text_muted_light }};
+    --link: {{ config.extra.link_light }};
+  }
+  /* テーマ切替時のなめらかな遷移（初期 paint では発火しない）。 */
+  html { transition: background-color 0.3s ease, color 0.3s ease; }
+</style>
+<script>
+  // 白フラッシュ防止: paint 前に保存テーマを <html> へ。無ければ prefers-color-scheme に委ねる（既定ダーク）。
+  (function () {
+    try {
+      var t = localStorage.getItem('llll-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>

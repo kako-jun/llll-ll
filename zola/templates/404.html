@@ -9,18 +9,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>404 | {{ config.title }}</title>
   <style>
+    /* テーマ変数（ダーク既定）。ライト上書きは _theme.html。 */
+    :root {
+      --bg: {{ config.extra.bg }};
+      --border: {{ config.extra.border }};
+      --text: {{ config.extra.text }};
+      --link: {{ config.extra.link }};
+    }
     html, body {
       margin: 0; height: 100%;
-      background: {{ config.extra.bg }};
-      color: {{ config.extra.text }};
+      background: var(--bg);
+      color: var(--text);
       font-family: "DejaVu Sans Mono", "Consolas", monospace;
       display: flex; align-items: center; justify-content: center;
       text-align: center;
     }
-    .box { border: 1px solid {{ config.extra.border }}; padding: 2rem 3rem; }
-    h1 { color: {{ config.extra.border }}; font-size: 3rem; margin: 0 0 0.5rem; }
-    a { color: {{ config.extra.link }}; }
+    .box { border: 1px solid var(--border); padding: 2rem 3rem; }
+    h1 { color: var(--border); font-size: 3rem; margin: 0 0 0.5rem; }
+    a { color: var(--link); }
   </style>
+  {% include "_theme.html" %}
 </head>
 <body>
   <div class="box">

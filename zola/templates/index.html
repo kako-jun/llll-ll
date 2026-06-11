@@ -92,7 +92,11 @@
       gap: 8px;
       flex-shrink: 0;
     }
-    .panel-header { flex: 2; display: flex; flex-direction: column; gap: 6px; justify-content: flex-start; }
+    /* header 列（#10）: 上=header / 下=blog を縦に積む。列全体で top-row の flex:2 ぶんを取る。 */
+    .header-col { flex: 2; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+    /* 上=header は内容（ロゴ＋本文＋テトリス帯）の高さ。下=blog が列の残りを埋めて溢れたら内部スクロール。 */
+    .panel-header { flex: 0 0 auto; display: flex; flex-direction: column; gap: 6px; justify-content: flex-start; }
+    .header-col .panel-blog { flex: 1 1 0; min-height: 90px; overflow-y: auto; scrollbar-color: var(--border) var(--panel-bg); }
     .panel-mypace { flex: 1; display: flex; flex-direction: column; gap: 6px; justify-content: flex-start; }
     .panel-today  { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
 
@@ -306,7 +310,7 @@
       font-weight: bold;
     }
 
-    /* ── 中段スクロール領域（apps + blog を1領域に）── */
+    /* ── 中段スクロール領域（apps + BBS を1領域に。blog は header 列へ移設・#10）── */
     .mid {
       flex: 1;
       min-height: 0;
@@ -628,7 +632,9 @@
       body { overflow: visible; }
       .desktop { height: auto; min-height: 100vh; }
       .top-row { flex-direction: column; }
-      .panel-header, .panel-mypace, .panel-today { flex: none; }
+      .header-col, .panel-header, .panel-mypace, .panel-today { flex: none; }
+      /* モバイルは縦積み＝普通スクロール。blog の内部スクロール/高さ制約は解除して全件見せる。 */
+      .header-col .panel-blog { flex: none; min-height: 0; overflow: visible; }
       .mid { overflow: visible; flex: none; }
       .logo { font-size: 1.8rem; }
       .modal { width: 95vw; }
@@ -649,9 +655,13 @@
 
     <!-- 上段3パネル -->
     <div class="top-row">
+      <!-- header 列（#10 kako-jun 指示）: 縦半分に分割し、上＝header（ロゴ＋本文＋テトリス）／
+           下＝blog（最新記事・mid から移設）。テトリスは .panel-header .tetris-bg 限定なので
+           自動的に上半分だけに収まる。 -->
+      <div class="header-col">
       <section class="panel panel-header">
         <span class="label">header</span>
-        <!-- テトリスは header パネル全体の背面を覆う -->
+        <!-- テトリスは header パネル（上半分）全体の背面を覆う -->
         <div class="tetris-bg"></div>
         <div class="logo-band">
           <div class="logo">llll-ll</div>
@@ -663,6 +673,30 @@
           <p>{{ trans(key="intro", lang=lang) }}</p>
         </div>
       </section>
+
+      <!-- blog パネル（header 列の下半分）。最新記事を言語別に列挙する（#10 Phase 3）。
+           posts セクションを表示言語で引く: 既定(en)は posts/_index.md、ja/zh/es は posts/_index.{lang}.md。
+           sort_by="date" なので section.pages は新しい順。先頭5件を出し、全件は /posts/ アーカイブへ。
+           記事が無い言語は blog_empty を出す（PE: JS 不要・サーバ側で確定）。 -->
+      <section class="panel panel-blog" id="blog">
+        <span class="label">blog</span>
+        {% if lang == config.default_language %}{% set posts_index = "posts/_index.md" %}{% else %}{% set posts_index = "posts/_index." ~ lang ~ ".md" %}{% endif %}
+        {% set blog_section = get_section(path=posts_index) %}
+        {% if blog_section.pages and blog_section.pages | length > 0 %}
+        <ul class="blog-list">
+          {% for p in blog_section.pages | slice(end=5) %}
+          <li class="blog-item">
+            {% if p.date %}<span class="blog-date">{{ p.date | date(format="%Y-%m-%d") }}</span>{% endif %}
+            <a class="blog-link" href="{{ p.permalink | safe }}">{{ p.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        <a class="blog-all" href="{{ nav_prefix | safe }}/posts/">{{ trans(key="blog_all", lang=lang) }}</a>
+        {% else %}
+        <div class="blog-placeholder">{{ trans(key="blog_empty", lang=lang) }}</div>
+        {% endif %}
+      </section>
+      </div>
 
       <!-- mypace 最新つぶやき（#8 第3分割・案C＝自前 in-theme レンダリング）。
            プレースホルダ（.mypace-line ＋ mypace_placeholder）はサーバ側で描画し、JS 無効/失敗/0件でも見える（PE）。
@@ -709,7 +743,7 @@
       </div>
     </section>
 
-    <!-- 中段スクロール領域: apps + blog + BBS を一緒にスクロール -->
+    <!-- 中段スクロール領域: apps + BBS を一緒にスクロール（blog は header 列の下半分へ移設・#10） -->
     <div class="mid">
 
       <!-- apps パネル -->
@@ -775,30 +809,8 @@
         <p class="no-results" hidden>{{ trans(key="no_results", lang=lang) }}</p>
       </section>
 
-      <!-- blog パネル（apps 直下）。最新記事を言語別に列挙する（#10 Phase 3）。
-           posts セクションを表示言語で引く: 既定(en)は posts/_index.md、ja/zh/es は posts/_index.{lang}.md。
-           sort_by="date" なので section.pages は新しい順。先頭5件を出し、全件は /posts/ アーカイブへ。
-           記事が無い言語は blog_empty を出す（PE: JS 不要・サーバ側で確定）。 -->
-      <section class="panel panel-blog" id="blog">
-        <span class="label">blog</span>
-        {% if lang == config.default_language %}{% set posts_index = "posts/_index.md" %}{% else %}{% set posts_index = "posts/_index." ~ lang ~ ".md" %}{% endif %}
-        {% set blog_section = get_section(path=posts_index) %}
-        {% if blog_section.pages and blog_section.pages | length > 0 %}
-        <ul class="blog-list">
-          {% for p in blog_section.pages | slice(end=5) %}
-          <li class="blog-item">
-            {% if p.date %}<span class="blog-date">{{ p.date | date(format="%Y-%m-%d") }}</span>{% endif %}
-            <a class="blog-link" href="{{ p.permalink | safe }}">{{ p.title }}</a>
-          </li>
-          {% endfor %}
-        </ul>
-        <a class="blog-all" href="{{ nav_prefix | safe }}/posts/">{{ trans(key="blog_all", lang=lang) }}</a>
-        {% else %}
-        <div class="blog-placeholder">{{ trans(key="blog_empty", lang=lang) }}</div>
-        {% endif %}
-      </section>
-
-      <!-- Nostalgic BBS パネル（blog の下・footer の上）— 第三者 Web コンポーネント（案W: 埋め込みに徹する）。
+      <!-- Nostalgic BBS パネル（apps の下・footer の上）— 第三者 Web コンポーネント（案W: 埋め込みに徹する）。
+           （blog パネルは header 列の下半分へ移設済み・#10 kako-jun 指示）
            id は React 版 BBS・visit と同一値（config の nostalgic_bbs_id）。theme="retro" で btop と同系の黒×緑。
            lang を渡して UI/エラー文言を表示言語にローカライズ。width="100%" でパネル幅に追従。
            コンポーネント内部は shadow DOM のため CSS では触れない（retro 固定で OK）。 -->

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+{# Phase 0 portal: avel の base.html は継承せず、自前で完全上書きする試作本体。
+   固まったら将来 avel#18 へ昇格する。挙動JS（フィルタ/Tetris/カウンタ/日替わり絵）は
+   Phase 1/2 の領分なので、ここではガワ・プレースホルダのみ。 #}
+{% set products = load_data(path="data/products.json") %}
+<html lang="{{ config.default_language }}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ config.title }}</title>
+  <meta name="description" content="{{ config.description }}" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+    :root {
+      --bg: {{ config.extra.bg }};
+      --panel-bg: {{ config.extra.panel_bg }};
+      --border: {{ config.extra.border }};
+      --border-muted: {{ config.extra.border_muted }};
+      --text: {{ config.extra.text }};
+      --text-muted: {{ config.extra.text_muted }};
+      --link: {{ config.extra.link }};
+      /* 型スケール: 実質3段（base / sm）＋ロゴ。散らばった指定はこの2変数へ寄せる */
+      --fs-base: 0.85rem;
+      --fs-sm: 0.72rem;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DejaVu Sans Mono", "Consolas", "Menlo", monospace;
+      font-size: var(--fs-base);
+      line-height: 1.5;
+    }
+
+    /* デスクトップ: 外側スクロールなし。中段 .mid だけスクロールする */
+    body { overflow: hidden; }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── 一番外枠＝緑ボーダーの btop ウィンドウ ── */
+    .desktop {
+      height: 100vh;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    /* ── btop 風パネル（緑枠・左上タブ風ラベル・直角） ── */
+    .panel {
+      position: relative;
+      border: 1px solid var(--border);
+      background: var(--panel-bg);
+      padding: 14px 12px 12px;
+    }
+    .panel > .label {
+      position: absolute;
+      top: -0.7em;
+      left: 0.8em;
+      z-index: 2;
+      background: var(--panel-bg);
+      padding: 0 0.4em;
+      color: var(--border);
+      font-size: var(--fs-sm);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── 上段3パネル（コンパクト） ── */
+    .top-row {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .panel-header { flex: 2; display: flex; flex-direction: column; gap: 6px; justify-content: flex-start; }
+    .panel-mypace { flex: 1; display: flex; flex-direction: column; gap: 6px; justify-content: flex-start; }
+    .panel-today  { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
+
+    /* ロゴ背面に薄いテトリス帯を敷くバンド（縦長にしない） */
+    /* ロゴ＋タグライン（企画42課）の横並び行（テトリスは header 全体の背面） */
+    .logo-band {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      gap: 0.7em;
+    }
+    .tetris-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      border: 1px dashed var(--border-muted);
+      opacity: 0.5;
+    }
+    .tetris-bg::after {
+      content: "tetris";
+      position: absolute;
+      bottom: 1px;
+      right: 4px;
+      font-size: var(--fs-sm);
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+    .logo {
+      position: relative;
+      z-index: 1;
+      font-family: "Arial Black", "Arial", "Impact", sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      letter-spacing: 0.2em;
+      color: var(--border);
+      line-height: 1;
+      background: transparent;
+      font-feature-settings: "liga" 0;
+      padding: 0 0.15em;
+    }
+    /* タイトル直下のタグライン（企画42課）＝テトリス帯の内側 */
+    .tagline {
+      position: relative;
+      z-index: 1;
+      color: var(--text-muted);
+      font-size: var(--fs-sm);
+      letter-spacing: 0.15em;
+    }
+    /* タイトルより下に文章で出す説明＋ウェルカム（テトリス背面の前に出す） */
+    .header-prose {
+      position: relative;
+      z-index: 1;
+      color: var(--text-muted);
+      font-size: var(--fs-base);
+      line-height: 1.55;
+    }
+    .header-prose p { margin: 0 0 4px; }
+
+    /* プレースホルダ枠（mypace / daily image） */
+    .placeholder {
+      border: 1px dashed var(--border-muted);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px;
+    }
+    /* mypace つぶやき: 薄いダミー行 */
+    .mypace-feed { display: flex; flex-direction: column; gap: 6px; }
+    .mypace-line {
+      border: 1px dashed var(--border-muted);
+      color: var(--text-muted);
+      padding: 4px 8px;
+      font-size: var(--fs-sm);
+      text-align: left;
+    }
+    /* 日替わり絵は正方形・top-row 肥大を防ぐため控えめな max-height */
+    .placeholder.today {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      max-height: 170px;
+    }
+    /* ── 最上段：訪問統計バー（ヘッダより上に堂々と）── 実カウントは Phase 2 #8 */
+    .visits-bar { flex-shrink: 0; }
+    .visits-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em 1.6em;
+      align-items: baseline;
+    }
+    .stat {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5em;
+      border: 1px solid var(--border);
+      padding: 3px 12px;
+    }
+    .stat-label { color: var(--text-muted); font-size: var(--fs-sm); }
+    .stat-num { color: var(--border); font-weight: bold; font-size: 1.1rem; letter-spacing: 0.05em; }
+
+    /* ── フッタの SNS 並び ── */
+    .social { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3em 1.2em; margin-bottom: 5px; }
+
+    /* ── ヘッダ下の言語切替バー（全幅・緑帯）── 実切替は Phase 1 (#5) */
+    .langbar {
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      background: var(--panel-bg);
+      display: flex;
+      gap: 1em;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 7px 14px;
+      font-size: var(--fs-base);
+    }
+    .langbar .lang {
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+    .langbar .lang.active {
+      color: var(--border);
+      font-weight: bold;
+    }
+
+    /* ── 中段スクロール領域（apps + blog を1領域に）── */
+    .mid {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 14px 6px 0 0;
+      scrollbar-color: var(--border) var(--panel-bg);
+      scrollbar-width: thin;
+    }
+    .mid::-webkit-scrollbar { width: 10px; }
+    .mid::-webkit-scrollbar-track { background: var(--panel-bg); }
+    .mid::-webkit-scrollbar-thumb { background: var(--border); }
+
+    /* ── apps パネル ── */
+    .panel-apps {
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 8px;
+    }
+
+    /* フィルタの四角（ガワだけ・挙動JSなし） */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .filter-bar input[type="search"] {
+      flex: 1;
+      min-width: 180px;
+      background: var(--panel-bg);
+      border: 1px solid var(--border-muted);
+      color: var(--text);
+      padding: 6px 10px;
+      font-family: inherit;
+      font-size: var(--fs-base);
+    }
+    .filter-bar input[type="search"]::placeholder { color: var(--text-muted); }
+    .filter-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .filter-chip {
+      border: 1px solid var(--border-muted);
+      color: var(--text-muted);
+      padding: 4px 10px;
+      font-size: var(--fs-sm);
+      background: var(--panel-bg);
+      user-select: none;
+    }
+
+    /* 横罫: apps パネルの緑枠の左端〜右端までフル幅（左右 padding 12px 分を負マージンで打ち消す） */
+    .rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 -12px 12px;
+    }
+
+    /* 全件カードグリッド（スクロールは .mid が担当・自然に流す） */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1em;
+    }
+
+    .card {
+      border: 1px solid var(--border-muted);
+      background: var(--bg);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: border-color 0.2s ease;
+    }
+    .card:hover { border-color: var(--border); }
+    .card-head { display: flex; align-items: flex-start; gap: 8px; }
+    .card-thumb {
+      width: 48px; height: 48px;
+      object-fit: cover;
+      border: 1px solid var(--border-muted);
+      flex-shrink: 0;
+      background: var(--panel-bg);
+    }
+    .card-title {
+      font-weight: bold;
+      color: var(--border);
+      line-height: 1.3;
+    }
+    .card-featured { color: var(--border); margin-left: 4px; }
+    .card-desc {
+      color: var(--text-muted);
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+    .card-tag {
+      font-size: var(--fs-sm);
+      border: 1px solid var(--border-muted);
+      color: var(--text-muted);
+      padding: 1px 6px;
+    }
+    .card-links { display: flex; gap: 12px; margin-top: auto; }
+
+    /* ── blog パネル（apps 直下・footer 上）── */
+    .panel-blog, .panel-bbs { padding-bottom: 12px; }
+    .blog-placeholder {
+      border: 1px dashed var(--border-muted);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 16px;
+    }
+
+    /* ── footer（固定・外枠最下）── */
+    .footer {
+      position: relative;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      background: var(--panel-bg);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 14px 8px 8px;
+      font-size: var(--fs-base);
+    }
+    .footer > .label {
+      position: absolute;
+      top: -0.7em;
+      left: 0.8em;
+      background: var(--panel-bg);
+      padding: 0 0.4em;
+      color: var(--border);
+      font-size: var(--fs-sm);
+      letter-spacing: 0.05em;
+    }
+    .footer-brand {
+      font-family: "Arial Black", "Arial", "Impact", sans-serif;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: var(--border);
+      margin-right: 0.6em;
+    }
+
+    /* ── スマホ: 100vh 固定を解除し、縦積み＋普通のスクロール ── */
+    @media (max-width: 600px) {
+      body { overflow: visible; }
+      .desktop { height: auto; min-height: 100vh; }
+      .top-row { flex-direction: column; }
+      .panel-header, .panel-mypace, .panel-today { flex: none; }
+      .mid { overflow: visible; flex: none; }
+      .logo { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="desktop">
+
+    <!-- 最上段：訪問統計（ヘッダより上に堂々と）— 実カウントは Phase 2 #8 -->
+    <section class="panel visits-bar">
+      <span class="label">visits</span>
+      <div class="visits-stats">
+        <span class="stat"><span class="stat-label">Total</span><span class="stat-num">---</span></span>
+        <span class="stat"><span class="stat-label">Today</span><span class="stat-num">---</span></span>
+        <span class="stat"><span class="stat-label">Yesterday</span><span class="stat-num">---</span></span>
+        <span class="stat"><span class="stat-label">Week</span><span class="stat-num">---</span></span>
+        <span class="stat"><span class="stat-label">Month</span><span class="stat-num">---</span></span>
+      </div>
+    </section>
+
+    <!-- 上段3パネル -->
+    <div class="top-row">
+      <section class="panel panel-header">
+        <span class="label">header</span>
+        <!-- テトリスは header パネル全体の背面を覆う -->
+        <div class="tetris-bg"></div>
+        <div class="logo-band">
+          <div class="logo">llll-ll</div>
+          <div class="tagline">企画42課</div>
+        </div>
+        <!-- タイトルより下に文章で：ウェルカム＋説明 -->
+        <div class="header-prose">
+          <p>ようこそ、llll-ll へ。</p>
+          <p>kako-jun の作ったゲーム、アプリを置いています。よければ使ってみてください。</p>
+        </div>
+      </section>
+
+      <section class="panel panel-mypace">
+        <span class="label">mypace</span>
+        <div class="mypace-feed">
+          <div class="mypace-line">mypace のつぶやき（Phase 2）</div>
+          <div class="mypace-line">&nbsp;</div>
+          <div class="mypace-line">&nbsp;</div>
+        </div>
+      </section>
+
+      <section class="panel panel-today">
+        <span class="label">today</span>
+        <div class="placeholder today">daily image</div>
+      </section>
+    </div>
+
+    <!-- ヘッダ下の言語切替バー（全幅・緑帯）— Phase 0 はガワ。実切替は Phase 1 #5 -->
+    <nav class="langbar" aria-label="language">
+      <span class="lang">en</span>
+      <span class="lang active">ja</span>
+      <span class="lang">zh</span>
+      <span class="lang">es</span>
+    </nav>
+
+    <!-- 中段スクロール領域: apps + blog + BBS を一緒にスクロール -->
+    <div class="mid">
+
+      <!-- apps パネル -->
+      <section class="panel panel-apps" id="apps">
+        <span class="label">apps</span>
+
+        <!-- フィルタの四角（ガワだけ） -->
+        <div class="filter-bar">
+          <input type="search" placeholder="filter apps..." disabled />
+          <div class="filter-chips">
+            <span class="filter-chip">All</span>
+            <span class="filter-chip">Free</span>
+            <span class="filter-chip">OSS</span>
+            <span class="filter-chip">CLI</span>
+            <span class="filter-chip">Game</span>
+            <span class="filter-chip">Featured</span>
+          </div>
+        </div>
+
+        <hr class="rule">
+
+        <!-- 全件カードグリッド -->
+        <div class="cards">
+          {% for p in products %}
+          <article class="card">
+            <div class="card-head">
+              {% if p.images and p.images | length > 0 %}
+              <img class="card-thumb" src="{{ p.images.0 | safe }}" alt="" loading="lazy" />
+              {% endif %}
+              <div class="card-title">
+                {{ p.title.ja }}{% if p.featured %}<span class="card-featured">★</span>{% endif %}
+              </div>
+            </div>
+            {% if p.description and p.description.ja %}
+            <p class="card-desc">{{ p.description.ja }}</p>
+            {% endif %}
+            {% if p.tags %}
+            <div class="card-tags">
+              {% for t in p.tags %}<span class="card-tag">{{ t }}</span>{% endfor %}
+            </div>
+            {% endif %}
+            <div class="card-links">
+              {% if p.demoUrl %}<a href="{{ p.demoUrl | safe }}" target="_blank" rel="noopener noreferrer">demo</a>{% endif %}
+              {% if p.repositoryUrl %}<a href="{{ p.repositoryUrl | safe }}" target="_blank" rel="noopener noreferrer">repo</a>{% endif %}
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
+
+      <!-- blog パネル（apps 直下） -->
+      <section class="panel panel-blog" id="blog">
+        <span class="label">blog</span>
+        <div class="blog-placeholder">準備中（Phase 3）</div>
+      </section>
+
+      <!-- Nostalgic BBS パネル（blog の下・footer の上） -->
+      <section class="panel panel-bbs" id="bbs">
+        <span class="label">bbs</span>
+        <div class="blog-placeholder">Nostalgic BBS 準備中（Phase 2 #8）</div>
+      </section>
+
+    </div>
+
+    <!-- footer（固定）— llll-ll ブランド移設先 -->
+    <footer class="footer">
+      <span class="label">footer</span>
+      <div class="social">
+        <a href="https://mypace.llll-ll.com/user/npub1d7rmrw3zmzn9jpcqpzhk6helu8t3rcqk93ja39sh9rgylwr9007q83kemm" target="_blank" rel="noopener noreferrer">MY PACE</a>
+        <a href="https://x.com/kako_jun_42" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.instagram.com/kako_jun_42" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://note.com/kako_jun" target="_blank" rel="noopener noreferrer">Note</a>
+        <a href="https://zenn.dev/kako_jun" target="_blank" rel="noopener noreferrer">Zenn</a>
+        <a href="https://dev.to/kako-jun" target="_blank" rel="noopener noreferrer">Dev.to</a>
+        <a href="https://github.com/kako-jun" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+      <div><span class="footer-brand">llll-ll</span>© kako-jun</div>
+    </footer>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,3 @@
+[submodule "zola/themes/avel"]
+	path = zola/themes/avel
+	url = https://github.com/kako-jun/avel

@@ -1,0 +1,473 @@
+[
+  {
+    "id": "machigai-salad",
+    "title": {
+      "en": "Machigai Salad: Spot-the-Difference Comparison Tool",
+      "ja": "間違いサラダ: 2枚並べてフリックで見比べる間違い探しツール",
+      "zh": "Machigai Salad: 找不同图片对比工具",
+      "es": "Machigai Salad: Herramienta de Comparación para Encontrar Diferencias"
+    },
+    "description": {
+      "en": "A general-purpose spot-the-difference comparison tool. Take or upload two images, adjust corners with perspective warp, and flick between them to spot differences. Features loupe magnifier, undo (up to 50 steps), GIF/APNG export, LocalStorage save (5 slots), JA/EN i18n, PWA support, and Web Share integration. Runs entirely in your browser with OpenCV.js.",
+      "ja": "どんな間違い探しにも使える汎用比較ツール。2枚の画像を撮影またはアップロードし、角をドラッグして台形補正、フリックで見比べて違いを見つける。ルーペ拡大鏡、アンドゥ（最大50ステップ）、GIF/APNGエクスポート、LocalStorage保存（5枠）、日英i18n、PWA対応、Web Shareに対応。OpenCV.jsでブラウザ内完結。",
+      "zh": "通用的找不同比较工具。拍摄或上传两张图片，拖动角点进行透视校正，滑动切换对比找出差异。支持放大镜、撤销（最多50步）、GIF/APNG导出、LocalStorage保存（5个位置）、日英i18n、PWA、Web Share。基于OpenCV.js完全在浏览器中运行。",
+      "es": "Herramienta general de comparación para encontrar diferencias. Toma o sube dos imágenes, ajusta esquinas con corrección de perspectiva, y alterna entre ellas para detectar diferencias. Incluye lupa, deshacer (hasta 50 pasos), exportación GIF/APNG, guardado en LocalStorage (5 slots), i18n JA/EN, soporte PWA e integración Web Share. Funciona totalmente en tu navegador con OpenCV.js."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "PWA"],
+    "images": ["https://machigai-salad.llll-ll.com/apple-touch-icon.webp"],
+    "demoUrl": "https://machigai-salad.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/machigai-salad",
+    "createdAt": "2026-02-01",
+    "updatedAt": "2026-04-20",
+    "featured": true
+  },
+  {
+    "id": "tail-match",
+    "title": {
+      "en": "tail-match: Shelter Cat & Dog Matching for Ishikawa",
+      "ja": "ているまっち！: 石川県の保護猫・保護犬マッチングサイト",
+      "zh": "tail-match: 石川县保护猫犬领养匹配网站",
+      "es": "tail-match: Emparejamiento de Gatos y Perros de Refugio en Ishikawa"
+    },
+    "description": {
+      "en": "Aggregates protected cats and dogs from municipal shelters across Japan (Ishikawa first) to help find their new family. Urgency-tiered Instagram-style gallery, daily launchd-driven scraping with auto-repair via Claude, and a dynamic sitemap. Next.js 15 + MUI on Cloudflare Pages with a D1 SQLite backend. 34 facilities currently covered.",
+      "ja": "全国の自治体が保護している犬・猫の情報を集約し、新しい家族とのマッチングを支援するサービス（石川県から）。緊急度別のInstagram風ギャラリー、launchdによる毎日自動スクレイピング、Claudeによる異常自動修復、動的sitemap。Next.js 15 + MUIをCloudflare Pages + D1で運用、現在34施設対応。",
+      "zh": "汇总日本各自治体收容的猫狗信息（石川县起步），帮助它们找到新家。按紧急程度分级的Instagram风格画廊，launchd每日自动抓取+Claude异常自动修复，动态sitemap。Next.js 15 + MUI部署在Cloudflare Pages，后端为D1 SQLite。目前覆盖34家机构。",
+      "es": "Agrega información de gatos y perros protegidos por municipios de Japón (empezando por Ishikawa) para ayudarlos a encontrar familia. Galería estilo Instagram con niveles de urgencia, scraping diario vía launchd con auto-reparación por Claude, y sitemap dinámico. Next.js 15 + MUI sobre Cloudflare Pages con D1 SQLite. Cubre 34 instalaciones actualmente."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Cats"],
+    "images": ["https://tail-match.llll-ll.com/icon-512.png"],
+    "demoUrl": "https://tail-match.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/tail-match",
+    "createdAt": "2026-01-10",
+    "updatedAt": "2026-04-20",
+    "featured": true
+  },
+  {
+    "id": "ear-sky",
+    "title": {
+      "en": "Ear in the Sky Diamond: Cross-Lingual Soramimi Sharing",
+      "ja": "イヤスカ: 空耳をみんなで投稿・再生するサイト",
+      "zh": "Ear in the Sky Diamond: 跨语言空耳投稿分享网站",
+      "es": "Ear in the Sky Diamond: Comparte Soramimi Entre Idiomas"
+    },
+    "description": {
+      "en": "A posting site for soramimi — lyrics from one language that sound like phrases in another. Paste a YouTube, Niconico, or SoundCloud URL, set a start/end segment, enter the misheard text, and play it back with karaoke-style sweep subtitles and spoiler control. Fully anonymous (no signup), with emoji reactions, a Hall of Fame, tag filters, JA/EN i18n, and dynamic OGP per post.",
+      "ja": "空耳アワー的な「こう聞こえる」を投稿・再生・共有するサイト。YouTube/ニコニコ/SoundCloudのURLに開始〜終了秒と空耳テキストを設定すると、字幕が番組風にカラオケスイープで表示される。完全匿名（登録不要）、絵文字リアクション、殿堂ランキング、タグフィルタ、日英i18n、投稿ごとの動的OGPに対応。",
+      "zh": "空耳（一种语言的歌词听起来像另一种语言）的投稿与播放网站。粘贴YouTube、Niconico或SoundCloud链接，设置起止秒和空耳文本，卡拉OK风格扫光字幕+剧透控制播放。完全匿名（无需注册），支持表情回应、殿堂排行、标签筛选、日英i18n、每帖动态OGP。",
+      "es": "Sitio para publicar soramimi — letras de un idioma que suenan como frases en otro. Pega una URL de YouTube, Niconico o SoundCloud, define el segmento de inicio/fin y el texto mal oído, y reprodúcelo con subtítulos karaoke y control de spoiler. Totalmente anónimo (sin registro), con reacciones emoji, Salón de la Fama, filtros por etiqueta, i18n JA/EN y OGP dinámico por post."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Music"],
+    "images": ["https://ear-sky.llll-ll.com/icon-512.png"],
+    "demoUrl": "https://ear-sky.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/ear-sky",
+    "createdAt": "2026-03-01",
+    "updatedAt": "2026-04-20",
+    "featured": true
+  },
+  {
+    "id": "hacker-noroshi",
+    "title": {
+      "en": "Hacker Noroshi: A Japan-Focused Hacker News Clone",
+      "ja": "ハッカーのろし: 日本版Hacker Newsクローン",
+      "zh": "Hacker Noroshi: 日本版Hacker News克隆",
+      "es": "Hacker Noroshi: Un Clon de Hacker News Enfocado en Japón"
+    },
+    "description": {
+      "en": "A link aggregation and discussion site for Japanese indie developers and startups, modeled after Hacker News but Japanese-only. Supports submissions, threaded comments, voting, karma, Show HN, hide/favorites, downvotes, password reset, rate limiting, RSS, and search. Built on SvelteKit + Cloudflare Pages/Workers + D1.",
+      "ja": "本家Hacker Newsに倣った、日本の個人開発者・スタートアップ向けのリンク集約＋議論サイト。日本語・日本のサービス限定。投稿・スレッドコメント・投票・カルマ・Show系カテゴリ・hide/favorites・downvote・パスワードリセット・レート制限・RSS・検索に対応。SvelteKit + Cloudflare Pages/Workers + D1。",
+      "zh": "面向日本独立开发者和初创的链接聚合与讨论站点，仿照Hacker News但仅限日语和日本服务。支持投稿、楼中楼评论、投票、karma、Show分类、隐藏/收藏、踩、重置密码、限流、RSS和搜索。基于SvelteKit + Cloudflare Pages/Workers + D1。",
+      "es": "Sitio de agregación de enlaces y discusión para desarrolladores indie y startups japonesas, inspirado en Hacker News pero solo en japonés. Admite envíos, comentarios anidados, votos, karma, categoría Show, ocultar/favoritos, downvote, reset de contraseña, rate limit, RSS y búsqueda. Construido con SvelteKit + Cloudflare Pages/Workers + D1."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript"],
+    "images": ["https://hn.llll-ll.com/favicon.ico"],
+    "demoUrl": "https://hn.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/hacker-noroshi",
+    "createdAt": "2026-02-15",
+    "updatedAt": "2026-04-20",
+    "featured": true
+  },
+  {
+    "id": "gitpp",
+    "title": {
+      "en": "gitpp: Manage Multiple Git Repositories in Parallel",
+      "ja": "gitpp: 複数のGitリポジトリを一括管理するCLI",
+      "zh": "gitpp: 并行批量管理多个Git仓库的CLI",
+      "es": "gitpp: Gestiona Múltiples Repositorios Git en Paralelo"
+    },
+    "description": {
+      "en": "git + personal + parallel. Drive bulk operations across many repos from a single YAML config: clone, pull, push, status, diff, fetch, branch, switch, stash list, and gc. A ratatui-based TUI streams per-repo progress in real time. Written in Rust, published on crates.io.",
+      "ja": "git + personal + parallel。1つのYAML設定から複数リポジトリをまとめて操作するCLI。clone/pull/push/status/diff/fetch/branch/switch/stash list/gcの10コマンドを一括実行し、ratatui製TUIでリポジトリごとの進捗をリアルタイム表示。Rust製、crates.ioで公開中。",
+      "zh": "git + personal + parallel。用一个YAML配置批量操作多个仓库：clone/pull/push/status/diff/fetch/branch/switch/stash list/gc共10个命令，ratatui TUI实时显示每个仓库的进度。Rust编写，已发布到crates.io。",
+      "es": "git + personal + parallel. Ejecuta operaciones masivas sobre muchos repos desde un único archivo YAML: clone, pull, push, status, diff, fetch, branch, switch, stash list y gc. Una TUI basada en ratatui muestra el progreso por repositorio en tiempo real. Escrito en Rust y publicado en crates.io."
+    },
+    "tags": ["Free", "OSS", "CLI", "Rust", "Git"],
+    "images": ["/images/cli-terminal.webp"],
+    "repositoryUrl": "https://github.com/kako-jun/gitpp",
+    "createdAt": "2025-11-01",
+    "updatedAt": "2026-04-13",
+    "featured": true
+  },
+  {
+    "id": "chillout.nvim",
+    "title": {
+      "en": "chillout.nvim: Debounce, Throttle, and Batch for Neovim",
+      "ja": "chillout.nvim: Neovim向けのdebounce/throttle/batchライブラリ",
+      "zh": "chillout.nvim: 为Neovim提供debounce/throttle/batch的库",
+      "es": "chillout.nvim: Debounce, Throttle y Batch para Neovim"
+    },
+    "description": {
+      "en": "A tiny Neovim Lua library providing debounce, throttle, and batch primitives on top of vim.uv (libuv). Around 150 lines, zero dependencies, with maxWait, leading/trailing edge, maxSize, cancel and flush APIs. Ships with vimdoc, health check, argument validation, and lazy.nvim config=true support.",
+      "ja": "Neovim向けのごく小さなLuaライブラリ。vim.uv (libuv) の上にdebounce / throttle / batchを提供する。約150行・外部依存ゼロ。maxWait、leading/trailing edge、maxSize、cancel/flush APIに対応。vimdoc、health check、引数バリデーション、lazy.nvimのconfig=trueにも対応済み。",
+      "zh": "一个小巧的Neovim Lua库，基于vim.uv (libuv)提供debounce、throttle、batch原语。约150行，零依赖，支持maxWait、leading/trailing edge、maxSize、cancel/flush API。内置vimdoc、health check、参数校验，并兼容lazy.nvim的config=true。",
+      "es": "Una pequeña librería Lua para Neovim que ofrece primitivas de debounce, throttle y batch sobre vim.uv (libuv). Alrededor de 150 líneas, cero dependencias, con maxWait, leading/trailing edge, maxSize, y APIs cancel y flush. Incluye vimdoc, health check, validación de argumentos y soporte para lazy.nvim config=true."
+    },
+    "tags": ["Free", "OSS", "Plugin", "Lua", "Neovim"],
+    "images": ["/images/cli-terminal.webp"],
+    "repositoryUrl": "https://github.com/kako-jun/chillout.nvim",
+    "createdAt": "2025-11-20",
+    "updatedAt": "2025-12-02",
+    "featured": false
+  },
+  {
+    "id": "mypace",
+    "title": {
+      "en": "MY PACE: A Decentralized SNS on Nostr Protocol",
+      "ja": "MY PACE: マイペースでいいミディアムレアSNS",
+      "zh": "MY PACE: 基于Nostr协议的去中心化社交网络",
+      "es": "MY PACE: Una Red Social Descentralizada en el Protocolo Nostr"
+    },
+    "description": {
+      "en": "A decentralized SNS running on the Nostr protocol. No installation required, no account registration, just open in your browser. Features: decentralized (not dependent on any specific server), privacy-focused (private keys stored locally only), FF7-style 4-corner gradient personal colors, creative tools (drawing, voice memos, stickers).",
+      "ja": "Nostrプロトコル上で動作する分散型SNS。インストール不要、アカウント登録不要、ブラウザで開くだけ。特長：分散型（特定サーバーに依存しない）、プライバシー重視（秘密鍵はローカルのみに保存）、FF7風4隅グラデーションのパーソナルカラー、クリエイティブツール（お絵かき、ボイスメモ、ステッカー）。",
+      "zh": "运行在Nostr协议上的去中心化社交网络。无需安装、无需注册账户，只需在浏览器中打开。特点：去中心化（不依赖特定服务器）、注重隐私（私钥仅本地保存）、FF7风格4角渐变个人色彩、创意工具（绘图、语音备忘录、贴纸）。",
+      "es": "Una red social descentralizada que funciona con el protocolo Nostr. Sin instalación, sin registro de cuenta, solo abre en tu navegador. Características: descentralizado (no depende de ningún servidor específico), enfocado en privacidad (claves privadas solo almacenadas localmente), colores personales con gradiente de 4 esquinas estilo FF7, herramientas creativas (dibujo, notas de voz, stickers)."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Nostr"],
+    "images": ["https://mypace.llll-ll.com/apple-touch-icon.webp"],
+    "demoUrl": "https://mypace.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/mypace",
+    "createdAt": "2025-02-01",
+    "updatedAt": "2025-02-01",
+    "featured": true
+  },
+  {
+    "id": "sasso",
+    "title": {
+      "en": "Sasso: Calculator Meets Puzzle - Eliminate Digits",
+      "ja": "Sasso: 電卓×パズル。数字を消す新感覚ゲーム",
+      "zh": "Sasso: 计算器遇上益智游戏。消除数字",
+      "es": "Sasso: Calculadora y puzzle - Elimina dígitos"
+    },
+    "description": {
+      "en": "A calculator-based puzzle game. Create adjacent identical digits to eliminate them. Master arithmetic for chain reactions. Features Calculator, Practice, and Endless modes with chain/preparation/risk score multipliers.",
+      "ja": "隣り合う同じ数字を消す電卓パズル。四則演算を駆使して連鎖を狙え。電卓モード、練習モード、エンドレスモードの3つのモード。連鎖・準備・リスクでスコア倍率アップ。",
+      "zh": "基于计算器的益智游戏。创造相邻的相同数字来消除它们。掌握四则运算实现连锁反应。提供计算器模式、练习模式、无尽模式，连锁、准备、风险倍率加成。",
+      "es": "Un juego de puzzle basado en calculadora. Crea dígitos idénticos adyacentes para eliminarlos. Domina la aritmética para reacciones en cadena. Incluye modos Calculadora, Práctica e Infinito con multiplicadores de puntuación por cadena/preparación/riesgo."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Puzzle"],
+    "images": ["https://raw.githubusercontent.com/kako-jun/sasso/main/public/icon-512.png"],
+    "demoUrl": "https://sasso.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/sasso",
+    "createdAt": "2025-01-25",
+    "updatedAt": "2025-01-25",
+    "featured": true
+  },
+  {
+    "id": "osaka-kenpo",
+    "title": {
+      "en": "Osaka Kenpo: Legal Texts in Friendly Osaka Dialect",
+      "ja": "おおさかけんぽう: 難解な法律を、親しみやすい大阪弁で。",
+      "zh": "大阪宪法: 用亲切的大阪方言解读法律",
+      "es": "Osaka Kenpo: Textos Legales en Dialecto de Osaka Amigable"
+    },
+    "description": {
+      "en": "Inspired by Osaka-san from Azumanga Daioh. 5 categories: Modern Japanese law (Constitution, Civil, Criminal, Commercial, Procedure), Historical Japanese law (17-Article, Meiji Constitution, Taiho Code, etc.), Foreign law (German Basic Law, US/PRC Constitution), Historical law (Hammurabi, Magna Carta, Napoleon), International treaties (UN Charter, Antarctic, NPT, Ramsar, Space, Olympic). One-click toggle original/Osaka.",
+      "ja": "あずまんが大王の大阪さんをイメージ。5つのカテゴリ：日本の現行法（憲法、民法、刑法、商法、訴訟法）、日本の歴史法（十七条憲法、明治憲法、大宝律令など）、外国法（ドイツ基本法、米中憲法）、歴史的法律（ハンムラビ、マグナカルタ、ナポレオン）、国際条約（国連憲章、南極条約、NPT、ラムサール、宇宙、オリンピック）。ワンクリックで原文/大阪弁切り替え。",
+      "zh": "灵感来自《阿滋漫画大王》的大阪。5个类别：日本现行法（宪法、民法、刑法、商法、诉讼法）、日本历史法（十七条宪法、明治宪法、大宝律令等）、外国法（德国基本法、美中宪法）、历史法律（汉谟拉比、大宪章、拿破仑）、国际条约（联合国宪章、南极条约、NPT、拉姆萨尔、宇宙、奥林匹克）。一键切换原文/大阪方言。",
+      "es": "Inspirado en Osaka-san de Azumanga Daioh. 5 categorías: Ley japonesa moderna (Constitución, Civil, Penal, Comercial, Procedimiento), Ley histórica japonesa (17 Artículos, Constitución Meiji, Código Taiho, etc.), Ley extranjera (Ley Fundamental alemana, Constitución EE.UU./RPC), Ley histórica (Hammurabi, Carta Magna, Napoleón), Tratados internacionales (Carta ONU, Antártico, TNP, Ramsar, Espacio, Olímpico). Un clic para alternar original/Osaka."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Legal"],
+    "images": [
+      "https://raw.githubusercontent.com/kako-jun/osaka-kenpo/refs/heads/main/public/favicon.webp"
+    ],
+    "demoUrl": "https://osaka-kenpo.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/osaka-kenpo",
+    "createdAt": "2025-01-20",
+    "updatedAt": "2025-01-20",
+    "featured": true
+  },
+  {
+    "id": "noun-gender",
+    "title": {
+      "en": "Noun Gender: Learn Grammatical Gender in 8 Languages",
+      "ja": "Noun Gender: 8言語の名詞の性を学ぶ",
+      "zh": "Noun Gender: 学习8种语言的名词性别",
+      "es": "Noun Gender: Aprende el Género Gramatical en 8 Idiomas"
+    },
+    "description": {
+      "en": "4,600+ words in French, German, Spanish, Italian, Portuguese, Russian, Arabic, Hindi with m/f/n gender systems. Search in English or target language with translations, meanings, memory tricks. Gender quiz shows score/streak. Web Speech API pronunciation. A-Z browse with infinite scroll. REST API (/api/search). 11-language UI.",
+      "ja": "フランス語、ドイツ語、スペイン語、イタリア語、ポルトガル語、ロシア語、アラビア語、ヒンディー語の4,600語以上。男性/女性/中性に対応。英語または対象言語で検索、翻訳・意味・記憶術付き。性クイズでスコアと連続正解数表示。Web Speech APIで発音。A-Zブラウズ（無限スクロール）。REST API (/api/search)。11言語UI。",
+      "zh": "法语、德语、西班牙语、意大利语、葡萄牙语、俄语、阿拉伯语、印地语4,600多个词汇，支持m/f/n性别系统。用英语或目标语言搜索，带翻译、释义、记忆技巧。性别测验显示分数和连续正确数。Web Speech API发音。A-Z浏览（无限滚动）。REST API (/api/search)。11种语言UI。",
+      "es": "4,600+ palabras en francés, alemán, español, italiano, portugués, ruso, árabe, hindi con sistemas de género m/f/n. Busca en inglés o idioma objetivo con traducciones, significados, trucos de memoria. Quiz de género muestra puntuación/racha. Pronunciación Web Speech API. Navegación A-Z con scroll infinito. REST API (/api/search). UI en 11 idiomas."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Language"],
+    "images": [
+      "https://raw.githubusercontent.com/kako-jun/noun-gender/refs/heads/main/public/apple-touch-icon.png"
+    ],
+    "demoUrl": "https://noun-gender.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/noun-gender",
+    "createdAt": "2025-01-18",
+    "updatedAt": "2025-01-18",
+    "featured": true
+  },
+  {
+    "id": "nostalgic",
+    "title": {
+      "en": "Nostalgic: Revive 1990s Internet with 5 Retro Web Features",
+      "ja": "Nostalgic: 5つのレトロ機能で1990年代のインターネットを現代に",
+      "zh": "Nostalgic: 用5个复古功能复活1990年代互联网",
+      "es": "Nostalgic: Revive el Internet de los 90 con 5 Funciones Web Retro"
+    },
+    "description": {
+      "en": "Bring back 1990s internet culture with 5 nostalgic features: Counter, Like button, BBS, Ranking, and Lucky Cat widget. Simple GET API with no registration required. Web Components ready for easy integration into any static site.",
+      "ja": "カウンター、いいねボタン、掲示板、ランキング、招き猫ウィジェットの5つの懐かしい機能で1990年代のインターネット文化を再現。登録不要のシンプルなGET API。Web Components対応で静的サイトへの導入も簡単。",
+      "zh": "用5个怀旧功能重现1990年代互联网文化：计数器、点赞按钮、留言板、排行榜、招财猫小部件。无需注册的简单GET API。支持Web Components，轻松集成到任何静态网站。",
+      "es": "Revive la cultura de internet de los 90 con 5 funciones nostálgicas: Contador, botón Me gusta, BBS, Ranking y widget de Gato de la Suerte. API GET simple sin registro. Web Components listo para fácil integración en cualquier sitio estático."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Retro"],
+    "images": ["https://nostalgic.llll-ll.com/favicon-48x48.png"],
+    "demoUrl": "https://nostalgic.llll-ll.com/",
+    "repositoryUrl": "https://github.com/kako-jun/nostalgic",
+    "createdAt": "2025-01-15",
+    "updatedAt": "2025-01-15",
+    "featured": true
+  },
+  {
+    "id": "chunkundo",
+    "title": {
+      "en": "chunkundo.nvim: Smart Undo Chunking for Neovim",
+      "ja": "chunkundo.nvim: Neovimのundoを賢くチャンク化",
+      "zh": "chunkundo.nvim: Neovim智能撤销分块",
+      "es": "chunkundo.nvim: Fragmentación inteligente de deshacer para Neovim"
+    },
+    "description": {
+      "en": "Neovim treats an entire insert session as one undo unit. This plugin breaks it into smaller chunks by time (default 300ms) and word boundaries (space/tab/enter/punctuation). Auto-adjusts to your typing pattern. Statusline shows u+5 (growing), u=12 (confirmed). A showcase for chillout.nvim's debounce/throttle/batch.",
+      "ja": "Neovimは挿入セッション全体を1つのundoにする。このプラグインは時間（デフォルト300ms）と単語境界（スペース/タブ/Enter/句読点）で小分けにする。タイピングパターンを学習して自動調整。ステータスラインでu+5（成長中）、u=12（確定）を表示。chillout.nvimのdebounce/throttle/batchのショーケース。",
+      "zh": "Neovim将整个插入会话作为一个撤销单位。这个插件按时间（默认300ms）和单词边界（空格/Tab/回车/标点）分割成小块。学习你的打字模式自动调整。状态栏显示u+5（增长中）、u=12（已确认）。chillout.nvim的debounce/throttle/batch展示案例。",
+      "es": "Neovim trata una sesión de inserción completa como una unidad de deshacer. Este plugin la divide en fragmentos más pequeños por tiempo (300ms por defecto) y límites de palabras (espacio/tab/enter/puntuación). Se auto-ajusta a tu patrón de escritura. Statusline muestra u+5 (creciendo), u=12 (confirmado). Demostración de debounce/throttle/batch de chillout.nvim."
+    },
+    "tags": ["Free", "OSS", "Plugin", "Lua", "Neovim"],
+    "images": ["/images/cli-terminal.webp"],
+    "repositoryUrl": "https://github.com/kako-jun/chunkundo.nvim",
+    "createdAt": "2025-01-12",
+    "updatedAt": "2025-01-12",
+    "featured": false
+  },
+  {
+    "id": "riscfetch",
+    "title": {
+      "en": "riscfetch: RISC-V Only. Exits on Other Architectures.",
+      "ja": "riscfetch: RISC-V専用。他のアーキテクチャでは動かない。",
+      "zh": "riscfetch: 仅限RISC-V。其他架构上会退出。",
+      "es": "riscfetch: Solo RISC-V. Sale en Otras Arquitecturas."
+    },
+    "description": {
+      "en": "Display RISC-V info in neofetch style. 144 extensions (98 Z + 46 S) grouped by category. 13 vendor logos: Pine64, SiFive, StarFive, Milk-V, Sipeed, T-Head, Kendryte, Allwinner, Espressif, SpacemiT, Sophgo, WCH. -e explains extensions, -a shows all 144 with ✓/✗, -j for JSON, -b for benchmarks. Complements fastfetch with -r.",
+      "ja": "neofetchスタイルでRISC-V情報を表示。144拡張（98 Z + 46 S）をカテゴリ別表示。13ベンダーロゴ：Pine64、SiFive、StarFive、Milk-V、Sipeed、T-Head、Kendryte、Allwinner、Espressif、SpacemiT、Sophgo、WCH。-eで拡張説明、-aで144全て✓/✗表示、-jでJSON、-bでベンチマーク。-rでfastfetchと併用可。",
+      "zh": "以neofetch风格显示RISC-V信息。144种扩展（98 Z + 46 S）按类别分组。13种厂商Logo：Pine64、SiFive、StarFive、Milk-V、Sipeed、T-Head、Kendryte、Allwinner、Espressif、SpacemiT、Sophgo、WCH。-e说明扩展、-a显示全部144种✓/✗、-j输出JSON、-b基准测试。-r配合fastfetch使用。",
+      "es": "Muestra info RISC-V en estilo neofetch. 144 extensiones (98 Z + 46 S) agrupadas por categoría. 13 logos de vendedores: Pine64, SiFive, StarFive, Milk-V, Sipeed, T-Head, Kendryte, Allwinner, Espressif, SpacemiT, Sophgo, WCH. -e explica extensiones, -a muestra 144 con ✓/✗, -j para JSON, -b para benchmarks. Complementa fastfetch con -r."
+    },
+    "tags": ["Free", "OSS", "CLI", "Rust", "RISC-V"],
+    "images": [
+      "/images/cli-terminal.webp",
+      "https://raw.githubusercontent.com/kako-jun/riscfetch/main/assets/screenshot.webp"
+    ],
+    "repositoryUrl": "https://github.com/kako-jun/riscfetch",
+    "createdAt": "2025-01-10",
+    "updatedAt": "2025-01-10",
+    "featured": false
+  },
+  {
+    "id": "agasteer",
+    "title": {
+      "en": "Agasteer: The Simplest Markdown App That Never Conflicts",
+      "ja": "Agasteer: コンフリクトしない最もシンプルなMarkdownノートアプリ",
+      "zh": "Agasteer: 永不冲突的最简Markdown笔记应用",
+      "es": "Agasteer: La aplicación Markdown más simple que nunca tiene conflictos"
+    },
+    "description": {
+      "en": "Direct GitHub sync without intermediate servers. Save directly to your GitHub repository with unique merge algorithm that safely syncs edits from multiple devices. No worry about data loss.",
+      "ja": "中間サーバーを介さずGitHubと直接同期。独自のマージアルゴリズムで複数デバイスからの編集も安全に同期。データは常にあなたの管理下に。",
+      "zh": "无需中间服务器直接同步GitHub。独特的合并算法可安全同步来自多个设备的编辑。数据始终在您的掌控之中。",
+      "es": "Sincronización directa con GitHub sin servidores intermedios. Guarda directamente en tu repositorio de GitHub con un algoritmo de fusión único que sincroniza ediciones de múltiples dispositivos de forma segura. Sin preocupaciones por pérdida de datos."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Markdown"],
+    "images": ["https://raw.githubusercontent.com/kako-jun/agasteer/main/public/icon-512.png"],
+    "demoUrl": "https://agasteer.llll-ll.com/",
+    "repositoryUrl": "https://github.com/kako-jun/agasteer",
+    "createdAt": "2025-01-08",
+    "updatedAt": "2025-01-08",
+    "featured": true
+  },
+  {
+    "id": "3min",
+    "title": {
+      "en": "3 min. Calendar: Create Your Business Calendar in 3 Minutes",
+      "ja": "3 min. Calendar: 3分で営業カレンダー完成",
+      "zh": "3 min. Calendar: 3分钟完成营业日历",
+      "es": "3 min. Calendar: Crea tu calendario de negocios en 3 minutos"
+    },
+    "description": {
+      "en": "Save time for busy small business owners. Create business calendars with automatic Japanese holiday detection. Share instantly on Instagram or LINE with drag & drop editing.",
+      "ja": "がんばる個人経営者の時短に。日本の祝日を自動検出して営業カレンダーを作成。ドラッグ＆ドロップで簡単編集、InstagramやLINEでサッと共有できます。",
+      "zh": "为忙碌的个体经营者节省时间。自动检测日本节假日并创建营业日历。拖放编辑，轻松分享到Instagram或LINE。",
+      "es": "Ahorra tiempo para propietarios de pequeños negocios ocupados. Crea calendarios de negocios con detección automática de días festivos japoneses. Comparte instantáneamente en Instagram o LINE con edición de arrastrar y soltar."
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Business"],
+    "images": ["https://3min.llll-ll.com/icon-512.webp"],
+    "demoUrl": "https://3min.llll-ll.com/",
+    "repositoryUrl": "https://github.com/kako-jun/3min",
+    "createdAt": "2025-01-05",
+    "updatedAt": "2025-01-05",
+    "featured": true
+  },
+  {
+    "id": "sync-stone",
+    "title": {
+      "en": "SyncStone - Stardustmemoir: FF14 Lodestone Export Tool",
+      "ja": "SyncStone - 星紡のメモワール: FF14 ロドストのエクスポートツール",
+      "zh": "SyncStone - Stardustmemoir: FF14陆行鸟站导出工具",
+      "es": "SyncStone - Stardustmemoir: Herramienta de Exportación de FF14 Lodestone"
+    },
+    "description": {
+      "en": "Lodestone has no export function. This Chrome extension exports diary to Markdown+ZIP. Complete backup: title, body, images, comments, likes, date, tags. Bulk export with auto-generated index.md. 5 regions (JP/NA/EU/FR/DE). Can export friends' entries too. Server-friendly 2s interval.",
+      "ja": "ロドストにはエクスポート機能がない。このChrome拡張で日記をMarkdown+ZIPで保存。完全バックアップ：タイトル、本文、画像、コメント、いいね数、日付、タグ。一括エクスポートでindex.md自動生成。5リージョン（JP/NA/EU/FR/DE）対応。フレンドの記事もエクスポート可。サーバー負荷を考慮した2秒間隔。",
+      "zh": "陆行鸟站没有导出功能。这个Chrome扩展将日记导出为Markdown+ZIP。完整备份：标题、正文、图片、评论、点赞数、日期、标签。批量导出自动生成index.md。5个区域（JP/NA/EU/FR/DE）。可导出好友的条目。服务器友好的2秒间隔。",
+      "es": "Lodestone no tiene función de exportación. Esta extensión Chrome exporta diarios a Markdown+ZIP. Respaldo completo: título, cuerpo, imágenes, comentarios, likes, fecha, etiquetas. Exportación masiva con index.md auto-generado. 5 regiones (JP/NA/EU/FR/DE). Puede exportar entradas de amigos. Intervalo de 2s respetuoso con servidores."
+    },
+    "tags": ["Free", "OSS", "Extension", "TypeScript", "Gaming"],
+    "images": [
+      "https://raw.githubusercontent.com/kako-jun/sync-stone/refs/heads/main/chrome-extension/icons/icon128.png"
+    ],
+    "repositoryUrl": "https://github.com/kako-jun/sync-stone",
+    "articles": [
+      {
+        "label": "Zenn",
+        "url": "https://zenn.dev/kako_jun/scraps/38ef9ae285ed5b"
+      }
+    ],
+    "createdAt": "2025-01-01",
+    "updatedAt": "2025-01-01",
+    "featured": false
+  },
+  {
+    "id": "lawkit",
+    "title": {
+      "en": "lawkit: Detect Data Fraud with Statistical Laws",
+      "ja": "lawkit: データの不正を統計法則で見抜く",
+      "zh": "lawkit: 用统计法则检测数据欺诈",
+      "es": "lawkit: Detecta Fraude de Datos con Leyes Estadísticas"
+    },
+    "description": {
+      "en": "5 statistical laws for anomaly detection: Benford's Law (first digit for accounting/election fraud), Pareto (80/20 rule for sales), Zipf's Law (linguistics, web analytics), Normal/Poisson (QC, predictions). ASCII charts with risk level judgment. Built in Rust.",
+      "ja": "異常検出のための5つの統計法則：ベンフォードの法則（会計・選挙不正の第一桁分析）、パレートの法則（売上の80/20）、ジップの法則（言語学・Webアクセス解析）、正規分布・ポアソン分布（品質管理・予測）。ASCIIチャートでリスクレベル判定。Rust製。",
+      "zh": "5种统计法则用于异常检测：本福德法则（会计/选举欺诈的第一位数字分析）、帕累托法则（销售的80/20法则）、齐普夫法则（语言学、Web分析）、正态/泊松分布（质量控制、预测）。ASCII图表带风险级别判断。Rust构建。",
+      "es": "5 leyes estadísticas para detección de anomalías: Ley de Benford (primer dígito para fraude contable/electoral), Pareto (regla 80/20 para ventas), Ley de Zipf (lingüística, analítica web), Normal/Poisson (QC, predicciones). Gráficos ASCII con nivel de riesgo. Construido en Rust."
+    },
+    "tags": ["Free", "OSS", "CLI", "Rust", "Statistics"],
+    "images": ["/images/cli-terminal.webp"],
+    "repositoryUrl": "https://github.com/kako-jun/lawkit",
+    "createdAt": "2024-12-20",
+    "updatedAt": "2024-12-20",
+    "featured": true
+  },
+  {
+    "id": "diffai",
+    "title": {
+      "en": "diffai: \"Binary files differ\" Is Not Enough",
+      "ja": "diffai: 「Binary files differ」で終わらない",
+      "zh": "diffai: 「Binary files differ」不够用",
+      "es": "diffai: \"Binary files differ\" No Es Suficiente"
+    },
+    "description": {
+      "en": "Shows meaningful diffs for ML model files. 11 automatic analyses: learning rate, optimizer, loss, accuracy, model version, gradient, quantization, convergence, activation, attention, ensemble. Compares tensor statistics (mean, std). Supports PyTorch, Safetensors, NumPy, MATLAB. JSON/YAML output for CI/CD.",
+      "ja": "MLモデルファイルの意味ある差分を表示。11種類の自動分析：学習率、オプティマイザ、損失、精度、モデルバージョン、勾配、量子化、収束、アクティベーション、アテンション、アンサンブル。テンソル統計(mean, std)を比較。PyTorch、Safetensors、NumPy、MATLAB対応。CI/CD用JSON/YAML出力。",
+      "zh": "显示ML模型文件的有意义差异。11种自动分析：学习率、优化器、损失、精度、模型版本、梯度、量化、收敛、激活、注意力、集成。比较张量统计(mean, std)。支持PyTorch、Safetensors、NumPy、MATLAB。CI/CD用JSON/YAML输出。",
+      "es": "Muestra diferencias significativas para archivos de modelos ML. 11 análisis automáticos: learning rate, optimizador, pérdida, precisión, versión del modelo, gradiente, cuantización, convergencia, activación, atención, ensemble. Compara estadísticas de tensor (mean, std). Soporta PyTorch, Safetensors, NumPy, MATLAB. Salida JSON/YAML para CI/CD."
+    },
+    "tags": ["Free", "OSS", "CLI", "Rust", "ML"],
+    "images": ["/images/cli-terminal.webp"],
+    "repositoryUrl": "https://github.com/kako-jun/diffai",
+    "createdAt": "2024-12-15",
+    "updatedAt": "2024-12-15",
+    "featured": true
+  },
+  {
+    "id": "diffx",
+    "title": {
+      "en": "diffx: Shows Only Meaningful Changes",
+      "ja": "diffx: 意味のある変更だけを表示",
+      "zh": "diffx: 只显示有意义的变更",
+      "es": "diffx: Muestra Solo Cambios Significativos"
+    },
+    "description": {
+      "en": "When key ordering changes in JSON/YAML, traditional diff shows every line as changed. diffx understands structure and shows what actually changed. Supports 6 formats (JSON, YAML, TOML, XML, INI, CSV) with auto-detection, array element ID-key comparison, recursive directory diff, and JSON/YAML output for CI/CD.",
+      "ja": "JSON/YAMLでキー順序が変わると従来のdiffは全行が変更として表示される。diffxは構造を理解し、本当に変わった部分だけを表示。6形式（JSON、YAML、TOML、XML、INI、CSV）自動検出対応、配列要素のIDキー比較、ディレクトリ再帰比較、CI/CD用JSON/YAML出力。",
+      "zh": "JSON/YAML的键顺序改变时，传统diff显示每行都变了。diffx理解结构，只显示真正变化的部分。支持6种格式（JSON、YAML、TOML、XML、INI、CSV）自动检测、数组元素ID键比较、目录递归比较、CI/CD用JSON/YAML输出。",
+      "es": "Cuando el orden de claves en JSON/YAML cambia, diff tradicional muestra cada línea como modificada. diffx entiende la estructura y muestra lo que realmente cambió. Soporta 6 formatos (JSON, YAML, TOML, XML, INI, CSV) con autodetección, comparación de arrays por ID-key, diff recursivo de directorios, y salida JSON/YAML para CI/CD."
+    },
+    "tags": ["Free", "OSS", "CLI", "Rust", "Diff"],
+    "images": [
+      "/images/cli-terminal.webp",
+      "https://storage.googleapis.com/zenn-user-upload/a82eab0d5859-20250706.png"
+    ],
+    "repositoryUrl": "https://github.com/kako-jun/diffx",
+    "articles": [
+      {
+        "label": "Dev.to",
+        "url": "https://dev.to/kako-jun/i-built-diffx-a-structure-aware-ai-first-diff-tool-in-rust-lets-end-the-comma-induced-suffering-491h"
+      },
+      {
+        "label": "Zenn",
+        "url": "https://zenn.dev/kako_jun/articles/1d518f47225f42"
+      }
+    ],
+    "createdAt": "2024-12-10",
+    "updatedAt": "2024-12-10",
+    "featured": true
+  },
+  {
+    "id": "sid-note",
+    "title": {
+      "en": "Sid Note: A bass fretboard visualization app for practice",
+      "ja": "Sid Note: ベース指板の可視化練習アプリ",
+      "zh": "Sid Note: 贝斯指板可视化练习应用",
+      "es": "Sid Note: Aplicación de visualización del diapasón de bajo para práctica"
+    },
+    "description": {
+      "en": "A bass fretboard visualization app for practice.\n\nShows the role of chords you're about to play within the song. Displays the function of each note within the chord.\n\nProvides information not found in TAB notation (muting fingers, positions, etc.). Shows correspondence with staff notation and keyboard.\n\nExport custom fretboard images to share fingering ideas like 'This fingering pattern might be easier!'",
+      "ja": "ベースの指板を表示して、練習に使えるアプリです。\n\nいま弾こうとしているコードの、曲の中での役割が表示されます。いま弾こうとしている音の、コードの中での役割が表示されます。\n\nTAB譜にない情報（ミュートに使う指、位置など）が分かります。五線譜、キーボードとの対応が分かります。\n\n指板を自由に画像化できるので、「こんな押弦、運指ならば簡単なのでは？」みたいなアイデアを共有してみてください。",
+      "zh": "贝斯指板可视化练习应用。\n\n显示即将演奏的和弦在歌曲中的作用。展示每个音符在和弦中的功能。\n\n提供TAB谱中没有的信息（消音用的手指、位置等）。显示与五线谱、键盘的对应关系。\n\n可以自由导出指板图像，分享「这样的按弦、指法可能更简单」之类的想法。",
+      "es": "Aplicación de visualización del diapasón de bajo para práctica.\n\nMuestra el papel de los acordes que vas a tocar dentro de la canción. Muestra la función de cada nota dentro del acorde.\n\nProporciona información no encontrada en la notación TAB (dedos para silenciar, posiciones, etc.). Muestra correspondencia con notación en pentagrama y teclado.\n\nExporta imágenes personalizadas del diapasón para compartir ideas de digitación como '¡Esta digitación podría ser más fácil!'"
+    },
+    "tags": ["Free", "OSS", "Web", "TypeScript", "Music"],
+    "images": [
+      "https://sid-note.llll-ll.com/favicon.drawio.svg",
+      "https://storage.googleapis.com/zenn-user-upload/5f02c372318d-20250622.png",
+      "https://storage.googleapis.com/zenn-user-upload/10b0af181da2-20250622.png"
+    ],
+    "videos": ["https://youtu.be/bE_fR3AcX78", "https://youtu.be/MatsIe3Pgoc"],
+    "demoUrl": "https://sid-note.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/sid-note",
+    "articles": [
+      {
+        "label": "Zenn",
+        "url": "https://zenn.dev/kako_jun/articles/00dde8f9a28524"
+      }
+    ],
+    "createdAt": "2024-01-01",
+    "updatedAt": "2024-12-01",
+    "featured": true
+  }
+]

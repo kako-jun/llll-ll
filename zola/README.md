@@ -119,6 +119,8 @@ header パネルの背面で遊べる Tetris（React 版 `src/lib/tetris.ts` ＋
 - **操作**: panel クリックでその列に投下 → 落下して最下段の積み帯に着地 / ブロッククリックで消滅（`tetrisShrink` 0.4s）＋上のブロックは落下（カスケード）。一定間隔で自動スポーン。**列が `MAX_STACK`(3) を超えるとグリッド全体をリセット**（行揃いは grid 幅が広く実際には起きないので、これが実質の片付け）。
 - **積み帯の直上から落とす**: React 版はヘッダ高＝積み帯高だったが、こちらは panel が高い（~215px）。パネル全高を漂わせると本文上を 7s 横切り間延びするので、`spawnGridY()` で最下段 `GRID_HEIGHT` 行の1段上から短く（~2s）落とす。panel 高さは mypace/daily の非同期ロードで揺れるため、各 tick で `getBoundingClientRect().height` を読み直して下端追従する。
 - **PE**: JS 無効/失敗なら `.tetris-bg` は破線帯＋"tetris" ラベルのまま（壊れない）。JS 起動時に `.tetris-live` を付けてプレースホルダ表示を消し、実描画へ切替。
+- **性能/堅牢性**: `tick()` は落下中ブロックが無ければ即 return（固定ブロックは静止＝毎フレーム描き直さない・常時アイドルの reflow/DOM 再生成を回避）。高さ変化（mypace/daily の非同期ロードで panel 高が変わる）への追従は `ResizeObserver` で field サイズ変化時だけ再描画。クリック消去は pixel 逆算でなく固定ブロックの `data-col/data-row` を読む（高さ変化で誤判定しない）。
+- **a11y**: 装飾なので `.tetris-bg` は `aria-hidden`。`prefers-reduced-motion` 時は自動スポーンを止める（クリック投下は残す）。
 - 純粋ロジック（`createEmptyGrid`/`placeBlock`/`findCompletedRows`/`clearRowsAndCollectFalling`/`removeBlockAndCascade` 等）を `module.exports` で export し `tests/tetris.test.js` で検証（移行元 `src/lib/tetris.test.ts` と同観点）。
 
 ## デザイン（黒×緑・btop）

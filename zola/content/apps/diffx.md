@@ -1,5 +1,5 @@
 +++
-title = "diffx: 意味のある変更だけを表示"
+title = "diffx: Shows Only Meaningful Changes"
 path = "apps/diffx"
 template = "app.html"
 

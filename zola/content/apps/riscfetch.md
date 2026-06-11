@@ -1,5 +1,5 @@
 +++
-title = "riscfetch: RISC-V専用。他のアーキテクチャでは動かない。"
+title = "riscfetch: RISC-V Only. Exits on Other Architectures."
 path = "apps/riscfetch"
 template = "app.html"
 

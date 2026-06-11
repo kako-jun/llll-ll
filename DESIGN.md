@@ -43,6 +43,8 @@ CSS variables are defined in two naming systems. Use either, but prefer the sema
 
 Note: `Inter:wght@700` is imported via Google Fonts but not referenced in any font-family declaration. Dead import.
 
+Note: The above describes the React `src/` SPA. The **Zola portal (`zola/`)** is a separate, intentionally monospace btop-style surface — body is `"DejaVu Sans Mono", "Consolas", "Menlo", monospace` and locale fonts are switched per `html[lang]` using **system CJK stacks** (no render-blocking webfonts), not the Google-Fonts Noto setup above.
+
 ### Type Scale
 
 | Element                  | Size               | Weight | Notes                           |

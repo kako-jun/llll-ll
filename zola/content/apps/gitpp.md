@@ -1,5 +1,5 @@
 +++
-title = "gitpp: 複数のGitリポジトリを一括管理するCLI"
+title = "gitpp: Manage Multiple Git Repositories in Parallel"
 path = "apps/gitpp"
 template = "app.html"
 

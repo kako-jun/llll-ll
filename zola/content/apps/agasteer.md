@@ -1,5 +1,5 @@
 +++
-title = "Agasteer: コンフリクトしない最もシンプルなMarkdownノートアプリ"
+title = "Agasteer: The Simplest Markdown App That Never Conflicts"
 path = "apps/agasteer"
 template = "app.html"
 

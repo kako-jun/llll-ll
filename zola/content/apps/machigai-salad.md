@@ -1,5 +1,5 @@
 +++
-title = "間違いサラダ: 2枚並べてフリックで見比べる間違い探しツール"
+title = "Machigai Salad: Spot-the-Difference Comparison Tool"
 path = "apps/machigai-salad"
 template = "app.html"
 

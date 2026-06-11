@@ -20,19 +20,34 @@ zola serve            # http://127.0.0.1:1111
 zola build            # public/ に出力（git 管理外）
 
 # per-app ページ（content/apps/*.md）は products.json から生成する。
-# products.json を変えたら再生成して content/apps を更新・コミットする（冪等）。
+# 1アプリにつき4言語分（en=無印 / ja・zh・es は .{lang}.md）を冪等に生成する。
+# products.json を変えたら再生成して content/apps を更新・コミットする。
 node scripts/gen-app-pages.mjs
 ```
+
+## i18n（4言語・#5）
+
+Zola 標準の多言語構成。**既定言語 en をルート直下**に置き、他言語は接頭辞を付ける（`default_language = "en"`）。
+
+- URL: `/`（en・canonical）/ `/ja/` / `/zh/` / `/es/`。per-app は `/apps/{id}/`（en）と `/{lang}/apps/{id}/`。
+- UI 文言は `config.toml` の `[translations]`（en 既定）＋ `[languages.{ja,zh,es}.translations]`。テンプレは `trans(key=..., lang=lang)` で引く。
+- アプリの `title` / `description` は `products.json` の言語キー（`p.title[lang]`・欠けたら en にフォールバック）から表示言語で出す。全エントリが4言語を非空で持つことは `tests/products-data.test.js` が保証する（en 欠落は全言語ビルドを落とすため）。
+- 言語切替は**ナビの実リンク**（静的 per-language ビルド）。localStorage 即時切替はしない（リロードを挟む）。
+- ロケール別フォントは `html[lang]` で**システム CJK スタック**を切替（自前 webfont は読み込みブロッキング回避のため不採用）。
+- `gen-app-pages.mjs` は id に `.` を含む `chillout.nvim` を、Zola が `.{lang}` を言語コードと誤認しないよう**ファイル名は `chillout-nvim` に sanitize しつつ公開 URL の `path` は `.nvim` を維持**する。
 
 ## 構成
 
 ```
 zola/
-├── config.toml            # base_url / 黒×緑 palette([extra]) / theme="avel"
-├── content/_index.md      # ホーム（template = index.html）
-├── data/products.json     # アプリ20件（root public/data/products.json から移植）
+├── config.toml            # base_url / palette([extra]) / theme="avel" / default_language=en + [languages.*] translations
+├── content/
+│   ├── _index.md          # ホーム en（template = index.html）。_index.{ja,zh,es}.md が各言語ホーム
+│   └── apps/              # gen-app-pages.mjs が products.json から生成（{id}.md=en + {id}.{lang}.md）
+├── data/products.json     # アプリ20件（title/description は en/ja/zh/es の言語キー）
 ├── templates/
-│   ├── index.html         # btop パネルのポータル（自己完結・JSゼロ）
+│   ├── index.html         # btop パネルのポータル（自己完結・html[lang]・trans()）
+│   ├── app.html           # per-app 詳細 /[{lang}/]apps/{id}/（ポップアップが fetch する .app-detail フラグメント）
 │   └── 404.html           # avel base 非継承の自前 404
 └── themes/avel            # submodule
 ```

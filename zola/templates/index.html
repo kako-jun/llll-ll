@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ config.title }}</title>
   <meta name="description" content="{{ config.description }}" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <style>
     :root {
       --bg: {{ config.extra.bg }};
@@ -302,7 +303,7 @@
       <a href="#">Home</a>
       <a href="#apps">Apps</a>
       <a href="#">Blog</a>
-      <a href="https://github.com/kako-jun" rel="noopener">GitHub</a>
+      <a href="https://github.com/kako-jun" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
 
     <!-- apps パネル（内部スクロール） -->
@@ -345,8 +346,8 @@
           </div>
           {% endif %}
           <div class="card-links">
-            {% if p.demoUrl %}<a href="{{ p.demoUrl | safe }}" rel="noopener">demo</a>{% endif %}
-            {% if p.repositoryUrl %}<a href="{{ p.repositoryUrl | safe }}" rel="noopener">repo</a>{% endif %}
+            {% if p.demoUrl %}<a href="{{ p.demoUrl | safe }}" target="_blank" rel="noopener noreferrer">demo</a>{% endif %}
+            {% if p.repositoryUrl %}<a href="{{ p.repositoryUrl | safe }}" target="_blank" rel="noopener noreferrer">repo</a>{% endif %}
           </div>
         </article>
         {% endfor %}

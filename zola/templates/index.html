@@ -19,6 +19,9 @@
       --text: {{ config.extra.text }};
       --text-muted: {{ config.extra.text_muted }};
       --link: {{ config.extra.link }};
+      /* 型スケール: 実質3段（base / sm）＋ロゴ。散らばった指定はこの2変数へ寄せる */
+      --fs-base: 0.85rem;
+      --fs-sm: 0.72rem;
     }
 
     * { box-sizing: border-box; }
@@ -30,11 +33,11 @@
       background: var(--bg);
       color: var(--text);
       font-family: "DejaVu Sans Mono", "Consolas", "Menlo", monospace;
-      font-size: 14px;
+      font-size: var(--fs-base);
       line-height: 1.5;
     }
 
-    /* デスクトップ: 外側スクロールなし。内側 apps だけスクロールする */
+    /* デスクトップ: 外側スクロールなし。中段 .mid だけスクロールする */
     body { overflow: hidden; }
 
     a { color: var(--link); text-decoration: none; }
@@ -65,36 +68,62 @@
       background: var(--panel-bg);
       padding: 0 0.4em;
       color: var(--border);
-      font-size: 0.85em;
+      font-size: var(--fs-sm);
       letter-spacing: 0.05em;
     }
 
-    /* ── 上段3パネル ── */
+    /* ── 上段3パネル（コンパクト） ── */
     .top-row {
       display: flex;
       gap: 8px;
       flex-shrink: 0;
     }
-    .panel-header { flex: 2; display: flex; flex-direction: column; gap: 10px; }
-    .panel-visits { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-    .panel-today  { flex: 1; display: flex; flex-direction: column; }
+    .panel-header { flex: 2; display: flex; flex-direction: column; gap: 6px; justify-content: flex-start; }
+    .panel-mypace { flex: 1; display: flex; flex-direction: column; gap: 6px; justify-content: flex-start; }
+    .panel-today  { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
 
+    /* ロゴ背面に薄いテトリス帯を敷くバンド（縦長にしない） */
+    .logo-band {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: 2.4rem;
+    }
+    .tetris-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      border: 1px dashed var(--border-muted);
+      opacity: 0.5;
+    }
+    .tetris-bg::after {
+      content: "tetris";
+      position: absolute;
+      bottom: 1px;
+      right: 4px;
+      font-size: var(--fs-sm);
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
     .logo {
+      position: relative;
+      z-index: 1;
       font-family: "Arial Black", "Arial", "Impact", sans-serif;
       font-weight: 900;
-      font-size: 2.2rem;
+      font-size: 2rem;
       letter-spacing: 0.2em;
       color: var(--border);
       line-height: 1;
+      background: transparent;
       font-feature-settings: "liga" 0;
+      padding: 0 0.15em;
     }
     .logo-sub {
       color: var(--text-muted);
-      font-size: 0.8rem;
-      margin-top: -2px;
+      font-size: var(--fs-sm);
     }
 
-    /* プレースホルダ枠（Tetris / visits / daily image） */
+    /* プレースホルダ枠（mypace / daily image） */
     .placeholder {
       border: 1px dashed var(--border-muted);
       color: var(--text-muted);
@@ -102,22 +131,38 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 10px;
-      min-height: 56px;
+      padding: 8px;
     }
-    .placeholder.tetris { flex: 1; }
-    .placeholder.visits {
-      font-size: 1.1rem;
-      letter-spacing: 0.1em;
-      min-height: 80px;
+    /* mypace つぶやき: 薄いダミー行 */
+    .mypace-feed { display: flex; flex-direction: column; gap: 6px; }
+    .mypace-line {
+      border: 1px dashed var(--border-muted);
+      color: var(--text-muted);
+      padding: 4px 8px;
+      font-size: var(--fs-sm);
+      text-align: left;
     }
-    /* 日替わり絵は正方形 */
+    /* 日替わり絵は正方形・top-row 肥大を防ぐため控えめな max-height */
     .placeholder.today {
       aspect-ratio: 1 / 1;
       width: 100%;
+      max-height: 170px;
+    }
+    /* today パネル右上隅の緑枠カウンタバッジ */
+    .visits-badge {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      z-index: 2;
+      border: 1px solid var(--border);
+      background: var(--panel-bg);
+      color: var(--text);
+      padding: 1px 6px;
+      font-size: var(--fs-sm);
+      letter-spacing: 0.05em;
     }
 
-    /* ── nav（全幅・緑帯） ── */
+    /* ── nav（全幅・緑帯）── */
     .nav {
       flex-shrink: 0;
       border: 1px solid var(--border);
@@ -125,17 +170,31 @@
       display: flex;
       gap: 1.5em;
       align-items: center;
+      justify-content: flex-end;
       padding: 8px 14px;
-      font-size: 0.95rem;
+      font-size: var(--fs-base);
     }
     .nav a { color: var(--text); }
     .nav a:hover { color: var(--border); text-decoration: none; }
-    .nav .nav-brand { color: var(--border); margin-right: auto; letter-spacing: 0.1em; }
 
-    /* ── apps パネル（flex:1, 内部スクロール） ── */
-    .panel-apps {
+    /* ── 中段スクロール領域（apps + blog を1領域に）── */
+    .mid {
       flex: 1;
-      min-height: 0;          /* flex 子の overflow を効かせる */
+      min-height: 0;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-right: 6px;
+      scrollbar-color: var(--border) var(--panel-bg);
+      scrollbar-width: thin;
+    }
+    .mid::-webkit-scrollbar { width: 10px; }
+    .mid::-webkit-scrollbar-track { background: var(--panel-bg); }
+    .mid::-webkit-scrollbar-thumb { background: var(--border); }
+
+    /* ── apps パネル ── */
+    .panel-apps {
       display: flex;
       flex-direction: column;
       padding-bottom: 8px;
@@ -143,7 +202,6 @@
 
     /* フィルタの四角（ガワだけ・挙動JSなし） */
     .filter-bar {
-      flex-shrink: 0;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
@@ -158,7 +216,7 @@
       color: var(--text);
       padding: 6px 10px;
       font-family: inherit;
-      font-size: 0.9rem;
+      font-size: var(--fs-base);
     }
     .filter-bar input[type="search"]::placeholder { color: var(--text-muted); }
     .filter-chips { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -166,34 +224,24 @@
       border: 1px solid var(--border-muted);
       color: var(--text-muted);
       padding: 4px 10px;
-      font-size: 0.75rem;
+      font-size: var(--fs-sm);
       background: var(--panel-bg);
       user-select: none;
     }
 
-    /* 横罫 */
+    /* 横罫: apps パネルの緑枠の左端〜右端までフル幅（左右 padding 12px 分を負マージンで打ち消す） */
     .rule {
-      flex-shrink: 0;
       border: none;
       border-top: 1px solid var(--border);
-      margin: 0 0 12px;
+      margin: 0 -12px 12px;
     }
 
-    /* 全件カードグリッド（内部スクロール＋緑スクロールバー） */
+    /* 全件カードグリッド（スクロールは .mid が担当・自然に流す） */
     .cards {
-      flex: 1;
-      min-height: 0;
-      overflow-y: auto;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 1em;
-      padding-right: 6px;
-      scrollbar-color: var(--border) var(--panel-bg);
-      scrollbar-width: thin;
     }
-    .cards::-webkit-scrollbar { width: 10px; }
-    .cards::-webkit-scrollbar-track { background: var(--panel-bg); }
-    .cards::-webkit-scrollbar-thumb { background: var(--border); }
 
     .card {
       border: 1px solid var(--border-muted);
@@ -214,7 +262,6 @@
       background: var(--panel-bg);
     }
     .card-title {
-      font-size: 0.95rem;
       font-weight: bold;
       color: var(--border);
       line-height: 1.3;
@@ -222,7 +269,6 @@
     .card-featured { color: var(--border); margin-left: 4px; }
     .card-desc {
       color: var(--text-muted);
-      font-size: 0.8rem;
       margin: 0;
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -231,14 +277,23 @@
     }
     .card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
     .card-tag {
-      font-size: 0.65rem;
+      font-size: var(--fs-sm);
       border: 1px solid var(--border-muted);
       color: var(--text-muted);
       padding: 1px 6px;
     }
-    .card-links { display: flex; gap: 12px; margin-top: auto; font-size: 0.8rem; }
+    .card-links { display: flex; gap: 12px; margin-top: auto; }
 
-    /* ── footer（固定・外枠最下） ── */
+    /* ── blog パネル（apps 直下・footer 上）── */
+    .panel-blog { padding-bottom: 12px; }
+    .blog-placeholder {
+      border: 1px dashed var(--border-muted);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 16px;
+    }
+
+    /* ── footer（固定・外枠最下）── */
     .footer {
       position: relative;
       flex-shrink: 0;
@@ -247,7 +302,7 @@
       color: var(--text-muted);
       text-align: center;
       padding: 14px 8px 8px;
-      font-size: 0.8rem;
+      font-size: var(--fs-base);
     }
     .footer > .label {
       position: absolute;
@@ -256,8 +311,15 @@
       background: var(--panel-bg);
       padding: 0 0.4em;
       color: var(--border);
-      font-size: 0.85em;
+      font-size: var(--fs-sm);
       letter-spacing: 0.05em;
+    }
+    .footer-brand {
+      font-family: "Arial Black", "Arial", "Impact", sans-serif;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: var(--border);
+      margin-right: 0.6em;
     }
 
     /* ── スマホ: 100vh 固定を解除し、縦積み＋普通のスクロール ── */
@@ -265,9 +327,8 @@
       body { overflow: visible; }
       .desktop { height: auto; min-height: 100vh; }
       .top-row { flex-direction: column; }
-      .panel-header, .panel-visits, .panel-today { flex: none; }
-      .panel-apps { flex: none; }
-      .cards { overflow-y: visible; }
+      .panel-header, .panel-mypace, .panel-today { flex: none; }
+      .mid { overflow: visible; flex: none; }
       .logo { font-size: 1.8rem; }
     }
   </style>
@@ -279,85 +340,98 @@
     <div class="top-row">
       <section class="panel panel-header">
         <span class="label">header</span>
-        <div>
+        <!-- ロゴ背面に薄いテトリス帯を敷くバンド -->
+        <div class="logo-band">
+          <div class="tetris-bg"></div>
           <div class="logo">llll-ll</div>
-          <div class="logo-sub">kako-jun's games &amp; apps portfolio</div>
         </div>
-        <div class="placeholder tetris">Tetris (placeholder)</div>
+        <div class="logo-sub">kako-jun's games &amp; apps portfolio</div>
       </section>
 
-      <section class="panel panel-visits">
-        <span class="label">visits</span>
-        <div class="placeholder visits">visits: ---</div>
+      <section class="panel panel-mypace">
+        <span class="label">mypace</span>
+        <div class="mypace-feed">
+          <div class="mypace-line">mypace のつぶやき（Phase 2）</div>
+          <div class="mypace-line">&nbsp;</div>
+          <div class="mypace-line">&nbsp;</div>
+        </div>
       </section>
 
       <section class="panel panel-today">
         <span class="label">today</span>
+        <span class="visits-badge">visits: ---</span>
         <div class="placeholder today">daily image</div>
       </section>
     </div>
 
-    <!-- nav（全幅・緑帯） -->
+    <!-- nav（全幅・緑帯）— GitHub のみ。緑帯は将来の言語/テーマ切替の置き場として残す -->
     <nav class="nav">
-      <span class="nav-brand">llll-ll</span>
-      <a href="#">Home</a>
-      <a href="#apps">Apps</a>
-      <a href="#">Blog</a>
       <a href="https://github.com/kako-jun" target="_blank" rel="noopener noreferrer">GitHub</a>
     </nav>
 
-    <!-- apps パネル（内部スクロール） -->
-    <section class="panel panel-apps" id="apps">
-      <span class="label">apps</span>
+    <!-- 中段スクロール領域: apps + blog を一緒にスクロール -->
+    <div class="mid">
 
-      <!-- フィルタの四角（ガワだけ） -->
-      <div class="filter-bar">
-        <input type="search" placeholder="search apps..." disabled />
-        <div class="filter-chips">
-          <span class="filter-chip">All</span>
-          <span class="filter-chip">Free</span>
-          <span class="filter-chip">OSS</span>
-          <span class="filter-chip">CLI</span>
-          <span class="filter-chip">Game</span>
-          <span class="filter-chip">Featured</span>
+      <!-- apps パネル -->
+      <section class="panel panel-apps" id="apps">
+        <span class="label">apps</span>
+
+        <!-- フィルタの四角（ガワだけ） -->
+        <div class="filter-bar">
+          <input type="search" placeholder="search apps..." disabled />
+          <div class="filter-chips">
+            <span class="filter-chip">All</span>
+            <span class="filter-chip">Free</span>
+            <span class="filter-chip">OSS</span>
+            <span class="filter-chip">CLI</span>
+            <span class="filter-chip">Game</span>
+            <span class="filter-chip">Featured</span>
+          </div>
         </div>
-      </div>
 
-      <hr class="rule" />
+        <hr class="rule" />
 
-      <!-- 全件カードグリッド -->
-      <div class="cards">
-        {% for p in products %}
-        <article class="card">
-          <div class="card-head">
-            {% if p.images and p.images | length > 0 %}
-            <img class="card-thumb" src="{{ p.images.0 | safe }}" alt="" loading="lazy" />
-            {% endif %}
-            <div class="card-title">
-              {{ p.title.ja }}{% if p.featured %}<span class="card-featured">★</span>{% endif %}
+        <!-- 全件カードグリッド -->
+        <div class="cards">
+          {% for p in products %}
+          <article class="card">
+            <div class="card-head">
+              {% if p.images and p.images | length > 0 %}
+              <img class="card-thumb" src="{{ p.images.0 | safe }}" alt="" loading="lazy" />
+              {% endif %}
+              <div class="card-title">
+                {{ p.title.ja }}{% if p.featured %}<span class="card-featured">★</span>{% endif %}
+              </div>
             </div>
-          </div>
-          {% if p.description and p.description.ja %}
-          <p class="card-desc">{{ p.description.ja }}</p>
-          {% endif %}
-          {% if p.tags %}
-          <div class="card-tags">
-            {% for t in p.tags %}<span class="card-tag">{{ t }}</span>{% endfor %}
-          </div>
-          {% endif %}
-          <div class="card-links">
-            {% if p.demoUrl %}<a href="{{ p.demoUrl | safe }}" target="_blank" rel="noopener noreferrer">demo</a>{% endif %}
-            {% if p.repositoryUrl %}<a href="{{ p.repositoryUrl | safe }}" target="_blank" rel="noopener noreferrer">repo</a>{% endif %}
-          </div>
-        </article>
-        {% endfor %}
-      </div>
-    </section>
+            {% if p.description and p.description.ja %}
+            <p class="card-desc">{{ p.description.ja }}</p>
+            {% endif %}
+            {% if p.tags %}
+            <div class="card-tags">
+              {% for t in p.tags %}<span class="card-tag">{{ t }}</span>{% endfor %}
+            </div>
+            {% endif %}
+            <div class="card-links">
+              {% if p.demoUrl %}<a href="{{ p.demoUrl | safe }}" target="_blank" rel="noopener noreferrer">demo</a>{% endif %}
+              {% if p.repositoryUrl %}<a href="{{ p.repositoryUrl | safe }}" target="_blank" rel="noopener noreferrer">repo</a>{% endif %}
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
 
-    <!-- footer（固定） -->
+      <!-- blog パネル（apps 直下） -->
+      <section class="panel panel-blog" id="blog">
+        <span class="label">blog</span>
+        <div class="blog-placeholder">準備中（Phase 3）</div>
+      </section>
+
+    </div>
+
+    <!-- footer（固定）— llll-ll ブランド移設先 -->
     <footer class="footer">
       <span class="label">footer</span>
-      © kako-jun
+      <span class="footer-brand">llll-ll</span>© kako-jun
     </footer>
 
   </div>

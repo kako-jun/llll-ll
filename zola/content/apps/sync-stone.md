@@ -1,5 +1,5 @@
 +++
-title = "SyncStone - 星紡のメモワール: FF14 ロドストのエクスポートツール"
+title = "SyncStone - Stardustmemoir: FF14 Lodestone Export Tool"
 path = "apps/sync-stone"
 template = "app.html"
 

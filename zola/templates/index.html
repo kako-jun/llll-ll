@@ -159,12 +159,17 @@
       font-size: var(--fs-sm);
       text-align: left;
     }
-    /* 日替わり絵は正方形・top-row 肥大を防ぐため控えめな max-height */
-    .placeholder.today {
-      aspect-ratio: 1 / 1;
+    /* 日替わりトップ絵（#6）。画像＝正方形・top-row 肥大を防ぐ控えめな max-height、下にタイトル『…』 */
+    .daily-art { margin: 0; display: flex; flex-direction: column; gap: 4px; }
+    .daily-art-img {
       width: 100%;
+      aspect-ratio: 1 / 1;
       max-height: 170px;
+      object-fit: cover;
+      border: 1px solid var(--border-muted);
+      background: var(--panel-bg);
     }
+    .daily-art-title { text-align: center; font-size: var(--fs-sm); color: var(--text-muted); }
     /* ── 最上段：訪問統計バー（ヘッダより上に堂々と）── 実カウントは Phase 2 #8 */
     /* visits パネルは padding 0 にして、セグメントを上下の緑枠まで満たす（縦罫が天地に届く） */
     .visits-bar { flex-shrink: 0; padding: 0; }
@@ -518,9 +523,18 @@
         </div>
       </section>
 
+      {# 日替わりトップ絵（#6）。manifest 先頭をサーバ側で既定描画（JS 無しでも 01・タイトルが出る＝PE）。
+         島 daily-art.js がクライアントの日付で今日のエントリに差し替えるだけ。 #}
+      {% set daily = load_data(path="data/daily.json") %}
       <section class="panel panel-today">
-        <span class="label">today</span>
-        <div class="placeholder today">daily image</div>
+        <span class="label">art of today</span>
+        {% if daily and daily | length > 0 %}
+        <figure class="daily-art">
+          <img class="daily-art-img" src="/images/daily/{{ daily[0].file }}" alt="{{ daily[0].title }}" />
+          <figcaption class="daily-art-title">『{{ daily[0].title }}』</figcaption>
+        </figure>
+        <script type="application/json" id="daily-data">{{ daily | json_encode | safe }}</script>
+        {% endif %}
       </section>
     </div>
 
@@ -638,5 +652,7 @@
   <script defer src="/js/apps-filter.js"></script>
   <!-- 詳細ポップアップの島（vanilla JS・defer）。読めなくてもタイトルリンクで素の遷移（PE）。 -->
   <script defer src="/js/app-popup.js"></script>
+  <!-- 日替わりトップ絵の島（vanilla JS・defer）。読めなくてもサーバ既定（先頭=01）が見えたまま（PE）。 -->
+  <script defer src="/js/daily-art.js"></script>
 </body>
 </html>

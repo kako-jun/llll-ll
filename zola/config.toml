@@ -7,7 +7,9 @@ default_language = "en"
 theme = "avel"
 compile_sass = false
 build_search_index = false
-generate_feeds = false
+# Atom フィード（#11）。posts セクション（_index*.md の generate_feeds=true）に対し言語別 atom.xml を出す。
+generate_feeds = true
+feed_filenames = ["atom.xml"]
 
 # ── 既定言語(en)の UI 文言。全 UI 文字列をキー化し、テンプレは trans() で引く。 ──
 # btop 風の小さな角ラベル（header/apps/footer/visits/mypace/blog/bbs/app/art of today）と

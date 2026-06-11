@@ -123,6 +123,17 @@ header パネルの背面で遊べる Tetris（React 版 `src/lib/tetris.ts` ＋
 - **a11y**: 装飾なので `.tetris-bg` は `aria-hidden`。`prefers-reduced-motion` 時は自動スポーンを止める（クリック投下は残す）。
 - 純粋ロジック（`createEmptyGrid`/`placeBlock`/`findCompletedRows`/`clearRowsAndCollectFalling`/`removeBlockAndCascade` 等）を `module.exports` で export し `tests/tetris.test.js` で検証（移行元 `src/lib/tetris.test.ts` と同観点）。
 
+## SEO / OGP / フィード（#11）
+
+- **共通 include `templates/_seo.html`**: 各テンプレが `og_title`/`og_desc`/`og_url`（任意で `og_type`/`og_image`）を set して include。canonical＋完全 OG（type/title/description/url/site_name/locale/image）＋Twitter Card（summary_large_image）を出す。`og:image` 既定＝金沢駅 `footer-bg.webp`（絶対URL）、`og:locale` は lang→`xx_XX` 簡易マップ。
+- **per-page**: index（website）/ posts（website）/ post（article＋`article:published_time`）/ app（per-app・スクショ画像）/ 404（`robots: noindex`）。
+- **JSON-LD**: index=WebSite＋Person(kako-jun)、post=BlogPosting（headline/datePublished/author/publisher/image/inLanguage）、app=SoftwareApplication。すべて妥当な JSON（ビルド生成物を parse 確認）。
+- **hreflang**: home に en/ja/zh/es＋x-default の alternate。
+- **sitemap.xml**: Zola 既定で全言語/全ページ（104 loc）。
+- **Atom フィード**: `config.generate_feeds=true` + `feed_filenames=["atom.xml"]`、posts `_index*.md` に `generate_feeds=true` → 言語別 `/[{lang}/]posts/atom.xml`。head に autodiscovery link。
+- **robots.txt**: `static/robots.txt`（Allow: / ＋ Sitemap 参照）。
+- 旧 `/ogp.png` フォールバック（実体なし＝404）は `footer-bg.webp` に是正。
+
 ## デザイン（黒×緑・btop）
 
 - 一番外枠＝緑ボーダー（`#34d058`）の btop ウィンドウ。デスクトップは `100vh` 固定、apps パネルだけ内部スクロール（緑スクロールバー）、footer 固定。

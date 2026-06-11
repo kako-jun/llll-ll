@@ -7,8 +7,11 @@
    - タグは page.extra.tags の表示のみ（taxonomy 未設定。タグ別ページ・年別・関連は follow-up）。
    - 軽い OGP（og:title/description/url）だけ出す。フル SEO（sitemap/JSON-LD/Atom）は #11 の領分。 #}
 {% if lang == config.default_language %}{% set nav_prefix = "" %}{% else %}{% set nav_prefix = "/" ~ lang %}{% endif %}
+{# SEO（#11）: 記事は article。OG/canonical/Twitter は _seo.html、JSON-LD は BlogPosting。 #}
 {% set og_title = page.title %}
 {% set og_desc = page.content | striptags | trim | truncate(length=160) %}
+{% set og_url = page.permalink %}
+{% set og_type = "article" %}
 <html lang="{{ lang }}">
 <head>
   <meta charset="utf-8" />
@@ -16,15 +19,23 @@
   <title>{{ og_title }} — llll-ll</title>
   <meta name="description" content="{{ og_desc }}" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="{{ og_title }}" />
-  <meta property="og:description" content="{{ og_desc }}" />
-  <meta property="og:url" content="{{ page.permalink }}" />
-  <meta property="og:site_name" content="llll-ll" />
+  {% include "_seo.html" %}
   {% if page.date %}<meta property="article:published_time" content="{{ page.date }}" />{% endif %}
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="{{ og_title }}" />
-  <meta name="twitter:description" content="{{ og_desc }}" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ page.title | json_encode | safe }},
+    "url": "{{ page.permalink | safe }}",
+    "mainEntityOfPage": "{{ page.permalink | safe }}",
+    {% if page.date %}"datePublished": "{{ page.date }}",{% endif %}
+    "description": {{ og_desc | json_encode | safe }},
+    "image": "{{ config.base_url }}/images/footer-bg.webp",
+    "inLanguage": "{{ lang }}",
+    "author": { "@type": "Person", "name": "kako-jun", "url": "https://github.com/kako-jun" },
+    "publisher": { "@type": "Organization", "name": {{ config.title | json_encode | safe }} }
+  }
+  </script>
   <style>
     :root {
       --bg: {{ config.extra.bg }};

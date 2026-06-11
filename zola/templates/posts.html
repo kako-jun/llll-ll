@@ -4,6 +4,10 @@
    - section.pages（sort_by="date" → 新しい順）を日付＋タイトル＋タグで列挙する。
    - 記事は普通のページスクロール（外枠は伸びる）。 #}
 {% if lang == config.default_language %}{% set nav_prefix = "" %}{% else %}{% set nav_prefix = "/" ~ lang %}{% endif %}
+{# SEO（#11）: 一覧は website。OG/canonical/Twitter は _seo.html。 #}
+{% set og_title = trans(key="posts_title", lang=lang) ~ " — " ~ config.title %}
+{% set og_desc = config.description %}
+{% set og_url = section.permalink %}
 <html lang="{{ lang }}">
 <head>
   <meta charset="utf-8" />
@@ -11,10 +15,8 @@
   <title>blog — llll-ll</title>
   <meta name="description" content="{{ config.description }}" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="blog — llll-ll" />
-  <meta property="og:url" content="{{ section.permalink }}" />
-  <meta property="og:site_name" content="llll-ll" />
+  {% include "_seo.html" %}
+  <link rel="alternate" type="application/atom+xml" title="{{ config.title }} blog" href="{{ config.base_url | safe }}{{ nav_prefix | safe }}/posts/atom.xml" />
   <style>
     :root {
       --bg: {{ config.extra.bg }};

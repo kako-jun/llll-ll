@@ -194,6 +194,8 @@ if (typeof module !== "undefined" && module.exports) {
 
     // 起動: プレースホルダ表示（破線・"tetris" ラベル）を消して実描画に切替。
     field.classList.add("tetris-live");
+    // 装飾なので支援技術からは隠す（中の本文 logo/prose は .tetris-bg の外なので影響しない）。
+    field.setAttribute("aria-hidden", "true");
 
     // ブロックを置く2レイヤ（固定＋落下を staticLayer、消滅を別 layer）。
     const staticLayer = document.createElement("div");
@@ -222,8 +224,9 @@ if (typeof module !== "undefined" && module.exports) {
       }
     }
 
-    // ── 描画 ── 固定グリッド＋落下中ブロックを毎フレーム作り直す（数が少ないので安価）。
+    // ── 描画 ── 固定グリッド＋落下中ブロックを作り直す。
     //   消滅アニメ中のブロックは fxLayer に独立して存在し、ここでは触らない。
+    //   固定ブロックには (col,row) を data 属性で持たせ、クリック消去は逆算でなくこれを読む（高さ変化に強い）。
     function render() {
       const h = fieldHeight();
       const frag = document.createDocumentFragment();
@@ -231,21 +234,27 @@ if (typeof module !== "undefined" && module.exports) {
         for (let y = 0; y < grid[x].length; y++) {
           if (!grid[x][y]) continue;
           const pixelTop = h - BLOCK_SIZE * (y + 1);
-          frag.appendChild(makeBlock(x * BLOCK_SIZE, pixelTop));
+          frag.appendChild(makeBlock(x * BLOCK_SIZE, pixelTop, x, y));
         }
       }
+      // 落下中ブロックは非インタラクティブ（クリックは下の field に透過＝投下になる。React 版と同じ）。
       for (const b of falling) {
         frag.appendChild(makeBlock(b.x * BLOCK_SIZE, b.y * BLOCK_SIZE));
       }
       staticLayer.replaceChildren(frag);
     }
 
-    function makeBlock(left, top) {
+    // col/row を渡したものだけ「固定ブロック＝クリックで消せる」にする（data-block + data-col/row）。
+    function makeBlock(left, top, col, row) {
       const el = document.createElement("div");
       el.className = "tetris-block";
-      el.dataset.block = "true";
       el.style.left = left + "px";
       el.style.top = top + "px";
+      if (col !== undefined) {
+        el.dataset.block = "true";
+        el.dataset.col = col;
+        el.dataset.row = row;
+      }
       return el;
     }
 
@@ -263,6 +272,10 @@ if (typeof module !== "undefined" && module.exports) {
     // ── 落下アニメ（useTetrisGame の falling-block ループ相当）──
     function tick() {
       if (gridWidth === 0) return;
+      // 動くもの（落下中ブロック）が無ければ何もしない。固定ブロックは静止しているので毎フレーム
+      // 描き直す必要は無く、reflow も DOM 再生成も避ける（装飾の常時アイドルを軽くする）。
+      // 高さ変化への追従は下の ResizeObserver が担う。
+      if (falling.length === 0) return;
       const h = fieldHeight();
       const landings = [];
       const reserved = new Map(); // column -> このtickで次に空く row
@@ -338,13 +351,12 @@ if (typeof module !== "undefined" && module.exports) {
       spawn(column);
     }
 
-    // クリックされた固定ブロック element の (column, row) を逆算して消す。
+    // クリックされた固定ブロックを消す。位置は data-col/data-row から読む（高さ逆算しない＝高さ変化に強い）。
     function removeAt(el) {
       const h = fieldHeight();
-      const x = Math.round(parseFloat(el.style.left) / BLOCK_SIZE);
-      const topPx = parseFloat(el.style.top);
-      const row = Math.round((h - BLOCK_SIZE - topPx) / BLOCK_SIZE);
-      if (!grid[x] || !grid[x][row]) return; // 落下中ブロック等は無視。
+      const x = parseInt(el.dataset.col, 10);
+      const row = parseInt(el.dataset.row, 10);
+      if (Number.isNaN(x) || Number.isNaN(row) || !grid[x] || !grid[x][row]) return; // 不整合は無視。
 
       // 消滅アニメ用の独立ブロックを fxLayer に出す（render に消されない）。
       const fx = makeBlock(x * BLOCK_SIZE, h - BLOCK_SIZE * (row + 1));
@@ -364,13 +376,33 @@ if (typeof module !== "undefined" && module.exports) {
     panel.addEventListener("click", onClick);
     panel.style.cursor = "crosshair";
     window.addEventListener("resize", initGrid);
+    // field のサイズが変わったら固定ブロックを下端へ貼り直す（mypace/daily の非同期ロードで panel 高が
+    // 変わっても追従する。毎フレーム render しない代わりの追従手段）。幅変化は initGrid（resize）が拾う。
+    if (typeof ResizeObserver === "function") {
+      let lastH = -1;
+      const ro = new ResizeObserver(function () {
+        const h = Math.round(field.getBoundingClientRect().height);
+        if (h !== lastH) {
+          lastH = h;
+          render();
+        }
+      });
+      ro.observe(field);
+    }
     initGrid();
     setInterval(tick, ANIMATION_INTERVAL_MS);
-    setTimeout(function autoSpawn() {
-      spawn(Math.floor(Math.random() * gridWidth));
-    }, INITIAL_AUTO_SPAWN_MS);
-    setInterval(function () {
-      spawn(Math.floor(Math.random() * gridWidth));
-    }, AUTO_SPAWN_INTERVAL_MS);
+
+    // 自動スポーンは「自発的に動く」演出。prefers-reduced-motion 時は出さない（クリック投下は残す）。
+    const reduceMotion =
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduceMotion) {
+      setTimeout(function autoSpawn() {
+        spawn(Math.floor(Math.random() * gridWidth));
+      }, INITIAL_AUTO_SPAWN_MS);
+      setInterval(function () {
+        spawn(Math.floor(Math.random() * gridWidth));
+      }, AUTO_SPAWN_INTERVAL_MS);
+    }
   });
 })();

@@ -205,6 +205,15 @@ describe("isProtectedIndex", () => {
     expect(isProtectedIndex("_index.zh.md")).toBe(true);
   });
 
+  it("_index.es.md は保護対象（true）", () => {
+    expect(isProtectedIndex("_index.es.md")).toBe(true);
+  });
+
+  it("_index.fr.md（未設定の2文字 lang）は保護対象でない（false・厳密化）", () => {
+    // 任意の2文字を保護していた旧 regex の回帰。設定言語(en/ja/zh/es)以外は掃除対象。
+    expect(isProtectedIndex("_index.fr.md")).toBe(false);
+  });
+
   it("_index.foo.md（3文字以上）は保護対象でない（false）", () => {
     expect(isProtectedIndex("_index.foo.md")).toBe(false);
   });

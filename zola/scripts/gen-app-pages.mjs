@@ -89,9 +89,11 @@ export function computeWantedFiles(products) {
   return wanted;
 }
 
-/** 掃除対象から除外すべき _index 系ファイルか（_index.md / _index.{lang}.md）。 */
+/** 掃除対象から除外すべき _index 系ファイルか（_index.md=既定言語 / _index.{設定言語}.md）。
+    未設定言語の _index.fr.md 等は保護せず掃除対象にする（任意の2文字を保護していた regex を厳密化）。 */
 export function isProtectedIndex(filename) {
-  return filename === "_index.md" || /^_index\.[a-z]{2}\.md$/.test(filename);
+  if (filename === "_index.md") return true;
+  return EXTRA_LANGS.some((lang) => filename === `_index.${lang}.md`);
 }
 
 function main() {

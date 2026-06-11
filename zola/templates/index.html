@@ -346,6 +346,23 @@
       color: var(--border);
       font-weight: bold;
     }
+    /* テーマトグル（#9）。langbar 左端＝空いていた側へ（margin-right:auto で言語は右のまま）。
+       JS 無しでは ☾（既定ダーク）のまま無反応＝壊れない。theme-toggle.js が現テーマで ☀/☾ と aria を更新。 */
+    .theme-toggle {
+      margin-right: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: 1px solid var(--border-muted);
+      color: var(--text-muted);
+      cursor: pointer;
+      font: inherit;
+      line-height: 1;
+      padding: 2px 8px;
+    }
+    .theme-toggle:hover { color: var(--border); border-color: var(--border); }
+    .theme-toggle-icon { font-size: var(--fs-base); }
 
     /* ── 中段スクロール領域（apps + BBS を1領域に。blog は header 列へ移設・#10）── */
     .mid {
@@ -545,11 +562,13 @@
       position: relative;
       flex-shrink: 0;
       border: 1px solid var(--border);
-      /* 金沢駅の背景画像（原サイトのフッタ素材を流用・#10 kako-jun）。btop 黒×緑に馴染むよう
-         暗いオーバーレイで沈め、駅が透けつつ緑リンク/brand の可読性を保つ。cover/center で全面に。 */
+      /* 金沢駅の背景画像（原サイトのフッタ素材を流用・#10 kako-jun）。オーバーレイで沈め、駅が透けつつ
+         文字（緑リンク/brand）の可読性を保つ。ダーク=暗幕／ライト=白幕で切替（#9・テーマ追従）。cover/center で全面に。 */
+      --footer-ov1: rgba(18, 18, 18, 0.74);
+      --footer-ov2: rgba(18, 18, 18, 0.82);
       background-color: var(--panel-bg);
       background-image:
-        linear-gradient(rgba(18, 18, 18, 0.74), rgba(18, 18, 18, 0.82)),
+        linear-gradient(var(--footer-ov1), var(--footer-ov2)),
         url('/images/footer-bg.webp');
       background-size: cover;
       background-position: center;
@@ -561,6 +580,11 @@
       padding: 9px 8px 8px;
       font-size: var(--fs-base);
     }
+    /* ライト時は白幕に切替（暗幕のままだと白地＋黒文字が暗い駅画像に潰れる・#9）。 */
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) .footer { --footer-ov1: rgba(255, 255, 255, 0.66); --footer-ov2: rgba(255, 255, 255, 0.80); }
+    }
+    :root[data-theme="light"] .footer { --footer-ov1: rgba(255, 255, 255, 0.66); --footer-ov2: rgba(255, 255, 255, 0.80); }
     .footer > .label {
       position: absolute;
       top: -0.7em;
@@ -705,6 +729,7 @@
       .modal { width: 95vw; }
     }
   </style>
+  {% include "_theme.html" %}
 </head>
 <body>
   <div class="desktop">
@@ -712,6 +737,10 @@
     <!-- 最上段：言語切替バー（全幅・緑帯）— 各言語ホームへの実リンク（#5）。
          en→/, ja→/ja/, zh→/zh/, es→/es/。現在言語は active 表示でリンクにしない。 -->
     <nav class="langbar" aria-label="{{ trans(key='langbar_aria', lang=lang) }}">
+      <!-- テーマトグル（#9・kako-jun 合意の langbar 左端）。既定 ☾（ダーク）。theme-toggle.js が現テーマで更新。 -->
+      <button type="button" class="theme-toggle" aria-label="{{ trans(key='theme_toggle_aria', lang=lang) }}" aria-pressed="false">
+        <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+      </button>
       {% if lang == "en" %}<span class="lang active" aria-current="true">en</span>{% else %}<a class="lang" href="/">en</a>{% endif %}
       {% if lang == "ja" %}<span class="lang active" aria-current="true">ja</span>{% else %}<a class="lang" href="/ja/">ja</a>{% endif %}
       {% if lang == "zh" %}<span class="lang active" aria-current="true">zh</span>{% else %}<a class="lang" href="/zh/">zh</a>{% endif %}
@@ -929,6 +958,8 @@
     </div>
   </div>
 
+  <!-- テーマトグルの島（vanilla JS・defer・#9）。読めなくても ☾ ボタンが残るだけ（PE・既定/prefers で配色は効く）。 -->
+  <script defer src="/js/theme-toggle.js"></script>
   <!-- ヘッダ Tetris の島（vanilla JS・defer・#7）。読めなくても破線帯＋"tetris" ラベルが残る（PE）。 -->
   <script defer src="/js/tetris.js"></script>
   <!-- フィルタ＆検索の島（vanilla JS・defer）。読めなくても全件は見えたまま。 -->

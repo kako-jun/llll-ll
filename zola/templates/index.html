@@ -258,7 +258,7 @@
     /* ── フッタの SNS 並び ── */
     .social { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.3em 1.2em; margin-bottom: 5px; }
 
-    /* ── ヘッダ下の言語切替バー（全幅・緑帯）── 実切替は Phase 1 (#5) */
+    /* ── 最上段の言語切替バー（全幅・緑帯）── 実切替は Phase 1 (#5) */
     .langbar {
       flex-shrink: 0;
       border: 1px solid var(--border);
@@ -445,6 +445,20 @@
       text-align: center;
       padding: 16px;
     }
+    /* 最新記事リスト（#10 Phase 3）。日付＋タイトルの素朴な行。各行は記事ページ /posts/{slug}/ へ。 */
+    .blog-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+    .blog-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.4em 0.9em;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border-muted);
+    }
+    .blog-item:last-child { border-bottom: none; }
+    .blog-date { color: var(--text-muted); font-size: var(--fs-sm); flex-shrink: 0; }
+    .blog-link { color: var(--link); }
+    .blog-all { display: inline-block; margin-top: 10px; color: var(--text-muted); font-size: var(--fs-sm); }
 
     /* ── footer（固定・外枠最下）── */
     .footer {
@@ -600,18 +614,14 @@
 <body>
   <div class="desktop">
 
-    <!-- 最上段：訪問統計（ヘッダより上に堂々と）— 実カウントは Phase 2 #8（visits-counter.js が注入）。
-         data-visit-id を JS が読み、Nostalgic で increment する。各 stat-num の data-visit-stat が注入先。 -->
-    <section class="panel visits-bar" data-visit-id="{{ config.extra.nostalgic_visit_id }}">
-      <span class="label">visits</span>
-      <div class="visits-stats">
-        <span class="stat"><span class="stat-label">{{ trans(key="stat_total", lang=lang) }}</span><span class="stat-num" data-visit-stat="total">---</span></span>
-        <span class="stat"><span class="stat-label">{{ trans(key="stat_today", lang=lang) }}</span><span class="stat-num" data-visit-stat="today">---</span></span>
-        <span class="stat"><span class="stat-label">{{ trans(key="stat_yesterday", lang=lang) }}</span><span class="stat-num" data-visit-stat="yesterday">---</span></span>
-        <span class="stat"><span class="stat-label">{{ trans(key="stat_week", lang=lang) }}</span><span class="stat-num" data-visit-stat="week">---</span></span>
-        <span class="stat"><span class="stat-label">{{ trans(key="stat_month", lang=lang) }}</span><span class="stat-num" data-visit-stat="month">---</span></span>
-      </div>
-    </section>
+    <!-- 最上段：言語切替バー（全幅・緑帯）— 各言語ホームへの実リンク（#5）。
+         en→/, ja→/ja/, zh→/zh/, es→/es/。現在言語は active 表示でリンクにしない。 -->
+    <nav class="langbar" aria-label="{{ trans(key='langbar_aria', lang=lang) }}">
+      {% if lang == "en" %}<span class="lang active" aria-current="true">en</span>{% else %}<a class="lang" href="/">en</a>{% endif %}
+      {% if lang == "ja" %}<span class="lang active" aria-current="true">ja</span>{% else %}<a class="lang" href="/ja/">ja</a>{% endif %}
+      {% if lang == "zh" %}<span class="lang active" aria-current="true">zh</span>{% else %}<a class="lang" href="/zh/">zh</a>{% endif %}
+      {% if lang == "es" %}<span class="lang active" aria-current="true">es</span>{% else %}<a class="lang" href="/es/">es</a>{% endif %}
+    </nav>
 
     <!-- 上段3パネル -->
     <div class="top-row">
@@ -662,14 +672,18 @@
       </section>
     </div>
 
-    <!-- ヘッダ下の言語切替バー（全幅・緑帯）— 各言語ホームへの実リンク（#5）。
-         en→/, ja→/ja/, zh→/zh/, es→/es/。現在言語は active 表示でリンクにしない。 -->
-    <nav class="langbar" aria-label="{{ trans(key='langbar_aria', lang=lang) }}">
-      {% if lang == "en" %}<span class="lang active" aria-current="true">en</span>{% else %}<a class="lang" href="/">en</a>{% endif %}
-      {% if lang == "ja" %}<span class="lang active" aria-current="true">ja</span>{% else %}<a class="lang" href="/ja/">ja</a>{% endif %}
-      {% if lang == "zh" %}<span class="lang active" aria-current="true">zh</span>{% else %}<a class="lang" href="/zh/">zh</a>{% endif %}
-      {% if lang == "es" %}<span class="lang active" aria-current="true">es</span>{% else %}<a class="lang" href="/es/">es</a>{% endif %}
-    </nav>
+    <!-- 訪問統計（3パネルの下）— 実カウントは Phase 2 #8（visits-counter.js が注入）。
+         data-visit-id を JS が読み、Nostalgic で increment する。各 stat-num の data-visit-stat が注入先。 -->
+    <section class="panel visits-bar" data-visit-id="{{ config.extra.nostalgic_visit_id }}">
+      <span class="label">visits</span>
+      <div class="visits-stats">
+        <span class="stat"><span class="stat-label">{{ trans(key="stat_total", lang=lang) }}</span><span class="stat-num" data-visit-stat="total">---</span></span>
+        <span class="stat"><span class="stat-label">{{ trans(key="stat_today", lang=lang) }}</span><span class="stat-num" data-visit-stat="today">---</span></span>
+        <span class="stat"><span class="stat-label">{{ trans(key="stat_yesterday", lang=lang) }}</span><span class="stat-num" data-visit-stat="yesterday">---</span></span>
+        <span class="stat"><span class="stat-label">{{ trans(key="stat_week", lang=lang) }}</span><span class="stat-num" data-visit-stat="week">---</span></span>
+        <span class="stat"><span class="stat-label">{{ trans(key="stat_month", lang=lang) }}</span><span class="stat-num" data-visit-stat="month">---</span></span>
+      </div>
+    </section>
 
     <!-- 中段スクロール領域: apps + blog + BBS を一緒にスクロール -->
     <div class="mid">
@@ -737,10 +751,27 @@
         <p class="no-results" hidden>{{ trans(key="no_results", lang=lang) }}</p>
       </section>
 
-      <!-- blog パネル（apps 直下） -->
+      <!-- blog パネル（apps 直下）。最新記事を言語別に列挙する（#10 Phase 3）。
+           posts セクションを表示言語で引く: 既定(en)は posts/_index.md、ja/zh/es は posts/_index.{lang}.md。
+           sort_by="date" なので section.pages は新しい順。先頭5件を出し、全件は /posts/ アーカイブへ。
+           記事が無い言語は blog_empty を出す（PE: JS 不要・サーバ側で確定）。 -->
       <section class="panel panel-blog" id="blog">
         <span class="label">blog</span>
-        <div class="blog-placeholder">{{ trans(key="blog_placeholder", lang=lang) }}</div>
+        {% if lang == config.default_language %}{% set posts_index = "posts/_index.md" %}{% else %}{% set posts_index = "posts/_index." ~ lang ~ ".md" %}{% endif %}
+        {% set blog_section = get_section(path=posts_index) %}
+        {% if blog_section.pages and blog_section.pages | length > 0 %}
+        <ul class="blog-list">
+          {% for p in blog_section.pages | slice(end=5) %}
+          <li class="blog-item">
+            {% if p.date %}<span class="blog-date">{{ p.date | date(format="%Y-%m-%d") }}</span>{% endif %}
+            <a class="blog-link" href="{{ p.permalink | safe }}">{{ p.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        <a class="blog-all" href="{{ nav_prefix | safe }}/posts/">{{ trans(key="blog_all", lang=lang) }}</a>
+        {% else %}
+        <div class="blog-placeholder">{{ trans(key="blog_empty", lang=lang) }}</div>
+        {% endif %}
       </section>
 
       <!-- Nostalgic BBS パネル（blog の下・footer の上）— 第三者 Web コンポーネント（案W: 埋め込みに徹する）。

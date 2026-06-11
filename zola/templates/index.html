@@ -96,9 +96,12 @@
     .header-col { flex: 2; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
     /* 上=header は内容（ロゴ＋本文＋テトリス帯）の高さ。下=blog が列の残りを埋めて溢れたら内部スクロール。 */
     .panel-header { flex: 0 0 auto; display: flex; flex-direction: column; gap: 6px; justify-content: flex-start; }
-    .header-col .panel-blog { flex: 1 1 0; min-height: 90px; overflow-y: auto; scrollbar-color: var(--border) var(--panel-bg); }
+    /* blog は列の残りを埋める。overflow はパネルに付けない（.label タブが top:-0.7em で上辺外にあり、
+       パネルに overflow を付けると「blog」ラベルがクリップされるため）。スクロールは内側の .blog-list に。 */
+    .header-col .panel-blog { flex: 1 1 0; min-height: 90px; display: flex; flex-direction: column; }
     .panel-mypace { flex: 1; display: flex; flex-direction: column; gap: 6px; justify-content: flex-start; }
-    .panel-today  { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
+    /* today は画像＋『…』を縦中央寄せ（正方形画像は行高を満たせないので、残る上下余白を均等にして「タイトル下だけ広い」を防ぐ・kako-jun 指摘）。 */
+    .panel-today  { flex: 1; display: flex; flex-direction: column; justify-content: center; }
 
     /* ロゴ背面に薄いテトリス帯を敷くバンド（縦長にしない） */
     /* ロゴ＋タグライン（企画42課）の横並び行（テトリスは header 全体の背面） */
@@ -195,10 +198,18 @@
        縦スクロール可（#8・session621「mypace 縦スクロール」）。溢れたら内部スクロール（btop 緑バー）。
        top-row を押し上げないよう max-height は控えめ。 */
     .mypace-feed {
+      /* 絶対配置でパネル内側を埋める（#8 / kako-jun）。狙い:
+         つぶやきが長くても mypace 列の高さを決めない＝行全体を押し上げない（in-flow だと content 高が行高を支配し、
+         blog/today に隙間が連鎖する）。パネルは row 高に従い、feed はその内側を満たし溢れたら内部スクロール。
+         inset は .panel の padding(14/12/12) に合わせる。モバイルは下の @media で通常フローへ戻す。 */
+      position: absolute;
+      top: 14px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
       display: flex;
       flex-direction: column;
       gap: 6px;
-      max-height: 170px;
       overflow-y: auto;
       scrollbar-color: var(--border) var(--panel-bg);
       scrollbar-width: thin;
@@ -212,6 +223,32 @@
       padding: 4px 8px;
       font-size: var(--fs-sm);
       text-align: left;
+    }
+    /* 読み込み前のスケルトン（#8 / kako-jun「仮のまますぎる」）。実ノート(.mypace-note)に似た枠で、
+       中の薄いバーが脈動して「読み込み中」と分かる。島が取得できたら .mypace-feed ごと差し替わる（PE: 失敗時はこのまま）。 */
+    .mypace-skel {
+      border: 1px solid var(--border-muted);
+      padding: 6px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .mypace-skel-bar {
+      height: 8px;
+      background: var(--border-muted);
+      border-radius: 1px;
+      animation: mypacePulse 1.5s ease-in-out infinite;
+    }
+    .mypace-skel-bar.short { width: 55%; }
+    @keyframes mypacePulse { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.5; } }
+    @media (prefers-reduced-motion: reduce) { .mypace-skel-bar { animation: none; opacity: 0.35; } }
+    /* スクリーンリーダ専用（視覚的には隠す）。スケルトンの読み込み中ラベルに使う。 */
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0);
+      white-space: nowrap; border: 0;
     }
     /* 島が描画する実つぶやき（黒×緑・monospace）。本文は textContent で入る（innerHTML 禁止）。
        各つぶやきは <a>（その投稿の mypace ページへ／案2）。リンク既定色・下線を打ち消し btop 調に。 */
@@ -473,27 +510,50 @@
       text-align: center;
       padding: 16px;
     }
-    /* 最新記事リスト（#10 Phase 3）。日付＋タイトルの素朴な行。各行は記事ページ /posts/{slug}/ へ。 */
-    .blog-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+    /* 最新記事リスト（#10 Phase 3）。日付＋タイトルの素朴な行。各行は記事ページ /posts/{slug}/ へ。
+       header 列の下半分では .blog-list が残り高さを埋め、溢れたときだけ内部スクロール（パネルの label は守る）。 */
+    .blog-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; overflow-y: auto; scrollbar-color: var(--border) var(--panel-bg); }
     .blog-item {
       display: flex;
       flex-wrap: wrap;
       align-items: baseline;
-      gap: 0.4em 0.9em;
-      padding: 7px 0;
+      gap: 0.3em 0.9em;
+      padding: 4px 0;
+      line-height: 1.4;
       border-bottom: 1px solid var(--border-muted);
     }
     .blog-item:last-child { border-bottom: none; }
     .blog-date { color: var(--text-muted); font-size: var(--fs-sm); flex-shrink: 0; }
     .blog-link { color: var(--link); }
-    .blog-all { display: inline-block; margin-top: 10px; color: var(--text-muted); font-size: var(--fs-sm); }
+    /* パネル右上の「一覧へ」リンク（label と対になる位置）。高さを食わない＝border 上へ絶対配置。
+       blog の all posts → と mypace の つぶやき一覧 → が共有（#10 kako-jun 指摘）。 */
+    .panel-cta {
+      position: absolute;
+      top: -0.7em;
+      right: 0.8em;
+      z-index: 2;
+      margin: 0;
+      background: var(--panel-bg);
+      padding: 0 0.4em;
+      color: var(--text-muted);
+      font-size: var(--fs-sm);
+    }
+    .panel-cta:hover { color: var(--border); }
 
     /* ── footer（固定・外枠最下）── */
     .footer {
       position: relative;
       flex-shrink: 0;
       border: 1px solid var(--border);
-      background: var(--panel-bg);
+      /* 金沢駅の背景画像（原サイトのフッタ素材を流用・#10 kako-jun）。btop 黒×緑に馴染むよう
+         暗いオーバーレイで沈め、駅が透けつつ緑リンク/brand の可読性を保つ。cover/center で全面に。 */
+      background-color: var(--panel-bg);
+      background-image:
+        linear-gradient(rgba(18, 18, 18, 0.74), rgba(18, 18, 18, 0.82)),
+        url('/images/footer-bg.webp');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       color: var(--text-muted);
       text-align: center;
       padding: 14px 8px 8px;
@@ -635,6 +695,9 @@
       .header-col, .panel-header, .panel-mypace, .panel-today { flex: none; }
       /* モバイルは縦積み＝普通スクロール。blog の内部スクロール/高さ制約は解除して全件見せる。 */
       .header-col .panel-blog { flex: none; min-height: 0; overflow: visible; }
+      .header-col .blog-list { flex: none; min-height: 0; overflow: visible; }
+      /* mypace feed はデスクトップで絶対配置（パネル充填）。モバイルは通常フローに戻し全件表示。 */
+      .mypace-feed { position: static; inset: auto; overflow: visible; }
       .mid { overflow: visible; flex: none; }
       .logo { font-size: 1.8rem; }
       .modal { width: 95vw; }
@@ -691,7 +754,7 @@
           </li>
           {% endfor %}
         </ul>
-        <a class="blog-all" href="{{ nav_prefix | safe }}/posts/">{{ trans(key="blog_all", lang=lang) }}</a>
+        <a class="panel-cta" href="{{ nav_prefix | safe }}/posts/">{{ trans(key="blog_all", lang=lang) }}</a>
         {% else %}
         <div class="blog-placeholder">{{ trans(key="blog_empty", lang=lang) }}</div>
         {% endif %}
@@ -704,14 +767,19 @@
            relays は json_encode で JSON 配列文字列にするため、ダブルクォートを含む。属性はシングルクォートで囲む。 -->
       <section class="panel panel-mypace">
         <span class="label">mypace</span>
+        <!-- つぶやき一覧 → ＝本人 mypace プロフィールへ。blog の all posts → と同じ右上形式（#10 kako-jun 指示）。
+             .mypace-feed の外（パネル直下）に置くので、島が feed 内を差し替えても残る。 -->
+        <a class="panel-cta" href="{{ config.extra.mypace_profile_url }}" target="_blank" rel="noopener noreferrer">{{ trans(key="mypace_all", lang=lang) }}</a>
         <div class="mypace-feed"
              data-mypace-pubkey="{{ config.extra.mypace_pubkey_hex }}"
              data-mypace-relays='{{ config.extra.mypace_relays | json_encode }}'
              data-mypace-post-base="{{ config.extra.mypace_post_url_base }}"
              data-mypace-limit="{{ config.extra.mypace_note_limit }}">
-          <div class="mypace-line">{{ trans(key="mypace_placeholder", lang=lang) }}</div>
-          <div class="mypace-line">&nbsp;</div>
-          <div class="mypace-line">&nbsp;</div>
+          <!-- 読み込み前スケルトン（仮っぽさ排除・#8 kako-jun）。島が取得成功で実つぶやきに差し替え、失敗/0件はこのまま。 -->
+          <span class="sr-only">{{ trans(key="mypace_placeholder", lang=lang) }}</span>
+          <div class="mypace-skel" aria-hidden="true"><span class="mypace-skel-bar"></span><span class="mypace-skel-bar short"></span></div>
+          <div class="mypace-skel" aria-hidden="true"><span class="mypace-skel-bar"></span><span class="mypace-skel-bar short"></span></div>
+          <div class="mypace-skel" aria-hidden="true"><span class="mypace-skel-bar"></span><span class="mypace-skel-bar short"></span></div>
         </div>
       </section>
 

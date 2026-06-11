@@ -249,14 +249,54 @@
       font-size: var(--fs-base);
     }
     .filter-bar input[type="search"]::placeholder { color: var(--text-muted); }
+    /* フォーカスは白枠でなく、カードのホバーと同じ緑にそろえる */
+    .filter-bar input[type="search"]:focus {
+      outline: none;
+      border-color: var(--border);
+    }
+    /* クリアの × も緑に（マスクで色は --border 由来にする） */
+    .filter-bar input[type="search"]::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 0.85em;
+      width: 0.85em;
+      cursor: pointer;
+      background-color: var(--border);
+      -webkit-mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4 4 12 12 M12 4 4 12" stroke="black" stroke-width="2" stroke-linecap="round" fill="none"/></svg>') center / contain no-repeat;
+      mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4 4 12 12 M12 4 4 12" stroke="black" stroke-width="2" stroke-linecap="round" fill="none"/></svg>') center / contain no-repeat;
+    }
     .filter-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    /* button のデフォルト（背景・枠・フォント・余白）を打ち消し、既存チップの見た目に揃える */
     .filter-chip {
+      appearance: none;
+      -webkit-appearance: none;
+      margin: 0;
+      line-height: inherit;
+      font-family: inherit;
       border: 1px solid var(--border-muted);
       color: var(--text-muted);
       padding: 4px 10px;
       font-size: var(--fs-sm);
       background: var(--panel-bg);
       user-select: none;
+      cursor: pointer;
+    }
+    .filter-chip:hover { border-color: var(--border); }
+    /* アクティブ（押下中）チップ: 緑背景に黒文字で btop 風に「押されている」を表す */
+    .filter-chip.active,
+    .filter-chip[aria-pressed="true"] {
+      border-color: var(--border);
+      background: var(--border);
+      color: var(--bg);
+      font-weight: bold;
+    }
+
+    /* 0件メッセージ */
+    .no-results {
+      color: var(--text-muted);
+      text-align: center;
+      padding: 16px 8px;
+      font-size: var(--fs-sm);
     }
 
     /* 横罫: apps パネルの緑枠の左端〜右端までフル幅（左右 padding 12px 分を負マージンで打ち消す） */
@@ -282,6 +322,9 @@
       gap: 8px;
       transition: border-color 0.2s ease;
     }
+    /* hidden 属性で実際に消す: .card の display:flex が UA の [hidden]{display:none} を
+       詳細度タイ＋後勝ちで打ち消すため、.card[hidden]（詳細度 0,2,0）で明示的に上書きする。 */
+    .card[hidden] { display: none; }
     .card:hover { border-color: var(--border); }
     .card-head { display: flex; align-items: flex-start; gap: 8px; }
     .card-thumb {
@@ -313,7 +356,7 @@
       color: var(--text-muted);
       padding: 1px 6px;
     }
-    .card-links { display: flex; gap: 12px; margin-top: auto; }
+    .card-links { display: flex; justify-content: flex-end; gap: 12px; margin-top: auto; }
 
     /* ── blog パネル（apps 直下・footer 上）── */
     .panel-blog, .panel-bbs { padding-bottom: 12px; }
@@ -426,25 +469,31 @@
       <section class="panel panel-apps" id="apps">
         <span class="label">apps</span>
 
-        <!-- フィルタの四角（ガワだけ） -->
+        <!-- フィルタの四角: 全タグの distinct 集合をチップ化（vanilla JS で AND 絞り込み）。
+             JS を切っても input は素の入力欄・チップは無反応で、全カードが見えたまま（PE）。 -->
+        {% set_global all_tags = [] %}
+        {% for p in products %}{% for t in p.tags %}{% if t not in all_tags %}{% set_global all_tags = all_tags | concat(with=t) %}{% endif %}{% endfor %}{% endfor %}
+        {% set all_tags = all_tags | sort %}
         <div class="filter-bar">
-          <input type="search" placeholder="filter apps..." disabled />
+          <input type="search" class="filter-search" placeholder="filter apps..." aria-label="アプリを名前・説明・タグで絞り込む" />
           <div class="filter-chips">
-            <span class="filter-chip">All</span>
-            <span class="filter-chip">Free</span>
-            <span class="filter-chip">OSS</span>
-            <span class="filter-chip">CLI</span>
-            <span class="filter-chip">Game</span>
-            <span class="filter-chip">Featured</span>
+            <button type="button" class="filter-chip active" data-filter-all aria-pressed="true">All</button>
+            <button type="button" class="filter-chip" data-filter-featured aria-pressed="false">★ featured</button>
+            {% for t in all_tags %}<button type="button" class="filter-chip" data-filter-tag="{{ t }}" aria-pressed="false">{{ t }}</button>{% endfor %}
           </div>
         </div>
 
         <hr class="rule">
 
-        <!-- 全件カードグリッド -->
+        <!-- 全件カードグリッド: 全件を描画済みにし、JS は非該当を hidden にする一方向のみ。 -->
         <div class="cards">
           {% for p in products %}
-          <article class="card">
+          {%- set tag_str = p.tags | join(sep=" ") -%}
+          {%- set search_blob = p.title.ja ~ " " ~ p.description.ja ~ " " ~ tag_str -%}
+          <article class="card"
+            data-tags="{{ tag_str | lower }}"
+            data-search="{{ search_blob | lower }}"
+            {% if p.featured %}data-featured="true"{% endif %}>
             <div class="card-head">
               {% if p.images and p.images | length > 0 %}
               <img class="card-thumb" src="{{ p.images.0 | safe }}" alt="" loading="lazy" />
@@ -468,6 +517,8 @@
           </article>
           {% endfor %}
         </div>
+        <!-- 0件メッセージ: 既定 hidden。JS が表示件数 0 のとき表示する。 -->
+        <p class="no-results" hidden>該当するアプリがありません</p>
       </section>
 
       <!-- blog パネル（apps 直下） -->
@@ -500,5 +551,7 @@
     </footer>
 
   </div>
+  <!-- フィルタ＆検索の島（vanilla JS・defer）。読めなくても全件は見えたまま。 -->
+  <script defer src="/js/apps-filter.js"></script>
 </body>
 </html>

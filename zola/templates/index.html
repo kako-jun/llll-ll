@@ -3,7 +3,9 @@
    固まったら将来 avel#18 へ昇格する。挙動JS（フィルタ/Tetris/カウンタ/日替わり絵）は
    Phase 1/2 の領分なので、ここではガワ・プレースホルダのみ。 #}
 {% set products = load_data(path="data/products.json") %}
-<html lang="{{ config.default_language }}">
+{# 言語接頭辞: 既定言語(en)はルート直下なので空、ja/zh/es は "/{lang}" を前置する（#5）。 #}
+{% if lang == config.default_language %}{% set nav_prefix = "" %}{% else %}{% set nav_prefix = "/" ~ lang %}{% endif %}
+<html lang="{{ lang }}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,6 +37,17 @@
       font-family: "DejaVu Sans Mono", "Consolas", "Menlo", monospace;
       font-size: var(--fs-base);
       line-height: 1.5;
+    }
+
+    /* ── ロケール別フォント（#5）。自前 webfont は入れず、本文は btop 風 monospace を基調に保ちつつ、
+       CJK のグリフだけ OS 内蔵フォントへフォールバックする（読み込みブロッキングなし＝軽さ哲学）。 ── */
+    html[lang="ja"], html[lang="ja"] body {
+      font-family: "DejaVu Sans Mono", "Consolas", "Menlo",
+        "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", monospace, sans-serif;
+    }
+    html[lang="zh"], html[lang="zh"] body {
+      font-family: "DejaVu Sans Mono", "Consolas", "Menlo",
+        "Noto Sans SC", "PingFang SC", "Microsoft YaHei", monospace, sans-serif;
     }
 
     /* デスクトップ: 外側スクロールなし。中段 .mid だけスクロールする */
@@ -210,6 +223,9 @@
       color: var(--text-muted);
       letter-spacing: 0.05em;
     }
+    /* リンクの langbar 要素は link 色でなくミュート色を継ぐ（ホバーで緑＋下線）。 */
+    .langbar a.lang { color: var(--text-muted); }
+    .langbar a.lang:hover { color: var(--border); text-decoration: underline; }
     .langbar .lang.active {
       color: var(--border);
       font-weight: bold;
@@ -489,11 +505,11 @@
     <section class="panel visits-bar">
       <span class="label">visits</span>
       <div class="visits-stats">
-        <span class="stat"><span class="stat-label">Total</span><span class="stat-num">---</span></span>
-        <span class="stat"><span class="stat-label">Today</span><span class="stat-num">---</span></span>
-        <span class="stat"><span class="stat-label">Yesterday</span><span class="stat-num">---</span></span>
-        <span class="stat"><span class="stat-label">Week</span><span class="stat-num">---</span></span>
-        <span class="stat"><span class="stat-label">Month</span><span class="stat-num">---</span></span>
+        <span class="stat"><span class="stat-label">{{ trans(key="stat_total", lang=lang) }}</span><span class="stat-num">---</span></span>
+        <span class="stat"><span class="stat-label">{{ trans(key="stat_today", lang=lang) }}</span><span class="stat-num">---</span></span>
+        <span class="stat"><span class="stat-label">{{ trans(key="stat_yesterday", lang=lang) }}</span><span class="stat-num">---</span></span>
+        <span class="stat"><span class="stat-label">{{ trans(key="stat_week", lang=lang) }}</span><span class="stat-num">---</span></span>
+        <span class="stat"><span class="stat-label">{{ trans(key="stat_month", lang=lang) }}</span><span class="stat-num">---</span></span>
       </div>
     </section>
 
@@ -505,19 +521,19 @@
         <div class="tetris-bg"></div>
         <div class="logo-band">
           <div class="logo">llll-ll</div>
-          <div class="tagline">企画42課</div>
+          <div class="tagline">{{ trans(key="tagline", lang=lang) }}</div>
         </div>
         <!-- タイトルより下に文章で：ウェルカム＋説明 -->
         <div class="header-prose">
-          <p>ようこそ、llll-ll へ。</p>
-          <p>kako-jun の作ったゲーム、アプリを置いてます。使ってもらえると喜びます。</p>
+          <p>{{ trans(key="welcome", lang=lang) }}</p>
+          <p>{{ trans(key="intro", lang=lang) }}</p>
         </div>
       </section>
 
       <section class="panel panel-mypace">
         <span class="label">mypace</span>
         <div class="mypace-feed">
-          <div class="mypace-line">mypace のつぶやき（Phase 2）</div>
+          <div class="mypace-line">{{ trans(key="mypace_placeholder", lang=lang) }}</div>
           <div class="mypace-line">&nbsp;</div>
           <div class="mypace-line">&nbsp;</div>
         </div>
@@ -538,12 +554,13 @@
       </section>
     </div>
 
-    <!-- ヘッダ下の言語切替バー（全幅・緑帯）— Phase 0 はガワ。実切替は Phase 1 #5 -->
-    <nav class="langbar" aria-label="language">
-      <span class="lang">en</span>
-      <span class="lang active">ja</span>
-      <span class="lang">zh</span>
-      <span class="lang">es</span>
+    <!-- ヘッダ下の言語切替バー（全幅・緑帯）— 各言語ホームへの実リンク（#5）。
+         en→/, ja→/ja/, zh→/zh/, es→/es/。現在言語は active 表示でリンクにしない。 -->
+    <nav class="langbar" aria-label="{{ trans(key='langbar_aria', lang=lang) }}">
+      {% if lang == "en" %}<span class="lang active" aria-current="true">en</span>{% else %}<a class="lang" href="/">en</a>{% endif %}
+      {% if lang == "ja" %}<span class="lang active" aria-current="true">ja</span>{% else %}<a class="lang" href="/ja/">ja</a>{% endif %}
+      {% if lang == "zh" %}<span class="lang active" aria-current="true">zh</span>{% else %}<a class="lang" href="/zh/">zh</a>{% endif %}
+      {% if lang == "es" %}<span class="lang active" aria-current="true">es</span>{% else %}<a class="lang" href="/es/">es</a>{% endif %}
     </nav>
 
     <!-- 中段スクロール領域: apps + blog + BBS を一緒にスクロール -->
@@ -559,10 +576,10 @@
         {% for p in products %}{% for t in p.tags %}{% if t not in all_tags %}{% set_global all_tags = all_tags | concat(with=t) %}{% endif %}{% endfor %}{% endfor %}
         {% set all_tags = all_tags | sort %}
         <div class="filter-bar">
-          <input type="search" class="filter-search" placeholder="filter apps..." aria-label="アプリを名前・説明・タグで絞り込む" />
+          <input type="search" class="filter-search" placeholder="{{ trans(key='filter_placeholder', lang=lang) }}" aria-label="{{ trans(key='filter_search_aria', lang=lang) }}" />
           <div class="filter-chips">
-            <button type="button" class="filter-chip active" data-filter-all aria-pressed="true">All</button>
-            <button type="button" class="filter-chip" data-filter-featured aria-pressed="false">★ featured</button>
+            <button type="button" class="filter-chip active" data-filter-all aria-pressed="true">{{ trans(key="filter_all", lang=lang) }}</button>
+            <button type="button" class="filter-chip" data-filter-featured aria-pressed="false">{{ trans(key="filter_featured", lang=lang) }}</button>
             {% for t in all_tags %}<button type="button" class="filter-chip" data-filter-tag="{{ t }}" aria-pressed="false">{{ t }}</button>{% endfor %}
           </div>
         </div>
@@ -573,24 +590,28 @@
         <div class="cards">
           {% for p in products %}
           {%- set tag_str = p.tags | join(sep=" ") -%}
-          {%- set search_blob = p.title.ja ~ " " ~ p.description.ja ~ " " ~ tag_str -%}
+          {# 表示言語のタイトル/説明を引く。欠けていれば en にフォールバック。 #}
+          {%- set p_title = p.title[lang] | default(value=p.title.en) -%}
+          {%- set p_desc = p.description[lang] | default(value=p.description.en) -%}
+          {# data-search 用 blob は表示言語の title+description+tags（フィルタ検索が表示言語で効く）。 #}
+          {%- set search_blob = p_title ~ " " ~ p_desc ~ " " ~ tag_str -%}
           <article class="card"
             data-tags="{{ tag_str | lower }}"
             data-search="{{ search_blob | lower }}"
             {% if p.featured %}data-featured="true"{% endif %}>
             <div class="card-head">
               {% if p.images and p.images | length > 0 %}
-              <a class="card-thumb-link" href="/apps/{{ p.id }}/" tabindex="-1" aria-hidden="true">
+              <a class="card-thumb-link" href="{{ nav_prefix | safe }}/apps/{{ p.id }}/" tabindex="-1" aria-hidden="true">
                 <img class="card-thumb" src="{{ p.images.0 | safe }}" alt="" loading="lazy" />
               </a>
               {% endif %}
               <div class="card-title">
-                {# 詳細リンク: JS ありはポップアップを開き /apps/{id}/ に pushState、JS 無し/直リンクは素の遷移（PE）。 #}
-                <a class="card-title-link" href="/apps/{{ p.id }}/">{{ p.title.ja }}</a>{% if p.featured %}<span class="card-featured">★</span>{% endif %}
+                {# 詳細リンク: JS ありはポップアップを開き接頭辞付き /apps/{id}/ に pushState、JS 無し/直リンクは素の遷移（PE）。 #}
+                <a class="card-title-link" href="{{ nav_prefix | safe }}/apps/{{ p.id }}/">{{ p_title }}</a>{% if p.featured %}<span class="card-featured">★</span>{% endif %}
               </div>
             </div>
-            {% if p.description and p.description.ja %}
-            <p class="card-desc">{{ p.description.ja }}</p>
+            {% if p_desc %}
+            <p class="card-desc">{{ p_desc }}</p>
             {% endif %}
             {% if p.tags %}
             <div class="card-tags">
@@ -605,19 +626,19 @@
           {% endfor %}
         </div>
         <!-- 0件メッセージ: 既定 hidden。JS が表示件数 0 のとき表示する。 -->
-        <p class="no-results" hidden>該当するアプリがありません</p>
+        <p class="no-results" hidden>{{ trans(key="no_results", lang=lang) }}</p>
       </section>
 
       <!-- blog パネル（apps 直下） -->
       <section class="panel panel-blog" id="blog">
         <span class="label">blog</span>
-        <div class="blog-placeholder">準備中（Phase 3）</div>
+        <div class="blog-placeholder">{{ trans(key="blog_placeholder", lang=lang) }}</div>
       </section>
 
       <!-- Nostalgic BBS パネル（blog の下・footer の上） -->
       <section class="panel panel-bbs" id="bbs">
         <span class="label">bbs</span>
-        <div class="blog-placeholder">Nostalgic BBS 準備中（Phase 2 #8）</div>
+        <div class="blog-placeholder">{{ trans(key="bbs_placeholder", lang=lang) }}</div>
       </section>
 
     </div>
@@ -642,8 +663,8 @@
   <!-- アプリ詳細ポップアップの器（#13）。既定 hidden。app-popup.js が中身を入れて表示する。
        JS 無し/失敗時はカードタイトルの素のリンクで /apps/{id}/ へ遷移するので、この器は隠れたまま。 -->
   <div class="modal-overlay" hidden>
-    <div class="modal" role="dialog" aria-modal="true" aria-label="アプリ詳細">
-      <button type="button" class="modal-close" aria-label="閉じる">×</button>
+    <div class="modal" role="dialog" aria-modal="true" aria-label="{{ trans(key='modal_aria', lang=lang) }}">
+      <button type="button" class="modal-close" aria-label="{{ trans(key='modal_close_aria', lang=lang) }}">×</button>
       <div class="modal-body"></div>
     </div>
   </div>

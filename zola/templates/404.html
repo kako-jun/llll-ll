@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-{# Phase 0: avel の base.html を継承せず自前で完結させる（index.html と同方針）。
-   base.html は [languages.ja.translations] を要求するが、Phase 0 ポータルは
-   翻訳テーブルを持たない単一言語・静的構成なので 404 も自前で上書きする。 #}
-<html lang="{{ config.default_language }}">
+{# avel の base.html は継承せず自前で完結させる（index.html と同方針）。
+   404 は Zola が1枚だけ既定言語で出すページ。多言語の出し分けはしない（#5 合意）。
+   文言は既定言語(en)の翻訳キーを引く（trans に明示で config.default_language を渡す）。 #}
+{% set dl = config.default_language %}
+<html lang="{{ dl }}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -23,9 +24,9 @@
 </head>
 <body>
   <div class="box">
-    <h1>404</h1>
-    <p>お探しのページは見つかりませんでした。</p>
-    <p><a href="/">トップへ戻る →</a></p>
+    <h1>{{ trans(key="nf_title", lang=dl) }}</h1>
+    <p>{{ trans(key="nf_message", lang=dl) }}</p>
+    <p><a href="/">{{ trans(key="nf_home", lang=dl) }}</a></p>
   </div>
 </body>
 </html>

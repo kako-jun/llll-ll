@@ -7,14 +7,17 @@
    - per-app OGP（og:title/og:description/og:image/og:url）を head に出す。
      フル SEO（sitemap/JSON-LD/Atom）は #11 の領分なのでここではやらない。 #}
 {% set products = load_data(path="data/products.json") %}
+{# 言語接頭辞: 既定言語(en)は空、ja/zh/es は "/{lang}"（戻る導線の URL に使う）。 #}
+{% if lang == config.default_language %}{% set nav_prefix = "" %}{% else %}{% set nav_prefix = "/" ~ lang %}{% endif %}
 {# page.extra.app_id に一致するアプリを線形に探す。 #}
 {% set_global app = false %}
 {% for p in products %}{% if p.id == page.extra.app_id %}{% set_global app = p %}{% endif %}{% endfor %}
 
-{# OGP 用の素材を組み立てる。description.ja を ~160字で truncate、画像は絶対URL化。 #}
+{# OGP 用の素材を組み立てる。表示言語の title/description（欠けたら en）を使い、~160字で truncate、画像は絶対URL化。 #}
 {% if app %}
-  {% set og_title = app.title.ja %}
-  {% set og_desc = app.description.ja | striptags | truncate(length=160) %}
+  {% set og_title = app.title[lang] | default(value=app.title.en) %}
+  {% set app_desc = app.description[lang] | default(value=app.description.en) %}
+  {% set og_desc = app_desc | striptags | truncate(length=160) %}
   {% if app.images and app.images | length > 0 %}
     {% set first_img = app.images.0 %}
     {% if first_img is starting_with("http") %}
@@ -26,14 +29,14 @@
     {% set og_image = get_url(path="/ogp.png") %}
   {% endif %}
 {% else %}
-  {% set og_title = "アプリが見つかりません" %}
+  {% set og_title = trans(key="og_not_found", lang=lang) %}
   {% set og_desc = config.description %}
   {% set og_image = get_url(path="/ogp.png") %}
 {% endif %}
-{# 正規 URL は page.permalink（末尾スラッシュ付き /apps/{id}/）。 #}
+{# 正規 URL は page.permalink（末尾スラッシュ付き /apps/{id}/ または /{lang}/apps/{id}/）。 #}
 {% set page_url = page.permalink %}
 
-<html lang="{{ config.default_language }}">
+<html lang="{{ lang }}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -73,6 +76,15 @@
       font-family: "DejaVu Sans Mono", "Consolas", "Menlo", monospace;
       font-size: var(--fs-base);
       line-height: 1.5;
+    }
+    /* ── ロケール別フォント（#5）。CJK グリフのみ OS 内蔵へフォールバック（index.html と同方針）。 ── */
+    html[lang="ja"], html[lang="ja"] body {
+      font-family: "DejaVu Sans Mono", "Consolas", "Menlo",
+        "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", monospace, sans-serif;
+    }
+    html[lang="zh"], html[lang="zh"] body {
+      font-family: "DejaVu Sans Mono", "Consolas", "Menlo",
+        "Noto Sans SC", "PingFang SC", "Microsoft YaHei", monospace, sans-serif;
     }
     a { color: var(--link); text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -173,9 +185,9 @@
 </head>
 <body>
   <div class="desktop">
-    <nav class="app-nav" aria-label="navigation">
-      <a class="brand" href="/">llll-ll</a>
-      <a class="back" href="/">← 一覧へ戻る</a>
+    <nav class="app-nav" aria-label="{{ trans(key='nav_aria', lang=lang) }}">
+      <a class="brand" href="{{ nav_prefix | safe }}/">llll-ll</a>
+      <a class="back" href="{{ nav_prefix | safe }}/">{{ trans(key="back_to_list", lang=lang) }}</a>
     </nav>
 
     <section class="panel">
@@ -185,15 +197,15 @@
           {% if app.images and app.images | length > 0 %}
           <div class="hero">
             {% for img in app.images %}
-            <img src="{{ img | safe }}" alt="{{ app.title.ja }}" loading="lazy" />
+            <img src="{{ img | safe }}" alt="{{ og_title }}" loading="lazy" />
             {% endfor %}
           </div>
           {% endif %}
 
-          <h1>{{ app.title.ja }}{% if app.featured %}<span class="featured">★</span>{% endif %}</h1>
+          <h1>{{ og_title }}{% if app.featured %}<span class="featured">★</span>{% endif %}</h1>
 
-          {% if app.description and app.description.ja %}
-          <p class="app-desc">{{ app.description.ja }}</p>
+          {% if app_desc %}
+          <p class="app-desc">{{ app_desc }}</p>
           {% endif %}
 
           {% if app.tags and app.tags | length > 0 %}
@@ -209,11 +221,11 @@
           </div>
 
           <div class="app-meta">
-            {% if app.createdAt %}<span>created: {{ app.createdAt }}</span>{% endif %}
-            {% if app.updatedAt %}<span>updated: {{ app.updatedAt }}</span>{% endif %}
+            {% if app.createdAt %}<span>{{ trans(key="meta_created", lang=lang) }}: {{ app.createdAt }}</span>{% endif %}
+            {% if app.updatedAt %}<span>{{ trans(key="meta_updated", lang=lang) }}: {{ app.updatedAt }}</span>{% endif %}
           </div>
         {% else %}
-          <p class="not-found">アプリ「{{ page.extra.app_id }}」が見つかりませんでした。<a href="/">一覧へ戻る</a></p>
+          <p class="not-found">{{ trans(key="not_found_prefix", lang=lang) }}{{ page.extra.app_id }}{{ trans(key="not_found_suffix", lang=lang) }}<a href="{{ nav_prefix | safe }}/">{{ trans(key="not_found_link", lang=lang) }}</a></p>
         {% endif %}
       </main>
     </section>

@@ -17,17 +17,29 @@
 //     フラグメントだけ注入（history 操作なし）、そうでなければ hideOverlay()（DOM を閉じるだけ）。
 //     → ブラウザ「戻る」で閉じる、「進む」で再オープン、が成立し履歴が増えない。
 
+// i18n（#5）で詳細ページは4言語に出る。既定言語(en)は接頭辞なし（/apps/{id}/）、
+// ja/zh/es は言語接頭辞付き（/{lang}/apps/{id}/）。ポップアップは「今いる言語のまま」開く必要があるため、
+// appHrefFromPath は接頭辞ごと正規化して返す（fetch・pushState がその言語の詳細ページを指すように）。
+const LANG_PREFIXES = ["ja", "zh", "es"];
+
 /**
- * パス（location.pathname）が /apps/{id}/ 形式のアプリ詳細かを判定し、href を返す純粋関数。DOM 非依存。
- * popstate ハンドラがブラウザ履歴の現在地から「ポップアップを開くべきか」を決めるのに使う。
+ * パス（location.pathname）がアプリ詳細（/apps/{id}/ または /{lang}/apps/{id}/）かを判定し、
+ * 接頭辞込みで正規化した href を返す純粋関数。DOM 非依存。
+ * popstate ハンドラがブラウザ履歴の現在地から「ポップアップを開くべきか／どの言語の詳細か」を決めるのに使う。
  *
- * @param {string} pathname - location.pathname（例 "/apps/sasso/" や "/"）。
- * @returns {string|null} アプリ詳細なら正規化した href（先頭/末尾スラッシュ付き "/apps/{id}/"）、
- *                        そうでなければ null。
+ * @param {string} pathname - location.pathname（例 "/apps/sasso/", "/ja/apps/sasso/", "/"）。
+ * @returns {string|null} アプリ詳細なら正規化した href（先頭/末尾スラッシュ付き。
+ *                        en は "/apps/{id}/"、他は "/{lang}/apps/{id}/"）、そうでなければ null。
  */
 function appHrefFromPath(pathname) {
   if (typeof pathname !== "string") return null;
-  // "/apps/" 直後に1文字以上（id）があるものだけ対象。"/apps" や "/apps/" 自体は対象外。
+  // 言語接頭辞ありを先に判定（/{lang}/apps/{id}/）。lang は ja/zh/es に限る。
+  const ml = pathname.match(/^\/([a-z]{2})\/apps\/([^/]+)\/?$/);
+  if (ml && LANG_PREFIXES.indexOf(ml[1]) !== -1) {
+    return "/" + ml[1] + "/apps/" + ml[2] + "/";
+  }
+  // 接頭辞なし（既定言語 en）。"/apps/" 直後に1文字以上（id）があるものだけ対象。
+  // "/apps" や "/apps/" 自体、ネスト（/apps/{id}/x/）は対象外。
   const m = pathname.match(/^\/apps\/([^/]+)\/?$/);
   if (!m) return null;
   return "/apps/" + m[1] + "/";
@@ -169,18 +181,22 @@ if (typeof module !== "undefined" && module.exports) {
 
   // ── 配線 ──
 
-  // カードのタイトル/サムネ等、index 上の /apps/ リンクのクリックを委譲捕捉。
+  // カードのタイトル/サムネ等、index 上のアプリ詳細リンクのクリックを委譲捕捉。
+  // i18n（#5）で href は /apps/{id}/（en）または /{lang}/apps/{id}/（ja/zh/es）の2形。
+  // 緩い selector（"a[href]"）で拾い、最終判定は appHrefFromPath（接頭辞対応）に委ねる。
   document.addEventListener("click", (e) => {
     // 修飾キー・中クリックは素の挙動（新規タブ等）に任せる。
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    const link = e.target.closest('a[href^="/apps/"]');
+    const link = e.target.closest("a[href]");
     if (!link) return;
     // モーダル内のリンク（外部 demo/repo 等）は対象外。
     if (overlay.contains(link)) return;
     const path = new URL(link.href, window.location.origin).pathname;
-    if (!appHrefFromPath(path)) return;
+    const normalized = appHrefFromPath(path);
+    if (!normalized) return;
     e.preventDefault();
-    openPopup(link.getAttribute("href"), { pushHistory: true });
+    // 正規化した接頭辞込み href を使う（getAttribute の生値だと相対表記の揺れがありうるため）。
+    openPopup(normalized, { pushHistory: true });
   });
 
   if (closeBtn) closeBtn.addEventListener("click", () => closePopup());

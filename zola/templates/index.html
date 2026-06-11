@@ -556,8 +556,9 @@
       background-repeat: no-repeat;
       color: var(--text-muted);
       text-align: center;
-      /* フッタは文字のみ＋中央寄せで上が空いて見えるので、上下対称に詰める（他パネルの 14px より上を狭く・kako-jun 指摘）。 */
-      padding: 8px;
+      /* フッタは文字のみ＋中央寄せで上が空いて見えるので詰める（他パネルの 14px より上を狭く・kako-jun 指摘）。
+         上 padding は 8px だとリンクまで 9px（行 leading の差で下の 10px と1px ずれる）。上を 9px にして上下とも 10px に揃える。 */
+      padding: 9px 8px 8px;
       font-size: var(--fs-base);
     }
     .footer > .label {

@@ -44,8 +44,8 @@ if (typeof module !== "undefined" && module.exports) {
 
   var section = document.querySelector("[data-visit-id]");
   if (!section) return;
-  var id = section.getAttribute("data-visit-id");
-  if (!id) return; // PE: ID 未設定なら何もしない。
+  var id = (section.getAttribute("data-visit-id") || "").trim();
+  if (!id) return; // PE: ID 未設定/空白のみなら何もしない（空白だけの id を API に送らない）。
 
   // fetch 非対応環境（PE）。
   if (typeof fetch !== "function") return;

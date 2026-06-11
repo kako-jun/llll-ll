@@ -225,6 +225,15 @@ describe("visits-counter inject (jsdom)", () => {
       await flush();
       expect(fetchMock).not.toHaveBeenCalled();
     });
+
+    it("data-visit-id が空白のみ → trim で弾き fetch を呼ばない（空白 id を API に送らない）", async () => {
+      const fetchMock = vi.fn(() =>
+        Promise.resolve(okResponse({ success: true, data: { total: 1 } }))
+      );
+      await setupAndImport(visitsMarkup("   "), fetchMock);
+      await flush();
+      expect(fetchMock).not.toHaveBeenCalled();
+    });
   });
 
   describe("不正値スキップ", () => {

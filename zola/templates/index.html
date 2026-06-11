@@ -183,9 +183,10 @@
       line-height: 1.55;
     }
     .header-prose p { margin: 0 0 4px; }
-    /* 「はじめに読んで →」＝入口記事 start-here への CTA。緑アクセント＋太字で軽く目立たせる（#10）。 */
-    .read-first { color: var(--border); font-weight: bold; }
-    .read-first:hover { text-decoration: underline; }
+    /* 「はじめに読んで →」＝入口記事 start-here への主要 CTA。panel-cta（右上）の上に、
+       緑アクセント＋太字を上書きして他の corner link より目立たせる（#10）。 */
+    .panel-cta.read-first { color: var(--border); font-weight: bold; }
+    .panel-cta.read-first:hover { text-decoration: underline; }
 
     /* プレースホルダ枠（mypace のみ・today は日替わり絵に置換済み） */
     .placeholder {
@@ -758,17 +759,19 @@
       <div class="header-col">
       <section class="panel panel-header">
         <span class="label">header</span>
+        <!-- 「はじめに読んで →」＝入口記事 start-here への導線。prose の1行を食わないよう、blog/mypace と同じ
+             panel-cta 形式で header パネル右上（border 上）へ（#10 kako-jun）。静的 about を作らず blog へ誘導。 -->
+        <a class="panel-cta read-first" href="{{ nav_prefix | safe }}/posts/start-here/">{{ trans(key="read_first", lang=lang) }}</a>
         <!-- テトリスは header パネル（上半分）全体の背面を覆う -->
         <div class="tetris-bg"></div>
         <div class="logo-band">
           <div class="logo">llll-ll</div>
           <div class="tagline">{{ trans(key="tagline", lang=lang) }}</div>
         </div>
-        <!-- タイトルより下に文章で：ウェルカム＋説明＋「はじめに読んで」(blog 記事 start-here へ＝静的 about を作らず blog へ誘導・#10 kako-jun) -->
+        <!-- タイトルより下に文章で：ウェルカム＋説明 -->
         <div class="header-prose">
           <p>{{ trans(key="welcome", lang=lang) }}</p>
           <p>{{ trans(key="intro", lang=lang) }}</p>
-          <p><a class="read-first" href="{{ nav_prefix | safe }}/posts/start-here/">{{ trans(key="read_first", lang=lang) }}</a></p>
         </div>
       </section>
 

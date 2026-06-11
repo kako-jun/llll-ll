@@ -166,7 +166,8 @@
       max-height: 170px;
     }
     /* ── 最上段：訪問統計バー（ヘッダより上に堂々と）── 実カウントは Phase 2 #8 */
-    .visits-bar { flex-shrink: 0; }
+    /* visits パネルは padding 0 にして、セグメントを上下の緑枠まで満たす（縦罫が天地に届く） */
+    .visits-bar { flex-shrink: 0; padding: 0; }
     /* visits パネルを縦罫で5等分（箱を並べるのでなく、パネル自体を分割） */
     .visits-stats {
       display: flex;
@@ -175,10 +176,10 @@
     .stat {
       flex: 1;
       display: flex;
-      align-items: baseline;
+      align-items: center;
       justify-content: center;
       gap: 0.5em;
-      padding: 3px 8px;
+      padding: 11px 8px;
       border-left: 1px solid var(--border);
     }
     .stat:first-child { border-left: none; }

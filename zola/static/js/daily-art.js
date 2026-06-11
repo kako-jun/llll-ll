@@ -56,4 +56,71 @@ if (typeof module !== "undefined" && module.exports) {
   if (caption) {
     caption.textContent = "『" + (entry.title || "") + "』";
   }
+
+  // ── ライトボックス（#24）── 日替わり絵タップ → 緑枠モーダルに拡大画像だけを出す。
+  //   URL は変えず履歴も積まない（ephemeral）。app-popup.js（.modal-overlay）とは別系統（.lightbox-overlay）。
+  //   PE: overlay / トリガ画像が無ければ何もしない。JS 無し/失敗時はサーバ既定の絵が見えたまま壊れない。
+  const overlay = document.querySelector(".lightbox-overlay");
+  if (!overlay || !img) return;
+  const lightboxImg = overlay.querySelector(".lightbox-img");
+  const closeBtn = overlay.querySelector(".lightbox-close");
+  if (!lightboxImg) return;
+
+  // トリガは画像自体。figure は figcaption（『タイトル』）を含むので button 化に不適。
+  // i18n ラベルは figure[data-lightbox-label] から読む。
+  const figure = img.closest(".daily-art");
+  const trigger = img;
+  const label = (figure && figure.getAttribute("data-lightbox-label")) || img.alt || "";
+
+  // トリガを interactive 化（PE: JS が動いたときだけ button 化＋pointer 化する。素の HTML は plain image）。
+  trigger.setAttribute("role", "button");
+  trigger.setAttribute("tabindex", "0");
+  trigger.style.cursor = "pointer";
+  if (label) trigger.setAttribute("aria-label", label);
+
+  let isOpen = false;
+  let lastTrigger = null; // 開いた瞬間の activeElement（閉じたら focus を戻す）。
+
+  function openLightbox() {
+    if (isOpen) return;
+    lastTrigger = document.activeElement;
+    // 現在表示中（今日の絵に差し替わった後）の src/alt を拡大側へ同期。
+    lightboxImg.src = img.currentSrc || img.src;
+    lightboxImg.alt = img.alt || "";
+    overlay.hidden = false;
+    document.body.classList.add("modal-open");
+    isOpen = true;
+    if (closeBtn && typeof closeBtn.focus === "function") closeBtn.focus();
+  }
+
+  function closeLightbox() {
+    if (!isOpen) return;
+    overlay.hidden = true;
+    document.body.classList.remove("modal-open");
+    isOpen = false;
+    // 開く時に保持したトリガへ focus を戻す（消えていれば何もしない）。
+    const target = lastTrigger;
+    lastTrigger = null;
+    if (target && typeof target.focus === "function" && document.contains(target)) {
+      target.focus();
+    }
+  }
+
+  // 開く: click と Enter/Space。Space はスクロール抑止のため preventDefault。
+  trigger.addEventListener("click", openLightbox);
+  trigger.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openLightbox();
+    }
+  });
+
+  // 閉じる: × / 背景クリック（モーダル本体クリックは透過させない）/ Esc。history は一切触らない。
+  if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeLightbox();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (isOpen && e.key === "Escape") closeLightbox();
+  });
 })();

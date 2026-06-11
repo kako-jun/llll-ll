@@ -486,6 +486,54 @@
       color: var(--text-muted); font-size: var(--fs-sm); display: flex; flex-wrap: wrap; gap: 1.2em;
     }
 
+    /* ── 日替わりトップ絵のライトボックス（#24）── アプリ詳細モーダルと同じ緑枠の見た目だが、
+       overlay は別系統（.lightbox-overlay）。daily-art.js が src を同期して hidden を外す。
+       app-popup.js（履歴モデル）は .modal-overlay だけを拾うので、ここには触れない＝履歴を積まない。 */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 12px;
+    }
+    /* 重要: .lightbox-overlay の display:flex（詳細度 0,1,0）が UA の [hidden]{display:none}（同 0,1,0）を
+       後勝ちで打ち消すため、.lightbox-overlay[hidden]（0,2,0）で明示上書きする（CLAUDE.md ルール7・#4/#13 の再発防止）。 */
+    .lightbox-overlay[hidden] { display: none; }
+    .lightbox {
+      position: relative;
+      background: var(--panel-bg);
+      border: 2px solid var(--border);
+      padding: 1.2em;
+      max-width: 92vw;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: var(--border);
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1;
+    }
+    .lightbox-img {
+      display: block;
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+    }
+    /* 日替わり絵の cursor:pointer は daily-art.js が JS 配線時に付与する（no-JS では非クリックなので嘘の pointer を出さない・PE）。 */
+
     /* ── スマホ: 100vh 固定を解除し、縦積み＋普通のスクロール ── */
     @media (max-width: 600px) {
       body { overflow: visible; }
@@ -545,7 +593,7 @@
       <section class="panel panel-today">
         <span class="label">art of today</span>
         {% if daily and daily | length > 0 %}
-        <figure class="daily-art">
+        <figure class="daily-art" data-lightbox-label="{{ trans(key='lightbox_open_aria', lang=lang) }}">
           <img class="daily-art-img" src="/images/daily/{{ daily[0].file }}" alt="{{ daily[0].title }}" />
           <figcaption class="daily-art-title">『{{ daily[0].title }}』</figcaption>
         </figure>
@@ -666,6 +714,15 @@
     <div class="modal" role="dialog" aria-modal="true" aria-label="{{ trans(key='modal_aria', lang=lang) }}">
       <button type="button" class="modal-close" aria-label="{{ trans(key='modal_close_aria', lang=lang) }}">×</button>
       <div class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- 日替わりトップ絵のライトボックス（#24）。既定 hidden。daily-art.js が拡大画像の src を入れて表示する。
+       app-popup.js とは別系統（.lightbox-overlay）なので履歴は積まない。JS 無し/失敗時はこの器は隠れたまま（PE）。 -->
+  <div class="lightbox-overlay" hidden>
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="{{ trans(key='lightbox_aria', lang=lang) }}">
+      <button type="button" class="lightbox-close" aria-label="{{ trans(key='modal_close_aria', lang=lang) }}">×</button>
+      <img class="lightbox-img" src="" alt="" />
     </div>
   </div>
 

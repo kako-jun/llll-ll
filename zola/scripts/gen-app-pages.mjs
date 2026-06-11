@@ -34,11 +34,11 @@ const productsPath = join(zolaRoot, "data", "products.json");
 const appsDir = join(zolaRoot, "content", "apps");
 
 // 既定言語(en)は接頭辞なし、それ以外は path に接頭辞を付ける。config.toml と一致させること。
-const DEFAULT_LANG = "en";
-const EXTRA_LANGS = ["ja", "zh", "es"];
+export const DEFAULT_LANG = "en";
+export const EXTRA_LANGS = ["ja", "zh", "es"];
 
 /** TOML 文字列リテラル用にエスケープする（basic string 内）。 */
-function tomlStr(s) {
+export function tomlStr(s) {
   return String(s)
     .replace(/\\/g, "\\\\")
     .replace(/"/g, '\\"')
@@ -48,13 +48,13 @@ function tomlStr(s) {
 }
 
 /** id → content ファイル名の slug（"." を "-" に。Zola の言語コード誤認を避ける）。 */
-function fileSlug(id) {
+export function fileSlug(id) {
   return String(id).replace(/\./g, "-");
 }
 
 /** 1アプリ × 1言語分の frontmatter スタブを組み立てる。
  *  lang が既定言語なら path に接頭辞なし、それ以外は "/{lang}" を前置する。 */
-function renderPage(app, lang) {
+export function renderPage(app, lang) {
   const title = (app.title && (app.title[lang] || app.title.en || app.title.ja)) || app.id;
   const urlPath = lang === DEFAULT_LANG ? `apps/${app.id}` : `${lang}/apps/${app.id}`;
   return [
@@ -71,8 +71,27 @@ function renderPage(app, lang) {
 }
 
 /** app × lang のファイル名（en は無印、他は .lang を挟む）。 */
-function fileName(slug, lang) {
+export function fileName(slug, lang) {
   return lang === DEFAULT_LANG ? `${slug}.md` : `${slug}.${lang}.md`;
+}
+
+/** products から「生成されるべきファイル名」の集合を作る（slug × 全言語）。
+ *  !app || !app.id はスキップ（_index 系はここには含めない・別管理）。 */
+export function computeWantedFiles(products) {
+  const wanted = new Set();
+  for (const app of products) {
+    if (!app || !app.id) continue;
+    const slug = fileSlug(app.id);
+    for (const lang of [DEFAULT_LANG, ...EXTRA_LANGS]) {
+      wanted.add(fileName(slug, lang));
+    }
+  }
+  return wanted;
+}
+
+/** 掃除対象から除外すべき _index 系ファイルか（_index.md / _index.{lang}.md）。 */
+export function isProtectedIndex(filename) {
+  return filename === "_index.md" || /^_index\.[a-z]{2}\.md$/.test(filename);
 }
 
 function main() {
@@ -87,15 +106,13 @@ function main() {
     writeFileSync(join(appsDir, `_index.${lang}.md`), indexMd);
   }
 
-  const wanted = new Set();
+  const wanted = computeWantedFiles(products);
   let count = 0;
   for (const app of products) {
     if (!app || !app.id) continue;
     const slug = fileSlug(app.id);
     for (const lang of [DEFAULT_LANG, ...EXTRA_LANGS]) {
-      const file = fileName(slug, lang);
-      wanted.add(file);
-      writeFileSync(join(appsDir, file), renderPage(app, lang));
+      writeFileSync(join(appsDir, fileName(slug, lang)), renderPage(app, lang));
     }
     count++;
   }
@@ -103,11 +120,14 @@ function main() {
   // products.json から消えた古いページを掃除（全言語・_index 系は残す）。
   for (const f of readdirSync(appsDir)) {
     if (!f.endsWith(".md")) continue;
-    if (f === "_index.md" || /^_index\.[a-z]{2}\.md$/.test(f)) continue;
+    if (isProtectedIndex(f)) continue;
     if (!wanted.has(f)) unlinkSync(join(appsDir, f));
   }
 
   console.log(`generated ${count} apps × ${1 + EXTRA_LANGS.length} languages into content/apps/`);
 }
 
-main();
+// エントリガード: 直接実行された時だけ main() を走らせる（import 時は I/O を起こさない）。
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  main();
+}

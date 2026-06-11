@@ -49,8 +49,18 @@ zola/
 │   ├── index.html         # btop パネルのポータル（自己完結・html[lang]・trans()）
 │   ├── app.html           # per-app 詳細 /[{lang}/]apps/{id}/（ポップアップが fetch する .app-detail フラグメント）
 │   └── 404.html           # avel base 非継承の自前 404
+├── static/js/             # vanilla JS の島（defer・PE）: apps-filter / app-popup / daily-art / visits-counter
 └── themes/avel            # submodule
 ```
+
+## visits 訪問カウンタ（#8）
+
+最上段の visits バー（Total / Today / Yesterday / Week / Month）は **Nostalgic visit カウンタ**から実数を入れる。
+
+- カウンタ ID は `config.toml` の `[extra] nostalgic_visit_id`（React 版と同じ `llll-ll-f843ad67`）。テンプレが `data-visit-id` で出す。
+- `static/js/visits-counter.js` がロード時に `GET https://api.nostalgic.llll-ll.com/visit?action=increment&id=<id>` を1回叩き（訪問を数えるので `increment`・サーバ側で重複排除）、返った `data.{total,today,yesterday,week,month}` を `[data-visit-stat]` の各スロットへ注入する。
+- **PE**: fetch 失敗 / JS 無効なら各スロットは `---` のまま（壊れない）。数値は固定 `,` 3桁区切り（ロケール非依存）。
+- 幅狭（`max-width:560px`）では5項目を**一斉に縦積み**（all-or-nothing。緑縦罫→横罫）。
 
 ## デザイン（黒×緑・btop）
 

@@ -29,6 +29,7 @@ stat_yesterday = "Yesterday"
 stat_week = "Week"
 stat_month = "Month"
 mypace_placeholder = "mypace posts (Phase 2)"
+mypace_more = "See more on mypace"
 blog_placeholder = "Coming soon (Phase 3)"
 bbs_placeholder = "Enable JavaScript to view the support board."
 back_to_list = "← Back to list"
@@ -67,6 +68,7 @@ stat_yesterday = "昨日"
 stat_week = "今週"
 stat_month = "今月"
 mypace_placeholder = "mypace のつぶやき（Phase 2）"
+mypace_more = "mypace で続きを見る"
 blog_placeholder = "準備中（Phase 3）"
 bbs_placeholder = "掲示板の表示には JavaScript が必要です。"
 back_to_list = "← 一覧へ戻る"
@@ -105,6 +107,7 @@ stat_yesterday = "昨天"
 stat_week = "本周"
 stat_month = "本月"
 mypace_placeholder = "mypace 动态（Phase 2）"
+mypace_more = "在 mypace 查看更多"
 blog_placeholder = "准备中（Phase 3）"
 bbs_placeholder = "需要启用 JavaScript 才能显示留言板。"
 back_to_list = "← 返回列表"
@@ -143,6 +146,7 @@ stat_yesterday = "Ayer"
 stat_week = "Semana"
 stat_month = "Mes"
 mypace_placeholder = "publicaciones de mypace (Phase 2)"
+mypace_more = "Ver más en mypace"
 blog_placeholder = "Próximamente (Phase 3)"
 bbs_placeholder = "Habilita JavaScript para ver el tablón."
 back_to_list = "← Volver a la lista"
@@ -167,6 +171,17 @@ nostalgic_visit_id = "llll-ll-f843ad67"
 # Nostalgic BBS ID（#8 Phase 2）。bbs パネルの <nostalgic-bbs> がこの ID で掲示板を出す。
 # React 版 BBS・visit と同一値。言語非依存なのでグローバル [extra] に置く。
 nostalgic_bbs_id = "llll-ll-f843ad67"
+# mypace 最新つぶやきフィード（#8 第3分割・案C＝自前 in-theme レンダリング）。
+# mypace パネルの JS 島 mypace-feed.js が Nostr relay からノートを取り、btop 黒×緑で自前描画する。
+# 言語非依存なのでグローバル [extra] に置く（各 [languages.*] 配下ではない）。
+# hex pubkey（npub のデコード済み。島では bech32 デコードせず hex を直に使う）。
+mypace_pubkey_hex = "6f87b1ba22d8a659070008af6d5f3fe1d711e0162c65d8961728d04fb8657bfc"
+# ノート実在を確認済みの relay（島が WebSocket で並列接続する）。
+mypace_relays = ["wss://relay.damus.io", "wss://nos.lol", "wss://relay.primal.net"]
+# 「続きを見る」先（mypace のユーザーページ）。
+mypace_user_url = "https://mypace.llll-ll.com/user/npub1d7rmrw3zmzn9jpcqpzhk6helu8t3rcqk93ja39sh9rgylwr9007q83kemm"
+# 表示するノート件数。
+mypace_note_limit = 3
 # 黒×緑 palette（DESIGN.md / epic 準拠）
 bg = "#121212"
 panel_bg = "#1e1e1e"

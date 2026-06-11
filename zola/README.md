@@ -18,6 +18,10 @@ git submodule update --init --recursive
 cd zola
 zola serve            # http://127.0.0.1:1111
 zola build            # public/ に出力（git 管理外）
+
+# per-app ページ（content/apps/*.md）は products.json から生成する。
+# products.json を変えたら再生成して content/apps を更新・コミットする（冪等）。
+node scripts/gen-app-pages.mjs
 ```
 
 ## 構成

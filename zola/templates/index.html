@@ -110,7 +110,9 @@
       z-index: 1;
       display: flex;
       flex-direction: row;
-      align-items: baseline;
+      /* ロゴ(大)とタグライン「企画42課」(小)は横並び。baseline だとタグラインが下寄りに見えるので
+         上下センタリングで揃える（#10 kako-jun）。 */
+      align-items: center;
       gap: 0.7em;
     }
     .tetris-bg {

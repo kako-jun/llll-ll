@@ -110,6 +110,7 @@
       position: absolute;
       inset: 0;
       z-index: 0;
+      overflow: hidden;
       border: 1px dashed var(--border-muted);
       opacity: 0.5;
     }
@@ -121,6 +122,29 @@
       font-size: var(--fs-sm);
       color: var(--text-muted);
       letter-spacing: 0.05em;
+    }
+    /* JS（tetris.js）が起動したら破線プレースホルダ表示を消し、実プレイフィールドに（PE）。 */
+    .tetris-bg.tetris-live {
+      border: 0;
+      opacity: 1;
+    }
+    .tetris-bg.tetris-live::after { content: none; }
+    /* 固定/落下ブロックのレイヤ（fx は消滅アニメ専用）。両方とも panel 背面に敷く。 */
+    .tetris-layer { position: absolute; inset: 0; }
+    .tetris-block {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: var(--border);
+      opacity: 0.45; /* 前面の本文を読めるよう薄く敷く */
+    }
+    .tetris-block-fx {
+      opacity: 0.45;
+      transform-origin: center center;
+      animation: tetrisShrink 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+    @keyframes tetrisShrink {
+      to { transform: scale(0); opacity: 0; }
     }
     .logo {
       position: relative;
@@ -823,6 +847,8 @@
     </div>
   </div>
 
+  <!-- ヘッダ Tetris の島（vanilla JS・defer・#7）。読めなくても破線帯＋"tetris" ラベルが残る（PE）。 -->
+  <script defer src="/js/tetris.js"></script>
   <!-- フィルタ＆検索の島（vanilla JS・defer）。読めなくても全件は見えたまま。 -->
   <script defer src="/js/apps-filter.js"></script>
   <!-- 詳細ポップアップの島（vanilla JS・defer）。読めなくてもタイトルリンクで素の遷移（PE）。 -->

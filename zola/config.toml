@@ -60,7 +60,7 @@ description = "kako-jun のゲーム・アプリのポートフォリオ"
 [languages.ja.translations]
 welcome = "ようこそ、llll-ll へ。"
 intro = "kako-jun の作ったゲーム、アプリを置いてます。使ってもらえると喜びます。"
-read_first = "はじめに読んで →"
+read_first = "はじめに読んでね →"
 tagline = "企画42課"
 langbar_aria = "言語"
 theme_toggle_aria = "ライト / ダークを切替"

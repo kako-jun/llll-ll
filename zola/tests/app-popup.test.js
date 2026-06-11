@@ -54,6 +54,23 @@ describe("appHrefFromPath", () => {
       expect(appHrefFromPath("/es/apps/3min/")).toBe("/es/apps/3min/");
     });
 
+    it("preserves a hyphen in the id under a language prefix (noun-gender)", () => {
+      expect(appHrefFromPath("/ja/apps/noun-gender/")).toBe("/ja/apps/noun-gender/");
+    });
+
+    it("rejects an uppercase language prefix (lang must be lowercase 2 letters)", () => {
+      // 正規表現は [a-z]{2} なので大文字 lang は言語接頭辞として認めない。
+      expect(appHrefFromPath("/JA/apps/sasso/")).toBeNull();
+    });
+
+    it("rejects a three-letter language prefix (lang must be exactly 2 letters)", () => {
+      expect(appHrefFromPath("/jpn/apps/sasso/")).toBeNull();
+    });
+
+    it("rejects a one-letter language prefix (lang must be exactly 2 letters)", () => {
+      expect(appHrefFromPath("/j/apps/sasso/")).toBeNull();
+    });
+
     it("rejects an unknown language prefix (treats it as a non-app path)", () => {
       // "fr" は対応言語でないので、/fr/apps/... はアプリ詳細として扱わない。
       expect(appHrefFromPath("/fr/apps/sasso/")).toBeNull();

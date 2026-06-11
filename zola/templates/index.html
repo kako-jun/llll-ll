@@ -342,6 +342,10 @@
       color: var(--border);
       line-height: 1.3;
     }
+    /* 詳細リンク: link 色でなくカードタイトルの緑を継ぐ（ホバーで下線）。 */
+    .card-title-link { color: var(--border); }
+    .card-title-link:hover { text-decoration: underline; }
+    .card-thumb-link { display: inline-flex; flex-shrink: 0; }
     .card-featured { color: var(--border); margin-left: 4px; }
     .card-desc {
       color: var(--text-muted);
@@ -399,6 +403,68 @@
       margin-right: 0.6em;
     }
 
+    /* ── アプリ詳細ポップアップ（モーダル）── #13。JS が中身を入れて hidden を外す。 */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 12px;
+    }
+    /* 重要: .modal-overlay の display:flex（詳細度 0,1,0）が UA の [hidden]{display:none}（同 0,1,0）を
+       後勝ちで打ち消すため、.modal-overlay[hidden]（0,2,0）で明示上書きする（#4 の cascade 事故の再発防止）。 */
+    .modal-overlay[hidden] { display: none; }
+    /* 背景スクロール抑止: ポップアップ表示中は body に付与。 */
+    body.modal-open { overflow: hidden; }
+    .modal {
+      position: relative;
+      background: var(--panel-bg);
+      border: 2px solid var(--border);
+      width: min(600px, 90vw);
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 1.4em 1.2em;
+      scrollbar-color: var(--border) var(--panel-bg);
+      scrollbar-width: thin;
+    }
+    .modal::-webkit-scrollbar { width: 10px; }
+    .modal::-webkit-scrollbar-track { background: var(--panel-bg); }
+    .modal::-webkit-scrollbar-thumb { background: var(--border); }
+    .modal-close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: var(--border);
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0;
+    }
+    /* ポップアップ内に注入される .app-detail（app.html のフラグメント）の最低限の体裁。
+       詳細スタイルは app.html 側が持つが、注入断片には届かないのでここで主要要素だけ寄せる。 */
+    .modal-body .app-detail { display: flex; flex-direction: column; gap: 14px; padding-right: 0.6em; }
+    .modal-body .app-detail .hero { display: flex; flex-wrap: wrap; gap: 10px; }
+    .modal-body .app-detail .hero img {
+      max-width: 150px; max-height: 150px; object-fit: contain;
+      border: 1px solid var(--border-muted); background: var(--bg);
+    }
+    .modal-body .app-detail h1 { margin: 0; color: var(--border); font-size: 1.15rem; line-height: 1.35; }
+    .modal-body .app-detail .featured { color: var(--border); margin-left: 0.3em; }
+    .modal-body .app-detail .app-desc { margin: 0; color: var(--text); white-space: pre-wrap; line-height: 1.7; font-size: var(--fs-base); }
+    .modal-body .app-detail .app-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .modal-body .app-detail .app-tag {
+      font-size: var(--fs-sm); border: 1px solid var(--border-muted); color: var(--text-muted); padding: 1px 7px;
+    }
+    .modal-body .app-detail .app-links { display: flex; flex-wrap: wrap; gap: 16px; }
+    .modal-body .app-detail .app-meta {
+      color: var(--text-muted); font-size: var(--fs-sm); display: flex; flex-wrap: wrap; gap: 1.2em;
+    }
+
     /* ── スマホ: 100vh 固定を解除し、縦積み＋普通のスクロール ── */
     @media (max-width: 600px) {
       body { overflow: visible; }
@@ -407,6 +473,7 @@
       .panel-header, .panel-mypace, .panel-today { flex: none; }
       .mid { overflow: visible; flex: none; }
       .logo { font-size: 1.8rem; }
+      .modal { width: 95vw; }
     }
   </style>
 </head>
@@ -499,10 +566,13 @@
             {% if p.featured %}data-featured="true"{% endif %}>
             <div class="card-head">
               {% if p.images and p.images | length > 0 %}
-              <img class="card-thumb" src="{{ p.images.0 | safe }}" alt="" loading="lazy" />
+              <a class="card-thumb-link" href="/apps/{{ p.id }}/" tabindex="-1" aria-hidden="true">
+                <img class="card-thumb" src="{{ p.images.0 | safe }}" alt="" loading="lazy" />
+              </a>
               {% endif %}
               <div class="card-title">
-                {{ p.title.ja }}{% if p.featured %}<span class="card-featured">★</span>{% endif %}
+                {# 詳細リンク: JS ありはポップアップを開き /apps/{id}/ に pushState、JS 無し/直リンクは素の遷移（PE）。 #}
+                <a class="card-title-link" href="/apps/{{ p.id }}/">{{ p.title.ja }}</a>{% if p.featured %}<span class="card-featured">★</span>{% endif %}
               </div>
             </div>
             {% if p.description and p.description.ja %}
@@ -542,7 +612,7 @@
     <footer class="footer">
       <span class="label">footer</span>
       <div class="social">
-        <a href="https://mypace.llll-ll.com/user/npub1d7rmrw3zmzn9jpcqpzhk6helu8t3rcqk93ja39sh9rgylwr9007q83kemm" target="_blank" rel="noopener noreferrer">MY PACE</a>
+        <a href="https://mypace.llll-ll.com/user/npub1d7rmrw3zmzn9jpcqpzhk6helu8t3rcqk93ja39sh9rgylwr9007q83kemm" target="_blank" rel="noopener noreferrer">mypace</a>
         <a href="https://x.com/kako_jun_42" target="_blank" rel="noopener noreferrer">X</a>
         <a href="https://www.instagram.com/kako_jun_42" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="https://note.com/kako_jun" target="_blank" rel="noopener noreferrer">Note</a>
@@ -554,7 +624,19 @@
     </footer>
 
   </div>
+
+  <!-- アプリ詳細ポップアップの器（#13）。既定 hidden。app-popup.js が中身を入れて表示する。
+       JS 無し/失敗時はカードタイトルの素のリンクで /apps/{id}/ へ遷移するので、この器は隠れたまま。 -->
+  <div class="modal-overlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-label="アプリ詳細">
+      <button type="button" class="modal-close" aria-label="閉じる">×</button>
+      <div class="modal-body"></div>
+    </div>
+  </div>
+
   <!-- フィルタ＆検索の島（vanilla JS・defer）。読めなくても全件は見えたまま。 -->
   <script defer src="/js/apps-filter.js"></script>
+  <!-- 詳細ポップアップの島（vanilla JS・defer）。読めなくてもタイトルリンクで素の遷移（PE）。 -->
+  <script defer src="/js/app-popup.js"></script>
 </body>
 </html>

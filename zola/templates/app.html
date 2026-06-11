@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+{# app.html — per-app 詳細ページ /apps/{id}/（Issue #13）。
+   - 黒×緑の btop 様式で自己完結（base.html は継承しない・index.html と同パレット）。
+   - load_data で products.json を読み、page.extra.app_id に一致するアプリを引いて詳細をフル描画する。
+   - <main class="app-detail"> が「ポップアップ（index 側 JS）が fetch して抜き出すフラグメント」になる。
+     クラス名 app-detail を app-popup.js と一致させること。
+   - per-app OGP（og:title/og:description/og:image/og:url）を head に出す。
+     フル SEO（sitemap/JSON-LD/Atom）は #11 の領分なのでここではやらない。 #}
+{% set products = load_data(path="data/products.json") %}
+{# page.extra.app_id に一致するアプリを線形に探す。 #}
+{% set_global app = false %}
+{% for p in products %}{% if p.id == page.extra.app_id %}{% set_global app = p %}{% endif %}{% endfor %}
+
+{# OGP 用の素材を組み立てる。description.ja を ~160字で truncate、画像は絶対URL化。 #}
+{% if app %}
+  {% set og_title = app.title.ja %}
+  {% set og_desc = app.description.ja | striptags | truncate(length=160) %}
+  {% if app.images and app.images | length > 0 %}
+    {% set first_img = app.images.0 %}
+    {% if first_img is starting_with("http") %}
+      {% set og_image = first_img %}
+    {% else %}
+      {% set og_image = get_url(path=first_img) %}
+    {% endif %}
+  {% else %}
+    {% set og_image = get_url(path="/ogp.png") %}
+  {% endif %}
+{% else %}
+  {% set og_title = "アプリが見つかりません" %}
+  {% set og_desc = config.description %}
+  {% set og_image = get_url(path="/ogp.png") %}
+{% endif %}
+{# 正規 URL は page.permalink（末尾スラッシュ付き /apps/{id}/）。 #}
+{% set page_url = page.permalink %}
+
+<html lang="{{ config.default_language }}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ og_title }} — llll-ll</title>
+  <meta name="description" content="{{ og_desc }}" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <!-- per-app OGP -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{ og_title }}" />
+  <meta property="og:description" content="{{ og_desc }}" />
+  <meta property="og:image" content="{{ og_image }}" />
+  <meta property="og:url" content="{{ page_url }}" />
+  <meta property="og:site_name" content="llll-ll" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ og_title }}" />
+  <meta name="twitter:description" content="{{ og_desc }}" />
+  <meta name="twitter:image" content="{{ og_image }}" />
+  <style>
+    :root {
+      --bg: {{ config.extra.bg }};
+      --panel-bg: {{ config.extra.panel_bg }};
+      --border: {{ config.extra.border }};
+      --border-muted: {{ config.extra.border_muted }};
+      --text: {{ config.extra.text }};
+      --text-muted: {{ config.extra.text_muted }};
+      --link: {{ config.extra.link }};
+      --fs-base: 0.85rem;
+      --fs-sm: 0.72rem;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DejaVu Sans Mono", "Consolas", "Menlo", monospace;
+      font-size: var(--fs-base);
+      line-height: 1.5;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* 外枠＝緑ボーダーの btop ウィンドウ（index と同じ調子） */
+    .desktop {
+      min-height: 100vh;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+    }
+    /* 上部のナビ（戻る導線） */
+    .app-nav {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2em;
+      padding: 4px 4px 0;
+      flex-shrink: 0;
+    }
+    .app-nav .brand {
+      font-family: "Arial Black", "Arial", "Impact", sans-serif;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      color: var(--border);
+      font-size: 1.1rem;
+    }
+    .app-nav .back { color: var(--text-muted); font-size: var(--fs-sm); }
+
+    /* btop 風パネル（緑枠） */
+    .panel {
+      position: relative;
+      border: 1px solid var(--border);
+      background: var(--panel-bg);
+      padding: 16px 14px 14px;
+    }
+    .panel > .label {
+      position: absolute;
+      top: -0.7em;
+      left: 0.8em;
+      background: var(--panel-bg);
+      padding: 0 0.4em;
+      color: var(--border);
+      font-size: var(--fs-sm);
+      letter-spacing: 0.05em;
+    }
+
+    /* 詳細フラグメント本体（ポップアップが抜き出す .app-detail） */
+    .app-detail { display: flex; flex-direction: column; gap: 14px; }
+    .app-detail .hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .app-detail .hero img {
+      max-width: 160px;
+      max-height: 160px;
+      object-fit: contain;
+      border: 1px solid var(--border-muted);
+      background: var(--bg);
+    }
+    .app-detail h1 {
+      margin: 0;
+      color: var(--border);
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }
+    .app-detail .featured { color: var(--border); margin-left: 0.3em; }
+    .app-detail .app-desc {
+      margin: 0;
+      color: var(--text);
+      white-space: pre-wrap;
+      line-height: 1.7;
+    }
+    .app-detail .app-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .app-detail .app-tag {
+      font-size: var(--fs-sm);
+      border: 1px solid var(--border-muted);
+      color: var(--text-muted);
+      padding: 1px 7px;
+    }
+    .app-detail .app-links { display: flex; flex-wrap: wrap; gap: 16px; }
+    .app-detail .app-meta {
+      color: var(--text-muted);
+      font-size: var(--fs-sm);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2em;
+    }
+    .app-detail .not-found { color: var(--text-muted); }
+
+    @media (max-width: 600px) {
+      .app-detail .hero img { max-width: 110px; max-height: 110px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="desktop">
+    <nav class="app-nav" aria-label="navigation">
+      <a class="brand" href="/">llll-ll</a>
+      <a class="back" href="/">← 一覧へ戻る</a>
+    </nav>
+
+    <section class="panel">
+      <span class="label">app</span>
+      <main class="app-detail">
+        {% if app %}
+          {% if app.images and app.images | length > 0 %}
+          <div class="hero">
+            {% for img in app.images %}
+            <img src="{{ img | safe }}" alt="{{ app.title.ja }}" loading="lazy" />
+            {% endfor %}
+          </div>
+          {% endif %}
+
+          <h1>{{ app.title.ja }}{% if app.featured %}<span class="featured">★</span>{% endif %}</h1>
+
+          {% if app.description and app.description.ja %}
+          <p class="app-desc">{{ app.description.ja }}</p>
+          {% endif %}
+
+          {% if app.tags and app.tags | length > 0 %}
+          <div class="app-tags">
+            {% for t in app.tags %}<span class="app-tag">{{ t }}</span>{% endfor %}
+          </div>
+          {% endif %}
+
+          <div class="app-links">
+            {% if app.demoUrl %}<a href="{{ app.demoUrl | safe }}" target="_blank" rel="noopener noreferrer">demo</a>{% endif %}
+            {% if app.repositoryUrl %}<a href="{{ app.repositoryUrl | safe }}" target="_blank" rel="noopener noreferrer">repo</a>{% endif %}
+            {% if app.articles %}{% for a in app.articles %}<a href="{{ a.url | safe }}" target="_blank" rel="noopener noreferrer">{{ a.label }}</a>{% endfor %}{% endif %}
+          </div>
+
+          <div class="app-meta">
+            {% if app.createdAt %}<span>created: {{ app.createdAt }}</span>{% endif %}
+            {% if app.updatedAt %}<span>updated: {{ app.updatedAt }}</span>{% endif %}
+          </div>
+        {% else %}
+          <p class="not-found">アプリ「{{ page.extra.app_id }}」が見つかりませんでした。<a href="/">一覧へ戻る</a></p>
+        {% endif %}
+      </main>
+    </section>
+  </div>
+</body>
+</html>

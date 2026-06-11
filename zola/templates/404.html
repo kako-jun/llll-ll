@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{# Phase 0: avel の base.html を継承せず自前で完結させる（index.html と同方針）。
+   base.html は [languages.ja.translations] を要求するが、Phase 0 ポータルは
+   翻訳テーブルを持たない単一言語・静的構成なので 404 も自前で上書きする。 #}
+<html lang="{{ config.default_language }}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 | {{ config.title }}</title>
+  <style>
+    html, body {
+      margin: 0; height: 100%;
+      background: {{ config.extra.bg }};
+      color: {{ config.extra.text }};
+      font-family: "DejaVu Sans Mono", "Consolas", monospace;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+    }
+    .box { border: 1px solid {{ config.extra.border }}; padding: 2rem 3rem; }
+    h1 { color: {{ config.extra.border }}; font-size: 3rem; margin: 0 0 0.5rem; }
+    a { color: {{ config.extra.link }}; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>404</h1>
+    <p>お探しのページは見つかりませんでした。</p>
+    <p><a href="/">トップへ戻る →</a></p>
+  </div>
+</body>
+</html>

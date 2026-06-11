@@ -197,19 +197,18 @@
       align-items: center;
       justify-content: center;
       gap: 0.5em;
-      padding: 11px 8px;
+      padding: 5px 8px;
       border-left: 1px solid var(--border);
     }
     .stat:first-child { border-left: none; }
     .stat-label { color: var(--text-muted); font-size: var(--fs-sm); }
     .stat-num { color: var(--border); font-weight: bold; font-size: 1.1rem; letter-spacing: 0.05em; }
-    /* 幅狭では5項目を「一斉に」縦積み（all-or-nothing・部分折返し禁止）。flex-nowrap なので
-       横一列 or 全縦積みの2状態だけ。縦罫(border-left)を横罫(border-top)へ切替し、先頭の打ち消しも縦向きに。
-       しきい値 560px は目安・ライブ blink で後調整する。 */
+    /* 幅狭では各カウンタの中身（ラベルと数字）を「一斉に」2段（ラベル↑／数字↓）にする。
+       四角(.stat)は横並びのまま・縦罫(border-left)も維持し、箱は縦に積まない。
+       media query なので全カウンタが同時に2段化＝「1つでも改行されたら全部改行」(all-or-nothing)。
+       しきい値はライブ blink で後調整する。 */
     @media (max-width: 560px) {
-      .visits-stats { flex-direction: column; }
-      .stat { border-left: none; border-top: 1px solid var(--border); }
-      .stat:first-child { border-top: none; }
+      .stat { flex-direction: column; gap: 0; }
     }
 
     /* ── フッタの SNS 並び ── */

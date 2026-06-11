@@ -1,0 +1,18 @@
+base_url = "https://llll-ll.com"
+title = "llll-ll"
+description = "kako-jun's games and apps portfolio"
+default_language = "ja"
+theme = "avel"
+compile_sass = false
+build_search_index = false
+generate_feeds = false
+
+[extra]
+# 黒×緑 palette（DESIGN.md / epic 準拠）
+bg = "#121212"
+panel_bg = "#1e1e1e"
+border = "#34d058"        # btop ウィンドウ枠・アクセント
+border_muted = "#404040"
+text = "#ffffff"
+text_muted = "#b0b0b0"
+link = "#60a5fa"

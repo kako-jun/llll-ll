@@ -133,6 +133,7 @@ if (typeof module !== "undefined" && module.exports) {
   if (!Array.isArray(relays) || relays.length === 0) return;
 
   var userUrl = (feed.getAttribute("data-mypace-url") || "").trim();
+  var postBase = (feed.getAttribute("data-mypace-post-base") || "").trim();
   var moreLabel = feed.getAttribute("data-mypace-more") || "";
   var limit = parseInt(feed.getAttribute("data-mypace-limit") || "3", 10);
   if (!isFinite(limit) || limit <= 0) limit = 3;
@@ -183,7 +184,17 @@ if (typeof module !== "undefined" && module.exports) {
 
       for (var i = 0; i < notes.length; i++) {
         var note = notes[i];
-        var noteEl = document.createElement("div");
+        // 各つぶやきは「その投稿の mypace ページ」へのリンク（案2）。
+        // postBase があり id が 64 桁 hex のときだけ <a>、そうでなければ非リンクの <div>（PE）。
+        var noteEl;
+        if (postBase && typeof note.id === "string" && /^[0-9a-f]{64}$/i.test(note.id)) {
+          noteEl = document.createElement("a");
+          noteEl.href = postBase + note.id;
+          noteEl.target = "_blank";
+          noteEl.rel = "noopener noreferrer";
+        } else {
+          noteEl = document.createElement("div");
+        }
         noteEl.className = "mypace-note";
 
         var bodyEl = document.createElement("div");

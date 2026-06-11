@@ -185,7 +185,8 @@
       font-size: var(--fs-sm);
       text-align: left;
     }
-    /* 島が描画する実つぶやき（黒×緑・monospace）。本文は textContent で入る（innerHTML 禁止）。 */
+    /* 島が描画する実つぶやき（黒×緑・monospace）。本文は textContent で入る（innerHTML 禁止）。
+       各つぶやきは <a>（その投稿の mypace ページへ／案2）。リンク既定色・下線を打ち消し btop 調に。 */
     .mypace-note {
       border: 1px solid var(--border-muted);
       padding: 4px 8px;
@@ -194,7 +195,11 @@
       display: flex;
       flex-direction: column;
       gap: 2px;
+      color: inherit;
+      text-decoration: none;
     }
+    a.mypace-note { cursor: pointer; }
+    a.mypace-note:hover { border-color: var(--border); text-decoration: none; }
     .mypace-note-body {
       color: var(--text);
       white-space: pre-wrap;
@@ -632,6 +637,7 @@
              data-mypace-pubkey="{{ config.extra.mypace_pubkey_hex }}"
              data-mypace-relays='{{ config.extra.mypace_relays | json_encode }}'
              data-mypace-url="{{ config.extra.mypace_user_url }}"
+             data-mypace-post-base="{{ config.extra.mypace_post_url_base }}"
              data-mypace-limit="{{ config.extra.mypace_note_limit }}"
              data-mypace-more="{{ trans(key='mypace_more', lang=lang) }}">
           <div class="mypace-line">{{ trans(key="mypace_placeholder", lang=lang) }}</div>

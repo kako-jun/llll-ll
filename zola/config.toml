@@ -180,6 +180,8 @@ mypace_pubkey_hex = "6f87b1ba22d8a659070008af6d5f3fe1d711e0162c65d8961728d04fb86
 mypace_relays = ["wss://relay.damus.io", "wss://nos.lol", "wss://relay.primal.net"]
 # 「続きを見る」先（mypace のユーザーページ）。
 mypace_user_url = "https://mypace.llll-ll.com/user/npub1d7rmrw3zmzn9jpcqpzhk6helu8t3rcqk93ja39sh9rgylwr9007q83kemm"
+# 各つぶやきのリンク先ベース。mypace の個別投稿ルートは /post/:id（id は hex event id をそのまま使う）。
+mypace_post_url_base = "https://mypace.llll-ll.com/post/"
 # 表示するノート件数。
 mypace_note_limit = 3
 # 黒×緑 palette（DESIGN.md / epic 準拠）

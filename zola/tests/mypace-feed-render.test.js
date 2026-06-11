@@ -28,10 +28,7 @@ const MODULE_PATH = "../static/js/mypace-feed.js";
 // 実 config.toml の値（zola/config.toml）に一致させる。
 const PUBKEY = "6f87b1ba22d8a659070008af6d5f3fe1d711e0162c65d8961728d04fb8657bfc";
 const RELAYS = ["wss://relay.damus.io", "wss://nos.lol", "wss://relay.primal.net"];
-const USER_URL =
-  "https://mypace.llll-ll.com/user/npub1d7rmrw3zmzn9jpcqpzhk6helu8t3rcqk93ja39sh9rgylwr9007q83kemm";
 const POST_BASE = "https://mypace.llll-ll.com/post/";
-const MORE_LABEL = "続きを見る";
 const SUB_ID = "llll-ll-mypace";
 
 // 64桁 hex の event id を作る（連番を 64 桁にパディング）。
@@ -96,10 +93,8 @@ function feedMarkup(overrides = {}) {
   const o = {
     pubkey: PUBKEY,
     relays: JSON.stringify(RELAYS),
-    url: USER_URL,
     postBase: POST_BASE,
     limit: "3",
-    more: MORE_LABEL,
     ...overrides,
   };
   // null を渡した属性は出力しない（属性不在ケース）。
@@ -110,10 +105,7 @@ function feedMarkup(overrides = {}) {
       <div class="mypace-feed"${attr("data-mypace-pubkey", o.pubkey)}${attr(
         "data-mypace-relays",
         o.relays
-      )}${attr("data-mypace-url", o.url)}${attr("data-mypace-post-base", o.postBase)}${attr(
-        "data-mypace-limit",
-        o.limit
-      )}${attr("data-mypace-more", o.more)}>
+      )}${attr("data-mypace-post-base", o.postBase)}${attr("data-mypace-limit", o.limit)}>
         <div class="mypace-line">最新のつぶやきを読み込み中…</div>
         <div class="mypace-line">&nbsp;</div>
         <div class="mypace-line">&nbsp;</div>
@@ -150,9 +142,6 @@ function notes() {
 }
 function lines() {
   return Array.from(document.querySelectorAll(".mypace-line"));
-}
-function moreLink() {
-  return document.querySelector(".mypace-more");
 }
 
 beforeEach(() => {
@@ -275,23 +264,34 @@ describe("mypace-feed WebSocket render (jsdom)", () => {
     });
   });
 
-  describe("5. 「続きを見る」リンク", () => {
-    it("末尾に .mypace-more（href=url・target=_blank・rel=noopener noreferrer・文言=more）", async () => {
+  describe("5. relay フィルタ無視ガード（kind/pubkey）", () => {
+    it("別 kind・別 pubkey のイベントは捨て、本人の kind:1 だけ描画する", async () => {
       await setupAndImport(feedMarkup());
       wsInstances.forEach((ws) => ws.fireOpen());
-      wsInstances[0].fireEvent(ev(hexId(31), "body", 100));
+      // 正規: 本人の kind:1。
+      wsInstances[0].fireEvent(ev(hexId(31), "valid own note", 300));
+      // 別 kind（reaction kind:7・本人）→ 捨てる。
+      wsInstances[0].fireEvent({
+        id: hexId(32),
+        kind: 7,
+        pubkey: PUBKEY,
+        content: "reaction should be dropped",
+        created_at: 400,
+      });
+      // 別 pubkey（他人の kind:1）→ 捨てる。
+      wsInstances[0].fireEvent({
+        id: hexId(33),
+        kind: 1,
+        pubkey: "f".repeat(64),
+        content: "someone else should be dropped",
+        created_at: 500,
+      });
       wsInstances.forEach((ws) => ws.fireEose());
       await flush();
 
-      const more = moreLink();
-      expect(more).not.toBeNull();
-      expect(more.tagName).toBe("A");
-      expect(more.getAttribute("href")).toBe(USER_URL);
-      expect(more.getAttribute("target")).toBe("_blank");
-      expect(more.getAttribute("rel")).toBe("noopener noreferrer");
-      expect(more.textContent).toBe(MORE_LABEL);
-      // 末尾要素であること（.mypace-feed の最後の子が .mypace-more）。
-      expect(feedEl().lastElementChild).toBe(more);
+      const n = notes();
+      expect(n.length).toBe(1);
+      expect(n[0].querySelector(".mypace-note-body").textContent).toBe("valid own note");
     });
   });
 
@@ -322,7 +322,6 @@ describe("mypace-feed WebSocket render (jsdom)", () => {
       await flush();
 
       expect(notes().length).toBe(0);
-      expect(moreLink()).toBeNull(); // 0件なら render 早期 return、more も出ない
       // プレースホルダ（.mypace-line）が据え置き。
       expect(lines().length).toBe(3);
     });

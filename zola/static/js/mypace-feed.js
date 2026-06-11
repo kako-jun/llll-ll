@@ -132,9 +132,7 @@ if (typeof module !== "undefined" && module.exports) {
   }
   if (!Array.isArray(relays) || relays.length === 0) return;
 
-  var userUrl = (feed.getAttribute("data-mypace-url") || "").trim();
   var postBase = (feed.getAttribute("data-mypace-post-base") || "").trim();
-  var moreLabel = feed.getAttribute("data-mypace-more") || "";
   var limit = parseInt(feed.getAttribute("data-mypace-limit") || "3", 10);
   if (!isFinite(limit) || limit <= 0) limit = 3;
 
@@ -213,17 +211,6 @@ if (typeof module !== "undefined" && module.exports) {
         frag.appendChild(noteEl);
       }
 
-      // 「mypace で続きを見る」リンク（URL があるときだけ）。
-      if (userUrl && moreLabel) {
-        var more = document.createElement("a");
-        more.className = "mypace-more";
-        more.href = userUrl;
-        more.target = "_blank";
-        more.rel = "noopener noreferrer";
-        more.textContent = moreLabel;
-        frag.appendChild(more);
-      }
-
       // プレースホルダを一掃してから差し込む。
       feed.textContent = "";
       feed.appendChild(frag);
@@ -289,7 +276,12 @@ if (typeof module !== "undefined" && module.exports) {
           var parsed = parseRelayMessage(ev && ev.data, MYPACE_SUB_ID);
           if (!parsed) return;
           if (parsed.type === "EVENT") {
-            events.push(parsed.event);
+            // relay が REQ フィルタを無視した場合の防御: kind:1 かつ本人の pubkey のみ採用
+            // （他人のノートや別 kind の混入を防ぐ）。
+            var pev = parsed.event;
+            if (pev && pev.kind === 1 && pev.pubkey === pubkey) {
+              events.push(pev);
+            }
           } else if (parsed.type === "EOSE") {
             settleOne();
           }

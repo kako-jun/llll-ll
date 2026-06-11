@@ -51,13 +51,12 @@ if (typeof module !== "undefined" && module.exports) {
   if (!root) return;
 
   const searchInput = root.querySelector(".filter-search");
-  const chips = Array.from(root.querySelectorAll(".filter-chip"));
   const cardEls = Array.from(root.querySelectorAll(".card"));
   const noResults = root.querySelector(".no-results");
 
   const allChip = root.querySelector("[data-filter-all]");
   const featuredChip = root.querySelector("[data-filter-featured]");
-  const tagChips = chips.filter((c) => c.hasAttribute("data-filter-tag"));
+  const tagChips = Array.from(root.querySelectorAll(".filter-chip[data-filter-tag]"));
 
   // 各カードを正規化（DOM 1回だけ読む）。
   const cards = cardEls.map((el) => ({

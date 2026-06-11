@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { cardMatches } from "./apps-filter.js";
+import { cardMatches } from "../static/js/apps-filter.js";
 
 // 全カードを「3条件すべて通過」状態から作り、観点ごとに1要素だけ崩す。
 // tags/search/featured は呼び出し側で小文字・trim 済みの前提（関数は正規化しない）。

@@ -472,7 +472,7 @@
           {%- set tag_str = p.tags | join(sep=" ") -%}
           {%- set search_blob = p.title.ja ~ " " ~ p.description.ja ~ " " ~ tag_str -%}
           <article class="card"
-            data-tags="{{ p.tags | join(sep=' ') | lower }}"
+            data-tags="{{ tag_str | lower }}"
             data-search="{{ search_blob | lower }}"
             {% if p.featured %}data-featured="true"{% endif %}>
             <div class="card-head">

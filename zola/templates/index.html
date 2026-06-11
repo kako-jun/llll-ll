@@ -183,6 +183,9 @@
       line-height: 1.55;
     }
     .header-prose p { margin: 0 0 4px; }
+    /* 「はじめに読んで →」＝入口記事 start-here への CTA。緑アクセント＋太字で軽く目立たせる（#10）。 */
+    .read-first { color: var(--border); font-weight: bold; }
+    .read-first:hover { text-decoration: underline; }
 
     /* プレースホルダ枠（mypace のみ・today は日替わり絵に置換済み） */
     .placeholder {
@@ -761,10 +764,11 @@
           <div class="logo">llll-ll</div>
           <div class="tagline">{{ trans(key="tagline", lang=lang) }}</div>
         </div>
-        <!-- タイトルより下に文章で：ウェルカム＋説明 -->
+        <!-- タイトルより下に文章で：ウェルカム＋説明＋「はじめに読んで」(blog 記事 start-here へ＝静的 about を作らず blog へ誘導・#10 kako-jun) -->
         <div class="header-prose">
           <p>{{ trans(key="welcome", lang=lang) }}</p>
           <p>{{ trans(key="intro", lang=lang) }}</p>
+          <p><a class="read-first" href="{{ nav_prefix | safe }}/posts/start-here/">{{ trans(key="read_first", lang=lang) }}</a></p>
         </div>
       </section>
 

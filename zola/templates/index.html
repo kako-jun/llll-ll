@@ -5,6 +5,10 @@
 {% set products = load_data(path="data/products.json") %}
 {# 言語接頭辞: 既定言語(en)はルート直下なので空、ja/zh/es は "/{lang}" を前置する（#5）。 #}
 {% if lang == config.default_language %}{% set nav_prefix = "" %}{% else %}{% set nav_prefix = "/" ~ lang %}{% endif %}
+{# SEO（#11）: ポータル home は website。OG/canonical は _seo.html、JSON-LD は WebSite+Person。 #}
+{% set og_title = config.title %}
+{% set og_desc = config.description %}
+{% set og_url = config.base_url ~ nav_prefix ~ "/" %}
 <html lang="{{ lang }}">
 <head>
   <meta charset="utf-8" />
@@ -12,6 +16,26 @@
   <title>{{ config.title }}</title>
   <meta name="description" content="{{ config.description }}" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  {% include "_seo.html" %}
+  {# blog の Atom フィード自動検出（言語別）。 #}
+  <link rel="alternate" type="application/atom+xml" title="{{ config.title }} blog" href="{{ config.base_url | safe }}{{ nav_prefix | safe }}/posts/atom.xml" />
+  {# 言語間 alternate（home の4 URL）。en を x-default に。 #}
+  <link rel="alternate" hreflang="en" href="{{ config.base_url }}/" />
+  <link rel="alternate" hreflang="ja" href="{{ config.base_url }}/ja/" />
+  <link rel="alternate" hreflang="zh" href="{{ config.base_url }}/zh/" />
+  <link rel="alternate" hreflang="es" href="{{ config.base_url }}/es/" />
+  <link rel="alternate" hreflang="x-default" href="{{ config.base_url }}/" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": {{ config.title | json_encode | safe }},
+    "url": "{{ config.base_url }}/",
+    "description": {{ config.description | json_encode | safe }},
+    "inLanguage": "{{ lang }}",
+    "author": { "@type": "Person", "name": "kako-jun", "url": "https://github.com/kako-jun" }
+  }
+  </script>
   <style>
     :root {
       --bg: {{ config.extra.bg }};

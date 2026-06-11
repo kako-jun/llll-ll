@@ -26,15 +26,17 @@
       {% set og_image = get_url(path=first_img) %}
     {% endif %}
   {% else %}
-    {% set og_image = get_url(path="/ogp.png") %}
+    {% set og_image = config.base_url ~ "/images/footer-bg.webp" %}
   {% endif %}
 {% else %}
   {% set og_title = trans(key="og_not_found", lang=lang) %}
   {% set og_desc = config.description %}
-  {% set og_image = get_url(path="/ogp.png") %}
+  {% set og_image = config.base_url ~ "/images/footer-bg.webp" %}
 {% endif %}
 {# 正規 URL は page.permalink（末尾スラッシュ付き /apps/{id}/ または /{lang}/apps/{id}/）。 #}
 {% set page_url = page.permalink %}
+{# SEO（#11）: OG/canonical/Twitter は _seo.html へ寄せる（og_url を設定）。 #}
+{% set og_url = page_url %}
 
 <html lang="{{ lang }}">
 <head>
@@ -43,17 +45,22 @@
   <title>{{ og_title }} — llll-ll</title>
   <meta name="description" content="{{ og_desc }}" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <!-- per-app OGP -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="{{ og_title }}" />
-  <meta property="og:description" content="{{ og_desc }}" />
-  <meta property="og:image" content="{{ og_image }}" />
-  <meta property="og:url" content="{{ page_url }}" />
-  <meta property="og:site_name" content="llll-ll" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{{ og_title }}" />
-  <meta name="twitter:description" content="{{ og_desc }}" />
-  <meta name="twitter:image" content="{{ og_image }}" />
+  {% include "_seo.html" %}
+  {% if app %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": {{ og_title | json_encode | safe }},
+    "url": "{{ page_url | safe }}",
+    "description": {{ og_desc | json_encode | safe }},
+    "image": "{{ og_image | safe }}",
+    "inLanguage": "{{ lang }}",
+    "applicationCategory": "Game",
+    "author": { "@type": "Person", "name": "kako-jun", "url": "https://github.com/kako-jun" }
+  }
+  </script>
+  {% endif %}
   <style>
     :root {
       --bg: {{ config.extra.bg }};

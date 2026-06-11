@@ -1,0 +1,18 @@
+{# 共通 SEO/OGP/Twitter（#11）。各自己完結テンプレが og_title / og_desc / og_url を set してから
+   <head> 内で include する。任意で og_type（既定 website）・og_image（既定 金沢駅）を set 可能。
+   canonical と完全 OG・Twitter Card を出す。JSON-LD はページ種別ごとに各テンプレが別途出す。 #}
+{%- set _img = og_image | default(value=config.base_url ~ "/images/footer-bg.webp") -%}
+{%- set _type = og_type | default(value="website") -%}
+{%- if lang == "ja" %}{% set _loc = "ja_JP" %}{% elif lang == "zh" %}{% set _loc = "zh_CN" %}{% elif lang == "es" %}{% set _loc = "es_ES" %}{% else %}{% set _loc = "en_US" %}{% endif -%}
+<link rel="canonical" href="{{ og_url | safe }}" />
+<meta property="og:type" content="{{ _type }}" />
+<meta property="og:title" content="{{ og_title }}" />
+<meta property="og:description" content="{{ og_desc }}" />
+<meta property="og:url" content="{{ og_url | safe }}" />
+<meta property="og:site_name" content="{{ config.title }}" />
+<meta property="og:locale" content="{{ _loc }}" />
+<meta property="og:image" content="{{ _img | safe }}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="{{ og_title }}" />
+<meta name="twitter:description" content="{{ og_desc }}" />
+<meta name="twitter:image" content="{{ _img | safe }}" />

@@ -302,6 +302,7 @@
       margin: 0;
       display: -webkit-box;
       -webkit-line-clamp: 3;
+      line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -315,7 +316,7 @@
     .card-links { display: flex; gap: 12px; margin-top: auto; }
 
     /* ── blog パネル（apps 直下・footer 上）── */
-    .panel-blog { padding-bottom: 12px; }
+    .panel-blog, .panel-bbs { padding-bottom: 12px; }
     .blog-placeholder {
       border: 1px dashed var(--border-muted);
       color: var(--text-muted);
@@ -438,7 +439,7 @@
           </div>
         </div>
 
-        <hr class="rule" />
+        <hr class="rule">
 
         <!-- 全件カードグリッド -->
         <div class="cards">

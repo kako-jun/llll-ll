@@ -691,10 +691,16 @@
         <div class="blog-placeholder">{{ trans(key="blog_placeholder", lang=lang) }}</div>
       </section>
 
-      <!-- Nostalgic BBS パネル（blog の下・footer の上） -->
+      <!-- Nostalgic BBS パネル（blog の下・footer の上）— 第三者 Web コンポーネント（案W: 埋め込みに徹する）。
+           id は React 版 BBS・visit と同一値（config の nostalgic_bbs_id）。theme="retro" で btop と同系の黒×緑。
+           lang を渡して UI/エラー文言を表示言語にローカライズ。width="100%" でパネル幅に追従。
+           コンポーネント内部は shadow DOM のため CSS では触れない（retro 固定で OK）。 -->
       <section class="panel panel-bbs" id="bbs">
         <span class="label">bbs</span>
-        <div class="blog-placeholder">{{ trans(key="bbs_placeholder", lang=lang) }}</div>
+        <nostalgic-bbs id="{{ config.extra.nostalgic_bbs_id }}" theme="retro" lang="{{ lang }}" width="100%"></nostalgic-bbs>
+        <!-- PE: JS 無効時はパネルが空にならないよう、i18n プレースホルダ文を残す。
+             JS 有効時は <noscript> の中身がレンダリングされず、コンポーネントが描画する。 -->
+        <noscript><div class="blog-placeholder">{{ trans(key="bbs_placeholder", lang=lang) }}</div></noscript>
       </section>
 
     </div>
@@ -741,5 +747,8 @@
   <!-- 日替わりトップ絵の島（vanilla JS・defer）。読めなくてもサーバ既定（先頭=01）が見えたまま（PE）。 -->
   <script defer src="/js/daily-art.js"></script>
   <script defer src="/js/visits-counter.js"></script>
+  <!-- Nostalgic BBS の Web コンポーネント本体（#8）。React 版 index.html と同経路・async。
+       読めなくても <noscript> のプレースホルダが残る（PE）。 -->
+  <script src="https://nostalgic.llll-ll.com/components/bbs.js" async></script>
 </body>
 </html>

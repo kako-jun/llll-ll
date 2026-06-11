@@ -62,6 +62,16 @@ zola/
 - **PE**: fetch 失敗 / JS 無効なら各スロットは `---` のまま（壊れない）。数値は固定 `,` 3桁区切り（ロケール非依存）。
 - 幅狭（`max-width:560px`）では**四角は横並びのまま**、各カウンタの中身（ラベルと数字）を**一斉に2段**（ラベル↑／数字↓）にする。media query なので全カウンタが同時に切替＝「1つでも改行されたら全部」(all-or-nothing)。箱は縦に積まない。
 
+## サポート BBS（#8）
+
+bbs パネルは **Nostalgic BBS の Web コンポーネント**を埋め込む（案W）。
+
+- `<nostalgic-bbs id="{{ config.extra.nostalgic_bbs_id }}" theme="retro" lang="{{ lang }}" width="100%">`。ID は `[extra] nostalgic_bbs_id`（`llll-ll-f843ad67`・visit と同値）。
+- スクリプト `https://nostalgic.llll-ll.com/components/bbs.js`（async）が custom element を定義する。
+- **テーマ `retro`**（#0d1117 背景＋#00ff41 緑のターミナル調＝btop と同系。コンポーネントは Shadow DOM なので内部色は外から上書き不可・retro 固定）。
+- `lang` で UI/エラー文言をローカライズ（ただし**コンポーネント側の翻訳は現状 ja/en のみ**＝`lang=zh|es` でも BBS 内 UI は英語表示。ホスト側テンプレの文言は4言語）。
+- **PE**: JS 無効時は `<noscript>` の `bbs_placeholder`（i18n・「掲示板の表示には JavaScript が必要」）が残る。
+
 ## デザイン（黒×緑・btop）
 
 - 一番外枠＝緑ボーダー（`#34d058`）の btop ウィンドウ。デスクトップは `100vh` 固定、apps パネルだけ内部スクロール（緑スクロールバー）、footer 固定。

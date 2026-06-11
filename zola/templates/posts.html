@@ -120,11 +120,13 @@
   <div class="desktop">
     <nav class="post-topnav" aria-label="{{ trans(key='nav_aria', lang=lang) }}">
       <a class="brand" href="{{ nav_prefix | safe }}/">llll-ll</a>
-      <a class="back" href="{{ nav_prefix | safe }}/">{{ trans(key="back_to_list", lang=lang) }}</a>
+      <!-- ここは「all posts」一覧そのもの。戻り先はホーム＝「リストへ戻る」ではなく「トップへ」（#10 kako-jun）。 -->
+      <a class="back" href="{{ nav_prefix | safe }}/">{{ trans(key="back_to_top", lang=lang) }}</a>
     </nav>
 
+    <!-- ラベルは「all posts」＝ホームで押したリンク名と一致させる（#10 kako-jun）。 -->
     <section class="panel">
-      <span class="label">blog</span>
+      <span class="label">{{ trans(key="posts_title", lang=lang) }}</span>
       {% if section.pages and section.pages | length > 0 %}
       <div class="archive-list">
         {% for p in section.pages %}

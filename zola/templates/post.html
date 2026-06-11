@@ -204,7 +204,8 @@
   <div class="desktop">
     <nav class="post-topnav" aria-label="{{ trans(key='nav_aria', lang=lang) }}">
       <a class="brand" href="{{ nav_prefix | safe }}/">llll-ll</a>
-      <a class="back" href="{{ nav_prefix | safe }}/posts/">← blog</a>
+      <!-- 戻り先は「all posts」一覧（/posts/）。名前を一覧ラベルと一致させ i18n 化（ハードコード"← blog"を是正・#10 kako-jun）。 -->
+      <a class="back" href="{{ nav_prefix | safe }}/posts/">← {{ trans(key="posts_title", lang=lang) }}</a>
     </nav>
 
     <section class="panel">

@@ -164,6 +164,9 @@ nf_home = "Volver al inicio →"
 # Nostalgic 訪問カウンタ ID（#8 Phase 2）。visits バーの JS 島がこの ID で increment する。
 # 言語非依存なのでグローバル [extra] に置く（各 [languages.*] 配下ではない）。
 nostalgic_visit_id = "llll-ll-f843ad67"
+# Nostalgic BBS ID（#8 Phase 2）。bbs パネルの <nostalgic-bbs> がこの ID で掲示板を出す。
+# React 版 BBS・visit と同一値。言語非依存なのでグローバル [extra] に置く。
+nostalgic_bbs_id = "llll-ll-f843ad67"
 # 黒×緑 palette（DESIGN.md / epic 準拠）
 bg = "#121212"
 panel_bg = "#1e1e1e"

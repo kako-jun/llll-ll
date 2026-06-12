@@ -222,7 +222,8 @@
       object-fit: cover;
       border-radius: 50%;
       border: 1px solid var(--border-muted);
-      z-index: 1;
+      /* prose(z1) の箱（右余白）にクリックを奪われないよう z2（CTA と同列・空間的に重ならない）。 */
+      z-index: 2;
     }
     /* 「はじめに読んで →」＝入口記事 start-here への主要 CTA。panel-cta（右上）の上に、
        緑アクセント＋太字を上書きして他の corner link より目立たせる（#10）。 */
@@ -1062,6 +1063,7 @@
   <script defer src="/js/app-popup.js"></script>
   <!-- 日替わりトップ絵の島（vanilla JS・defer）。読めなくてもサーバ既定（先頭=01）が見えたまま（PE）。 -->
   <script defer src="/js/daily-art.js"></script>
+  <script defer src="/js/keyvisual-lightbox.js"></script>
   <script defer src="/js/visits-counter.js"></script>
   <!-- mypace 最新つぶやきの島（vanilla JS・defer・依存ゼロ）。Nostr relay から取れたら btop 黒×緑で自前描画。
        読めない/失敗/0件なら mypace_placeholder のプレースホルダが見えたまま（PE）。 -->

@@ -207,8 +207,23 @@
       color: var(--text-muted);
       font-size: var(--fs-base);
       line-height: 1.55;
+      /* 右上のキービジュアル（アバター）にテキストが回り込まないよう右に空ける（#14 kako-jun）。 */
+      padding-right: 92px;
     }
     .header-prose p { margin: 0 0 4px; }
+    /* 旧 React トップ画像をキービジュアルとして右上に円形（アバター風）でやや小さく置く（#14 kako-jun）。
+       テトリス背面(z0)より上・CTA(z2)より下の z1。装飾なので非クリック。 */
+    .header-keyvisual {
+      position: absolute;
+      top: 16px;
+      right: 0.9em;
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid var(--border-muted);
+      z-index: 1;
+    }
     /* 「はじめに読んで →」＝入口記事 start-here への主要 CTA。panel-cta（右上）の上に、
        緑アクセント＋太字を上書きして他の corner link より目立たせる（#10）。 */
     .panel-cta.read-first { color: var(--border); font-weight: bold; }
@@ -822,6 +837,9 @@
         <!-- 「はじめに読んで →」＝入口記事 start-here への導線。prose の1行を食わないよう、blog/mypace と同じ
              panel-cta 形式で header パネル右上（border 上）へ（#10 kako-jun）。静的 about を作らず blog へ誘導。 -->
         <a class="panel-cta read-first" href="{{ nav_prefix | safe }}/posts/start-here/">{{ trans(key="read_first", lang=lang) }}</a>
+        <!-- キービジュアル（旧 React トップ画像・#14 kako-jun）: 右上「Read this」直下の空き空間へ。
+             テトリス背面(z0)より上(z1)・CTA(z2)より下。装飾なので非クリック。 -->
+        <img class="header-keyvisual" src="/images/top-image.webp" alt="{{ trans(key='welcome', lang=lang) }}" loading="lazy" />
         <!-- テトリスは header パネル（上半分）全体の背面を覆う -->
         <div class="tetris-bg"></div>
         <div class="logo-band">

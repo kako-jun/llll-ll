@@ -4,14 +4,18 @@ import { describe, it, expect } from "vitest";
 import products from "../data/products.json";
 
 // products.json は4言語サイト（en/ja/zh/es）のデータ正本。
-// テンプレ（index.html / app.html）は表示言語のキーが欠けると en にフォールバックするため、
-// 最低でも全エントリが title/description の **en を非空で持つ**ことがビルド成立の前提。
-// （en 欠落 → 全言語ビルドが落ちる。zh/es 欠落 → その言語で en が出る＝多言語の意味が消える。）
-// ここで4言語完備を機械的に保証し、データ追加時の取りこぼしを test 時点で大きな声で落とす。
+// #14 で日本語(ja)を master にした。en/zh/es の title/description は省略可で、
+// テンプレ（index.html / app.html）は表示言語のキーが欠けると **ja にフォールバック**する。
+// draft:true のエントリは「公開予定だが未完成」の記録で、説明文を持たず描画もされない（grid/詳細ページ対象外）。
+//
+// 契約:
+//   - 全エントリが非空の文字列 id を持ち、id は一意。
+//   - 公開エントリ（!draft）は **title.ja / description.ja を非空**で必ず持つ
+//     （master が欠けると、その言語にフォールバックする先が無く表示が空になる）。
 
-const LANGS = ["en", "ja", "zh", "es"];
+const released = products.filter((p) => !p.draft);
 
-describe("products.json i18n completeness", () => {
+describe("products.json", () => {
   it("配列で1件以上ある", () => {
     expect(Array.isArray(products)).toBe(true);
     expect(products.length).toBeGreaterThan(0);
@@ -22,25 +26,30 @@ describe("products.json i18n completeness", () => {
     expect(bad.map((p) => JSON.stringify(p))).toEqual([]);
   });
 
+  it("id は重複しない", () => {
+    const ids = products.map((p) => p.id);
+    const dup = ids.filter((id, i) => ids.indexOf(id) !== i);
+    expect([...new Set(dup)]).toEqual([]);
+  });
+
+  it("公開エントリ（!draft）が1件以上ある", () => {
+    expect(released.length).toBeGreaterThan(0);
+  });
+
+  // ja マスター: 公開エントリは title.ja / description.ja を非空で持つ。
   for (const field of ["title", "description"]) {
-    describe(field, () => {
-      for (const lang of LANGS) {
-        it(`全エントリが ${field}.${lang} を非空文字列で持つ`, () => {
-          const missing = products
-            .filter(
-              (p) =>
-                !(
-                  p[field] &&
-                  typeof p[field][lang] === "string" &&
-                  p[field][lang].trim()
-                )
+    it(`公開エントリは全件 ${field}.ja を非空文字列で持つ`, () => {
+      const missing = released
+        .filter(
+          (p) =>
+            !(
+              p[field] &&
+              typeof p[field].ja === "string" &&
+              p[field].ja.trim()
             )
-            .map((p) => p.id);
-          expect(missing, `欠落 (${field}.${lang}): ${missing.join(", ")}`).toEqual(
-            []
-          );
-        });
-      }
+        )
+        .map((p) => p.id);
+      expect(missing, `欠落 (${field}.ja): ${missing.join(", ")}`).toEqual([]);
     });
   }
 });

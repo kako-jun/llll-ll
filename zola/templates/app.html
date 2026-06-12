@@ -15,8 +15,8 @@
 
 {# OGP 用の素材を組み立てる。表示言語の title/description（欠けたら en）を使い、~160字で truncate、画像は絶対URL化。 #}
 {% if app %}
-  {% set og_title = app.title[lang] | default(value=app.title.en) %}
-  {% set app_desc = app.description[lang] | default(value=app.description.en) %}
+  {% set og_title = app.title[lang] | default(value=app.title.ja) %}
+  {% set app_desc = app.description[lang] | default(value=app.description.ja) %}
   {% set og_desc = app_desc | striptags | truncate(length=160) %}
   {% if app.images and app.images | length > 0 %}
     {% set first_img = app.images.0 %}
@@ -161,7 +161,7 @@
       font-size: 1.2rem;
       line-height: 1.35;
     }
-    .app-detail .featured { color: var(--border); margin-left: 0.3em; }
+    .app-detail .app-tag.app-tag-featured { border-color: var(--border); color: var(--border); }
     .app-detail .app-desc {
       margin: 0;
       color: var(--text);
@@ -210,7 +210,7 @@
           </div>
           {% endif %}
 
-          <h1>{{ og_title }}{% if app.featured %}<span class="featured">★</span>{% endif %}</h1>
+          <h1>{{ og_title }}</h1>
 
           {% if app_desc %}
           <p class="app-desc">{{ app_desc }}</p>
@@ -218,6 +218,7 @@
 
           {% if app.tags and app.tags | length > 0 %}
           <div class="app-tags">
+            {% if app.featured %}<span class="app-tag app-tag-featured">Featured</span>{% endif %}
             {% for t in app.tags %}<span class="app-tag">{{ t }}</span>{% endfor %}
           </div>
           {% endif %}

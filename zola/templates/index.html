@@ -530,7 +530,8 @@
     .card-title-link { color: var(--border); }
     .card-title-link:hover { text-decoration: underline; }
     .card-thumb-link { display: inline-flex; flex-shrink: 0; }
-    .card-featured { color: var(--border); margin-left: 4px; }
+    /* Featured は名前の★でなく「特別なタグ」として表示（#14 kako-jun）。緑（--border）で色をややつけて他タグより目立たせる。 */
+    .card-tag.card-tag-featured { border-color: var(--border); color: var(--border); }
     .card-desc {
       color: var(--text-muted);
       margin: 0;
@@ -547,7 +548,8 @@
       color: var(--text-muted);
       padding: 1px 6px;
     }
-    .card-links { display: flex; justify-content: flex-end; gap: 12px; margin-top: auto; }
+    /* リンクは左揃え（カードの title/desc/tags も詳細ページ/ポップアップの app-links も左。右寄せだけ浮くので統一・#14 kako-jun）。 */
+    .card-links { display: flex; justify-content: flex-start; gap: 12px; margin-top: auto; }
 
     /* ── blog パネル（apps 直下・footer 上）── */
     .panel-blog, .panel-bbs { padding-bottom: 12px; }
@@ -705,7 +707,7 @@
       border: 1px solid var(--border-muted); background: var(--bg);
     }
     .modal-body .app-detail h1 { margin: 0; color: var(--border); font-size: 1.15rem; line-height: 1.35; }
-    .modal-body .app-detail .featured { color: var(--border); margin-left: 0.3em; }
+    .modal-body .app-detail .app-tag.app-tag-featured { border-color: var(--border); color: var(--border); }
     .modal-body .app-detail .app-desc { margin: 0; color: var(--text); white-space: pre-wrap; line-height: 1.7; font-size: var(--fs-base); }
     .modal-body .app-detail .app-tags { display: flex; flex-wrap: wrap; gap: 5px; }
     .modal-body .app-detail .app-tag {
@@ -906,7 +908,7 @@
         <!-- フィルタの四角: 全タグの distinct 集合をチップ化（vanilla JS で AND 絞り込み）。
              JS を切っても input は素の入力欄・チップは無反応で、全カードが見えたまま（PE）。 -->
         {% set_global all_tags = [] %}
-        {% for p in products %}{% for t in p.tags %}{% if t not in all_tags %}{% set_global all_tags = all_tags | concat(with=t) %}{% endif %}{% endfor %}{% endfor %}
+        {% for p in products %}{% if not p.draft %}{% for t in p.tags %}{% if t not in all_tags %}{% set_global all_tags = all_tags | concat(with=t) %}{% endif %}{% endfor %}{% endif %}{% endfor %}
         {% set all_tags = all_tags | sort %}
         <div class="filter-bar">
           <input type="search" class="filter-search" placeholder="{{ trans(key='filter_placeholder', lang=lang) }}" aria-label="{{ trans(key='filter_search_aria', lang=lang) }}" />
@@ -922,10 +924,11 @@
         <!-- 全件カードグリッド: 全件を描画済みにし、JS は非該当を hidden にする一方向のみ。 -->
         <div class="cards">
           {% for p in products %}
+          {%- if not p.draft -%}
           {%- set tag_str = p.tags | join(sep=" ") -%}
-          {# 表示言語のタイトル/説明を引く。欠けていれば en にフォールバック。 #}
-          {%- set p_title = p.title[lang] | default(value=p.title.en) -%}
-          {%- set p_desc = p.description[lang] | default(value=p.description.en) -%}
+          {# 表示言語のタイトル/説明を引く。ja をマスターとし、欠けていれば ja にフォールバック（#14: en/zh/es は意訳が乗るまで空＝ja を見せる）。 #}
+          {%- set p_title = p.title[lang] | default(value=p.title.ja) -%}
+          {%- set p_desc = p.description[lang] | default(value=p.description.ja) -%}
           {# data-search 用 blob は表示言語の title+description+tags（フィルタ検索が表示言語で効く）。 #}
           {%- set search_blob = p_title ~ " " ~ p_desc ~ " " ~ tag_str -%}
           <article class="card"
@@ -940,14 +943,15 @@
               {% endif %}
               <div class="card-title">
                 {# 詳細リンク: JS ありはポップアップを開き接頭辞付き /apps/{id}/ に pushState、JS 無し/直リンクは素の遷移（PE）。 #}
-                <a class="card-title-link" href="{{ nav_prefix | safe }}/apps/{{ p.id }}/">{{ p_title }}</a>{% if p.featured %}<span class="card-featured">★</span>{% endif %}
+                <a class="card-title-link" href="{{ nav_prefix | safe }}/apps/{{ p.id }}/">{{ p_title }}</a>
               </div>
             </div>
             {% if p_desc %}
             <p class="card-desc">{{ p_desc }}</p>
             {% endif %}
-            {% if p.tags %}
+            {% if p.featured or p.tags %}
             <div class="card-tags">
+              {% if p.featured %}<span class="card-tag card-tag-featured">Featured</span>{% endif %}
               {% for t in p.tags %}<span class="card-tag">{{ t }}</span>{% endfor %}
             </div>
             {% endif %}
@@ -956,6 +960,7 @@
               {% if p.repositoryUrl %}<a href="{{ p.repositoryUrl | safe }}" target="_blank" rel="noopener noreferrer">repo</a>{% endif %}
             </div>
           </article>
+          {%- endif -%}
           {% endfor %}
         </div>
         <!-- 0件メッセージ: 既定 hidden。JS が表示件数 0 のとき表示する。 -->

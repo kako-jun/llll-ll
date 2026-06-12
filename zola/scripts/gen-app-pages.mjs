@@ -80,7 +80,7 @@ export function fileName(slug, lang) {
 export function computeWantedFiles(products) {
   const wanted = new Set();
   for (const app of products) {
-    if (!app || !app.id) continue;
+    if (!app || !app.id || app.draft) continue; // draft は詳細ページを作らない（#14）＝wanted にも入れない＝掃除対象
     const slug = fileSlug(app.id);
     for (const lang of [DEFAULT_LANG, ...EXTRA_LANGS]) {
       wanted.add(fileName(slug, lang));
@@ -111,7 +111,7 @@ function main() {
   const wanted = computeWantedFiles(products);
   let count = 0;
   for (const app of products) {
-    if (!app || !app.id) continue;
+    if (!app || !app.id || app.draft) continue; // draft は詳細ページを作らない（#14）
     const slug = fileSlug(app.id);
     for (const lang of [DEFAULT_LANG, ...EXTRA_LANGS]) {
       writeFileSync(join(appsDir, fileName(slug, lang)), renderPage(app, lang));

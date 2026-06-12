@@ -1,5 +1,5 @@
 +++
-title = "chunkundo.nvim: Neovimのundoを賢くチャンク化"
+title = "chunkundo.nvim: NeovimのIME入力のundoを賢くチャンク化"
 path = "ja/apps/chunkundo"
 template = "app.html"
 

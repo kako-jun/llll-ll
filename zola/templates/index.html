@@ -453,6 +453,8 @@
       mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4 4 12 12 M12 4 4 12" stroke="black" stroke-width="2" stroke-linecap="round" fill="none"/></svg>') center / contain no-repeat;
     }
     .filter-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    /* フィルタ結果の件数（#14）。控えめなミュート色で右寄せ。 */
+    .result-count { font-size: var(--fs-sm); color: var(--text-muted); text-align: right; margin: 6px 0 0; }
     /* button のデフォルト（背景・枠・フォント・余白）を打ち消し、既存チップの見た目に揃える */
     .filter-chip {
       appearance: none;
@@ -469,6 +471,8 @@
       cursor: pointer;
     }
     .filter-chip:hover { border-color: var(--border); }
+    /* Featured フィルタチップはカードの Featured タグと同じく緑で統一（★なし・#14 kako-jun）。active 時は下の .active が後勝ちで緑背景になる。 */
+    .filter-chip[data-filter-featured] { border-color: var(--border); color: var(--border); }
     /* アクティブ（押下中）チップ: 緑背景に黒文字で btop 風に「押されている」を表す */
     .filter-chip.active,
     .filter-chip[aria-pressed="true"] {
@@ -513,6 +517,10 @@
        詳細度タイ＋後勝ちで打ち消すため、.card[hidden]（詳細度 0,2,0）で明示的に上書きする。 */
     .card[hidden] { display: none; }
     .card:hover { border-color: var(--border); }
+    /* カードは全体クリックでポップアップ（#14 kako-jun）＝ポインタ。タグもクリックでフィルタなのでポインタ＋ホバー緑。 */
+    .card { cursor: pointer; }
+    .card-tag { cursor: pointer; }
+    .card-tag:hover { border-color: var(--border); color: var(--border); }
     .card-head { display: flex; align-items: flex-start; gap: 8px; }
     .card-thumb {
       width: 48px; height: 48px;
@@ -529,8 +537,11 @@
     /* 詳細リンク: link 色でなくカードタイトルの緑を継ぐ（ホバーで下線）。 */
     .card-title-link { color: var(--border); }
     .card-title-link:hover { text-decoration: underline; }
+    /* タイトルは「名前: タグライン」。: 以降のタグラインを normal＋薄め緑にして名前（前半）を目立たせる（#14 kako-jun）。 */
+    .card-title-link .title-tagline { font-weight: normal; opacity: 0.6; }
     .card-thumb-link { display: inline-flex; flex-shrink: 0; }
-    .card-featured { color: var(--border); margin-left: 4px; }
+    /* Featured は名前の★でなく「特別なタグ」として表示（#14 kako-jun）。緑（--border）で色をややつけて他タグより目立たせる。 */
+    .card-tag.card-tag-featured { border-color: var(--border); color: var(--border); }
     .card-desc {
       color: var(--text-muted);
       margin: 0;
@@ -547,7 +558,8 @@
       color: var(--text-muted);
       padding: 1px 6px;
     }
-    .card-links { display: flex; justify-content: flex-end; gap: 12px; margin-top: auto; }
+    /* リンクは左揃え（カードの title/desc/tags も詳細ページ/ポップアップの app-links も左。右寄せだけ浮くので統一・#14 kako-jun）。 */
+    .card-links { display: flex; justify-content: flex-start; gap: 12px; margin-top: auto; }
 
     /* ── blog パネル（apps 直下・footer 上）── */
     .panel-blog, .panel-bbs { padding-bottom: 12px; }
@@ -705,7 +717,8 @@
       border: 1px solid var(--border-muted); background: var(--bg);
     }
     .modal-body .app-detail h1 { margin: 0; color: var(--border); font-size: 1.15rem; line-height: 1.35; }
-    .modal-body .app-detail .featured { color: var(--border); margin-left: 0.3em; }
+    .modal-body .app-detail h1 .title-tagline { font-weight: normal; opacity: 0.6; }
+    .modal-body .app-detail .app-tag.app-tag-featured { border-color: var(--border); color: var(--border); }
     .modal-body .app-detail .app-desc { margin: 0; color: var(--text); white-space: pre-wrap; line-height: 1.7; font-size: var(--fs-base); }
     .modal-body .app-detail .app-tags { display: flex; flex-wrap: wrap; gap: 5px; }
     .modal-body .app-detail .app-tag {
@@ -906,7 +919,7 @@
         <!-- フィルタの四角: 全タグの distinct 集合をチップ化（vanilla JS で AND 絞り込み）。
              JS を切っても input は素の入力欄・チップは無反応で、全カードが見えたまま（PE）。 -->
         {% set_global all_tags = [] %}
-        {% for p in products %}{% for t in p.tags %}{% if t not in all_tags %}{% set_global all_tags = all_tags | concat(with=t) %}{% endif %}{% endfor %}{% endfor %}
+        {% for p in products %}{% if not p.draft %}{% for t in p.tags %}{% if t not in all_tags %}{% set_global all_tags = all_tags | concat(with=t) %}{% endif %}{% endfor %}{% endif %}{% endfor %}
         {% set all_tags = all_tags | sort %}
         <div class="filter-bar">
           <input type="search" class="filter-search" placeholder="{{ trans(key='filter_placeholder', lang=lang) }}" aria-label="{{ trans(key='filter_search_aria', lang=lang) }}" />
@@ -916,16 +929,20 @@
             {% for t in all_tags %}<button type="button" class="filter-chip" data-filter-tag="{{ t }}" aria-pressed="false">{{ t }}</button>{% endfor %}
           </div>
         </div>
+        <!-- フィルタ結果の件数（#14 kako-jun）。JS が apply() で「該当 / 総数」に更新。JS 無しは全件なので総数を初期表示。 -->
+        {% set_global rcount = 0 %}{% for p in products %}{% if not p.draft %}{% set_global rcount = rcount + 1 %}{% endif %}{% endfor %}
+        <div class="result-count" data-result-count>{{ rcount }} / {{ rcount }}</div>
 
         <hr class="rule">
 
         <!-- 全件カードグリッド: 全件を描画済みにし、JS は非該当を hidden にする一方向のみ。 -->
         <div class="cards">
           {% for p in products %}
+          {%- if not p.draft -%}
           {%- set tag_str = p.tags | join(sep=" ") -%}
-          {# 表示言語のタイトル/説明を引く。欠けていれば en にフォールバック。 #}
-          {%- set p_title = p.title[lang] | default(value=p.title.en) -%}
-          {%- set p_desc = p.description[lang] | default(value=p.description.en) -%}
+          {# 表示言語のタイトル/説明を引く。ja をマスターとし、欠けていれば ja にフォールバック（#14: en/zh/es は意訳が乗るまで空＝ja を見せる）。 #}
+          {%- set p_title = p.title[lang] | default(value=p.title.ja) -%}
+          {%- set p_desc = p.description[lang] | default(value=p.description.ja) -%}
           {# data-search 用 blob は表示言語の title+description+tags（フィルタ検索が表示言語で効く）。 #}
           {%- set search_blob = p_title ~ " " ~ p_desc ~ " " ~ tag_str -%}
           <article class="card"
@@ -933,29 +950,31 @@
             data-search="{{ search_blob | lower }}"
             {% if p.featured %}data-featured="true"{% endif %}>
             <div class="card-head">
-              {% if p.images and p.images | length > 0 %}
+              {% if p.icon %}
               <a class="card-thumb-link" href="{{ nav_prefix | safe }}/apps/{{ p.id }}/" tabindex="-1" aria-hidden="true">
-                <img class="card-thumb" src="{{ p.images.0 | safe }}" alt="" loading="lazy" />
+                <img class="card-thumb" src="{{ p.icon | safe }}" alt="" loading="lazy" />
               </a>
               {% endif %}
               <div class="card-title">
                 {# 詳細リンク: JS ありはポップアップを開き接頭辞付き /apps/{id}/ に pushState、JS 無し/直リンクは素の遷移（PE）。 #}
-                <a class="card-title-link" href="{{ nav_prefix | safe }}/apps/{{ p.id }}/">{{ p_title }}</a>{% if p.featured %}<span class="card-featured">★</span>{% endif %}
+                <a class="card-title-link" href="{{ nav_prefix | safe }}/apps/{{ p.id }}/">{%- set tp = p_title | split(pat=":") -%}<span class="title-name">{{ tp.0 }}</span>{%- if tp | length > 1 -%}<span class="title-tagline">:{{ tp | slice(start=1) | join(sep=":") }}</span>{%- endif -%}</a>
               </div>
             </div>
             {% if p_desc %}
             <p class="card-desc">{{ p_desc }}</p>
             {% endif %}
-            {% if p.tags %}
+            {% if p.featured or p.tags %}
             <div class="card-tags">
-              {% for t in p.tags %}<span class="card-tag">{{ t }}</span>{% endfor %}
+              {% if p.featured %}<span class="card-tag card-tag-featured" data-card-featured>{{ trans(key="filter_featured", lang=lang) }}</span>{% endif %}
+              {% for t in p.tags %}<span class="card-tag" data-card-tag="{{ t }}">{{ t }}</span>{% endfor %}
             </div>
             {% endif %}
             <div class="card-links">
-              {% if p.demoUrl %}<a href="{{ p.demoUrl | safe }}" target="_blank" rel="noopener noreferrer">demo</a>{% endif %}
+              {% if p.demoUrl %}<a href="{{ p.demoUrl | safe }}" target="_blank" rel="noopener noreferrer">open</a>{% endif %}
               {% if p.repositoryUrl %}<a href="{{ p.repositoryUrl | safe }}" target="_blank" rel="noopener noreferrer">repo</a>{% endif %}
             </div>
           </article>
+          {%- endif -%}
           {% endfor %}
         </div>
         <!-- 0件メッセージ: 既定 hidden。JS が表示件数 0 のとき表示する。 -->

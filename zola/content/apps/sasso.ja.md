@@ -1,5 +1,5 @@
 +++
-title = "Sasso: 電卓×パズル。数字を消す新感覚ゲーム"
+title = "Sasso: Mensa会員のための電卓パズルゲーム"
 path = "ja/apps/sasso"
 template = "app.html"
 

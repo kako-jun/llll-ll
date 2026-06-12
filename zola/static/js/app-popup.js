@@ -187,15 +187,27 @@ if (typeof module !== "undefined" && module.exports) {
   document.addEventListener("click", (e) => {
     // 修飾キー・中クリックは素の挙動（新規タブ等）に任せる。
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    // カード内のタグは apps-filter.js がフィルタとして処理する。ここでは何もしない（#14 kako-jun）。
+    if (e.target.closest("[data-card-tag], [data-card-featured]")) return;
     const link = e.target.closest("a[href]");
-    if (!link) return;
-    // モーダル内のリンク（外部 demo/repo 等）は対象外。
-    if (overlay.contains(link)) return;
-    const path = new URL(link.href, window.location.origin).pathname;
-    const normalized = appHrefFromPath(path);
+    if (link) {
+      // モーダル内のリンク（外部 demo/repo 等）は対象外。
+      if (overlay.contains(link)) return;
+      const normalized = appHrefFromPath(new URL(link.href, window.location.origin).pathname);
+      if (!normalized) return; // 外部リンク（demo/repo 等）は素の遷移に任せる。
+      e.preventDefault();
+      // 正規化した接頭辞込み href を使う（getAttribute の生値だと相対表記の揺れがありうるため）。
+      openPopup(normalized, { pushHistory: true });
+      return;
+    }
+    // 青リンク・タグ以外をカード内でクリック → そのカードのポップアップを開く（#14 kako-jun）。
+    const card = e.target.closest(".card");
+    if (!card || overlay.contains(card)) return;
+    const titleLink = card.querySelector(".card-title-link[href]");
+    if (!titleLink) return;
+    const normalized = appHrefFromPath(new URL(titleLink.href, window.location.origin).pathname);
     if (!normalized) return;
     e.preventDefault();
-    // 正規化した接頭辞込み href を使う（getAttribute の生値だと相対表記の揺れがありうるため）。
     openPopup(normalized, { pushHistory: true });
   });
 

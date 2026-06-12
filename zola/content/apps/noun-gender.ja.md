@@ -1,5 +1,5 @@
 +++
-title = "Noun Gender: 8言語の名詞の性を学ぶ"
+title = "Noun Gender: 8言語の名詞の性をクイズで学ぶ"
 path = "ja/apps/noun-gender"
 template = "app.html"
 

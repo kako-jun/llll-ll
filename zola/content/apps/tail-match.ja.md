@@ -1,5 +1,5 @@
 +++
-title = "ているまっち！: 石川県の保護猫・保護犬マッチングサイト"
+title = "ているまっち！: 全国の保護猫・犬を里親とつなぐ"
 path = "ja/apps/tail-match"
 template = "app.html"
 

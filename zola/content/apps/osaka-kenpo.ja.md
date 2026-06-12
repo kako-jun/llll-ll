@@ -1,5 +1,5 @@
 +++
-title = "おおさかけんぽう: 難解な法律を、親しみやすい大阪弁で。"
+title = "おおさかけんぽう: 難解な法律も大阪弁なら簡単に感じるかの実験場"
 path = "ja/apps/osaka-kenpo"
 template = "app.html"
 

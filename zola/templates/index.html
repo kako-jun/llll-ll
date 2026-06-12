@@ -453,6 +453,8 @@
       mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4 4 12 12 M12 4 4 12" stroke="black" stroke-width="2" stroke-linecap="round" fill="none"/></svg>') center / contain no-repeat;
     }
     .filter-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    /* フィルタ結果の件数（#14）。控えめなミュート色で右寄せ。 */
+    .result-count { font-size: var(--fs-sm); color: var(--text-muted); text-align: right; margin: 6px 0 0; }
     /* button のデフォルト（背景・枠・フォント・余白）を打ち消し、既存チップの見た目に揃える */
     .filter-chip {
       appearance: none;
@@ -927,6 +929,9 @@
             {% for t in all_tags %}<button type="button" class="filter-chip" data-filter-tag="{{ t }}" aria-pressed="false">{{ t }}</button>{% endfor %}
           </div>
         </div>
+        <!-- フィルタ結果の件数（#14 kako-jun）。JS が apply() で「該当 / 総数」に更新。JS 無しは全件なので総数を初期表示。 -->
+        {% set_global rcount = 0 %}{% for p in products %}{% if not p.draft %}{% set_global rcount = rcount + 1 %}{% endif %}{% endfor %}
+        <div class="result-count" data-result-count>{{ rcount }} / {{ rcount }}</div>
 
         <hr class="rule">
 

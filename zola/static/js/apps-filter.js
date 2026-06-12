@@ -53,6 +53,7 @@ if (typeof module !== "undefined" && module.exports) {
   const searchInput = root.querySelector(".filter-search");
   const cardEls = Array.from(root.querySelectorAll(".card"));
   const noResults = root.querySelector(".no-results");
+  const countEl = root.querySelector("[data-result-count]");
 
   const allChip = root.querySelector("[data-filter-all]");
   const featuredChip = root.querySelector("[data-filter-featured]");
@@ -93,6 +94,7 @@ if (typeof module !== "undefined" && module.exports) {
       if (match) shown++;
     }
     if (noResults) noResults.hidden = shown !== 0;
+    if (countEl) countEl.textContent = shown + " / " + cards.length;
   }
 
   function clearAll() {

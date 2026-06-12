@@ -1,7 +1,0 @@
-export { default as ArrowIcon } from "./ArrowIcon";
-export { default as ScrollToTop } from "./ScrollToTop";
-export { default as ImageDisplay } from "./ImageDisplay";
-export { default as IntroSection } from "./IntroSection";
-export { default as VisitorCounter } from "./VisitorCounter";
-export { default as PopupTriangle } from "./PopupTriangle";
-export { default as AboutPopup } from "./AboutPopup";

@@ -3,7 +3,7 @@
     "id": "machigai-salad",
     "title": {
       "en": "Machigai Salad: Spot-the-Difference Comparison Tool",
-      "ja": "間違いサラダ: 2枚並べてフリックで見比べる間違い探しツール",
+      "ja": "間違いサラダ: 2枚を並べてロングタップで見比べる間違い探し",
       "zh": "Machigai Salad: 找不同图片对比工具",
       "es": "Machigai Salad: Herramienta de Comparación para Encontrar Diferencias"
     },
@@ -23,12 +23,12 @@
     "id": "tail-match",
     "title": {
       "en": "tail-match: Shelter Cat & Dog Matching for Ishikawa",
-      "ja": "ているまっち！: 石川県の保護猫・保護犬マッチングサイト",
+      "ja": "ているまっち！: 全国の保護猫・犬を里親とつなぐ",
       "zh": "tail-match: 石川县保护猫犬领养匹配网站",
       "es": "tail-match: Emparejamiento de Gatos y Perros de Refugio en Ishikawa"
     },
     "description": {
-      "ja": "全国の自治体が保護している犬・猫の情報を集約し、新しい家族とのマッチングを支援するサイト。緊急度別のギャラリーと毎日の自動スクレイピングで、石川県を起点に全国へ広げている。"
+      "ja": "全国の自治体が保護している猫・犬の情報を集約し、新しい家族とのマッチングを支援するサイト。緊急度別のギャラリーと毎日の自動スクレイピングで、石川県を起点に全国へ広げている。"
     },
     "tags": ["Free", "OSS", "Web"],
     "images": [],
@@ -43,7 +43,7 @@
     "id": "ear-sky",
     "title": {
       "en": "Ear in the Sky Diamond: Cross-Lingual Soramimi Sharing",
-      "ja": "イヤスカ: 空耳をみんなで投稿・再生するサイト",
+      "ja": "イヤスカ: YouTubeの動画を指定して空耳アワーを再現・共有",
       "zh": "Ear in the Sky Diamond: 跨语言空耳投稿分享网站",
       "es": "Ear in the Sky Diamond: Comparte Soramimi Entre Idiomas"
     },
@@ -63,7 +63,7 @@
     "id": "hacker-noroshi",
     "title": {
       "en": "Hacker Noroshi: A Japan-Focused Hacker News Clone",
-      "ja": "ハッカーのろし: 日本版Hacker Newsクローン",
+      "ja": "ハッカーのろし: 日本特化のHacker Newsクローン",
       "zh": "Hacker Noroshi: 日本版Hacker News克隆",
       "es": "Hacker Noroshi: Un Clon de Hacker News Enfocado en Japón"
     },
@@ -83,7 +83,7 @@
     "id": "gitpp",
     "title": {
       "en": "gitpp: Manage Multiple Git Repositories in Parallel",
-      "ja": "gitpp: 複数のGitリポジトリを一括管理するCLI",
+      "ja": "gitpp: 複数のGitリポジトリを1つの設定で一括操作",
       "zh": "gitpp: 并行批量管理多个Git仓库的CLI",
       "es": "gitpp: Gestiona Múltiples Repositorios Git en Paralelo"
     },
@@ -102,7 +102,7 @@
     "id": "chillout.nvim",
     "title": {
       "en": "chillout.nvim: Debounce, Throttle, and Batch for Neovim",
-      "ja": "chillout.nvim: Neovim向けのdebounce/throttle/batchライブラリ",
+      "ja": "chillout.nvim: Neovimの間引き処理ライブラリ",
       "zh": "chillout.nvim: 为Neovim提供debounce/throttle/batch的库",
       "es": "chillout.nvim: Debounce, Throttle y Batch para Neovim"
     },
@@ -141,7 +141,7 @@
     "id": "sasso",
     "title": {
       "en": "Sasso: Calculator Meets Puzzle - Eliminate Digits",
-      "ja": "Sasso: 電卓×パズル。数字を消す新感覚ゲーム",
+      "ja": "Sasso: Mensa会員のための電卓パズルゲーム",
       "zh": "Sasso: 计算器遇上益智游戏。消除数字",
       "es": "Sasso: Calculadora y puzzle - Elimina dígitos"
     },
@@ -161,7 +161,7 @@
     "id": "osaka-kenpo",
     "title": {
       "en": "Osaka Kenpo: Legal Texts in Friendly Osaka Dialect",
-      "ja": "おおさかけんぽう: 難解な法律を、親しみやすい大阪弁で。",
+      "ja": "おおさかけんぽう: 難解な法律も大阪弁なら簡単に感じるかの実験場",
       "zh": "大阪宪法: 用亲切的大阪方言解读法律",
       "es": "Osaka Kenpo: Textos Legales en Dialecto de Osaka Amigable"
     },
@@ -181,7 +181,7 @@
     "id": "noun-gender",
     "title": {
       "en": "Noun Gender: Learn Grammatical Gender in 8 Languages",
-      "ja": "Noun Gender: 8言語の名詞の性を学ぶ",
+      "ja": "Noun Gender: 8言語の名詞の性をクイズで学ぶ",
       "zh": "Noun Gender: 学习8种语言的名词性别",
       "es": "Noun Gender: Aprende el Género Gramatical en 8 Idiomas"
     },
@@ -201,7 +201,7 @@
     "id": "nostalgic",
     "title": {
       "en": "Nostalgic: Revive 1990s Internet with 5 Retro Web Features",
-      "ja": "Nostalgic: 5つのレトロ機能で1990年代のインターネットを現代に",
+      "ja": "Nostalgic: 90年代ネット文化を再現する5つの部品",
       "zh": "Nostalgic: 用5个复古功能复活1990年代互联网",
       "es": "Nostalgic: Revive el Internet de los 90 con 5 Funciones Web Retro"
     },
@@ -221,7 +221,7 @@
     "id": "chunkundo",
     "title": {
       "en": "chunkundo.nvim: Smart Undo Chunking for Neovim",
-      "ja": "chunkundo.nvim: Neovimのundoを賢くチャンク化",
+      "ja": "chunkundo.nvim: NeovimのIME入力のundoを賢くチャンク化",
       "zh": "chunkundo.nvim: Neovim智能撤销分块",
       "es": "chunkundo.nvim: Fragmentación inteligente de deshacer para Neovim"
     },
@@ -234,13 +234,13 @@
     "createdAt": "2025-01-12",
     "updatedAt": "2025-01-12",
     "featured": false,
-    "icon": "/images/cli.webp"
+    "icon": "/images/lib.webp"
   },
   {
     "id": "riscfetch",
     "title": {
       "en": "riscfetch: RISC-V Only. Exits on Other Architectures.",
-      "ja": "riscfetch: RISC-V専用。他のアーキテクチャでは動かない。",
+      "ja": "riscfetch: RISC-V専用のfetch。他のアーキテクチャでは動かない。",
       "zh": "riscfetch: 仅限RISC-V。其他架构上会退出。",
       "es": "riscfetch: Solo RISC-V. Sale en Otras Arquitecturas."
     },
@@ -259,7 +259,7 @@
     "id": "agasteer",
     "title": {
       "en": "Agasteer: The Simplest Markdown App That Never Conflicts",
-      "ja": "Agasteer: コンフリクトしない最もシンプルなMarkdownノートアプリ",
+      "ja": "Agasteer: アイデア駆動開発と日常メモのMarkdownエディタ",
       "zh": "Agasteer: 永不冲突的最简Markdown笔记应用",
       "es": "Agasteer: La aplicación Markdown más simple que nunca tiene conflictos"
     },
@@ -279,7 +279,7 @@
     "id": "3min",
     "title": {
       "en": "3 min. Calendar: Create Your Business Calendar in 3 Minutes",
-      "ja": "3 min. Calendar: 3分で営業カレンダー完成",
+      "ja": "3 min. Calendar: 3分で営業カレンダーを作ってInstagramに共有",
       "zh": "3 min. Calendar: 3分钟完成营业日历",
       "es": "3 min. Calendar: Crea tu calendario de negocios en 3 minutos"
     },
@@ -299,7 +299,7 @@
     "id": "sync-stone",
     "title": {
       "en": "SyncStone - Stardustmemoir: FF14 Lodestone Export Tool",
-      "ja": "SyncStone - 星紡のメモワール: FF14 ロドストのエクスポートツール",
+      "ja": "SyncStone - 星紡のメモワール: FF14ロドストの日記をまるごと保存",
       "zh": "SyncStone - Stardustmemoir: FF14陆行鸟站导出工具",
       "es": "SyncStone - Stardustmemoir: Herramienta de Exportación de FF14 Lodestone"
     },
@@ -324,7 +324,7 @@
     "id": "lawkit",
     "title": {
       "en": "lawkit: Detect Data Fraud with Statistical Laws",
-      "ja": "lawkit: データの不正を統計法則で見抜く",
+      "ja": "lawkit: 統計法則でデータの不正・異常を見抜く",
       "zh": "lawkit: 用统计法则检测数据欺诈",
       "es": "lawkit: Detecta Fraude de Datos con Leyes Estadísticas"
     },
@@ -391,7 +391,7 @@
     "id": "sid-note",
     "title": {
       "en": "Sid Note: A bass fretboard visualization app for practice",
-      "ja": "Sid Note: ベース指板の可視化練習アプリ",
+      "ja": "Sid Note: ベース指板で音の役割を可視化",
       "zh": "Sid Note: 贝斯指板可视化练习应用",
       "es": "Sid Note: Aplicación de visualización del diapasón de bajo para práctica"
     },
@@ -439,7 +439,7 @@
     "id": "jiwa",
     "title": {
       "en": "jiwa: Terminal Text Reveal Animations for Rust",
-      "ja": "jiwa: ターミナル文字をじわじわ浮かび上がらせる Rust ツール"
+      "ja": "jiwa: ターミナル文字をじわじわ浮かび上がらせる"
     },
     "description": {
       "ja": "ターミナルの文字をじわじわ浮かび上がらせる reveal アニメーションの Rust 製ライブラリ兼 CLI。タイプライタ風フェードと脈動の2部品を持ち、依存ゼロでパイプにつないで使える。"
@@ -457,7 +457,7 @@
     "id": "avel",
     "title": {
       "en": "avel: The Fastest-Rendering Zola Blog Theme",
-      "ja": "avel: 最速で表示される Zola ブログテーマ"
+      "ja": "avel: 最速で表示されるZolaブログテーマ"
     },
     "description": {
       "ja": "阿部寛のホームページに着想を得た、最速で表示される Zola 向けブログテーマ。JavaScript ゼロ・外部リソースなしで瞬時に描き、config.toml だけで見た目を細かく調整できる。"

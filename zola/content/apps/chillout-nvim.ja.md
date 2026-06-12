@@ -1,5 +1,5 @@
 +++
-title = "chillout.nvim: Neovim向けのdebounce/throttle/batchライブラリ"
+title = "chillout.nvim: Neovimの間引き処理ライブラリ"
 path = "ja/apps/chillout.nvim"
 template = "app.html"
 

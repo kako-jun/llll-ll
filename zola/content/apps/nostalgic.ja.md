@@ -1,5 +1,5 @@
 +++
-title = "Nostalgic: 5つのレトロ機能で1990年代のインターネットを現代に"
+title = "Nostalgic: 90年代ネット文化を再現する5つの部品"
 path = "ja/apps/nostalgic"
 template = "app.html"
 

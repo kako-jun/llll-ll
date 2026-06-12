@@ -1,5 +1,5 @@
 +++
-title = "Sid Note: ベース指板の可視化練習アプリ"
+title = "Sid Note: ベース指板で音の役割を可視化"
 path = "ja/apps/sid-note"
 template = "app.html"
 

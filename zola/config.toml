@@ -16,7 +16,7 @@ feed_filenames = ["atom.xml"]
 # 日替わり絵の作品名『…』は技術ラベル/固有名としてそのまま（btop 美学・#5 合意）。
 [translations]
 welcome = "Welcome to llll-ll."
-intro = "Games and apps made by kako-jun. I'd be glad if you give them a try."
+intro = "Games and apps made by kako-jun. I'd be glad if you give them a try. All free."
 read_first = "Read this first →"
 tagline = "Planning Div. 42"
 langbar_aria = "language"
@@ -61,7 +61,7 @@ description = "kako-jun のゲーム・アプリのポートフォリオ"
 
 [languages.ja.translations]
 welcome = "ようこそ、llll-ll へ。"
-intro = "kako-jun の作ったゲーム、アプリを置いてます。使ってもらえると喜びます。"
+intro = "kako-jun の作ったゲーム、アプリを置いてます。使ってもらえると喜びます。全部無料です。"
 read_first = "はじめに読んでね →"
 tagline = "企画42課"
 langbar_aria = "言語"
@@ -106,7 +106,7 @@ description = "kako-jun 的游戏与应用作品集"
 
 [languages.zh.translations]
 welcome = "欢迎来到 llll-ll。"
-intro = "这里收录了 kako-jun 制作的游戏和应用。欢迎试用。"
+intro = "这里收录了 kako-jun 制作的游戏和应用。欢迎试用。全部免费。"
 read_first = "请先阅读 →"
 tagline = "企划42课"
 langbar_aria = "语言"
@@ -151,7 +151,7 @@ description = "Portafolio de juegos y apps de kako-jun"
 
 [languages.es.translations]
 welcome = "Bienvenido a llll-ll."
-intro = "Juegos y apps creados por kako-jun. Me alegraría que los probaras."
+intro = "Juegos y apps creados por kako-jun. Me alegraría que los probaras. Todo gratis."
 read_first = "Léeme primero →"
 tagline = "División de Planificación 42"
 langbar_aria = "idioma"

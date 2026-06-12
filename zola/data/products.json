@@ -10,7 +10,7 @@
     "description": {
       "ja": "2枚の画像を撮影またはアップロードして見比べ、違いを見つける汎用の間違い探しツール。台形補正・ルーペ・アンドゥ・GIF書き出しをそなえ、OpenCV.js でブラウザ内だけで完結する。"
     },
-    "tags": ["Free", "OSS", "Web"],
+    "tags": ["OSS", "Web"],
     "images": [],
     "demoUrl": "https://machigai-salad.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/machigai-salad",
@@ -30,7 +30,7 @@
     "description": {
       "ja": "全国の自治体が保護している猫・犬の情報を集約し、新しい家族とのマッチングを支援するサイト。緊急度別のギャラリーと毎日の自動スクレイピングで、石川県を起点に全国へ広げている。"
     },
-    "tags": ["Free", "OSS", "Web"],
+    "tags": ["OSS", "Web"],
     "images": [],
     "demoUrl": "https://tail-match.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/tail-match",
@@ -50,7 +50,7 @@
     "description": {
       "ja": "別の言語に聞こえる空耳を投稿・再生・共有するサイト。動画URLに開始終了秒と空耳テキストを設定すると、番組風のカラオケ字幕で流れる。登録不要で匿名のまま気軽に遊べる。"
     },
-    "tags": ["Free", "OSS", "Web", "Music"],
+    "tags": ["OSS", "Web", "Music"],
     "images": [],
     "demoUrl": "https://ear-sky.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/ear-sky",
@@ -70,7 +70,7 @@
     "description": {
       "ja": "日本の個人開発者やスタートアップ向けの、Hacker News に倣ったリンク集約と議論のサイト。投稿・スレッドコメント・投票・カルマをそなえ、日本語と日本のサービスにしぼっている。"
     },
-    "tags": ["Free", "OSS", "Web"],
+    "tags": ["OSS", "Web"],
     "images": [],
     "demoUrl": "https://hn.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/hacker-noroshi",
@@ -90,7 +90,7 @@
     "description": {
       "ja": "1つの YAML 設定から複数の Git リポジトリをまとめて操作する CLI。clone や pull など10コマンドを一括で走らせ、TUI でリポジトリごとの進捗をリアルタイムに表示する。Rust 製。"
     },
-    "tags": ["Free", "OSS", "CLI"],
+    "tags": ["OSS", "CLI"],
     "images": [],
     "repositoryUrl": "https://github.com/kako-jun/gitpp",
     "createdAt": "2025-11-01",
@@ -109,7 +109,7 @@
     "description": {
       "ja": "Neovim 向けに debounce・throttle・batch を提供する、約150行のごく小さな Lua ライブラリ。外部依存ゼロで、maxWait や cancel・flush など実用的な API をそろえている。"
     },
-    "tags": ["Free", "OSS", "Plugin"],
+    "tags": ["OSS", "Plugin"],
     "images": [],
     "repositoryUrl": "https://github.com/kako-jun/chillout.nvim",
     "createdAt": "2025-11-20",
@@ -128,7 +128,7 @@
     "description": {
       "ja": "Nostr プロトコル上で動く分散型 SNS。インストールも登録も不要で、ブラウザで開くだけで使える。秘密鍵はローカルだけに保存し、お絵かきやボイスメモなどの表現ツールも備える。"
     },
-    "tags": ["Free", "OSS", "Web"],
+    "tags": ["OSS", "Web"],
     "images": [],
     "demoUrl": "https://mypace.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/mypace",
@@ -148,7 +148,7 @@
     "description": {
       "ja": "隣り合う同じ数字を消していく電卓パズルゲーム。四則演算を駆使して連鎖を組み立てていく。電卓・練習・エンドレスの3モードがあり、連鎖や準備でスコア倍率が上がっていく。"
     },
-    "tags": ["Free", "OSS", "Web", "Game"],
+    "tags": ["OSS", "Web", "Game"],
     "images": [],
     "demoUrl": "https://sasso.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/sasso",
@@ -168,7 +168,7 @@
     "description": {
       "ja": "難解な法律の条文を、親しみやすい大阪弁に翻訳して読めるサイト。日本の現行法から歴史的な法・外国法・国際条約まで5分類をそろえ、ワンクリックで原文と大阪弁を切り替えられる。"
     },
-    "tags": ["Free", "OSS", "Web", "Language"],
+    "tags": ["OSS", "Web", "Language"],
     "images": [],
     "demoUrl": "https://osaka-kenpo.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/osaka-kenpo",
@@ -188,7 +188,7 @@
     "description": {
       "ja": "8言語の名詞がもつ文法的な性を学べるサイト。4,600語以上を英語か対象言語で検索でき、意味や記憶術も付く。性を当てるクイズや発音再生、11言語の UI もそなえている。"
     },
-    "tags": ["Free", "OSS", "Web", "Language"],
+    "tags": ["OSS", "Web", "Language"],
     "images": [],
     "demoUrl": "https://noun-gender.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/noun-gender",
@@ -208,7 +208,7 @@
     "description": {
       "ja": "カウンターやいいね・掲示板・ランキングなど、1990年代のネット文化を再現する5つの機能セット。登録不要のシンプルな GET API と Web Components で、静的サイトにすぐ組み込める。"
     },
-    "tags": ["Free", "OSS", "Web"],
+    "tags": ["OSS", "Web"],
     "images": [],
     "demoUrl": "https://nostalgic.llll-ll.com/",
     "repositoryUrl": "https://github.com/kako-jun/nostalgic",
@@ -228,7 +228,7 @@
     "description": {
       "ja": "Neovim が挿入セッション全体を1つにまとめてしまう undo を、時間と単語の区切りで細かく分けるプラグイン。タイピングの癖を学んで自動で調整し、chillout.nvim の実用例にもなっている。"
     },
-    "tags": ["Free", "OSS", "Plugin"],
+    "tags": ["OSS", "Plugin"],
     "images": [],
     "repositoryUrl": "https://github.com/kako-jun/chunkundo.nvim",
     "createdAt": "2025-01-12",
@@ -247,7 +247,7 @@
     "description": {
       "ja": "RISC-V 専用の neofetch 風システム情報ツール。ISA 拡張やハート数を表示し、147の拡張をカテゴリ別にそろえる。他アーキテクチャでは動かず、fastfetch と併用もできる。Rust 製。"
     },
-    "tags": ["Free", "OSS", "CLI"],
+    "tags": ["OSS", "CLI"],
     "images": ["https://raw.githubusercontent.com/kako-jun/riscfetch/main/assets/screenshot.webp"],
     "repositoryUrl": "https://github.com/kako-jun/riscfetch",
     "createdAt": "2025-01-10",
@@ -266,7 +266,7 @@
     "description": {
       "ja": "中間サーバーを介さず GitHub と直接同期する、最もシンプルな Markdown ノートアプリ。独自のマージで複数デバイスからの編集も安全にそろえ、データは常に自分の管理下に置ける。"
     },
-    "tags": ["Free", "OSS", "Web"],
+    "tags": ["OSS", "Web"],
     "images": [],
     "demoUrl": "https://agasteer.llll-ll.com/",
     "repositoryUrl": "https://github.com/kako-jun/agasteer",
@@ -286,7 +286,7 @@
     "description": {
       "ja": "日本の祝日を自動で検出し、営業カレンダーを3分で作れるサイト。ドラッグ＆ドロップで手早く編集でき、Instagram や LINE にそのまま共有できる。がんばる個人経営者の時短のために。"
     },
-    "tags": ["Free", "OSS", "Web"],
+    "tags": ["OSS", "Web"],
     "images": [],
     "demoUrl": "https://3min.llll-ll.com/",
     "repositoryUrl": "https://github.com/kako-jun/3min",
@@ -306,7 +306,7 @@
     "description": {
       "ja": "エクスポート機能のない FF14 ロドストの日記を、Markdown と ZIP で丸ごと保存する Chrome 拡張。本文・画像・コメント・いいね数まで残し、5リージョンとフレンドの記事にも対応する。"
     },
-    "tags": ["Free", "OSS", "Extension"],
+    "tags": ["OSS", "Extension"],
     "images": [],
     "repositoryUrl": "https://github.com/kako-jun/sync-stone",
     "articles": [
@@ -331,7 +331,7 @@
     "description": {
       "ja": "ベンフォードやパレートなど5つの統計法則で、データに潜む不正や異常を見抜く CLI。会計や選挙の不正検知から売上分析・品質管理まで使え、ASCII チャートでリスクを判定する。Rust 製。"
     },
-    "tags": ["Free", "OSS", "CLI", "Data"],
+    "tags": ["OSS", "CLI", "Data"],
     "images": [],
     "repositoryUrl": "https://github.com/kako-jun/lawkit",
     "createdAt": "2024-12-20",
@@ -350,7 +350,7 @@
     "description": {
       "ja": "「Binary files differ」で終わらせず、ML モデルファイルの意味ある差分を表示する CLI。学習率や損失など11種の自動分析とテンソル統計の比較をそなえ、CI/CD 向けに JSON でも出せる。"
     },
-    "tags": ["Free", "OSS", "CLI", "Data"],
+    "tags": ["OSS", "CLI", "Data"],
     "images": [],
     "repositoryUrl": "https://github.com/kako-jun/diffai",
     "createdAt": "2024-12-15",
@@ -369,7 +369,7 @@
     "description": {
       "ja": "キー順が変わるだけで全行を差分とみなす従来の diff と違い、構造を理解して本当に変わった所だけを示す CLI。JSON や YAML など6形式を自動で見分け、ディレクトリの再帰比較もできる。"
     },
-    "tags": ["Free", "OSS", "CLI", "Data"],
+    "tags": ["OSS", "CLI", "Data"],
     "images": ["https://storage.googleapis.com/zenn-user-upload/a82eab0d5859-20250706.png"],
     "repositoryUrl": "https://github.com/kako-jun/diffx",
     "articles": [
@@ -398,7 +398,7 @@
     "description": {
       "ja": "ベースの指板を表示して練習に使う Web アプリ。いま弾くコードや音が曲やコードの中でどんな役割かが分かる。TAB 譜にない運指やミュートも見え、指板を画像にして共有もできる。"
     },
-    "tags": ["Free", "OSS", "Web", "Music"],
+    "tags": ["OSS", "Web", "Music"],
     "images": [
       "https://storage.googleapis.com/zenn-user-upload/5f02c372318d-20250622.png",
       "https://storage.googleapis.com/zenn-user-upload/10b0af181da2-20250622.png"
@@ -426,7 +426,7 @@
     "description": {
       "ja": "写真を、ゆっくり漂う色とりどりの光の玉の抽象的なムード映像に変える Web アプリと Rust 製ツール。動画背景や配信の待機画面、壁紙に使え、元写真をぼかして匂わせにもできる。"
     },
-    "tags": ["Free", "OSS", "Web"],
+    "tags": ["OSS", "Web"],
     "images": [],
     "demoUrl": "https://orber.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/orber",
@@ -444,7 +444,7 @@
     "description": {
       "ja": "ターミナルの文字をじわじわ浮かび上がらせる reveal アニメーションの Rust 製ライブラリ兼 CLI。タイプライタ風フェードと脈動の2部品を持ち、依存ゼロでパイプにつないで使える。"
     },
-    "tags": ["Free", "OSS", "CLI"],
+    "tags": ["OSS", "CLI"],
     "images": [],
     "demoUrl": "https://crates.io/crates/jiwa",
     "repositoryUrl": "https://github.com/kako-jun/jiwa",
@@ -462,7 +462,7 @@
     "description": {
       "ja": "阿部寛のホームページに着想を得た、最速で表示される Zola 向けブログテーマ。JavaScript ゼロ・外部リソースなしで瞬時に描き、config.toml だけで見た目を細かく調整できる。"
     },
-    "tags": ["Free", "OSS", "Theme"],
+    "tags": ["OSS", "Theme"],
     "images": [],
     "demoUrl": "https://avel.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/avel",

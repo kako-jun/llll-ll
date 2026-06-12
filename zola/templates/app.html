@@ -227,7 +227,7 @@
           {% endif %}
 
           <div class="app-links">
-            {% if app.demoUrl %}<a href="{{ app.demoUrl | safe }}" target="_blank" rel="noopener noreferrer">demo</a>{% endif %}
+            {% if app.demoUrl %}<a href="{{ app.demoUrl | safe }}" target="_blank" rel="noopener noreferrer">open</a>{% endif %}
             {% if app.repositoryUrl %}<a href="{{ app.repositoryUrl | safe }}" target="_blank" rel="noopener noreferrer">repo</a>{% endif %}
             {% if app.articles %}{% for a in app.articles %}<a href="{{ a.url | safe }}" target="_blank" rel="noopener noreferrer">{{ a.label }}</a>{% endfor %}{% endif %}
           </div>

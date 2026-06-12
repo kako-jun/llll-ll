@@ -14,17 +14,20 @@
   <meta charset="utf-8" />
   <script>
     // 言語自動転送（#41）: 英語ルート(/) でのみ発火。QR の着地点をユーザー言語へ送る。
-    // 保存言語(localStorage 'llll-lang')を優先し、初回のみ navigator.language で判定して保存する。
+    // 保存言語(localStorage 'llll-lang')を優先し、未設定/未対応値のときだけ navigator.language で判定して保存する。
     // en は保存していてもルートに留まる（langbar の en クリックで en を保存＝英語に居続けられる）。
+    // 保存値はホワイトリスト(en/ja/zh/es)で検証し、破損・改変値で未対応パス(/fr/ 等の404)へ飛ぶのを防ぐ。
     // 描画前に走らせてチラつきを防ぎ、location.replace で履歴を汚さずループを避ける。
     (function () {
       try {
         if (location.pathname !== '/') return;
         var KEY = 'llll-lang';
+        var LANGS = ['ja', 'zh', 'es']; // en は既定言語＝ルート直下なので転送先を持たない
         var saved = localStorage.getItem(KEY);
-        if (!saved) {
+        if (saved !== 'en' && LANGS.indexOf(saved) === -1) {
+          // 未設定 or 未対応値 → ブラウザ言語で判定し直して保存
           var bl = (navigator.language || 'en').slice(0, 2).toLowerCase();
-          saved = (bl === 'ja' || bl === 'zh' || bl === 'es') ? bl : 'en';
+          saved = (LANGS.indexOf(bl) !== -1) ? bl : 'en';
           localStorage.setItem(KEY, saved);
         }
         if (saved !== 'en') location.replace('/' + saved + '/');

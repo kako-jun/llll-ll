@@ -1,49 +1,49 @@
 [
   {
-    "id": "machigai-salad",
+    "id": "avel",
     "title": {
-      "en": "Machigai Salad: Two images side by side—long-press to compare and spot the difference",
-      "ja": "間違いサラダ: 2枚を並べてロングタップで見比べる間違い探し",
-      "zh": "Machigai Salad: 两图并排，长按对比找不同",
-      "es": "Machigai Salad: Dos imágenes en paralelo: mantén pulsado para comparar y hallar las diferencias"
+      "en": "avel: The fastest-loading Zola blog theme",
+      "ja": "avel: 最速で表示されるZolaブログテーマ",
+      "zh": ": 加载最快的 Zola 博客主题",
+      "es": ": El tema de blog para Zola que carga más rápido"
     },
     "description": {
-      "ja": "2枚の画像を撮影またはアップロードして見比べ、違いを見つける汎用の間違い探しツール。台形補正・ルーペ・アンドゥ・GIF書き出しをそなえ、OpenCV.js でブラウザ内だけで完結する。",
-      "en": "A spot-the-difference tool for any pair of images: snap or upload two pictures, line them up, and hunt for what changed. Keystone correction, a loupe, undo, and GIF export all run entirely in your browser via OpenCV.js.",
-      "zh": "一款通用的找不同工具：拍摄或上传两张图片，并排对比，找出不同之处。梯形校正、放大镜、撤销、GIF 导出，全部基于 OpenCV.js 在浏览器内完成。",
-      "es": "Una herramienta para encontrar las diferencias entre dos imágenes cualesquiera: captura o sube dos fotos, ponlas lado a lado y busca qué cambió. Corrección de perspectiva, lupa, deshacer y exportación a GIF, todo dentro del navegador con OpenCV.js."
+      "ja": "阿部寛のホームページに着想を得た、最速で表示される Zola 向けブログテーマ。JavaScript ゼロ・外部リソースなしで瞬時に描き、config.toml だけで見た目を細かく調整できる。",
+      "en": "A blazing-fast Zola blog theme inspired by Hiroshi Abe's legendarily quick homepage. With zero JavaScript and no external resources, it paints instantly, and you can fine-tune the look from config.toml alone.",
+      "zh": "一款灵感源自阿部宽那以“极快”闻名的主页、加载最快的 Zola 博客主题。零 JavaScript、无外部资源，瞬间渲染，仅靠 config.toml 就能细调外观。",
+      "es": "Un tema de blog para Zola ultrarrápido, inspirado en la legendariamente veloz página de Hiroshi Abe. Sin nada de JavaScript ni recursos externos, se dibuja al instante, y puedes afinar su aspecto solo desde config.toml."
     },
-    "tags": ["OSS", "Web"],
+    "tags": ["OSS", "Theme"],
     "images": [],
-    "demoUrl": "https://machigai-salad.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/machigai-salad",
-    "createdAt": "2026-02-01",
-    "updatedAt": "2026-04-20",
-    "featured": true,
-    "icon": "/images/apps/machigai-salad.webp"
+    "demoUrl": "https://avel.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/avel",
+    "createdAt": "2026-06-01",
+    "updatedAt": "2026-06-11",
+    "featured": false,
+    "icon": "/images/apps/avel.webp"
   },
   {
-    "id": "tail-match",
+    "id": "orber",
     "title": {
-      "en": "tail-match: Connecting shelter cats and dogs across Japan with adopters",
-      "ja": "ているまっち！: 全国の保護猫・犬を里親とつなぐ",
-      "zh": "tail-match: 为全日本的收容猫狗连接领养人",
-      "es": "tail-match: Conectando gatos y perros de refugio de todo Japón con quienes los adoptan"
+      "en": "orber: Turn a photo into a mood video of glowing orbs",
+      "ja": "orber: 写真を光の玉のムード映像に変える",
+      "zh": ": 把照片变成发光光球的氛围影像",
+      "es": ": Convierte una foto en un vídeo ambiental de orbes de luz"
     },
     "description": {
-      "ja": "全国の自治体が保護している猫・犬の情報を集約し、新しい家族とのマッチングを支援するサイト。緊急度別のギャラリーと毎日の自動スクレイピングで、石川県を起点に全国へ広げている。",
-      "en": "A site that gathers listings of cats and dogs sheltered by local governments across Japan and helps them find new families. Urgency-sorted galleries and daily automatic scraping power it, starting in Ishikawa and spreading nationwide.",
-      "zh": "一个汇集全日本各地政府收容的猫狗信息、帮助它们找到新家的网站。按紧急程度分类的画廊与每日自动抓取，从石川县起步，逐步推向全国。",
-      "es": "Un sitio que reúne los anuncios de gatos y perros acogidos por los municipios de todo Japón y los ayuda a encontrar una nueva familia. Galerías ordenadas por urgencia y rastreo automático diario lo impulsan, empezando en Ishikawa rumbo a todo el país."
+      "ja": "写真を、ゆっくり漂う色とりどりの光の玉の抽象的なムード映像に変える Web アプリと Rust 製ツール。動画背景や配信の待機画面、壁紙に使え、元写真をぼかして匂わせにもできる。",
+      "en": "A web app and Rust tool that turns a photo into an abstract mood video of slowly drifting, colorful orbs of light. Use it as a video background, a streaming standby screen, or a wallpaper—or blur the original photo to merely hint at it.",
+      "zh": "一款把照片变成缓缓漂浮、五颜六色光球抽象氛围影像的 Web 应用与 Rust 工具。可用作视频背景、直播待机画面或壁纸，也可把原图虚化、只留一丝意境。",
+      "es": "Una app web y herramienta en Rust que convierte una foto en un vídeo ambiental abstracto de orbes de luz de colores que flotan despacio. Úsalo de fondo de vídeo, de pantalla de espera en directos o de fondo de pantalla—o difumina la foto original para apenas insinuarla."
     },
     "tags": ["OSS", "Web"],
     "images": [],
-    "demoUrl": "https://tail-match.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/tail-match",
-    "createdAt": "2026-01-10",
-    "updatedAt": "2026-04-20",
+    "demoUrl": "https://orber.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/orber",
+    "createdAt": "2026-04-13",
+    "updatedAt": "2026-06-11",
     "featured": true,
-    "icon": "/images/apps/tail-match.webp"
+    "icon": "/images/apps/orber.webp"
   },
   {
     "id": "ear-sky",
@@ -92,26 +92,50 @@
     "icon": "/images/apps/hacker-noroshi.webp"
   },
   {
-    "id": "gitpp",
+    "id": "machigai-salad",
     "title": {
-      "en": "gitpp: Operate many Git repos from one config",
-      "ja": "gitpp: 複数のGitリポジトリを1つの設定で一括操作",
-      "zh": "gitpp: 用一份配置批量操作多个 Git 仓库",
-      "es": "gitpp: Maneja muchos repos Git desde una sola configuración"
+      "en": "Machigai Salad: Two images side by side—long-press to compare and spot the difference",
+      "ja": "間違いサラダ: 2枚を並べてロングタップで見比べる間違い探し",
+      "zh": "Machigai Salad: 两图并排，长按对比找不同",
+      "es": "Machigai Salad: Dos imágenes en paralelo: mantén pulsado para comparar y hallar las diferencias"
     },
     "description": {
-      "ja": "1つの YAML 設定から複数の Git リポジトリをまとめて操作する CLI。clone や pull など10コマンドを一括で走らせ、TUI でリポジトリごとの進捗をリアルタイムに表示する。Rust 製。",
-      "en": "A CLI that drives many Git repositories at once from a single YAML config. Run ten commands like clone or pull across all of them in one go, with a TUI showing each repo's progress in real time. Written in Rust.",
-      "zh": "一个以单一 YAML 配置批量操作多个 Git 仓库的 CLI。可一次性跨所有仓库运行 clone、pull 等十项命令，并用 TUI 实时展示每个仓库的进度。以 Rust 编写。",
-      "es": "Una CLI que maneja muchos repositorios Git a la vez desde una sola configuración YAML. Ejecuta diez comandos como clone o pull sobre todos de una sola pasada, con una TUI que muestra el progreso de cada repo en tiempo real. Escrita en Rust."
+      "ja": "2枚の画像を撮影またはアップロードして見比べ、違いを見つける汎用の間違い探しツール。台形補正・ルーペ・アンドゥ・GIF書き出しをそなえ、OpenCV.js でブラウザ内だけで完結する。",
+      "en": "A spot-the-difference tool for any pair of images: snap or upload two pictures, line them up, and hunt for what changed. Keystone correction, a loupe, undo, and GIF export all run entirely in your browser via OpenCV.js.",
+      "zh": "一款通用的找不同工具：拍摄或上传两张图片，并排对比，找出不同之处。梯形校正、放大镜、撤销、GIF 导出，全部基于 OpenCV.js 在浏览器内完成。",
+      "es": "Una herramienta para encontrar las diferencias entre dos imágenes cualesquiera: captura o sube dos fotos, ponlas lado a lado y busca qué cambió. Corrección de perspectiva, lupa, deshacer y exportación a GIF, todo dentro del navegador con OpenCV.js."
     },
-    "tags": ["OSS", "CLI"],
+    "tags": ["OSS", "Web"],
     "images": [],
-    "repositoryUrl": "https://github.com/kako-jun/gitpp",
-    "createdAt": "2025-11-01",
-    "updatedAt": "2026-04-13",
+    "demoUrl": "https://machigai-salad.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/machigai-salad",
+    "createdAt": "2026-02-01",
+    "updatedAt": "2026-04-20",
     "featured": true,
-    "icon": "/images/cli.webp"
+    "icon": "/images/apps/machigai-salad.webp"
+  },
+  {
+    "id": "tail-match",
+    "title": {
+      "en": "tail-match: Connecting shelter cats and dogs across Japan with adopters",
+      "ja": "ているまっち！: 全国の保護猫・犬を里親とつなぐ",
+      "zh": "tail-match: 为全日本的收容猫狗连接领养人",
+      "es": "tail-match: Conectando gatos y perros de refugio de todo Japón con quienes los adoptan"
+    },
+    "description": {
+      "ja": "全国の自治体が保護している猫・犬の情報を集約し、新しい家族とのマッチングを支援するサイト。緊急度別のギャラリーと毎日の自動スクレイピングで、石川県を起点に全国へ広げている。",
+      "en": "A site that gathers listings of cats and dogs sheltered by local governments across Japan and helps them find new families. Urgency-sorted galleries and daily automatic scraping power it, starting in Ishikawa and spreading nationwide.",
+      "zh": "一个汇集全日本各地政府收容的猫狗信息、帮助它们找到新家的网站。按紧急程度分类的画廊与每日自动抓取，从石川县起步，逐步推向全国。",
+      "es": "Un sitio que reúne los anuncios de gatos y perros acogidos por los municipios de todo Japón y los ayuda a encontrar una nueva familia. Galerías ordenadas por urgencia y rastreo automático diario lo impulsan, empezando en Ishikawa rumbo a todo el país."
+    },
+    "tags": ["OSS", "Web"],
+    "images": [],
+    "demoUrl": "https://tail-match.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/tail-match",
+    "createdAt": "2026-01-10",
+    "updatedAt": "2026-04-20",
+    "featured": true,
+    "icon": "/images/apps/tail-match.webp"
   },
   {
     "id": "chillout.nvim",
@@ -134,6 +158,51 @@
     "updatedAt": "2025-12-02",
     "featured": false,
     "icon": "/images/lib.webp"
+  },
+  {
+    "id": "gitpp",
+    "title": {
+      "en": "gitpp: Operate many Git repos from one config",
+      "ja": "gitpp: 複数のGitリポジトリを1つの設定で一括操作",
+      "zh": "gitpp: 用一份配置批量操作多个 Git 仓库",
+      "es": "gitpp: Maneja muchos repos Git desde una sola configuración"
+    },
+    "description": {
+      "ja": "1つの YAML 設定から複数の Git リポジトリをまとめて操作する CLI。clone や pull など10コマンドを一括で走らせ、TUI でリポジトリごとの進捗をリアルタイムに表示する。Rust 製。",
+      "en": "A CLI that drives many Git repositories at once from a single YAML config. Run ten commands like clone or pull across all of them in one go, with a TUI showing each repo's progress in real time. Written in Rust.",
+      "zh": "一个以单一 YAML 配置批量操作多个 Git 仓库的 CLI。可一次性跨所有仓库运行 clone、pull 等十项命令，并用 TUI 实时展示每个仓库的进度。以 Rust 编写。",
+      "es": "Una CLI que maneja muchos repositorios Git a la vez desde una sola configuración YAML. Ejecuta diez comandos como clone o pull sobre todos de una sola pasada, con una TUI que muestra el progreso de cada repo en tiempo real. Escrita en Rust."
+    },
+    "tags": ["OSS", "CLI"],
+    "images": [],
+    "repositoryUrl": "https://github.com/kako-jun/gitpp",
+    "createdAt": "2025-11-01",
+    "updatedAt": "2026-04-13",
+    "featured": true,
+    "icon": "/images/cli.webp"
+  },
+  {
+    "id": "jiwa",
+    "title": {
+      "en": "jiwa: Make terminal text slowly emerge",
+      "ja": "jiwa: ターミナル文字をじわじわ浮かび上がらせる",
+      "zh": ": 让终端文字渐渐浮现",
+      "es": ": Haz que el texto de la terminal surja poco a poco"
+    },
+    "description": {
+      "ja": "ターミナルの文字をじわじわ浮かび上がらせる reveal アニメーションの Rust 製ライブラリ兼 CLI。タイプライタ風フェードと脈動の2部品を持ち、依存ゼロでパイプにつないで使える。",
+      "en": "A Rust library and CLI for reveal animations that make terminal text slowly emerge. It offers two parts—a typewriter-style fade and a pulse—with zero dependencies, ready to drop into a pipe.",
+      "zh": "一款让终端文字渐渐浮现的 reveal 动画 Rust 库兼 CLI。提供打字机风淡入与脉动两个部件，零依赖，可接入管道使用。",
+      "es": "Una biblioteca y CLI en Rust para animaciones de aparición que hacen surgir poco a poco el texto en la terminal. Ofrece dos piezas—un fundido tipo máquina de escribir y un pulso—sin dependencias y listas para encadenar en un pipe."
+    },
+    "tags": ["OSS", "CLI"],
+    "images": [],
+    "demoUrl": "https://crates.io/crates/jiwa",
+    "repositoryUrl": "https://github.com/kako-jun/jiwa",
+    "createdAt": "2025-07-10",
+    "updatedAt": "2026-05-29",
+    "featured": false,
+    "icon": "/images/cli.webp"
   },
   {
     "id": "mypace",
@@ -476,75 +545,6 @@
     "updatedAt": "2024-12-01",
     "featured": true,
     "icon": "/images/apps/sid-note.webp"
-  },
-  {
-    "id": "orber",
-    "title": {
-      "en": "orber: Turn a photo into a mood video of glowing orbs",
-      "ja": "orber: 写真を光の玉のムード映像に変える",
-      "zh": ": 把照片变成发光光球的氛围影像",
-      "es": ": Convierte una foto en un vídeo ambiental de orbes de luz"
-    },
-    "description": {
-      "ja": "写真を、ゆっくり漂う色とりどりの光の玉の抽象的なムード映像に変える Web アプリと Rust 製ツール。動画背景や配信の待機画面、壁紙に使え、元写真をぼかして匂わせにもできる。",
-      "en": "A web app and Rust tool that turns a photo into an abstract mood video of slowly drifting, colorful orbs of light. Use it as a video background, a streaming standby screen, or a wallpaper—or blur the original photo to merely hint at it.",
-      "zh": "一款把照片变成缓缓漂浮、五颜六色光球抽象氛围影像的 Web 应用与 Rust 工具。可用作视频背景、直播待机画面或壁纸，也可把原图虚化、只留一丝意境。",
-      "es": "Una app web y herramienta en Rust que convierte una foto en un vídeo ambiental abstracto de orbes de luz de colores que flotan despacio. Úsalo de fondo de vídeo, de pantalla de espera en directos o de fondo de pantalla—o difumina la foto original para apenas insinuarla."
-    },
-    "tags": ["OSS", "Web"],
-    "images": [],
-    "demoUrl": "https://orber.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/orber",
-    "createdAt": "2026-04-13",
-    "updatedAt": "2026-06-11",
-    "featured": true,
-    "icon": "/images/apps/orber.webp"
-  },
-  {
-    "id": "jiwa",
-    "title": {
-      "en": "jiwa: Make terminal text slowly emerge",
-      "ja": "jiwa: ターミナル文字をじわじわ浮かび上がらせる",
-      "zh": ": 让终端文字渐渐浮现",
-      "es": ": Haz que el texto de la terminal surja poco a poco"
-    },
-    "description": {
-      "ja": "ターミナルの文字をじわじわ浮かび上がらせる reveal アニメーションの Rust 製ライブラリ兼 CLI。タイプライタ風フェードと脈動の2部品を持ち、依存ゼロでパイプにつないで使える。",
-      "en": "A Rust library and CLI for reveal animations that make terminal text slowly emerge. It offers two parts—a typewriter-style fade and a pulse—with zero dependencies, ready to drop into a pipe.",
-      "zh": "一款让终端文字渐渐浮现的 reveal 动画 Rust 库兼 CLI。提供打字机风淡入与脉动两个部件，零依赖，可接入管道使用。",
-      "es": "Una biblioteca y CLI en Rust para animaciones de aparición que hacen surgir poco a poco el texto en la terminal. Ofrece dos piezas—un fundido tipo máquina de escribir y un pulso—sin dependencias y listas para encadenar en un pipe."
-    },
-    "tags": ["OSS", "CLI"],
-    "images": [],
-    "demoUrl": "https://crates.io/crates/jiwa",
-    "repositoryUrl": "https://github.com/kako-jun/jiwa",
-    "createdAt": "2025-07-10",
-    "updatedAt": "2026-05-29",
-    "featured": false,
-    "icon": "/images/cli.webp"
-  },
-  {
-    "id": "avel",
-    "title": {
-      "en": "avel: The fastest-loading Zola blog theme",
-      "ja": "avel: 最速で表示されるZolaブログテーマ",
-      "zh": ": 加载最快的 Zola 博客主题",
-      "es": ": El tema de blog para Zola que carga más rápido"
-    },
-    "description": {
-      "ja": "阿部寛のホームページに着想を得た、最速で表示される Zola 向けブログテーマ。JavaScript ゼロ・外部リソースなしで瞬時に描き、config.toml だけで見た目を細かく調整できる。",
-      "en": "A blazing-fast Zola blog theme inspired by Hiroshi Abe's legendarily quick homepage. With zero JavaScript and no external resources, it paints instantly, and you can fine-tune the look from config.toml alone.",
-      "zh": "一款灵感源自阿部宽那以“极快”闻名的主页、加载最快的 Zola 博客主题。零 JavaScript、无外部资源，瞬间渲染，仅靠 config.toml 就能细调外观。",
-      "es": "Un tema de blog para Zola ultrarrápido, inspirado en la legendariamente veloz página de Hiroshi Abe. Sin nada de JavaScript ni recursos externos, se dibuja al instante, y puedes afinar su aspecto solo desde config.toml."
-    },
-    "tags": ["OSS", "Theme"],
-    "images": [],
-    "demoUrl": "https://avel.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/avel",
-    "createdAt": "2026-06-01",
-    "updatedAt": "2026-06-11",
-    "featured": false,
-    "icon": "/images/apps/avel.webp"
   },
   {
     "id": "esuna",

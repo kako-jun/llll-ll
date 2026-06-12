@@ -590,7 +590,7 @@
     /* ── footer（固定・外枠最下）── */
     .footer {
       position: relative;
-      flex-shrink: 0;
+      flex: 1;
       border: 1px solid var(--border);
       /* 金沢駅の背景画像（原サイトのフッタ素材を流用・#10 kako-jun）。オーバーレイで沈め、駅が透けつつ
          文字（緑リンク/brand）の可読性を保つ。ダーク=暗幕／ライト=白幕で切替（#9・テーマ追従）。cover/center で全面に。 */
@@ -605,8 +605,12 @@
       background-repeat: no-repeat;
       color: var(--text-muted);
       text-align: center;
-      /* フッタは文字のみ＋中央寄せで上が空いて見えるので詰める（他パネルの 14px より上を狭く・kako-jun 指摘）。
-         上 padding は 8px だとリンクまで 9px（行 leading の差で下の 10px と1px ずれる）。上を 9px にして上下とも 10px に揃える。 */
+      /* フッタは隣の QR(72px) の高さに合わせて伸びるため、中身(SNS＋ブランドの2行)を縦中央に揃える（上寄り回避・#36 kako-jun）。
+         align-items は既定 stretch のまま＝.social が全幅でモバイルの折返しを維持し、横中央は text-align/内部 justify-content で取る。 */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      /* 上 padding は 8px だとリンクまで 9px（行 leading の差で下の 10px と1px ずれる）。上を 9px にして上下とも 10px に揃える。 */
       padding: 9px 8px 8px;
       font-size: var(--fs-base);
     }
@@ -632,6 +636,23 @@
       color: var(--border);
       margin-right: 0.6em;
     }
+    /* ── 最下段: [QR(枠なし)] + [footer] の横並び（#36 kako-jun）── */
+    .bottom-row { display: flex; gap: 8px; flex-shrink: 0; }
+    /* QR コード（#36）— 黒 on 透明 PNG（/images/qrcode.png ＝ https://llll-ll.com）をアルファマスクとして使い、
+       緑ボックスを QR 形に切り抜く。背景透明＋fill=var(--border) で ダーク=明緑/ライト=濃緑 にテーマ追従。
+       「share」枠（btop箱）は label タブ＋14px padding で QR を潰す or footer 高を超えるため、枠なし QR 単体で footer 左に置く（kako-jun 条件分岐）。
+       正方形 72px 固定（当初 align-self:stretch＋aspect-ratio:1 にしたが、空 flex 子の幅が 0 に潰れモバイルで消えた→明示サイズに）。align-self:center で行高に対し縦中央。
+       注: 反転QR（明 on 暗）は zbar 系で読めない＝ダークは新しめ端末向け（kako-jun 承知）。ライトは濃緑 on 白で全端末可。 */
+    .share-qr {
+      flex: 0 0 auto;
+      width: 72px;
+      height: 72px;
+      align-self: center;
+      background-color: var(--border);
+      -webkit-mask: url('/images/qrcode.png') no-repeat center / contain;
+              mask: url('/images/qrcode.png') no-repeat center / contain;
+    }
+    .share-qr:hover { opacity: 0.8; }
 
     /* ── アプリ詳細ポップアップ（モーダル）── #13。JS が中身を入れて hidden を外す。 */
     .modal-overlay {
@@ -956,7 +977,9 @@
 
     </div>
 
-    <!-- footer（固定）— llll-ll ブランド移設先 -->
+    <!-- 最下段: QR(枠なし・#36) + footer の横並び。share 枠は label/padding で QR を潰す/footer 高超過のため枠なし QR 単体。 -->
+    <div class="bottom-row">
+    <a class="share-qr" href="https://llll-ll.com" aria-label="QR code linking to https://llll-ll.com" title="llll-ll.com"></a>
     <footer class="footer">
       <span class="label">footer</span>
       <div class="social">
@@ -970,6 +993,7 @@
       </div>
       <div><span class="footer-brand">llll-ll</span>© kako-jun</div>
     </footer>
+    </div>
 
   </div>
 

@@ -2,74 +2,78 @@
 
 Personal portfolio for [kako-jun](https://github.com/kako-jun), a games and apps developer based in Kanazawa, Japan. Lives at [llll-ll.com](https://llll-ll.com).
 
+A btop-style terminal portal — black-and-green monospace panels — listing kako-jun's games and apps, with a tiny Tetris toy hiding in the header.
+
 ## Features
 
-- **Multi-language**: English, Chinese, Japanese, and Spanish — automatic detection on first visit, persisted across sessions
+- **Multi-language**: English (root), Japanese, Chinese, and Spanish (`/ja/`, `/zh/`, `/es/`). The English landing page auto-redirects first-time visitors to their browser language and remembers the choice
 - **Light / dark theme**: detects `prefers-color-scheme`, overridable via the header toggle
-- **Interactive header**: the sticky header is also a tiny Tetris-style mini-game (tap to drop, click to remove, lines clear automatically)
-- **Mobile-first**: 800 px max container, responsive at every breakpoint
-- **JSON-driven content**: products are loaded at runtime from `public/data/products.json`
+- **Interactive header**: the header panel is also a tiny Tetris-style mini-game (tap to drop, click to remove, lines clear automatically)
+- **Living panels**: a Nostalgic visit counter, a Nostalgic support BBS, and the latest Nostr posts from mypace, all rendered in the btop style
+- **JSON-driven content**: apps are loaded at build time from `zola/data/products.json`
 
 ## Tech Stack
 
-- Vite + React 19 + TypeScript
-- react-router-dom v7 for the small route table (`/`, `/welcome`, `/easter-egg`)
-- Vanilla CSS with CSS custom properties for theming
-- Vitest for unit tests (pure-logic only)
-- nostr-tools for the Nostr posts popup
+- [Zola](https://www.getzola.org/) static site generator
+- Self-contained btop-style templates over the `avel` theme (git submodule)
+- Vanilla JS islands for interactivity (no framework, no bundler)
+- Vitest + jsdom for unit tests (pure-logic only)
 
 ## Getting Started
 
 ```bash
-npm install
-npm run dev          # http://localhost:5173
+git submodule update --init --recursive   # pull the avel theme
+cd zola
+zola serve                                # http://127.0.0.1:1111
 ```
 
 ## Scripts
 
-| Script              | What it does                              |
-| ------------------- | ----------------------------------------- |
-| `npm run dev`       | Vite dev server with HMR                  |
-| `npm run build`     | `tsc && vite build` (type-check + bundle) |
-| `npm run preview`   | Serve `dist/` locally                     |
-| `npm run lint`      | ESLint over `src/`                        |
-| `npm run typecheck` | `tsc --noEmit`                            |
-| `npm test`          | Run the vitest suite once                 |
-| `npm run format`    | Prettier write                            |
+| Command            | What it does                                    |
+| ------------------ | ----------------------------------------------- |
+| `zola serve`       | Local dev server with live reload (run in `zola/`) |
+| `npm run zola:build` | Production build — syncs Nostalgic BBS comments, then `zola build` |
+| `zola build`       | Static build only (`zola/public/`)              |
+| `npm run zola:sync-comments` | Pull latest Nostalgic BBS comments into the posts |
+| `npm test`         | Run the vitest suite once (`zola/tests/**/*.test.js`) |
+| `npm run test:watch` | Vitest in watch mode                          |
+| `npm run coverage` | Vitest with coverage                            |
 
 ## Adding a Product
 
-Products are loaded from `public/data/products.json`. Each entry follows the `Product` interface in `src/types/index.ts`:
+Apps are loaded from `zola/data/products.json` — an array where each entry has:
 
-- `title` and `description` are objects keyed by language (`en`, `ja`, `zh`, `es`)
-- `images`, `animations`, and `videos` are paths relative to `public/`
-- `tags` are free-form strings used both for display and search
+- `id` — slug used for the per-app URL (`/apps/{id}/`)
+- `title` and `description` — objects keyed by language (`en`, `ja`, `zh`, `es`); all four must be present
+- `tags` — free-form strings used for display and search
+- `images`, `demoUrl`, `repositoryUrl`, `createdAt`, `updatedAt`, `featured`, `icon`
 
-Drop any new media files into `public/images/` (or `public/animations/`, `public/videos/`) and reference them with their `/`-prefixed path.
+Drop new media into `zola/static/images/` and reference it with its `/`-prefixed path. After editing `products.json`, regenerate the per-app pages:
+
+```bash
+cd zola
+node scripts/gen-app-pages.mjs   # products.json → content/apps/{id}[.{lang}].md
+```
 
 ## Project Structure
 
-See [`CLAUDE.md`](./CLAUDE.md) for a full directory tour; [`DESIGN.md`](./DESIGN.md) for the design system that any UI change must conform to.
+See [`CLAUDE.md`](./CLAUDE.md) for a directory tour, [`zola/README.md`](./zola/README.md) for the detailed Zola architecture, and [`DESIGN.md`](./DESIGN.md) for the design system that any UI change must conform to.
 
 ```
-src/
-├── App.tsx, main.tsx
-├── pages/        # Welcome (language picker), NotFound
-├── components/   # common, game, layout, nostr, project
-├── hooks/        # useTetrisGame, useTheme, useLanguage, ...
-├── lib/          # tetris (pure logic), i18n, storage
-├── constants/    # ids, sizes, durations
-├── styles/       # globals.css (CSS variables, base styles)
-└── types/        # Product, Language, web-components ambient types
+zola/
+├── config.toml     # base_url, languages (en default + ja/zh/es), theme, palette/ids
+├── content/        # _index.* (home), apps/ (generated), posts/ (blog)
+├── data/           # products.json, daily.json
+├── templates/      # index, app, post, posts, 404, _seo, _theme
+├── static/         # js/ (islands), images, favicon, robots.txt
+├── themes/avel/    # submodule
+├── tests/          # vitest (jsdom)
+└── scripts/        # gen-app-pages.mjs, import-lodestone.mjs
 ```
 
 ## Deployment
 
-Built as a static SPA. Deployed via Vercel with the custom domain `llll-ll.com`.
-
-```bash
-npm run build       # outputs to dist/
-```
+Built and served as a static site by **Cloudflare Pages** with the custom domain `llll-ll.com`. The production branch is `main`; a push to `main` triggers an automatic deploy (build `zola build`, root `zola`, output `public`, `ZOLA_VERSION=0.22.1`). There is no in-repo CI.
 
 ## License
 

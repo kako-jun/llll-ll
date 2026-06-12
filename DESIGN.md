@@ -2,6 +2,8 @@
 
 llll-ll portfolio — Design System
 
+> **Current surface:** the live site is the **Zola portal** (`zola/`), a self-contained btop-style terminal UI (black-and-green monospace panels). The color palette, spacing, and elevation rules below are the shared design system and still apply; the btop portal mirrors the dark/light palette into `zola/config.toml [extra]`. References to the old React SPA (`src/`, component names like `WelcomeScreen` / `IntroSection`, Google-Fonts Noto setup) are historical — they describe the retired implementation, not the current Zola templates. Where the portal diverges (e.g. monospace body font), it is called out inline.
+
 ## 1. Visual Theme & Atmosphere
 
 Retro-nostalgic meets modern web. Dark mode default with a terminal/CRT aesthetic. Minimalist, 8-bit influenced design with clean lines and monospace branding. Interactive elements (Tetris blocks in header, floating square pixels in background) add playfulness without clutter.
@@ -10,7 +12,7 @@ Inspirations: early internet, retro game UIs, CRT terminals, pixel art culture.
 
 ## 2. Color Palette & Roles
 
-CSS variables are defined in two naming systems. Use either, but prefer the semantic names.
+The shared palette is documented in two naming systems below. Use either, but prefer the semantic names. In the Zola portal these values live in `zola/config.toml [extra]` (dark) and the `*_light` keys (light), injected into the templates' `<head>` via `_theme.html`.
 
 | Semantic Name         | Alias            | Dark Value                                                | Light Value                                                 | Usage                            |
 | --------------------- | ---------------- | --------------------------------------------------------- | ----------------------------------------------------------- | -------------------------------- |
@@ -41,9 +43,7 @@ CSS variables are defined in two naming systems. Use either, but prefer the sema
 | Chinese (zh)  | `"Noto Sans SC", "Noto Sans", sans-serif`                                     | 400, 700 |
 | Logo          | `"Arial Black", "Arial", "Helvetica Neue", "Helvetica", "Impact", sans-serif` | 900      |
 
-Note: `Inter:wght@700` is imported via Google Fonts but not referenced in any font-family declaration. Dead import.
-
-Note: The above describes the React `src/` SPA. The **Zola portal (`zola/`)** is a separate, intentionally monospace btop-style surface — body is `"DejaVu Sans Mono", "Consolas", "Menlo", monospace` and locale fonts are switched per `html[lang]` using **system CJK stacks** (no render-blocking webfonts), not the Google-Fonts Noto setup above.
+Note: The font families above describe the retired React `src/` SPA (Noto via Google Fonts). The **current Zola portal (`zola/`)** is an intentionally monospace btop-style surface — body is `"DejaVu Sans Mono", "Consolas", "Menlo", monospace` and locale fonts are switched per `html[lang]` using **system CJK stacks** (no render-blocking webfonts). The portal does not load Google Fonts.
 
 ### Type Scale
 

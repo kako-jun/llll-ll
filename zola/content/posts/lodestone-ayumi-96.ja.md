@@ -1,6 +1,9 @@
 +++
 title = "歩み96. グループポーズの質問"
-date = 2022-01-23
+date = 2022-01-23T05:16:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

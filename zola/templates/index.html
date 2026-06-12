@@ -248,9 +248,8 @@
       /* prose(z1) の箱（右余白）にクリックを奪われないよう z2（CTA と同列・空間的に重ならない）。 */
       z-index: 2;
     }
-    /* 「はじめに読んで →」＝入口記事 start-here への主要 CTA。panel-cta（右上）の上に、
-       緑アクセント＋太字を上書きして他の corner link より目立たせる（#10）。 */
-    .panel-cta.read-first { color: var(--border); font-weight: bold; }
+    /* 「はじめに読んで →」＝入口記事 start-here への主要 CTA。右上 CTA の中でこれだけ太字。 */
+    .panel-cta.read-first { font-weight: bold; }
     .panel-cta.read-first:hover { text-decoration: underline; }
 
     /* プレースホルダ枠（mypace のみ・today は日替わり絵に置換済み） */
@@ -633,10 +632,10 @@
       margin: 0;
       background: var(--panel-bg);
       padding: 0 0.4em;
-      color: var(--text-muted);
+      color: var(--border);
       font-size: var(--fs-sm);
     }
-    .panel-cta:hover { color: var(--border); }
+    .panel-cta:hover { text-decoration: underline; }
 
     /* ── footer（固定・外枠最下）── */
     .footer {

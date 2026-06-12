@@ -1,6 +1,9 @@
 +++
 title = "歩み124. ロドストは枯れている"
-date = 2022-07-13
+date = 2022-07-13T11:30:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

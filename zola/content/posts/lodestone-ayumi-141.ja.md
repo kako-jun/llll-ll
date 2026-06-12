@@ -1,6 +1,9 @@
 +++
 title = "歩み141. DiscordのVCネームが、FF14の左上に表示されてグルポに写るのが困る"
-date = 2022-08-04
+date = 2022-08-04T11:11:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

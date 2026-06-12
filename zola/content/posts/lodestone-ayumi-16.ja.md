@@ -1,6 +1,9 @@
 +++
 title = "歩み16. ララフェルは喋らない"
-date = 2021-11-11
+date = 2021-11-11T16:34:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

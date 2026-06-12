@@ -1,6 +1,9 @@
 +++
 title = "歩み175. 暁月のボス戦BGMと、そっくりなローカルCMがある"
-date = 2022-09-08
+date = 2022-09-08T19:36:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

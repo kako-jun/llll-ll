@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% if lang == config.default_language %}{% set nav_prefix = "" %}{% else %}{% set nav_prefix = "/" ~ lang %}{% endif %}
+{% set og_title = "#" ~ term.name ~ " — " ~ config.title %}
+{% set og_desc = config.description %}
+{% set og_url = current_url %}
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>#{{ term.name }} — llll-ll</title>
+  <meta name="description" content="{{ config.description }}" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  {% include "_seo.html" %}
+  <style>
+    :root { --bg: {{ config.extra.bg }}; --panel-bg: {{ config.extra.panel_bg }}; --border: {{ config.extra.border }}; --border-muted: {{ config.extra.border_muted }}; --text: {{ config.extra.text }}; --text-muted: {{ config.extra.text_muted }}; --link: {{ config.extra.link }}; --fs-base: 0.85rem; --fs-sm: 0.72rem; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; min-height: 100%; background: var(--bg); color: var(--text); font-family: "DejaVu Sans Mono", "Consolas", "Menlo", monospace; font-size: var(--fs-base); line-height: 1.5; }
+    html[lang="ja"], html[lang="ja"] body { font-family: "DejaVu Sans Mono", "Consolas", "Menlo", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", monospace, sans-serif; }
+    html[lang="zh"], html[lang="zh"] body { font-family: "DejaVu Sans Mono", "Consolas", "Menlo", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", monospace, sans-serif; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .desktop { min-height: 100vh; padding: 8px; display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--border); background: var(--bg); }
+    .post-topnav { display: flex; align-items: baseline; gap: 1.2em; padding: 4px 4px 0; flex-shrink: 0; }
+    .post-topnav .brand { font-family: "Arial Black", "Arial", "Impact", sans-serif; font-weight: 900; letter-spacing: 0.15em; color: var(--border); font-size: 1.1rem; }
+    .post-topnav .back { color: var(--text-muted); font-size: var(--fs-sm); }
+    .panel { position: relative; border: 1px solid var(--border); background: var(--panel-bg); padding: 20px 18px 16px; }
+    .panel > .label { position: absolute; top: -0.7em; left: 0.8em; background: var(--panel-bg); padding: 0 0.4em; color: var(--border); font-size: var(--fs-sm); letter-spacing: 0.05em; }
+    .tag-posts { display: flex; flex-direction: column; }
+    .tag-post { display: flex; flex-direction: column; gap: 4px; padding: 12px 0; border-bottom: 1px solid var(--border-muted); }
+    .tag-post:last-child { border-bottom: none; }
+    .tag-post-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4em 0.9em; }
+    .tag-post-date { color: var(--text-muted); font-size: var(--fs-sm); flex-shrink: 0; }
+    .tag-post-title a { font-size: 1.18rem; }
+  </style>
+  {% include "_theme.html" %}
+</head>
+<body>
+  <div class="desktop">
+    <nav class="post-topnav" aria-label="{{ trans(key='nav_aria', lang=lang) }}">
+      <a class="brand" href="{{ nav_prefix | safe }}/">llll-ll</a>
+      <a class="back" href="{{ nav_prefix | safe }}/tags/">← {{ trans(key="tags_title", lang=lang) }}</a>
+      <a class="back" href="{{ nav_prefix | safe }}/archive/">{{ trans(key="archive_title", lang=lang) }}</a>
+    </nav>
+    <section class="panel">
+      <span class="label">#{{ term.name }}</span>
+      <div class="tag-posts">
+        {% for p in term.pages %}
+        <article class="tag-post">
+          <div class="tag-post-head">
+            {% if p.date %}<span class="tag-post-date">{{ p.date | date(format="%Y-%m-%d") }}</span>{% endif %}
+            <span class="tag-post-title"><a href="{{ p.permalink | safe }}">{{ p.title }}</a></span>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</body>
+</html>

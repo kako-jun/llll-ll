@@ -2,6 +2,9 @@
 title = "はじめに読んでね"
 date = 2026-06-12
 
+[taxonomies]
+tags = ["start-here", "about"]
+
 [extra]
 tags = ["start-here", "about"]
 +++

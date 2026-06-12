@@ -102,12 +102,14 @@ function unquoteYaml(value) {
 }
 
 function parseDate(value) {
-  const match = String(value).match(/^(\d{4})\/(\d{1,2})\/(\d{1,2})/);
+  const match = String(value).match(
+    /^(\d{4})\/(\d{1,2})\/(\d{1,2})(?:\s+(\d{1,2}):(\d{2}))?/
+  );
   if (!match) {
     throw new Error(`Unsupported date: ${value}`);
   }
-  const [, year, month, day] = match;
-  return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+  const [, year, month, day, hour = "00", minute = "00"] = match;
+  return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}T${hour.padStart(2, "0")}:${minute}:00+09:00`;
 }
 
 function articleNumber(fileName) {
@@ -132,7 +134,7 @@ function rewriteImages(body, referencedImages) {
 }
 
 function renderPost({ title, date, body }) {
-  return `+++\ntitle = "${tomlStr(title)}"\ndate = ${date}\n\n[extra]\ntags = ["FF14"]\n+++\n\n${body.trim()}\n`;
+  return `+++\ntitle = "${tomlStr(title)}"\ndate = ${date}\n\n[taxonomies]\ntags = ["FF14"]\n\n[extra]\ntags = ["FF14"]\n+++\n\n${body.trim()}\n`;
 }
 
 function walkFiles(root) {

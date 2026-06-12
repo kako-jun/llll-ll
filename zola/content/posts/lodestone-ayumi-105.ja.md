@@ -1,6 +1,9 @@
 +++
 title = "歩み105. VRとFF14について思うこと"
-date = 2022-02-24
+date = 2022-02-24T19:38:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

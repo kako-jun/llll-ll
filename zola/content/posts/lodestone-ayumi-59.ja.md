@@ -1,6 +1,9 @@
 +++
 title = "歩み59. 星芒祭と年賀状"
-date = 2021-12-17
+date = 2021-12-17T15:44:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

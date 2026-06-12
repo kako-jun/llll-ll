@@ -1,6 +1,9 @@
 +++
 title = "歩み87. A' A' さんについて"
-date = 2022-01-18
+date = 2022-01-18T15:34:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

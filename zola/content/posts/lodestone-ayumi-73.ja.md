@@ -1,6 +1,9 @@
 +++
 title = "歩み73. しがくがあふれる！"
-date = 2021-12-24
+date = 2021-12-24T18:05:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

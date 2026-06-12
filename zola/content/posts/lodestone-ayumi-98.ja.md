@@ -1,6 +1,9 @@
 +++
 title = "歩み98. ソルさんとエタバンしたい"
-date = 2022-01-25
+date = 2022-01-25T19:20:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

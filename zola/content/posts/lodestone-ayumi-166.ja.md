@@ -1,6 +1,9 @@
 +++
 title = "歩み166. 作りかけのZW,AW,EW,RWでアーマリーチェストがあふれた"
-date = 2022-08-29
+date = 2022-08-29T13:00:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

@@ -1,6 +1,9 @@
 +++
 title = "歩み23. 初めての写真"
-date = 2021-11-22
+date = 2021-11-22T17:03:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

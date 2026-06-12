@@ -469,6 +469,8 @@
       cursor: pointer;
     }
     .filter-chip:hover { border-color: var(--border); }
+    /* Featured フィルタチップはカードの Featured タグと同じく緑で統一（★なし・#14 kako-jun）。active 時は下の .active が後勝ちで緑背景になる。 */
+    .filter-chip[data-filter-featured] { border-color: var(--border); color: var(--border); }
     /* アクティブ（押下中）チップ: 緑背景に黒文字で btop 風に「押されている」を表す */
     .filter-chip.active,
     .filter-chip[aria-pressed="true"] {
@@ -513,6 +515,10 @@
        詳細度タイ＋後勝ちで打ち消すため、.card[hidden]（詳細度 0,2,0）で明示的に上書きする。 */
     .card[hidden] { display: none; }
     .card:hover { border-color: var(--border); }
+    /* カードは全体クリックでポップアップ（#14 kako-jun）＝ポインタ。タグもクリックでフィルタなのでポインタ＋ホバー緑。 */
+    .card { cursor: pointer; }
+    .card-tag { cursor: pointer; }
+    .card-tag:hover { border-color: var(--border); color: var(--border); }
     .card-head { display: flex; align-items: flex-start; gap: 8px; }
     .card-thumb {
       width: 48px; height: 48px;
@@ -529,6 +535,8 @@
     /* 詳細リンク: link 色でなくカードタイトルの緑を継ぐ（ホバーで下線）。 */
     .card-title-link { color: var(--border); }
     .card-title-link:hover { text-decoration: underline; }
+    /* タイトルは「名前: タグライン」。: 以降のタグラインを normal＋薄め緑にして名前（前半）を目立たせる（#14 kako-jun）。 */
+    .card-title-link .title-tagline { font-weight: normal; opacity: 0.6; }
     .card-thumb-link { display: inline-flex; flex-shrink: 0; }
     /* Featured は名前の★でなく「特別なタグ」として表示（#14 kako-jun）。緑（--border）で色をややつけて他タグより目立たせる。 */
     .card-tag.card-tag-featured { border-color: var(--border); color: var(--border); }
@@ -707,6 +715,7 @@
       border: 1px solid var(--border-muted); background: var(--bg);
     }
     .modal-body .app-detail h1 { margin: 0; color: var(--border); font-size: 1.15rem; line-height: 1.35; }
+    .modal-body .app-detail h1 .title-tagline { font-weight: normal; opacity: 0.6; }
     .modal-body .app-detail .app-tag.app-tag-featured { border-color: var(--border); color: var(--border); }
     .modal-body .app-detail .app-desc { margin: 0; color: var(--text); white-space: pre-wrap; line-height: 1.7; font-size: var(--fs-base); }
     .modal-body .app-detail .app-tags { display: flex; flex-wrap: wrap; gap: 5px; }
@@ -936,14 +945,14 @@
             data-search="{{ search_blob | lower }}"
             {% if p.featured %}data-featured="true"{% endif %}>
             <div class="card-head">
-              {% if p.images and p.images | length > 0 %}
+              {% if p.icon %}
               <a class="card-thumb-link" href="{{ nav_prefix | safe }}/apps/{{ p.id }}/" tabindex="-1" aria-hidden="true">
-                <img class="card-thumb" src="{{ p.images.0 | safe }}" alt="" loading="lazy" />
+                <img class="card-thumb" src="{{ p.icon | safe }}" alt="" loading="lazy" />
               </a>
               {% endif %}
               <div class="card-title">
                 {# 詳細リンク: JS ありはポップアップを開き接頭辞付き /apps/{id}/ に pushState、JS 無し/直リンクは素の遷移（PE）。 #}
-                <a class="card-title-link" href="{{ nav_prefix | safe }}/apps/{{ p.id }}/">{{ p_title }}</a>
+                <a class="card-title-link" href="{{ nav_prefix | safe }}/apps/{{ p.id }}/">{%- set tp = p_title | split(pat=":") -%}<span class="title-name">{{ tp.0 }}</span>{%- if tp | length > 1 -%}<span class="title-tagline">:{{ tp | slice(start=1) | join(sep=":") }}</span>{%- endif -%}</a>
               </div>
             </div>
             {% if p_desc %}
@@ -951,8 +960,8 @@
             {% endif %}
             {% if p.featured or p.tags %}
             <div class="card-tags">
-              {% if p.featured %}<span class="card-tag card-tag-featured">Featured</span>{% endif %}
-              {% for t in p.tags %}<span class="card-tag">{{ t }}</span>{% endfor %}
+              {% if p.featured %}<span class="card-tag card-tag-featured" data-card-featured>{{ trans(key="filter_featured", lang=lang) }}</span>{% endif %}
+              {% for t in p.tags %}<span class="card-tag" data-card-tag="{{ t }}">{{ t }}</span>{% endfor %}
             </div>
             {% endif %}
             <div class="card-links">

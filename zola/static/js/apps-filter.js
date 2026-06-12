@@ -123,6 +123,23 @@ if (typeof module !== "undefined" && module.exports) {
     allChip.addEventListener("click", clearAll);
   }
 
+  // カード内のタグクリック → そのタグでフィルタ（#14 kako-jun）。該当フィルタチップを ON にして適用し、
+  // フィルタ結果が見えるよう apps セクション先頭へスクロールする。app-popup.js 側はこのクリックを無視する。
+  root.addEventListener("click", (e) => {
+    const ct = e.target.closest("[data-card-tag], [data-card-featured]");
+    if (!ct) return;
+    e.preventDefault();
+    if (ct.hasAttribute("data-card-featured")) {
+      if (featuredChip) setChipActive(featuredChip, true);
+    } else {
+      const val = (ct.getAttribute("data-card-tag") || "").toLowerCase();
+      const chip = tagChips.find((c) => (c.getAttribute("data-filter-tag") || "").toLowerCase() === val);
+      if (chip) setChipActive(chip, true);
+    }
+    apply();
+    root.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
   // 初期状態を反映（All アクティブ・全件表示）。
   apply();
 })();

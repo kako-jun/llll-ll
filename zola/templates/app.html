@@ -161,6 +161,8 @@
       font-size: 1.2rem;
       line-height: 1.35;
     }
+    /* タイトル「名前: タグライン」の : 以降を normal＋薄め緑にして名前を目立たせる（#14 kako-jun）。 */
+    .app-detail h1 .title-tagline { font-weight: normal; opacity: 0.6; }
     .app-detail .app-tag.app-tag-featured { border-color: var(--border); color: var(--border); }
     .app-detail .app-desc {
       margin: 0;
@@ -202,15 +204,16 @@
       <span class="label">app</span>
       <main class="app-detail">
         {% if app %}
-          {% if app.images and app.images | length > 0 %}
+          {% if app.icon or (app.images and app.images | length > 0) %}
           <div class="hero">
+            {% if app.icon %}<img class="hero-icon" src="{{ app.icon | safe }}" alt="{{ og_title }}" loading="lazy" />{% endif %}
             {% for img in app.images %}
             <img src="{{ img | safe }}" alt="{{ og_title }}" loading="lazy" />
             {% endfor %}
           </div>
           {% endif %}
 
-          <h1>{{ og_title }}</h1>
+          <h1>{%- set tp = og_title | split(pat=":") -%}<span class="title-name">{{ tp.0 }}</span>{%- if tp | length > 1 -%}<span class="title-tagline">:{{ tp | slice(start=1) | join(sep=":") }}</span>{%- endif -%}</h1>
 
           {% if app_desc %}
           <p class="app-desc">{{ app_desc }}</p>
@@ -218,7 +221,7 @@
 
           {% if app.tags and app.tags | length > 0 %}
           <div class="app-tags">
-            {% if app.featured %}<span class="app-tag app-tag-featured">Featured</span>{% endif %}
+            {% if app.featured %}<span class="app-tag app-tag-featured">{{ trans(key="filter_featured", lang=lang) }}</span>{% endif %}
             {% for t in app.tags %}<span class="app-tag">{{ t }}</span>{% endfor %}
           </div>
           {% endif %}

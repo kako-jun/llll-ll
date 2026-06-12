@@ -2,102 +2,114 @@
 
 ## Project
 
-**llll-ll** is kako-jun's personal portfolio for games and apps. The site lives at `llll-ll.com` and showcases all of his releases through a single, sticky-headered SPA. The header doubles as a tiny interactive Tetris-style toy.
+**llll-ll** is kako-jun's personal portfolio for games and apps. The site lives at `llll-ll.com` and showcases all of his releases through a single btop-style terminal portal. The header panel doubles as a tiny interactive Tetris-style toy.
+
+The site is a **Zola static site** (`zola/`). It was migrated from an older Vite + React 19 SPA; the React sources have been removed and Zola is the only surface in production. All work happens under `zola/`.
 
 ## Quick Start
 
 ```bash
-npm install
-npm run dev         # vite dev server (default port 5173)
-npm run build       # tsc && vite build
-npm run preview     # vite preview (serve built dist/)
-npm run lint        # eslint
-npm run typecheck   # tsc --noEmit
-npm test            # vitest run
+cd zola
+zola serve          # local preview at http://127.0.0.1:1111
+zola build          # static output to zola/public/ (git-ignored)
 ```
+
+```bash
+# from repo root — JS island tests (vitest + jsdom)
+npm install
+npm test            # runs zola/tests/**/*.test.js
+```
+
+There is no `npm run dev/build/lint`. The production build is `npm run zola:build` (syncs Nostalgic BBS comments via `scripts/sync-nostalgic-bbs.mjs`, then `zola build`); `npm run zola:sync-comments` runs the sync alone. The remaining npm scripts are `test`, `test:watch`, and `coverage` (see `package.json`).
 
 ## Tech Stack
 
-- **Vite + React 19 + TypeScript** (SPA, no SSR)
-- **react-router-dom v7** for routing (`/`, `/welcome`, `/easter-egg`, `*` → NotFound)
-- **CSS3 variables** (defined in `src/styles/globals.css`) with light / dark theme
-- **JSON data** at `public/data/products.json` (fetched at runtime, not bundled)
-- **Vitest** for unit tests; the test suite lives next to the file under test (`*.test.ts`)
-- **nostr-tools** for the Nostr posts popup; **react-router-dom** for routing
+- **[Zola](https://www.getzola.org/)** static site generator (CF Pages builds with `ZOLA_VERSION=0.22.1`)
+- **Theme `avel`** — git submodule at `zola/themes/avel` (`github.com/kako-jun/avel`). The portal templates intentionally do **not** inherit avel's base; they are self-contained btop-style panels.
+- **Vanilla JS islands** in `zola/static/js/` (`defer`-loaded, progressive enhancement) — no framework, no bundler
+- **Vitest + jsdom** for unit tests of the pure JS-island logic (`zola/tests/**/*.test.js`)
+- **JSON data** via Zola `load_data` from `zola/data/` (`products.json`, `daily.json`)
+
+No React, Vite, react-router, or `src/` layout remain.
 
 ## Documentation
 
 - `DESIGN.md` — design system (colors, typography, components, z-index). UI changes must conform.
 - `README.md` — high-level project overview for visitors.
+- `zola/README.md` — detailed Zola architecture / migration notes (i18n, visits, BBS, mypace, blog, SEO, Tetris). The primary reference when working inside `zola/`.
 
 UIの生成・修正時は `DESIGN.md` に定義されたデザインシステムに従うこと。定義外の色・フォント・スペーシングを勝手に使わない。
 
 ## Source Layout
 
 ```
-src/
-├── App.tsx              # Router + HomePage (handles welcome redirect, fetches products)
-├── main.tsx             # ReactDOM bootstrap
-├── styles/globals.css   # CSS variables, theme tokens, base styles
-├── pages/
-│   ├── Welcome.tsx      # First-visit language selection screen at /welcome
-│   └── NotFound.tsx     # 404 + Easter-egg game (1-16 sequence click)
-├── components/
-│   ├── common/          # AboutPopup, ArrowIcon, ImageDisplay, IntroSection,
-│   │                    # PopupTriangle, ScrollToTop, VisitorCounter
-│   ├── game/            # BackgroundDots, TetrisBlock(Grid|FallingBlocks)
-│   ├── layout/          # Header, Footer, LanguageBar, LanguageButtons,
-│   │                    # ContinueButton, ProfileIcon, QRCodeSection,
-│   │                    # SocialLinks, ThemeToggle, WelcomeScreen
-│   ├── nostr/           # NostrPopup
-│   └── project/         # ProjectList, ProjectCard, ProjectModal, plus
-│                        # search / filter / sort / media-grid building blocks
-├── hooks/
-│   ├── useTetrisGame.ts # Thin wrapper around src/lib/tetris.ts that owns
-│   │                    # React state, animation interval, click handling
-│   ├── useTheme.ts      # Light/dark with localStorage + matchMedia fallback
-│   ├── useLanguage.ts   # Selected language with localStorage + navigator fallback
-│   ├── useElementRect.ts, useInfiniteScroll.ts, useUrlHash.ts
-├── lib/
-│   ├── tetris.ts        # Pure grid logic (placement, line-clears, cascade)
-│   ├── i18n.ts          # translations object + useTranslation
-│   └── storage.ts       # Single-key JSON-based localStorage wrapper
-├── constants/index.ts   # Header id, image sizes, scroll thresholds, animation durations
-└── types/
-    ├── index.ts         # Language, Product, Article
-    └── web-components.d.ts  # nostalgic-counter / nostalgic-bbs JSX type augmentation
+zola/
+├── config.toml          # base_url / default_language="en" + [languages.{ja,zh,es}] / theme="avel" / [extra] palette + ids
+├── content/
+│   ├── _index.md        # home (en). _index.{ja,zh,es}.md are the per-language homes (template = index.html)
+│   ├── apps/            # per-app pages, generated by scripts/gen-app-pages.mjs from data/products.json
+│   │                    # ({id}.md = en + {id}.{lang}.md). chillout.nvim → file "chillout-nvim", URL path keeps ".nvim"
+│   └── posts/           # blog. _index.* sections + {slug}[.{lang}].md articles (incl. imported Lodestone/FF14 set)
+├── data/
+│   ├── products.json    # array of app entries (id, title{lang}, description{lang}, tags, images, demoUrl, repositoryUrl, createdAt, updatedAt, featured, icon)
+│   └── daily.json       # "art of today" rotation (file + title)
+├── templates/
+│   ├── index.html       # btop portal home (self-contained, html[lang], trans()). Head holds the lang auto-redirect (#41).
+│   ├── app.html         # per-app detail /[{lang}/]apps/{id}/ (the .app-detail fragment the popup fetches)
+│   ├── post.html        # single article; posts.html = blog index; 404.html = self-contained 404
+│   ├── _seo.html        # shared SEO/OGP/JSON-LD include
+│   └── _theme.html      # shared <head> theme palette + anti-flash inline script
+├── static/
+│   ├── js/              # vanilla JS islands (see below)
+│   ├── images/, favicon.ico, robots.txt
+├── themes/avel/         # submodule
+├── tests/               # vitest (jsdom) for the JS islands + data/config invariants
+└── scripts/             # gen-app-pages.mjs (products.json → content/apps), import-lodestone.mjs (FF14 archive → posts)
 ```
 
-## Storage Convention
+## i18n (4 languages)
 
-All persisted user data is stored under a **single localStorage key `"llll-ll"`** as a JSON object — see `src/lib/storage.ts`. Use `getStorage` / `setStorage` exclusively; never read or write localStorage directly. Known fields: `visited`, `language`, `theme`.
+Zola's standard multi-language setup with `default_language = "en"`:
 
-## Routing
+- English is served at the **root** (`/` = canonical); other languages get a prefix: `/ja/`, `/zh/`, `/es/`. Per-app: `/apps/{id}/` (en) and `/{lang}/apps/{id}/`.
+- UI strings live in `config.toml` `[translations]` (en) + `[languages.{ja,zh,es}.translations]`; templates pull them with `trans(key=…, lang=lang)`.
+- App `title` / `description` come from the per-language keys in `data/products.json` (`p.title[lang]`, falling back to en).
+- Language switching uses **real per-language links** (static per-language builds), not client-side hot swapping.
 
-- `/` → `HomePage`. Redirects new visitors (`visited` flag unset) to `/welcome`.
-- `/welcome` → `Welcome` (language selection then bounce back to `/`).
-- `/easter-egg` → `NotFound` (intentional easter egg).
-- `*` → `NotFound`.
+### Language auto-redirect (#41)
 
-## Header Tetris
+`templates/index.html`'s `<head>` has an inline script (paired with `static/js/lang-pref.js`) that fires **only on the English root** (`/`). It prefers the saved language (`localStorage` key `llll-lang`, whitelist `en/ja/zh/es`); if unset/invalid it falls back to `navigator.language`, persists it, and redirects to `/{lang}/`. `en` stays on the root. See the inline comments in `index.html` for the exact logic.
 
-The header is interactive. Logic lives in:
+## JS Islands
 
-- `src/lib/tetris.ts` — grid + falling-block pure logic (placement, line clears, cascade, overflow detection). Constants `BLOCK_SIZE = 16`, `GRID_HEIGHT = 4`, `MAX_STACK = 3`. The file's module-level doc comment is the source of truth for the function list and the coordinate system.
-- `src/hooks/useTetrisGame.ts` — owns React state and the animation interval. Calls into `tetris.ts` for every state transition.
-- `src/components/game/TetrisBlock.tsx` — renders the grid + falling layer + disappearing layer (three layers stacked via z-index).
-- `src/components/layout/Header.tsx` — host. Measures header height with a `ref` (no DOM reads in render) and wires up clicks to spawn blocks.
+`zola/static/js/` (all `defer`, progressive-enhancement; degrade gracefully when JS is off):
 
-Click anywhere in the header (except the title) to drop a block in that column. Auto-spawn fires once 4 seconds after mount, then every 42 seconds. Click a placed block to remove it (with a 400 ms shrink animation); blocks above it cascade down. A complete row clears with a small delay so the player sees the landing first. Filling more than `MAX_STACK` blocks in any column resets the whole board.
+- `theme-toggle.js` — light/dark toggle + OS follow (paired with `_theme.html`'s anti-flash script)
+- `tetris.js` — the header-panel Tetris toy (pure grid logic is exported for tests)
+- `apps-filter.js` — client-side filter/search over the app grid
+- `app-popup.js` — fetches the `.app-detail` fragment from `app.html` into the detail popup
+- `daily-art.js` / `keyvisual-lightbox.js` — "art of today" rotation + image lightbox
+- `lang-pref.js` — language preference persistence (works with the #41 redirect)
+- `visits-counter.js` — Nostalgic visit counter injection
+- `mypace-feed.js` — pulls latest Nostr notes and renders them in the btop style
+
+The btop portal also embeds a **Nostalgic BBS** web component and a **visits counter** (IDs in `config.toml [extra]`).
 
 ## Testing
 
-Tests sit next to the file under test (`src/lib/tetris.test.ts`, `src/lib/storage.test.ts`, etc.) and run via vitest. Coverage focuses on the pure logic in `src/lib/`; React components are deliberately not under unit test (decorative UI; verify by `npm run dev` and clicking around).
+`npm test` runs vitest (jsdom) over `zola/tests/**/*.test.js`. Coverage focuses on the pure logic of the JS islands (tetris, filter, theme, mypace render, visits inject, lang redirect/pref) plus data/config invariants (`products-data.test.js` enforces every app has all 4 languages; `config-translations.test.js`; `posts-content.test.js`; `gen-app-pages.test.js`). Templates/CSS are verified by `zola serve` and clicking around.
+
+## Deployment
+
+Built and served by **Cloudflare Pages** (project `llll-ll`, custom domain `llll-ll.com`):
+
+- Production branch: `main`. A push to `main` triggers an automatic deploy.
+- Build command `zola build`, root directory `zola`, output directory `public`, `ZOLA_VERSION=0.22.1`.
+- There is **no in-repo CI** (no `.github/workflows`); CF Pages drives the build.
 
 ## Conventions
 
-- **Imports**: absolute via the `@/` alias (`vite.config.ts` + `tsconfig.json`). Avoid deep relative paths.
-- **Styling**: prefer CSS variables in `globals.css`. Inline `style={{ ... }}` is fine for small one-off layout when no theme tokens apply, but every color / font / spacing token must come from the variables defined in `DESIGN.md`.
-- **Strict TypeScript**: `strict`, `noUnusedLocals`, `noUnusedParameters` are all on (see `tsconfig.json`). Don't disable them.
-- **Single localStorage key** — see Storage Convention above.
+- **Styling**: every color / font / spacing token must come from the variables defined in `DESIGN.md` (mirrored into `config.toml [extra]` for the btop palette). Don't introduce off-system colors.
+- **JS islands**: keep them framework-free, `defer`-loaded, and resilient to JS being disabled. Export pure logic so it can be unit-tested.
+- **Submodule**: `zola/themes/avel` is a submodule — `git submodule update --init --recursive` after cloning.
 - **コミットメッセージに Co-Authored-By を付けない**（freeza 全体ルール）。

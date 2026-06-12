@@ -2,13 +2,16 @@
   {
     "id": "machigai-salad",
     "title": {
-      "en": "Machigai Salad: Spot-the-Difference Comparison Tool",
+      "en": "Machigai Salad: Two images side by side—long-press to compare and spot the difference",
       "ja": "間違いサラダ: 2枚を並べてロングタップで見比べる間違い探し",
-      "zh": "Machigai Salad: 找不同图片对比工具",
-      "es": "Machigai Salad: Herramienta de Comparación para Encontrar Diferencias"
+      "zh": "Machigai Salad: 两图并排，长按对比找不同",
+      "es": "Machigai Salad: Dos imágenes en paralelo: mantén pulsado para comparar y hallar las diferencias"
     },
     "description": {
-      "ja": "2枚の画像を撮影またはアップロードして見比べ、違いを見つける汎用の間違い探しツール。台形補正・ルーペ・アンドゥ・GIF書き出しをそなえ、OpenCV.js でブラウザ内だけで完結する。"
+      "ja": "2枚の画像を撮影またはアップロードして見比べ、違いを見つける汎用の間違い探しツール。台形補正・ルーペ・アンドゥ・GIF書き出しをそなえ、OpenCV.js でブラウザ内だけで完結する。",
+      "en": "A spot-the-difference tool for any pair of images: snap or upload two pictures, line them up, and hunt for what changed. Keystone correction, a loupe, undo, and GIF export all run entirely in your browser via OpenCV.js.",
+      "zh": "一款通用的找不同工具：拍摄或上传两张图片，并排对比，找出不同之处。梯形校正、放大镜、撤销、GIF 导出，全部基于 OpenCV.js 在浏览器内完成。",
+      "es": "Una herramienta para encontrar las diferencias entre dos imágenes cualesquiera: captura o sube dos fotos, ponlas lado a lado y busca qué cambió. Corrección de perspectiva, lupa, deshacer y exportación a GIF, todo dentro del navegador con OpenCV.js."
     },
     "tags": ["OSS", "Web"],
     "images": [],
@@ -22,13 +25,16 @@
   {
     "id": "tail-match",
     "title": {
-      "en": "tail-match: Shelter Cat & Dog Matching for Ishikawa",
+      "en": "tail-match: Connecting shelter cats and dogs across Japan with adopters",
       "ja": "ているまっち！: 全国の保護猫・犬を里親とつなぐ",
-      "zh": "tail-match: 石川县保护猫犬领养匹配网站",
-      "es": "tail-match: Emparejamiento de Gatos y Perros de Refugio en Ishikawa"
+      "zh": "tail-match: 为全日本的收容猫狗连接领养人",
+      "es": "tail-match: Conectando gatos y perros de refugio de todo Japón con quienes los adoptan"
     },
     "description": {
-      "ja": "全国の自治体が保護している猫・犬の情報を集約し、新しい家族とのマッチングを支援するサイト。緊急度別のギャラリーと毎日の自動スクレイピングで、石川県を起点に全国へ広げている。"
+      "ja": "全国の自治体が保護している猫・犬の情報を集約し、新しい家族とのマッチングを支援するサイト。緊急度別のギャラリーと毎日の自動スクレイピングで、石川県を起点に全国へ広げている。",
+      "en": "A site that gathers listings of cats and dogs sheltered by local governments across Japan and helps them find new families. Urgency-sorted galleries and daily automatic scraping power it, starting in Ishikawa and spreading nationwide.",
+      "zh": "一个汇集全日本各地政府收容的猫狗信息、帮助它们找到新家的网站。按紧急程度分类的画廊与每日自动抓取，从石川县起步，逐步推向全国。",
+      "es": "Un sitio que reúne los anuncios de gatos y perros acogidos por los municipios de todo Japón y los ayuda a encontrar una nueva familia. Galerías ordenadas por urgencia y rastreo automático diario lo impulsan, empezando en Ishikawa rumbo a todo el país."
     },
     "tags": ["OSS", "Web"],
     "images": [],
@@ -42,13 +48,16 @@
   {
     "id": "ear-sky",
     "title": {
-      "en": "Ear in the Sky Diamond: Cross-Lingual Soramimi Sharing",
+      "en": "Ear in the Sky Diamond: Pick a YouTube clip and recreate your own misheard-lyrics show",
       "ja": "イヤスカ: YouTubeの動画を指定して空耳アワーを再現・共有",
-      "zh": "Ear in the Sky Diamond: 跨语言空耳投稿分享网站",
-      "es": "Ear in the Sky Diamond: Comparte Soramimi Entre Idiomas"
+      "zh": "Ear in the Sky Diamond: 指定一段 YouTube 视频，重现你的空耳节目",
+      "es": "Ear in the Sky Diamond: Elige un clip de YouTube y recrea tu propio show de letras mal oídas"
     },
     "description": {
-      "ja": "別の言語に聞こえる空耳を投稿・再生・共有するサイト。動画URLに開始終了秒と空耳テキストを設定すると、番組風のカラオケ字幕で流れる。登録不要で匿名のまま気軽に遊べる。"
+      "ja": "別の言語に聞こえる空耳を投稿・再生・共有するサイト。動画URLに開始終了秒と空耳テキストを設定すると、番組風のカラオケ字幕で流れる。登録不要で匿名のまま気軽に遊べる。",
+      "en": "A site to post, play, and share soramimi—lyrics misheard as words in another language. Give a video URL with start/end times and your misheard text, and it plays back with karaoke-style subtitles like a TV segment. No sign-up, fully anonymous, just for fun.",
+      "zh": "一个发布、播放和分享“空耳”（听错成另一种语言的歌词）的网站。给视频 URL 设定起止秒数和空耳文本，就会以节目般的卡拉 OK 字幕播出。免注册、匿名，轻松玩。",
+      "es": "Un sitio para publicar, reproducir y compartir soramimi: letras que se oyen como palabras de otro idioma. Pon la URL de un vídeo con los segundos de inicio y fin y tu texto mal oído, y suena con subtítulos tipo karaoke, como un programa de tele. Sin registro, anónimo y para divertirse."
     },
     "tags": ["OSS", "Web", "Music"],
     "images": [],
@@ -62,13 +71,16 @@
   {
     "id": "hacker-noroshi",
     "title": {
-      "en": "Hacker Noroshi: A Japan-Focused Hacker News Clone",
+      "en": "Hacker Noroshi: A Hacker News clone built for Japan",
       "ja": "ハッカーのろし: 日本特化のHacker Newsクローン",
-      "zh": "Hacker Noroshi: 日本版Hacker News克隆",
-      "es": "Hacker Noroshi: Un Clon de Hacker News Enfocado en Japón"
+      "zh": "Hacker Noroshi: 为日本打造的 Hacker News 克隆",
+      "es": "Hacker Noroshi: Un clon de Hacker News hecho para Japón"
     },
     "description": {
-      "ja": "日本の個人開発者やスタートアップ向けの、Hacker News に倣ったリンク集約と議論のサイト。投稿・スレッドコメント・投票・カルマをそなえ、日本語と日本のサービスにしぼっている。"
+      "ja": "日本の個人開発者やスタートアップ向けの、Hacker News に倣ったリンク集約と議論のサイト。投稿・スレッドコメント・投票・カルマをそなえ、日本語と日本のサービスにしぼっている。",
+      "en": "A Hacker News–style link aggregator and discussion board for Japan's indie developers and startups. Posts, threaded comments, voting, and karma—all narrowed to the Japanese language and Japanese services.",
+      "zh": "一个仿 Hacker News 的链接聚合与讨论站点，面向日本的个人开发者和初创企业。具备发帖、主题评论、投票与 karma，专注于日语和日本本地的服务。",
+      "es": "Un agregador de enlaces y foro de discusión al estilo de Hacker News para los desarrolladores independientes y startups de Japón. Publicaciones, comentarios en hilo, votos y karma, todo centrado en el idioma japonés y los servicios locales."
     },
     "tags": ["OSS", "Web"],
     "images": [],
@@ -82,13 +94,16 @@
   {
     "id": "gitpp",
     "title": {
-      "en": "gitpp: Manage Multiple Git Repositories in Parallel",
+      "en": "gitpp: Operate many Git repos from one config",
       "ja": "gitpp: 複数のGitリポジトリを1つの設定で一括操作",
-      "zh": "gitpp: 并行批量管理多个Git仓库的CLI",
-      "es": "gitpp: Gestiona Múltiples Repositorios Git en Paralelo"
+      "zh": "gitpp: 用一份配置批量操作多个 Git 仓库",
+      "es": "gitpp: Maneja muchos repos Git desde una sola configuración"
     },
     "description": {
-      "ja": "1つの YAML 設定から複数の Git リポジトリをまとめて操作する CLI。clone や pull など10コマンドを一括で走らせ、TUI でリポジトリごとの進捗をリアルタイムに表示する。Rust 製。"
+      "ja": "1つの YAML 設定から複数の Git リポジトリをまとめて操作する CLI。clone や pull など10コマンドを一括で走らせ、TUI でリポジトリごとの進捗をリアルタイムに表示する。Rust 製。",
+      "en": "A CLI that drives many Git repositories at once from a single YAML config. Run ten commands like clone or pull across all of them in one go, with a TUI showing each repo's progress in real time. Written in Rust.",
+      "zh": "一个以单一 YAML 配置批量操作多个 Git 仓库的 CLI。可一次性跨所有仓库运行 clone、pull 等十项命令，并用 TUI 实时展示每个仓库的进度。以 Rust 编写。",
+      "es": "Una CLI que maneja muchos repositorios Git a la vez desde una sola configuración YAML. Ejecuta diez comandos como clone o pull sobre todos de una sola pasada, con una TUI que muestra el progreso de cada repo en tiempo real. Escrita en Rust."
     },
     "tags": ["OSS", "CLI"],
     "images": [],
@@ -101,13 +116,16 @@
   {
     "id": "chillout.nvim",
     "title": {
-      "en": "chillout.nvim: Debounce, Throttle, and Batch for Neovim",
+      "en": "chillout.nvim: Rate-limiting helpers for Neovim",
       "ja": "chillout.nvim: Neovimの間引き処理ライブラリ",
-      "zh": "chillout.nvim: 为Neovim提供debounce/throttle/batch的库",
-      "es": "chillout.nvim: Debounce, Throttle y Batch para Neovim"
+      "zh": "chillout.nvim: Neovim 的限流处理库",
+      "es": "chillout.nvim: Utilidades de limitación de ritmo para Neovim"
     },
     "description": {
-      "ja": "Neovim 向けに debounce・throttle・batch を提供する、約150行のごく小さな Lua ライブラリ。外部依存ゼロで、maxWait や cancel・flush など実用的な API をそろえている。"
+      "ja": "Neovim 向けに debounce・throttle・batch を提供する、約150行のごく小さな Lua ライブラリ。外部依存ゼロで、maxWait や cancel・flush など実用的な API をそろえている。",
+      "en": "A tiny Lua library—about 150 lines—that brings debounce, throttle, and batch to Neovim. Zero external dependencies, with practical APIs like maxWait, cancel, and flush.",
+      "zh": "一个为 Neovim 提供 debounce、throttle 与 batch 的极小型 Lua 库，约 150 行。零外部依赖，提供 maxWait、cancel、flush 等实用 API。",
+      "es": "Una biblioteca Lua diminuta—unas 150 líneas—que trae debounce, throttle y batch a Neovim. Sin dependencias externas y con APIs prácticas como maxWait, cancel y flush."
     },
     "tags": ["OSS", "Plugin"],
     "images": [],
@@ -120,13 +138,16 @@
   {
     "id": "mypace",
     "title": {
-      "en": "MY PACE: A Decentralized SNS on Nostr Protocol",
+      "en": "MY PACE: A medium-rare social network, taken at your own pace",
       "ja": "MY PACE: マイペースでいいミディアムレアSNS",
-      "zh": "MY PACE: 基于Nostr协议的去中心化社交网络",
-      "es": "MY PACE: Una Red Social Descentralizada en el Protocolo Nostr"
+      "zh": "MY PACE: 按自己节奏来的五分熟社交",
+      "es": "MY PACE: Una red social a término medio, a tu propio ritmo"
     },
     "description": {
-      "ja": "Nostr プロトコル上で動く分散型 SNS。インストールも登録も不要で、ブラウザで開くだけで使える。秘密鍵はローカルだけに保存し、お絵かきやボイスメモなどの表現ツールも備える。"
+      "ja": "Nostr プロトコル上で動く分散型 SNS。インストールも登録も不要で、ブラウザで開くだけで使える。秘密鍵はローカルだけに保存し、お絵かきやボイスメモなどの表現ツールも備える。",
+      "en": "A decentralized social network running on the Nostr protocol. No install, no sign-up—just open it in your browser. Your private key stays only on your device, and it ships with expressive extras like drawing and voice memos.",
+      "zh": "一个运行在 Nostr 协议上的去中心化社交网络。无需安装、无需注册，打开浏览器即可使用。私钥仅保存在本地，还内置了涂鸦、语音备忘等表达工具。",
+      "es": "Una red social descentralizada sobre el protocolo Nostr. Sin instalar, sin registrarse: solo ábrela en el navegador. Tu clave privada se queda solo en tu dispositivo, y trae extras expresivos como dibujo y notas de voz."
     },
     "tags": ["OSS", "Web"],
     "images": [],
@@ -140,13 +161,16 @@
   {
     "id": "sasso",
     "title": {
-      "en": "Sasso: Calculator Meets Puzzle - Eliminate Digits",
+      "en": "Sasso: A calculator puzzle game for Mensa minds",
       "ja": "Sasso: Mensa会員のための電卓パズルゲーム",
-      "zh": "Sasso: 计算器遇上益智游戏。消除数字",
-      "es": "Sasso: Calculadora y puzzle - Elimina dígitos"
+      "zh": "Sasso: 为门萨会员设计的计算器解谜游戏",
+      "es": "Sasso: Un juego de calculadora para mentes de Mensa"
     },
     "description": {
-      "ja": "隣り合う同じ数字を消していく電卓パズルゲーム。四則演算を駆使して連鎖を組み立てていく。電卓・練習・エンドレスの3モードがあり、連鎖や準備でスコア倍率が上がっていく。"
+      "ja": "隣り合う同じ数字を消していく電卓パズルゲーム。四則演算を駆使して連鎖を組み立てていく。電卓・練習・エンドレスの3モードがあり、連鎖や準備でスコア倍率が上がっていく。",
+      "en": "A calculator puzzle game where you clear adjacent matching numbers. Chain them together using the four arithmetic operations. Three modes—calculator, practice, and endless—with score multipliers that climb through chains and setups.",
+      "zh": "一款消除相邻相同数字的计算器解谜游戏。运用四则运算搭出连锁。设有计算器、练习、无尽三种模式，连锁与铺垫越多，分数倍率越高。",
+      "es": "Un juego de lógica con calculadora en el que eliminas números iguales adyacentes. Encadena jugadas usando las cuatro operaciones aritméticas. Tres modos—calculadora, práctica e infinito—con multiplicadores de puntos que suben con cadenas y preparativos."
     },
     "tags": ["OSS", "Web", "Game"],
     "images": [],
@@ -160,13 +184,16 @@
   {
     "id": "osaka-kenpo",
     "title": {
-      "en": "Osaka Kenpo: Legal Texts in Friendly Osaka Dialect",
+      "en": "Osaka Kenpo: Testing whether even tangled law feels easy in Osaka dialect",
       "ja": "おおさかけんぽう: 難解な法律も大阪弁なら簡単に感じるかの実験場",
-      "zh": "大阪宪法: 用亲切的大阪方言解读法律",
-      "es": "Osaka Kenpo: Textos Legales en Dialecto de Osaka Amigable"
+      "zh": "大阪宪法: 晦涩的法律换成大阪话是否就变简单的实验场",
+      "es": "Osaka Kenpo: Un experimento: ¿hasta la ley enrevesada se siente fácil en dialecto de Osaka?"
     },
     "description": {
-      "ja": "難解な法律の条文を、親しみやすい大阪弁に翻訳して読めるサイト。日本の現行法から歴史的な法・外国法・国際条約まで5分類をそろえ、ワンクリックで原文と大阪弁を切り替えられる。"
+      "ja": "難解な法律の条文を、親しみやすい大阪弁に翻訳して読めるサイト。日本の現行法から歴史的な法・外国法・国際条約まで5分類をそろえ、ワンクリックで原文と大阪弁を切り替えられる。",
+      "en": "A site that translates dense legal text into friendly Osaka dialect so it's actually readable. It spans five categories—from Japan's current laws to historical statutes, foreign law, and international treaties—and toggles between the original and the Osaka version in one click.",
+      "zh": "一个把晦涩的法律条文翻译成亲切大阪话、让人读得下去的网站。涵盖从日本现行法到历史法、外国法、国际条约等五大类，一键在原文与大阪话之间切换。",
+      "es": "Un sitio que traduce los densos textos legales al cercano dialecto de Osaka para que de verdad se puedan leer. Abarca cinco categorías—de las leyes japonesas vigentes a estatutos históricos, derecho extranjero y tratados internacionales—y alterna entre el original y la versión en dialecto con un clic."
     },
     "tags": ["OSS", "Web", "Language"],
     "images": [],
@@ -180,13 +207,16 @@
   {
     "id": "noun-gender",
     "title": {
-      "en": "Noun Gender: Learn Grammatical Gender in 8 Languages",
+      "en": "Noun Gender: Learn noun gender in eight languages through quizzes",
       "ja": "Noun Gender: 8言語の名詞の性をクイズで学ぶ",
-      "zh": "Noun Gender: 学习8种语言的名词性别",
-      "es": "Noun Gender: Aprende el Género Gramatical en 8 Idiomas"
+      "zh": "Noun Gender: 用测验学习八种语言的名词性别",
+      "es": "Noun Gender: Aprende el género de los sustantivos en ocho idiomas con cuestionarios"
     },
     "description": {
-      "ja": "8言語の名詞がもつ文法的な性を学べるサイト。4,600語以上を英語か対象言語で検索でき、意味や記憶術も付く。性を当てるクイズや発音再生、11言語の UI もそなえている。"
+      "ja": "8言語の名詞がもつ文法的な性を学べるサイト。4,600語以上を英語か対象言語で検索でき、意味や記憶術も付く。性を当てるクイズや発音再生、11言語の UI もそなえている。",
+      "en": "A site for learning the grammatical gender of nouns across eight languages. Search over 4,600 words in English or the target language, with meanings and mnemonics included. It also has gender-guessing quizzes, pronunciation playback, and an 11-language UI.",
+      "zh": "一个学习八种语言名词语法性别的网站。可用英语或目标语言检索超过 4,600 个词，附带词义与记忆法。还设有猜性别测验、发音播放和 11 种语言的界面。",
+      "es": "Un sitio para aprender el género gramatical de los sustantivos en ocho idiomas. Busca más de 4.600 palabras en inglés o en la lengua de destino, con significados y reglas mnemotécnicas. Incluye cuestionarios para adivinar el género, reproducción de la pronunciación y una interfaz en 11 idiomas."
     },
     "tags": ["OSS", "Web", "Language"],
     "images": [],
@@ -200,13 +230,16 @@
   {
     "id": "nostalgic",
     "title": {
-      "en": "Nostalgic: Revive 1990s Internet with 5 Retro Web Features",
+      "en": "Nostalgic: Five parts that bring back ’90s web culture",
       "ja": "Nostalgic: 90年代ネット文化を再現する5つの部品",
-      "zh": "Nostalgic: 用5个复古功能复活1990年代互联网",
-      "es": "Nostalgic: Revive el Internet de los 90 con 5 Funciones Web Retro"
+      "zh": "Nostalgic: 重现 90 年代网络文化的五个部件",
+      "es": "Nostalgic: Cinco piezas que rescatan la cultura web de los 90"
     },
     "description": {
-      "ja": "カウンターやいいね・掲示板・ランキングなど、1990年代のネット文化を再現する5つの機能セット。登録不要のシンプルな GET API と Web Components で、静的サイトにすぐ組み込める。"
+      "ja": "カウンターやいいね・掲示板・ランキングなど、1990年代のネット文化を再現する5つの機能セット。登録不要のシンプルな GET API と Web Components で、静的サイトにすぐ組み込める。",
+      "en": "Five building blocks that bring back 1990s web culture: hit counters, likes, a guestbook, rankings, and more. With a simple sign-up-free GET API and Web Components, you can drop them into any static site in minutes.",
+      "zh": "重现上世纪 90 年代网络文化的五个功能部件：计数器、点赞、留言板、排行榜等。凭免注册的简单 GET API 与 Web Components，几分钟即可嵌入任何静态站点。",
+      "es": "Cinco piezas que rescatan la cultura web de los años 90: contadores de visitas, me gusta, libro de visitas, rankings y más. Con una sencilla API GET sin registro y Web Components, las integras en cualquier sitio estático en minutos."
     },
     "tags": ["OSS", "Web"],
     "images": [],
@@ -220,13 +253,16 @@
   {
     "id": "chunkundo",
     "title": {
-      "en": "chunkundo.nvim: Smart Undo Chunking for Neovim",
+      "en": "chunkundo.nvim: Smartly chunk undo for IME typing in Neovim",
       "ja": "chunkundo.nvim: NeovimのIME入力のundoを賢くチャンク化",
-      "zh": "chunkundo.nvim: Neovim智能撤销分块",
-      "es": "chunkundo.nvim: Fragmentación inteligente de deshacer para Neovim"
+      "zh": "chunkundo.nvim: 为 Neovim 的 IME 输入智能划分 undo",
+      "es": "chunkundo.nvim: Divide con criterio el undo de la escritura con IME en Neovim"
     },
     "description": {
-      "ja": "Neovim が挿入セッション全体を1つにまとめてしまう undo を、時間と単語の区切りで細かく分けるプラグイン。タイピングの癖を学んで自動で調整し、chillout.nvim の実用例にもなっている。"
+      "ja": "Neovim が挿入セッション全体を1つにまとめてしまう undo を、時間と単語の区切りで細かく分けるプラグイン。タイピングの癖を学んで自動で調整し、chillout.nvim の実用例にもなっている。",
+      "en": "A plugin that splits Neovim's undo—which normally lumps a whole insert session into one—into finer chunks by time and word boundaries. It learns your typing habits and adjusts automatically, and serves as a real-world demo of chillout.nvim.",
+      "zh": "Neovim 默认会把整个插入会话归为一次 undo；这个插件按时间与词语边界将其拆得更细。它会学习你的打字习惯并自动调整，也是 chillout.nvim 的实用示例。",
+      "es": "Un plugin que divide el undo de Neovim—que normalmente agrupa toda una sesión de inserción en uno solo—en trozos más finos por tiempo y límites de palabra. Aprende tus hábitos de escritura y se ajusta solo, y sirve de ejemplo real de chillout.nvim."
     },
     "tags": ["OSS", "Plugin"],
     "images": [],
@@ -239,13 +275,16 @@
   {
     "id": "riscfetch",
     "title": {
-      "en": "riscfetch: RISC-V Only. Exits on Other Architectures.",
+      "en": "riscfetch: A fetch tool just for RISC-V. It won't run on anything else.",
       "ja": "riscfetch: RISC-V専用のfetch。他のアーキテクチャでは動かない。",
-      "zh": "riscfetch: 仅限RISC-V。其他架构上会退出。",
-      "es": "riscfetch: Solo RISC-V. Sale en Otras Arquitecturas."
+      "zh": "riscfetch: 专属 RISC-V 的 fetch。别的架构上跑不了。",
+      "es": "riscfetch: Un fetch solo para RISC-V. En otra arquitectura no arranca."
     },
     "description": {
-      "ja": "RISC-V 専用の neofetch 風システム情報ツール。ISA 拡張やハート数を表示し、147の拡張をカテゴリ別にそろえる。他アーキテクチャでは動かず、fastfetch と併用もできる。Rust 製。"
+      "ja": "RISC-V 専用の neofetch 風システム情報ツール。ISA 拡張やハート数を表示し、147の拡張をカテゴリ別にそろえる。他アーキテクチャでは動かず、fastfetch と併用もできる。Rust 製。",
+      "en": "A neofetch-style system info tool built only for RISC-V. It shows ISA extensions and hart counts, ships 147 extensions sorted by category, and pairs nicely with fastfetch. It won't run on any other architecture. Written in Rust.",
+      "zh": "一款专为 RISC-V 打造的 neofetch 风格系统信息工具。展示 ISA 扩展与 hart 数，收录 147 项扩展并按类别整理，可与 fastfetch 搭配使用。在其他架构上根本跑不起来。以 Rust 编写。",
+      "es": "Una herramienta de información del sistema al estilo neofetch hecha solo para RISC-V. Muestra extensiones ISA y el número de harts, trae 147 extensiones ordenadas por categoría y combina bien con fastfetch. En ninguna otra arquitectura va a arrancar. Escrita en Rust."
     },
     "tags": ["OSS", "CLI"],
     "images": ["https://raw.githubusercontent.com/kako-jun/riscfetch/main/assets/screenshot.webp"],
@@ -258,13 +297,16 @@
   {
     "id": "agasteer",
     "title": {
-      "en": "Agasteer: The Simplest Markdown App That Never Conflicts",
+      "en": "Agasteer: A Markdown editor for idea-driven dev and everyday notes",
       "ja": "Agasteer: アイデア駆動開発と日常メモのMarkdownエディタ",
-      "zh": "Agasteer: 永不冲突的最简Markdown笔记应用",
-      "es": "Agasteer: La aplicación Markdown más simple que nunca tiene conflictos"
+      "zh": "Agasteer: 面向点子驱动开发与日常记事的 Markdown 编辑器",
+      "es": "Agasteer: Un editor Markdown para el desarrollo guiado por ideas y las notas del día a día"
     },
     "description": {
-      "ja": "中間サーバーを介さず GitHub と直接同期する、最もシンプルな Markdown ノートアプリ。独自のマージで複数デバイスからの編集も安全にそろえ、データは常に自分の管理下に置ける。"
+      "ja": "中間サーバーを介さず GitHub と直接同期する、最もシンプルな Markdown ノートアプリ。独自のマージで複数デバイスからの編集も安全にそろえ、データは常に自分の管理下に置ける。",
+      "en": "The simplest Markdown note app, syncing straight to GitHub with no server in between. A custom merge keeps edits from multiple devices safely in line, and your data always stays under your own control.",
+      "zh": "一款不经中间服务器、直接与 GitHub 同步的极简 Markdown 笔记应用。独家合并机制让多设备的编辑安全对齐，数据始终掌握在你自己手中。",
+      "es": "La app de notas Markdown más sencilla, que sincroniza directo con GitHub sin servidor de por medio. Un merge propio mantiene a salvo y alineadas las ediciones de varios dispositivos, y tus datos siempre quedan bajo tu control."
     },
     "tags": ["OSS", "Web"],
     "images": [],
@@ -278,13 +320,16 @@
   {
     "id": "3min",
     "title": {
-      "en": "3 min. Calendar: Create Your Business Calendar in 3 Minutes",
+      "en": "3 min. Calendar: Build a business calendar in 3 minutes and share it on Instagram",
       "ja": "3 min. Calendar: 3分で営業カレンダーを作ってInstagramに共有",
-      "zh": "3 min. Calendar: 3分钟完成营业日历",
-      "es": "3 min. Calendar: Crea tu calendario de negocios en 3 minutos"
+      "zh": "3 min. Calendar: 三分钟做好营业日历，一键分享到 Instagram",
+      "es": "3 min. Calendar: Arma un calendario de horarios en 3 minutos y compártelo en Instagram"
     },
     "description": {
-      "ja": "日本の祝日を自動で検出し、営業カレンダーを3分で作れるサイト。ドラッグ＆ドロップで手早く編集でき、Instagram や LINE にそのまま共有できる。がんばる個人経営者の時短のために。"
+      "ja": "日本の祝日を自動で検出し、営業カレンダーを3分で作れるサイト。ドラッグ＆ドロップで手早く編集でき、Instagram や LINE にそのまま共有できる。がんばる個人経営者の時短のために。",
+      "en": "A site that auto-detects Japanese holidays and lets you build a business-hours calendar in three minutes. Edit quickly by drag and drop, then share straight to Instagram or LINE. Built to save time for hardworking solo shop owners.",
+      "zh": "一个自动识别日本节假日、三分钟就能做出营业日历的网站。拖拽即可快速编辑，并直接分享到 Instagram 或 LINE。为努力打拼的个体经营者节省时间。",
+      "es": "Un sitio que detecta solo los festivos de Japón y te deja armar un calendario de horarios en tres minutos. Edita rápido arrastrando y soltando, y compártelo directo en Instagram o LINE. Pensado para ahorrarle tiempo a los autónomos que se dejan la piel."
     },
     "tags": ["OSS", "Web"],
     "images": [],
@@ -298,13 +343,16 @@
   {
     "id": "sync-stone",
     "title": {
-      "en": "SyncStone - Stardustmemoir: FF14 Lodestone Export Tool",
+      "en": "SyncStone - Stardustmemoir: Save your FF14 Lodestone blog in full",
       "ja": "SyncStone - 星紡のメモワール: FF14ロドストの日記をまるごと保存",
-      "zh": "SyncStone - Stardustmemoir: FF14陆行鸟站导出工具",
-      "es": "SyncStone - Stardustmemoir: Herramienta de Exportación de FF14 Lodestone"
+      "zh": "SyncStone - Stardustmemoir: 完整保存你的 FF14 云冠日记",
+      "es": "SyncStone - Stardustmemoir: Guarda entero tu blog de FF14 Lodestone"
     },
     "description": {
-      "ja": "エクスポート機能のない FF14 ロドストの日記を、Markdown と ZIP で丸ごと保存する Chrome 拡張。本文・画像・コメント・いいね数まで残し、5リージョンとフレンドの記事にも対応する。"
+      "ja": "エクスポート機能のない FF14 ロドストの日記を、Markdown と ZIP で丸ごと保存する Chrome 拡張。本文・画像・コメント・いいね数まで残し、5リージョンとフレンドの記事にも対応する。",
+      "en": "A Chrome extension that saves FF14 Lodestone blog entries—which have no export feature—wholesale as Markdown and ZIP. It keeps the text, images, comments, and even like counts, and covers all five regions plus your friends' posts.",
+      "zh": "一款把本无导出功能的 FF14 云冠（Lodestone）日记整个保存为 Markdown 与 ZIP 的 Chrome 扩展。保留正文、图片、评论甚至点赞数，覆盖五个大区与好友的文章。",
+      "es": "Una extensión de Chrome que guarda enteras las entradas del blog de FF14 Lodestone—que no tienen función de exportación—en Markdown y ZIP. Conserva el texto, las imágenes, los comentarios e incluso los me gusta, y abarca las cinco regiones y los artículos de tus amigos."
     },
     "tags": ["OSS", "Extension"],
     "images": [],
@@ -323,13 +371,16 @@
   {
     "id": "lawkit",
     "title": {
-      "en": "lawkit: Detect Data Fraud with Statistical Laws",
+      "en": "lawkit: Spot fraud and anomalies with statistical laws",
       "ja": "lawkit: 統計法則でデータの不正・異常を見抜く",
-      "zh": "lawkit: 用统计法则检测数据欺诈",
-      "es": "lawkit: Detecta Fraude de Datos con Leyes Estadísticas"
+      "zh": "lawkit: 用统计法则看穿数据的舞弊与异常",
+      "es": "lawkit: Detecta fraudes y anomalías con leyes estadísticas"
     },
     "description": {
-      "ja": "ベンフォードやパレートなど5つの統計法則で、データに潜む不正や異常を見抜く CLI。会計や選挙の不正検知から売上分析・品質管理まで使え、ASCII チャートでリスクを判定する。Rust 製。"
+      "ja": "ベンフォードやパレートなど5つの統計法則で、データに潜む不正や異常を見抜く CLI。会計や選挙の不正検知から売上分析・品質管理まで使え、ASCII チャートでリスクを判定する。Rust 製。",
+      "en": "A CLI that uncovers fraud and anomalies hiding in your data using five statistical laws like Benford's and Pareto. It works for everything from accounting and election fraud detection to sales analysis and quality control, judging risk with ASCII charts. Written in Rust.",
+      "zh": "一款用本福德、帕累托等五条统计法则揭示数据中隐藏的舞弊与异常的 CLI。从会计、选举舞弊检测到销售分析、质量管控都能用，并以 ASCII 图表判定风险。以 Rust 编写。",
+      "es": "Una CLI que destapa fraudes y anomalías ocultas en tus datos con cinco leyes estadísticas como las de Benford y Pareto. Sirve desde la detección de fraude contable y electoral hasta el análisis de ventas y el control de calidad, y evalúa el riesgo con gráficos ASCII. Escrita en Rust."
     },
     "tags": ["OSS", "CLI", "Data"],
     "images": [],
@@ -342,13 +393,16 @@
   {
     "id": "diffai",
     "title": {
-      "en": "diffai: \"Binary files differ\" Is Not Enough",
+      "en": "diffai: It doesn't stop at “Binary files differ”",
       "ja": "diffai: 「Binary files differ」で終わらない",
-      "zh": "diffai: 「Binary files differ」不够用",
-      "es": "diffai: \"Binary files differ\" No Es Suficiente"
+      "zh": "diffai: 不会只留下一句“Binary files differ”",
+      "es": "diffai: No se queda en «Binary files differ»"
     },
     "description": {
-      "ja": "「Binary files differ」で終わらせず、ML モデルファイルの意味ある差分を表示する CLI。学習率や損失など11種の自動分析とテンソル統計の比較をそなえ、CI/CD 向けに JSON でも出せる。"
+      "ja": "「Binary files differ」で終わらせず、ML モデルファイルの意味ある差分を表示する CLI。学習率や損失など11種の自動分析とテンソル統計の比較をそなえ、CI/CD 向けに JSON でも出せる。",
+      "en": "A CLI that goes beyond “Binary files differ” to show meaningful diffs between ML model files. With 11 kinds of automatic analysis—learning rate, loss, and more—and tensor-statistics comparison, it can also emit JSON for CI/CD.",
+      "zh": "一款不止于“Binary files differ”、能展示 ML 模型文件之间有意义差异的 CLI。具备学习率、损失等 11 种自动分析与张量统计对比，还可为 CI/CD 输出 JSON。",
+      "es": "Una CLI que va más allá de «Binary files differ» y muestra diferencias con sentido entre archivos de modelos de ML. Con 11 tipos de análisis automático—tasa de aprendizaje, pérdida y más—y comparación de estadísticas de tensores, también puede emitir JSON para CI/CD."
     },
     "tags": ["OSS", "CLI", "Data"],
     "images": [],
@@ -361,13 +415,16 @@
   {
     "id": "diffx",
     "title": {
-      "en": "diffx: Shows Only Meaningful Changes",
+      "en": "diffx: Show only the changes that matter",
       "ja": "diffx: 意味のある変更だけを表示",
-      "zh": "diffx: 只显示有意义的变更",
-      "es": "diffx: Muestra Solo Cambios Significativos"
+      "zh": "diffx: 只显示真正重要的变更",
+      "es": "diffx: Muestra solo los cambios que importan"
     },
     "description": {
-      "ja": "キー順が変わるだけで全行を差分とみなす従来の diff と違い、構造を理解して本当に変わった所だけを示す CLI。JSON や YAML など6形式を自動で見分け、ディレクトリの再帰比較もできる。"
+      "ja": "キー順が変わるだけで全行を差分とみなす従来の diff と違い、構造を理解して本当に変わった所だけを示す CLI。JSON や YAML など6形式を自動で見分け、ディレクトリの再帰比較もできる。",
+      "en": "Unlike traditional diff, which flags every line just because the key order changed, this CLI understands structure and shows only what truly changed. It auto-detects six formats like JSON and YAML, and can compare directories recursively.",
+      "zh": "传统 diff 会因为键的顺序变了就把所有行都当作差异；这款 CLI 不同，它理解结构，只显示真正变动之处。能自动识别 JSON、YAML 等六种格式，并可递归比较目录。",
+      "es": "A diferencia del diff tradicional, que marca cada línea solo porque cambió el orden de las claves, esta CLI entiende la estructura y muestra solo lo que de verdad cambió. Detecta automáticamente seis formatos como JSON y YAML, y puede comparar directorios de forma recursiva."
     },
     "tags": ["OSS", "CLI", "Data"],
     "images": ["https://storage.googleapis.com/zenn-user-upload/a82eab0d5859-20250706.png"],
@@ -390,13 +447,16 @@
   {
     "id": "sid-note",
     "title": {
-      "en": "Sid Note: A bass fretboard visualization app for practice",
+      "en": "Sid Note: Visualize each note's role on the bass fretboard",
       "ja": "Sid Note: ベース指板で音の役割を可視化",
-      "zh": "Sid Note: 贝斯指板可视化练习应用",
-      "es": "Sid Note: Aplicación de visualización del diapasón de bajo para práctica"
+      "zh": "Sid Note: 在贝斯指板上可视化每个音的角色",
+      "es": "Sid Note: Visualiza el papel de cada nota en el diapasón del bajo"
     },
     "description": {
-      "ja": "ベースの指板を表示して練習に使う Web アプリ。いま弾くコードや音が曲やコードの中でどんな役割かが分かる。TAB 譜にない運指やミュートも見え、指板を画像にして共有もできる。"
+      "ja": "ベースの指板を表示して練習に使う Web アプリ。いま弾くコードや音が曲やコードの中でどんな役割かが分かる。TAB 譜にない運指やミュートも見え、指板を画像にして共有もできる。",
+      "en": "A web app that shows the bass fretboard for practice. See what role the chord or note you're playing plays within a song or chord. It reveals fingerings and mutes that tabs leave out, and you can share the fretboard as an image.",
+      "zh": "一款展示贝斯指板、供练习使用的 Web 应用。让你看清正在弹的和弦或音在曲子、和弦中扮演什么角色。还能看到 TAB 谱上没有的指法与闷音，并可把指板存为图片分享。",
+      "es": "Una app web que muestra el diapasón del bajo para practicar. Ve qué papel cumple el acorde o la nota que tocas dentro de una canción o un acorde. Revela digitaciones y mutes que las tablaturas omiten, y puedes compartir el diapasón como imagen."
     },
     "tags": ["OSS", "Web", "Music"],
     "images": [
@@ -420,11 +480,16 @@
   {
     "id": "orber",
     "title": {
-      "en": "orber: Turn a Photo into an Abstract Orb Mood Video",
-      "ja": "orber: 写真を光の玉のムード映像に変える"
+      "en": "orber: Turn a photo into a mood video of glowing orbs",
+      "ja": "orber: 写真を光の玉のムード映像に変える",
+      "zh": ": 把照片变成发光光球的氛围影像",
+      "es": ": Convierte una foto en un vídeo ambiental de orbes de luz"
     },
     "description": {
-      "ja": "写真を、ゆっくり漂う色とりどりの光の玉の抽象的なムード映像に変える Web アプリと Rust 製ツール。動画背景や配信の待機画面、壁紙に使え、元写真をぼかして匂わせにもできる。"
+      "ja": "写真を、ゆっくり漂う色とりどりの光の玉の抽象的なムード映像に変える Web アプリと Rust 製ツール。動画背景や配信の待機画面、壁紙に使え、元写真をぼかして匂わせにもできる。",
+      "en": "A web app and Rust tool that turns a photo into an abstract mood video of slowly drifting, colorful orbs of light. Use it as a video background, a streaming standby screen, or a wallpaper—or blur the original photo to merely hint at it.",
+      "zh": "一款把照片变成缓缓漂浮、五颜六色光球抽象氛围影像的 Web 应用与 Rust 工具。可用作视频背景、直播待机画面或壁纸，也可把原图虚化、只留一丝意境。",
+      "es": "Una app web y herramienta en Rust que convierte una foto en un vídeo ambiental abstracto de orbes de luz de colores que flotan despacio. Úsalo de fondo de vídeo, de pantalla de espera en directos o de fondo de pantalla—o difumina la foto original para apenas insinuarla."
     },
     "tags": ["OSS", "Web"],
     "images": [],
@@ -438,11 +503,16 @@
   {
     "id": "jiwa",
     "title": {
-      "en": "jiwa: Terminal Text Reveal Animations for Rust",
-      "ja": "jiwa: ターミナル文字をじわじわ浮かび上がらせる"
+      "en": "jiwa: Make terminal text slowly emerge",
+      "ja": "jiwa: ターミナル文字をじわじわ浮かび上がらせる",
+      "zh": ": 让终端文字渐渐浮现",
+      "es": ": Haz que el texto de la terminal surja poco a poco"
     },
     "description": {
-      "ja": "ターミナルの文字をじわじわ浮かび上がらせる reveal アニメーションの Rust 製ライブラリ兼 CLI。タイプライタ風フェードと脈動の2部品を持ち、依存ゼロでパイプにつないで使える。"
+      "ja": "ターミナルの文字をじわじわ浮かび上がらせる reveal アニメーションの Rust 製ライブラリ兼 CLI。タイプライタ風フェードと脈動の2部品を持ち、依存ゼロでパイプにつないで使える。",
+      "en": "A Rust library and CLI for reveal animations that make terminal text slowly emerge. It offers two parts—a typewriter-style fade and a pulse—with zero dependencies, ready to drop into a pipe.",
+      "zh": "一款让终端文字渐渐浮现的 reveal 动画 Rust 库兼 CLI。提供打字机风淡入与脉动两个部件，零依赖，可接入管道使用。",
+      "es": "Una biblioteca y CLI en Rust para animaciones de aparición que hacen surgir poco a poco el texto en la terminal. Ofrece dos piezas—un fundido tipo máquina de escribir y un pulso—sin dependencias y listas para encadenar en un pipe."
     },
     "tags": ["OSS", "CLI"],
     "images": [],
@@ -456,11 +526,16 @@
   {
     "id": "avel",
     "title": {
-      "en": "avel: The Fastest-Rendering Zola Blog Theme",
-      "ja": "avel: 最速で表示されるZolaブログテーマ"
+      "en": "avel: The fastest-loading Zola blog theme",
+      "ja": "avel: 最速で表示されるZolaブログテーマ",
+      "zh": ": 加载最快的 Zola 博客主题",
+      "es": ": El tema de blog para Zola que carga más rápido"
     },
     "description": {
-      "ja": "阿部寛のホームページに着想を得た、最速で表示される Zola 向けブログテーマ。JavaScript ゼロ・外部リソースなしで瞬時に描き、config.toml だけで見た目を細かく調整できる。"
+      "ja": "阿部寛のホームページに着想を得た、最速で表示される Zola 向けブログテーマ。JavaScript ゼロ・外部リソースなしで瞬時に描き、config.toml だけで見た目を細かく調整できる。",
+      "en": "A blazing-fast Zola blog theme inspired by Hiroshi Abe's legendarily quick homepage. With zero JavaScript and no external resources, it paints instantly, and you can fine-tune the look from config.toml alone.",
+      "zh": "一款灵感源自阿部宽那以“极快”闻名的主页、加载最快的 Zola 博客主题。零 JavaScript、无外部资源，瞬间渲染，仅靠 config.toml 就能细调外观。",
+      "es": "Un tema de blog para Zola ultrarrápido, inspirado en la legendariamente veloz página de Hiroshi Abe. Sin nada de JavaScript ni recursos externos, se dibuja al instante, y puedes afinar su aspecto solo desde config.toml."
     },
     "tags": ["OSS", "Theme"],
     "images": [],

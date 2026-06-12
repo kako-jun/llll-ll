@@ -1,5 +1,51 @@
 [
   {
+    "id": "orber",
+    "title": {
+      "en": "orber: Turn a photo into a mood video of glowing orbs",
+      "ja": "orber: 写真を光の玉のムード映像に変える",
+      "zh": ": 把照片变成发光光球的氛围影像",
+      "es": ": Convierte una foto en un vídeo ambiental de orbes de luz"
+    },
+    "description": {
+      "ja": "写真を、ゆっくり漂う色とりどりの光の玉の抽象的なムード映像に変える Web アプリと Rust 製ツール。動画背景や配信の待機画面、壁紙に使え、元写真をぼかして匂わせにもできる。",
+      "en": "A web app and Rust tool that turns a photo into an abstract mood video of slowly drifting, colorful orbs of light. Use it as a video background, a streaming standby screen, or a wallpaper—or blur the original photo to merely hint at it.",
+      "zh": "一款把照片变成缓缓漂浮、五颜六色光球抽象氛围影像的 Web 应用与 Rust 工具。可用作视频背景、直播待机画面或壁纸，也可把原图虚化、只留一丝意境。",
+      "es": "Una app web y herramienta en Rust que convierte una foto en un vídeo ambiental abstracto de orbes de luz de colores que flotan despacio. Úsalo de fondo de vídeo, de pantalla de espera en directos o de fondo de pantalla—o difumina la foto original para apenas insinuarla."
+    },
+    "tags": ["OSS", "Web"],
+    "images": [],
+    "demoUrl": "https://orber.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/orber",
+    "createdAt": "2026-04-27",
+    "updatedAt": "2026-06-11",
+    "featured": true,
+    "icon": "/images/apps/orber.webp"
+  },
+  {
+    "id": "machigai-salad",
+    "title": {
+      "en": "Machigai Salad: Two images side by side—long-press to compare and spot the difference",
+      "ja": "間違いサラダ: 2枚を並べてロングタップで見比べる間違い探し",
+      "zh": "Machigai Salad: 两图并排，长按对比找不同",
+      "es": "Machigai Salad: Dos imágenes en paralelo: mantén pulsado para comparar y hallar las diferencias"
+    },
+    "description": {
+      "ja": "2枚の画像を撮影またはアップロードして見比べ、違いを見つける汎用の間違い探しツール。台形補正・ルーペ・アンドゥ・GIF書き出しをそなえ、OpenCV.js でブラウザ内だけで完結する。",
+      "en": "A spot-the-difference tool for any pair of images: snap or upload two pictures, line them up, and hunt for what changed. Keystone correction, a loupe, undo, and GIF export all run entirely in your browser via OpenCV.js.",
+      "zh": "一款通用的找不同工具：拍摄或上传两张图片，并排对比，找出不同之处。梯形校正、放大镜、撤销、GIF 导出，全部基于 OpenCV.js 在浏览器内完成。",
+      "es": "Una herramienta para encontrar las diferencias entre dos imágenes cualesquiera: captura o sube dos fotos, ponlas lado a lado y busca qué cambió. Corrección de perspectiva, lupa, deshacer y exportación a GIF, todo dentro del navegador con OpenCV.js."
+    },
+    "tags": ["OSS", "Web"],
+    "images": [],
+    "demoUrl": "https://machigai-salad.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/machigai-salad",
+    "createdAt": "2025-07-10",
+    "updatedAt": "2026-04-20",
+    "featured": true,
+    "icon": "/images/apps/machigai-salad.webp"
+  },
+  {
     "id": "avel",
     "title": {
       "en": "avel: The fastest-loading Zola blog theme",
@@ -19,8 +65,31 @@
     "repositoryUrl": "https://github.com/kako-jun/avel",
     "createdAt": "2026-06-11",
     "updatedAt": "2026-06-11",
-    "featured": false,
+    "featured": true,
     "icon": "/images/apps/avel.webp"
+  },
+  {
+    "id": "osaka-kenpo",
+    "title": {
+      "en": "Osaka Kenpo: Testing whether even tangled law feels easy in Osaka dialect",
+      "ja": "おおさかけんぽう: 難解な法律も大阪弁なら簡単に感じるかの実験場",
+      "zh": "大阪宪法: 晦涩的法律换成大阪话是否就变简单的实验场",
+      "es": "Osaka Kenpo: Un experimento: ¿hasta la ley enrevesada se siente fácil en dialecto de Osaka?"
+    },
+    "description": {
+      "ja": "難解な法律の条文を、親しみやすい大阪弁に翻訳して読めるサイト。日本の現行法から歴史的な法・外国法・国際条約まで5分類をそろえ、ワンクリックで原文と大阪弁を切り替えられる。",
+      "en": "A site that translates dense legal text into friendly Osaka dialect so it's actually readable. It spans five categories—from Japan's current laws to historical statutes, foreign law, and international treaties—and toggles between the original and the Osaka version in one click.",
+      "zh": "一个把晦涩的法律条文翻译成亲切大阪话、让人读得下去的网站。涵盖从日本现行法到历史法、外国法、国际条约等五大类，一键在原文与大阪话之间切换。",
+      "es": "Un sitio que traduce los densos textos legales al cercano dialecto de Osaka para que de verdad se puedan leer. Abarca cinco categorías—de las leyes japonesas vigentes a estatutos históricos, derecho extranjero y tratados internacionales—y alterna entre el original y la versión en dialecto con un clic."
+    },
+    "tags": ["OSS", "Web", "Language"],
+    "images": [],
+    "demoUrl": "https://osaka-kenpo.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/osaka-kenpo",
+    "createdAt": "2025-07-03",
+    "updatedAt": "2025-01-20",
+    "featured": true,
+    "icon": "/images/apps/osaka-kenpo.webp"
   },
   {
     "id": "jiwa",
@@ -46,29 +115,6 @@
     "icon": "/images/cli.webp"
   },
   {
-    "id": "orber",
-    "title": {
-      "en": "orber: Turn a photo into a mood video of glowing orbs",
-      "ja": "orber: 写真を光の玉のムード映像に変える",
-      "zh": ": 把照片变成发光光球的氛围影像",
-      "es": ": Convierte una foto en un vídeo ambiental de orbes de luz"
-    },
-    "description": {
-      "ja": "写真を、ゆっくり漂う色とりどりの光の玉の抽象的なムード映像に変える Web アプリと Rust 製ツール。動画背景や配信の待機画面、壁紙に使え、元写真をぼかして匂わせにもできる。",
-      "en": "A web app and Rust tool that turns a photo into an abstract mood video of slowly drifting, colorful orbs of light. Use it as a video background, a streaming standby screen, or a wallpaper—or blur the original photo to merely hint at it.",
-      "zh": "一款把照片变成缓缓漂浮、五颜六色光球抽象氛围影像的 Web 应用与 Rust 工具。可用作视频背景、直播待机画面或壁纸，也可把原图虚化、只留一丝意境。",
-      "es": "Una app web y herramienta en Rust que convierte una foto en un vídeo ambiental abstracto de orbes de luz de colores que flotan despacio. Úsalo de fondo de vídeo, de pantalla de espera en directos o de fondo de pantalla—o difumina la foto original para apenas insinuarla."
-    },
-    "tags": ["OSS", "Web"],
-    "images": [],
-    "demoUrl": "https://orber.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/orber",
-    "createdAt": "2026-04-27",
-    "updatedAt": "2026-06-11",
-    "featured": true,
-    "icon": "/images/apps/orber.webp"
-  },
-  {
     "id": "gitpp",
     "title": {
       "en": "gitpp: Operate many Git repos from one config",
@@ -87,7 +133,7 @@
     "repositoryUrl": "https://github.com/kako-jun/gitpp",
     "createdAt": "2026-04-03",
     "updatedAt": "2026-04-13",
-    "featured": true,
+    "featured": false,
     "icon": "/images/cli.webp"
   },
   {
@@ -110,7 +156,7 @@
     "repositoryUrl": "https://github.com/kako-jun/ear-sky",
     "createdAt": "2026-03-28",
     "updatedAt": "2026-04-20",
-    "featured": true,
+    "featured": false,
     "icon": "/images/apps/ear-sky.webp"
   },
   {
@@ -133,7 +179,7 @@
     "repositoryUrl": "https://github.com/kako-jun/hacker-noroshi",
     "createdAt": "2026-02-13",
     "updatedAt": "2026-04-20",
-    "featured": true,
+    "featured": false,
     "icon": "/images/apps/hacker-noroshi.webp"
   },
   {
@@ -156,7 +202,7 @@
     "repositoryUrl": "https://github.com/kako-jun/sasso",
     "createdAt": "2025-12-10",
     "updatedAt": "2025-01-25",
-    "featured": true,
+    "featured": false,
     "icon": "/images/apps/sasso.webp"
   },
   {
@@ -179,7 +225,7 @@
     "repositoryUrl": "https://github.com/kako-jun/mypace",
     "createdAt": "2025-12-06",
     "updatedAt": "2025-02-01",
-    "featured": true,
+    "featured": false,
     "icon": "/images/apps/mypace.webp"
   },
   {
@@ -246,7 +292,7 @@
     "repositoryUrl": "https://github.com/kako-jun/3min",
     "createdAt": "2025-11-29",
     "updatedAt": "2025-01-05",
-    "featured": true,
+    "featured": false,
     "icon": "/images/apps/3min.webp"
   },
   {
@@ -269,7 +315,7 @@
     "repositoryUrl": "https://github.com/kako-jun/agasteer",
     "createdAt": "2025-11-20",
     "updatedAt": "2025-01-08",
-    "featured": true,
+    "featured": false,
     "icon": "/images/apps/agasteer.webp"
   },
   {
@@ -341,31 +387,8 @@
     "repositoryUrl": "https://github.com/kako-jun/diffai",
     "createdAt": "2025-07-12",
     "updatedAt": "2024-12-15",
-    "featured": true,
+    "featured": false,
     "icon": "/images/cli.webp"
-  },
-  {
-    "id": "machigai-salad",
-    "title": {
-      "en": "Machigai Salad: Two images side by side—long-press to compare and spot the difference",
-      "ja": "間違いサラダ: 2枚を並べてロングタップで見比べる間違い探し",
-      "zh": "Machigai Salad: 两图并排，长按对比找不同",
-      "es": "Machigai Salad: Dos imágenes en paralelo: mantén pulsado para comparar y hallar las diferencias"
-    },
-    "description": {
-      "ja": "2枚の画像を撮影またはアップロードして見比べ、違いを見つける汎用の間違い探しツール。台形補正・ルーペ・アンドゥ・GIF書き出しをそなえ、OpenCV.js でブラウザ内だけで完結する。",
-      "en": "A spot-the-difference tool for any pair of images: snap or upload two pictures, line them up, and hunt for what changed. Keystone correction, a loupe, undo, and GIF export all run entirely in your browser via OpenCV.js.",
-      "zh": "一款通用的找不同工具：拍摄或上传两张图片，并排对比，找出不同之处。梯形校正、放大镜、撤销、GIF 导出，全部基于 OpenCV.js 在浏览器内完成。",
-      "es": "Una herramienta para encontrar las diferencias entre dos imágenes cualesquiera: captura o sube dos fotos, ponlas lado a lado y busca qué cambió. Corrección de perspectiva, lupa, deshacer y exportación a GIF, todo dentro del navegador con OpenCV.js."
-    },
-    "tags": ["OSS", "Web"],
-    "images": [],
-    "demoUrl": "https://machigai-salad.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/machigai-salad",
-    "createdAt": "2025-07-10",
-    "updatedAt": "2026-04-20",
-    "featured": true,
-    "icon": "/images/apps/machigai-salad.webp"
   },
   {
     "id": "lawkit",
@@ -386,7 +409,7 @@
     "repositoryUrl": "https://github.com/kako-jun/lawkit",
     "createdAt": "2025-07-09",
     "updatedAt": "2024-12-20",
-    "featured": true,
+    "featured": false,
     "icon": "/images/cli.webp"
   },
   {
@@ -418,31 +441,8 @@
     ],
     "createdAt": "2025-07-05",
     "updatedAt": "2024-12-10",
-    "featured": true,
+    "featured": false,
     "icon": "/images/cli.webp"
-  },
-  {
-    "id": "osaka-kenpo",
-    "title": {
-      "en": "Osaka Kenpo: Testing whether even tangled law feels easy in Osaka dialect",
-      "ja": "おおさかけんぽう: 難解な法律も大阪弁なら簡単に感じるかの実験場",
-      "zh": "大阪宪法: 晦涩的法律换成大阪话是否就变简单的实验场",
-      "es": "Osaka Kenpo: Un experimento: ¿hasta la ley enrevesada se siente fácil en dialecto de Osaka?"
-    },
-    "description": {
-      "ja": "難解な法律の条文を、親しみやすい大阪弁に翻訳して読めるサイト。日本の現行法から歴史的な法・外国法・国際条約まで5分類をそろえ、ワンクリックで原文と大阪弁を切り替えられる。",
-      "en": "A site that translates dense legal text into friendly Osaka dialect so it's actually readable. It spans five categories—from Japan's current laws to historical statutes, foreign law, and international treaties—and toggles between the original and the Osaka version in one click.",
-      "zh": "一个把晦涩的法律条文翻译成亲切大阪话、让人读得下去的网站。涵盖从日本现行法到历史法、外国法、国际条约等五大类，一键在原文与大阪话之间切换。",
-      "es": "Un sitio que traduce los densos textos legales al cercano dialecto de Osaka para que de verdad se puedan leer. Abarca cinco categorías—de las leyes japonesas vigentes a estatutos históricos, derecho extranjero y tratados internacionales—y alterna entre el original y la versión en dialecto con un clic."
-    },
-    "tags": ["OSS", "Web", "Language"],
-    "images": [],
-    "demoUrl": "https://osaka-kenpo.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/osaka-kenpo",
-    "createdAt": "2025-07-03",
-    "updatedAt": "2025-01-20",
-    "featured": true,
-    "icon": "/images/apps/osaka-kenpo.webp"
   },
   {
     "id": "nostalgic",
@@ -464,7 +464,7 @@
     "repositoryUrl": "https://github.com/kako-jun/nostalgic",
     "createdAt": "2025-06-30",
     "updatedAt": "2025-01-15",
-    "featured": true,
+    "featured": false,
     "icon": "/images/apps/nostalgic.webp"
   },
   {
@@ -487,7 +487,7 @@
     "repositoryUrl": "https://github.com/kako-jun/tail-match",
     "createdAt": "2025-06-27",
     "updatedAt": "2026-04-20",
-    "featured": true,
+    "featured": false,
     "icon": "/images/apps/tail-match.webp"
   },
   {
@@ -510,7 +510,7 @@
     "repositoryUrl": "https://github.com/kako-jun/noun-gender",
     "createdAt": "2025-06-27",
     "updatedAt": "2025-01-18",
-    "featured": true,
+    "featured": false,
     "icon": "/images/apps/noun-gender.webp"
   },
   {
@@ -543,7 +543,7 @@
     ],
     "createdAt": "2025-05-12",
     "updatedAt": "2024-12-01",
-    "featured": true,
+    "featured": false,
     "icon": "/images/apps/sid-note.webp"
   },
   {

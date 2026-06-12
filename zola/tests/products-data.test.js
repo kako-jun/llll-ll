@@ -32,6 +32,24 @@ describe("products.json", () => {
     expect([...new Set(dup)]).toEqual([]);
   });
 
+  it("アプリ一覧の先頭は注目4件を指定順で並べる", () => {
+    expect(products.slice(0, 4).map((p) => p.id)).toEqual([
+      "orber",
+      "machigai-salad",
+      "avel",
+      "osaka-kenpo",
+    ]);
+  });
+
+  it("注目フラグは指定4件だけに立てる", () => {
+    expect(products.filter((p) => p.featured).map((p) => p.id)).toEqual([
+      "orber",
+      "machigai-salad",
+      "avel",
+      "osaka-kenpo",
+    ]);
+  });
+
   it("公開エントリ（!draft）が1件以上ある", () => {
     expect(released.length).toBeGreaterThan(0);
   });

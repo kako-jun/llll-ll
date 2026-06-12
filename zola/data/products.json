@@ -17,10 +17,33 @@
     "images": [],
     "demoUrl": "https://avel.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/avel",
-    "createdAt": "2026-06-01",
+    "createdAt": "2026-06-11",
     "updatedAt": "2026-06-11",
     "featured": false,
     "icon": "/images/apps/avel.webp"
+  },
+  {
+    "id": "jiwa",
+    "title": {
+      "en": "jiwa: Make terminal text slowly emerge",
+      "ja": "jiwa: ターミナル文字をじわじわ浮かび上がらせる",
+      "zh": ": 让终端文字渐渐浮现",
+      "es": ": Haz que el texto de la terminal surja poco a poco"
+    },
+    "description": {
+      "ja": "ターミナルの文字をじわじわ浮かび上がらせる reveal アニメーションの Rust 製ライブラリ兼 CLI。タイプライタ風フェードと脈動の2部品を持ち、依存ゼロでパイプにつないで使える。",
+      "en": "A Rust library and CLI for reveal animations that make terminal text slowly emerge. It offers two parts—a typewriter-style fade and a pulse—with zero dependencies, ready to drop into a pipe.",
+      "zh": "一款让终端文字渐渐浮现的 reveal 动画 Rust 库兼 CLI。提供打字机风淡入与脉动两个部件，零依赖，可接入管道使用。",
+      "es": "Una biblioteca y CLI en Rust para animaciones de aparición que hacen surgir poco a poco el texto en la terminal. Ofrece dos piezas—un fundido tipo máquina de escribir y un pulso—sin dependencias y listas para encadenar en un pipe."
+    },
+    "tags": ["OSS", "CLI"],
+    "images": [],
+    "demoUrl": "https://crates.io/crates/jiwa",
+    "repositoryUrl": "https://github.com/kako-jun/jiwa",
+    "createdAt": "2026-05-29",
+    "updatedAt": "2026-05-29",
+    "featured": false,
+    "icon": "/images/cli.webp"
   },
   {
     "id": "orber",
@@ -40,10 +63,32 @@
     "images": [],
     "demoUrl": "https://orber.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/orber",
-    "createdAt": "2026-04-13",
+    "createdAt": "2026-04-27",
     "updatedAt": "2026-06-11",
     "featured": true,
     "icon": "/images/apps/orber.webp"
+  },
+  {
+    "id": "gitpp",
+    "title": {
+      "en": "gitpp: Operate many Git repos from one config",
+      "ja": "gitpp: 複数のGitリポジトリを1つの設定で一括操作",
+      "zh": "gitpp: 用一份配置批量操作多个 Git 仓库",
+      "es": "gitpp: Maneja muchos repos Git desde una sola configuración"
+    },
+    "description": {
+      "ja": "1つの YAML 設定から複数の Git リポジトリをまとめて操作する CLI。clone や pull など10コマンドを一括で走らせ、TUI でリポジトリごとの進捗をリアルタイムに表示する。Rust 製。",
+      "en": "A CLI that drives many Git repositories at once from a single YAML config. Run ten commands like clone or pull across all of them in one go, with a TUI showing each repo's progress in real time. Written in Rust.",
+      "zh": "一个以单一 YAML 配置批量操作多个 Git 仓库的 CLI。可一次性跨所有仓库运行 clone、pull 等十项命令，并用 TUI 实时展示每个仓库的进度。以 Rust 编写。",
+      "es": "Una CLI que maneja muchos repositorios Git a la vez desde una sola configuración YAML. Ejecuta diez comandos como clone o pull sobre todos de una sola pasada, con una TUI que muestra el progreso de cada repo en tiempo real. Escrita en Rust."
+    },
+    "tags": ["OSS", "CLI"],
+    "images": [],
+    "repositoryUrl": "https://github.com/kako-jun/gitpp",
+    "createdAt": "2026-04-03",
+    "updatedAt": "2026-04-13",
+    "featured": true,
+    "icon": "/images/cli.webp"
   },
   {
     "id": "ear-sky",
@@ -63,7 +108,7 @@
     "images": [],
     "demoUrl": "https://ear-sky.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/ear-sky",
-    "createdAt": "2026-03-01",
+    "createdAt": "2026-03-28",
     "updatedAt": "2026-04-20",
     "featured": true,
     "icon": "/images/apps/ear-sky.webp"
@@ -86,146 +131,10 @@
     "images": [],
     "demoUrl": "https://hn.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/hacker-noroshi",
-    "createdAt": "2026-02-15",
+    "createdAt": "2026-02-13",
     "updatedAt": "2026-04-20",
     "featured": true,
     "icon": "/images/apps/hacker-noroshi.webp"
-  },
-  {
-    "id": "machigai-salad",
-    "title": {
-      "en": "Machigai Salad: Two images side by side—long-press to compare and spot the difference",
-      "ja": "間違いサラダ: 2枚を並べてロングタップで見比べる間違い探し",
-      "zh": "Machigai Salad: 两图并排，长按对比找不同",
-      "es": "Machigai Salad: Dos imágenes en paralelo: mantén pulsado para comparar y hallar las diferencias"
-    },
-    "description": {
-      "ja": "2枚の画像を撮影またはアップロードして見比べ、違いを見つける汎用の間違い探しツール。台形補正・ルーペ・アンドゥ・GIF書き出しをそなえ、OpenCV.js でブラウザ内だけで完結する。",
-      "en": "A spot-the-difference tool for any pair of images: snap or upload two pictures, line them up, and hunt for what changed. Keystone correction, a loupe, undo, and GIF export all run entirely in your browser via OpenCV.js.",
-      "zh": "一款通用的找不同工具：拍摄或上传两张图片，并排对比，找出不同之处。梯形校正、放大镜、撤销、GIF 导出，全部基于 OpenCV.js 在浏览器内完成。",
-      "es": "Una herramienta para encontrar las diferencias entre dos imágenes cualesquiera: captura o sube dos fotos, ponlas lado a lado y busca qué cambió. Corrección de perspectiva, lupa, deshacer y exportación a GIF, todo dentro del navegador con OpenCV.js."
-    },
-    "tags": ["OSS", "Web"],
-    "images": [],
-    "demoUrl": "https://machigai-salad.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/machigai-salad",
-    "createdAt": "2026-02-01",
-    "updatedAt": "2026-04-20",
-    "featured": true,
-    "icon": "/images/apps/machigai-salad.webp"
-  },
-  {
-    "id": "tail-match",
-    "title": {
-      "en": "tail-match: Connecting shelter cats and dogs across Japan with adopters",
-      "ja": "ているまっち！: 全国の保護猫・犬を里親とつなぐ",
-      "zh": "tail-match: 为全日本的收容猫狗连接领养人",
-      "es": "tail-match: Conectando gatos y perros de refugio de todo Japón con quienes los adoptan"
-    },
-    "description": {
-      "ja": "全国の自治体が保護している猫・犬の情報を集約し、新しい家族とのマッチングを支援するサイト。緊急度別のギャラリーと毎日の自動スクレイピングで、石川県を起点に全国へ広げている。",
-      "en": "A site that gathers listings of cats and dogs sheltered by local governments across Japan and helps them find new families. Urgency-sorted galleries and daily automatic scraping power it, starting in Ishikawa and spreading nationwide.",
-      "zh": "一个汇集全日本各地政府收容的猫狗信息、帮助它们找到新家的网站。按紧急程度分类的画廊与每日自动抓取，从石川县起步，逐步推向全国。",
-      "es": "Un sitio que reúne los anuncios de gatos y perros acogidos por los municipios de todo Japón y los ayuda a encontrar una nueva familia. Galerías ordenadas por urgencia y rastreo automático diario lo impulsan, empezando en Ishikawa rumbo a todo el país."
-    },
-    "tags": ["OSS", "Web"],
-    "images": [],
-    "demoUrl": "https://tail-match.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/tail-match",
-    "createdAt": "2026-01-10",
-    "updatedAt": "2026-04-20",
-    "featured": true,
-    "icon": "/images/apps/tail-match.webp"
-  },
-  {
-    "id": "chillout.nvim",
-    "title": {
-      "en": "chillout.nvim: Rate-limiting helpers for Neovim",
-      "ja": "chillout.nvim: Neovimの間引き処理ライブラリ",
-      "zh": "chillout.nvim: Neovim 的限流处理库",
-      "es": "chillout.nvim: Utilidades de limitación de ritmo para Neovim"
-    },
-    "description": {
-      "ja": "Neovim 向けに debounce・throttle・batch を提供する、約150行のごく小さな Lua ライブラリ。外部依存ゼロで、maxWait や cancel・flush など実用的な API をそろえている。",
-      "en": "A tiny Lua library—about 150 lines—that brings debounce, throttle, and batch to Neovim. Zero external dependencies, with practical APIs like maxWait, cancel, and flush.",
-      "zh": "一个为 Neovim 提供 debounce、throttle 与 batch 的极小型 Lua 库，约 150 行。零外部依赖，提供 maxWait、cancel、flush 等实用 API。",
-      "es": "Una biblioteca Lua diminuta—unas 150 líneas—que trae debounce, throttle y batch a Neovim. Sin dependencias externas y con APIs prácticas como maxWait, cancel y flush."
-    },
-    "tags": ["OSS", "Plugin"],
-    "images": [],
-    "repositoryUrl": "https://github.com/kako-jun/chillout.nvim",
-    "createdAt": "2025-11-20",
-    "updatedAt": "2025-12-02",
-    "featured": false,
-    "icon": "/images/lib.webp"
-  },
-  {
-    "id": "gitpp",
-    "title": {
-      "en": "gitpp: Operate many Git repos from one config",
-      "ja": "gitpp: 複数のGitリポジトリを1つの設定で一括操作",
-      "zh": "gitpp: 用一份配置批量操作多个 Git 仓库",
-      "es": "gitpp: Maneja muchos repos Git desde una sola configuración"
-    },
-    "description": {
-      "ja": "1つの YAML 設定から複数の Git リポジトリをまとめて操作する CLI。clone や pull など10コマンドを一括で走らせ、TUI でリポジトリごとの進捗をリアルタイムに表示する。Rust 製。",
-      "en": "A CLI that drives many Git repositories at once from a single YAML config. Run ten commands like clone or pull across all of them in one go, with a TUI showing each repo's progress in real time. Written in Rust.",
-      "zh": "一个以单一 YAML 配置批量操作多个 Git 仓库的 CLI。可一次性跨所有仓库运行 clone、pull 等十项命令，并用 TUI 实时展示每个仓库的进度。以 Rust 编写。",
-      "es": "Una CLI que maneja muchos repositorios Git a la vez desde una sola configuración YAML. Ejecuta diez comandos como clone o pull sobre todos de una sola pasada, con una TUI que muestra el progreso de cada repo en tiempo real. Escrita en Rust."
-    },
-    "tags": ["OSS", "CLI"],
-    "images": [],
-    "repositoryUrl": "https://github.com/kako-jun/gitpp",
-    "createdAt": "2025-11-01",
-    "updatedAt": "2026-04-13",
-    "featured": true,
-    "icon": "/images/cli.webp"
-  },
-  {
-    "id": "jiwa",
-    "title": {
-      "en": "jiwa: Make terminal text slowly emerge",
-      "ja": "jiwa: ターミナル文字をじわじわ浮かび上がらせる",
-      "zh": ": 让终端文字渐渐浮现",
-      "es": ": Haz que el texto de la terminal surja poco a poco"
-    },
-    "description": {
-      "ja": "ターミナルの文字をじわじわ浮かび上がらせる reveal アニメーションの Rust 製ライブラリ兼 CLI。タイプライタ風フェードと脈動の2部品を持ち、依存ゼロでパイプにつないで使える。",
-      "en": "A Rust library and CLI for reveal animations that make terminal text slowly emerge. It offers two parts—a typewriter-style fade and a pulse—with zero dependencies, ready to drop into a pipe.",
-      "zh": "一款让终端文字渐渐浮现的 reveal 动画 Rust 库兼 CLI。提供打字机风淡入与脉动两个部件，零依赖，可接入管道使用。",
-      "es": "Una biblioteca y CLI en Rust para animaciones de aparición que hacen surgir poco a poco el texto en la terminal. Ofrece dos piezas—un fundido tipo máquina de escribir y un pulso—sin dependencias y listas para encadenar en un pipe."
-    },
-    "tags": ["OSS", "CLI"],
-    "images": [],
-    "demoUrl": "https://crates.io/crates/jiwa",
-    "repositoryUrl": "https://github.com/kako-jun/jiwa",
-    "createdAt": "2025-07-10",
-    "updatedAt": "2026-05-29",
-    "featured": false,
-    "icon": "/images/cli.webp"
-  },
-  {
-    "id": "mypace",
-    "title": {
-      "en": "MY PACE: A medium-rare social network, taken at your own pace",
-      "ja": "MY PACE: マイペースでいいミディアムレアSNS",
-      "zh": "MY PACE: 按自己节奏来的五分熟社交",
-      "es": "MY PACE: Una red social a término medio, a tu propio ritmo"
-    },
-    "description": {
-      "ja": "Nostr プロトコル上で動く分散型 SNS。インストールも登録も不要で、ブラウザで開くだけで使える。秘密鍵はローカルだけに保存し、お絵かきやボイスメモなどの表現ツールも備える。",
-      "en": "A decentralized social network running on the Nostr protocol. No install, no sign-up—just open it in your browser. Your private key stays only on your device, and it ships with expressive extras like drawing and voice memos.",
-      "zh": "一个运行在 Nostr 协议上的去中心化社交网络。无需安装、无需注册，打开浏览器即可使用。私钥仅保存在本地，还内置了涂鸦、语音备忘等表达工具。",
-      "es": "Una red social descentralizada sobre el protocolo Nostr. Sin instalar, sin registrarse: solo ábrela en el navegador. Tu clave privada se queda solo en tu dispositivo, y trae extras expresivos como dibujo y notas de voz."
-    },
-    "tags": ["OSS", "Web"],
-    "images": [],
-    "demoUrl": "https://mypace.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/mypace",
-    "createdAt": "2025-02-01",
-    "updatedAt": "2025-02-01",
-    "featured": true,
-    "icon": "/images/apps/mypace.webp"
   },
   {
     "id": "sasso",
@@ -245,79 +154,55 @@
     "images": [],
     "demoUrl": "https://sasso.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/sasso",
-    "createdAt": "2025-01-25",
+    "createdAt": "2025-12-10",
     "updatedAt": "2025-01-25",
     "featured": true,
     "icon": "/images/apps/sasso.webp"
   },
   {
-    "id": "osaka-kenpo",
+    "id": "mypace",
     "title": {
-      "en": "Osaka Kenpo: Testing whether even tangled law feels easy in Osaka dialect",
-      "ja": "おおさかけんぽう: 難解な法律も大阪弁なら簡単に感じるかの実験場",
-      "zh": "大阪宪法: 晦涩的法律换成大阪话是否就变简单的实验场",
-      "es": "Osaka Kenpo: Un experimento: ¿hasta la ley enrevesada se siente fácil en dialecto de Osaka?"
+      "en": "MY PACE: A medium-rare social network, taken at your own pace",
+      "ja": "MY PACE: マイペースでいいミディアムレアSNS",
+      "zh": "MY PACE: 按自己节奏来的五分熟社交",
+      "es": "MY PACE: Una red social a término medio, a tu propio ritmo"
     },
     "description": {
-      "ja": "難解な法律の条文を、親しみやすい大阪弁に翻訳して読めるサイト。日本の現行法から歴史的な法・外国法・国際条約まで5分類をそろえ、ワンクリックで原文と大阪弁を切り替えられる。",
-      "en": "A site that translates dense legal text into friendly Osaka dialect so it's actually readable. It spans five categories—from Japan's current laws to historical statutes, foreign law, and international treaties—and toggles between the original and the Osaka version in one click.",
-      "zh": "一个把晦涩的法律条文翻译成亲切大阪话、让人读得下去的网站。涵盖从日本现行法到历史法、外国法、国际条约等五大类，一键在原文与大阪话之间切换。",
-      "es": "Un sitio que traduce los densos textos legales al cercano dialecto de Osaka para que de verdad se puedan leer. Abarca cinco categorías—de las leyes japonesas vigentes a estatutos históricos, derecho extranjero y tratados internacionales—y alterna entre el original y la versión en dialecto con un clic."
-    },
-    "tags": ["OSS", "Web", "Language"],
-    "images": [],
-    "demoUrl": "https://osaka-kenpo.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/osaka-kenpo",
-    "createdAt": "2025-01-20",
-    "updatedAt": "2025-01-20",
-    "featured": true,
-    "icon": "/images/apps/osaka-kenpo.webp"
-  },
-  {
-    "id": "noun-gender",
-    "title": {
-      "en": "Noun Gender: Learn noun gender in eight languages through quizzes",
-      "ja": "Noun Gender: 8言語の名詞の性をクイズで学ぶ",
-      "zh": "Noun Gender: 用测验学习八种语言的名词性别",
-      "es": "Noun Gender: Aprende el género de los sustantivos en ocho idiomas con cuestionarios"
-    },
-    "description": {
-      "ja": "8言語の名詞がもつ文法的な性を学べるサイト。4,600語以上を英語か対象言語で検索でき、意味や記憶術も付く。性を当てるクイズや発音再生、11言語の UI もそなえている。",
-      "en": "A site for learning the grammatical gender of nouns across eight languages. Search over 4,600 words in English or the target language, with meanings and mnemonics included. It also has gender-guessing quizzes, pronunciation playback, and an 11-language UI.",
-      "zh": "一个学习八种语言名词语法性别的网站。可用英语或目标语言检索超过 4,600 个词，附带词义与记忆法。还设有猜性别测验、发音播放和 11 种语言的界面。",
-      "es": "Un sitio para aprender el género gramatical de los sustantivos en ocho idiomas. Busca más de 4.600 palabras en inglés o en la lengua de destino, con significados y reglas mnemotécnicas. Incluye cuestionarios para adivinar el género, reproducción de la pronunciación y una interfaz en 11 idiomas."
-    },
-    "tags": ["OSS", "Web", "Language"],
-    "images": [],
-    "demoUrl": "https://noun-gender.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/noun-gender",
-    "createdAt": "2025-01-18",
-    "updatedAt": "2025-01-18",
-    "featured": true,
-    "icon": "/images/apps/noun-gender.webp"
-  },
-  {
-    "id": "nostalgic",
-    "title": {
-      "en": "Nostalgic: Five parts that bring back ’90s web culture",
-      "ja": "Nostalgic: 90年代ネット文化を再現する5つの部品",
-      "zh": "Nostalgic: 重现 90 年代网络文化的五个部件",
-      "es": "Nostalgic: Cinco piezas que rescatan la cultura web de los 90"
-    },
-    "description": {
-      "ja": "カウンターやいいね・掲示板・ランキングなど、1990年代のネット文化を再現する5つの機能セット。登録不要のシンプルな GET API と Web Components で、静的サイトにすぐ組み込める。",
-      "en": "Five building blocks that bring back 1990s web culture: hit counters, likes, a guestbook, rankings, and more. With a simple sign-up-free GET API and Web Components, you can drop them into any static site in minutes.",
-      "zh": "重现上世纪 90 年代网络文化的五个功能部件：计数器、点赞、留言板、排行榜等。凭免注册的简单 GET API 与 Web Components，几分钟即可嵌入任何静态站点。",
-      "es": "Cinco piezas que rescatan la cultura web de los años 90: contadores de visitas, me gusta, libro de visitas, rankings y más. Con una sencilla API GET sin registro y Web Components, las integras en cualquier sitio estático en minutos."
+      "ja": "Nostr プロトコル上で動く分散型 SNS。インストールも登録も不要で、ブラウザで開くだけで使える。秘密鍵はローカルだけに保存し、お絵かきやボイスメモなどの表現ツールも備える。",
+      "en": "A decentralized social network running on the Nostr protocol. No install, no sign-up—just open it in your browser. Your private key stays only on your device, and it ships with expressive extras like drawing and voice memos.",
+      "zh": "一个运行在 Nostr 协议上的去中心化社交网络。无需安装、无需注册，打开浏览器即可使用。私钥仅保存在本地，还内置了涂鸦、语音备忘等表达工具。",
+      "es": "Una red social descentralizada sobre el protocolo Nostr. Sin instalar, sin registrarse: solo ábrela en el navegador. Tu clave privada se queda solo en tu dispositivo, y trae extras expresivos como dibujo y notas de voz."
     },
     "tags": ["OSS", "Web"],
     "images": [],
-    "demoUrl": "https://nostalgic.llll-ll.com/",
-    "repositoryUrl": "https://github.com/kako-jun/nostalgic",
-    "createdAt": "2025-01-15",
-    "updatedAt": "2025-01-15",
+    "demoUrl": "https://mypace.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/mypace",
+    "createdAt": "2025-12-06",
+    "updatedAt": "2025-02-01",
     "featured": true,
-    "icon": "/images/apps/nostalgic.webp"
+    "icon": "/images/apps/mypace.webp"
+  },
+  {
+    "id": "chillout.nvim",
+    "title": {
+      "en": "chillout.nvim: Rate-limiting helpers for Neovim",
+      "ja": "chillout.nvim: Neovimの間引き処理ライブラリ",
+      "zh": "chillout.nvim: Neovim 的限流处理库",
+      "es": "chillout.nvim: Utilidades de limitación de ritmo para Neovim"
+    },
+    "description": {
+      "ja": "Neovim 向けに debounce・throttle・batch を提供する、約150行のごく小さな Lua ライブラリ。外部依存ゼロで、maxWait や cancel・flush など実用的な API をそろえている。",
+      "en": "A tiny Lua library—about 150 lines—that brings debounce, throttle, and batch to Neovim. Zero external dependencies, with practical APIs like maxWait, cancel, and flush.",
+      "zh": "一个为 Neovim 提供 debounce、throttle 与 batch 的极小型 Lua 库，约 150 行。零外部依赖，提供 maxWait、cancel、flush 等实用 API。",
+      "es": "Una biblioteca Lua diminuta—unas 150 líneas—que trae debounce, throttle y batch a Neovim. Sin dependencias externas y con APIs prácticas como maxWait, cancel y flush."
+    },
+    "tags": ["OSS", "Plugin"],
+    "images": [],
+    "repositoryUrl": "https://github.com/kako-jun/chillout.nvim",
+    "createdAt": "2025-12-02",
+    "updatedAt": "2025-12-02",
+    "featured": false,
+    "icon": "/images/lib.webp"
   },
   {
     "id": "chunkundo",
@@ -336,55 +221,10 @@
     "tags": ["OSS", "Plugin"],
     "images": [],
     "repositoryUrl": "https://github.com/kako-jun/chunkundo.nvim",
-    "createdAt": "2025-01-12",
+    "createdAt": "2025-12-02",
     "updatedAt": "2025-01-12",
     "featured": false,
     "icon": "/images/lib.webp"
-  },
-  {
-    "id": "riscfetch",
-    "title": {
-      "en": "riscfetch: A fetch tool just for RISC-V. It won't run on anything else.",
-      "ja": "riscfetch: RISC-V専用のfetch。他のアーキテクチャでは動かない。",
-      "zh": "riscfetch: 专属 RISC-V 的 fetch。别的架构上跑不了。",
-      "es": "riscfetch: Un fetch solo para RISC-V. En otra arquitectura no arranca."
-    },
-    "description": {
-      "ja": "RISC-V 専用の neofetch 風システム情報ツール。ISA 拡張やハート数を表示し、147の拡張をカテゴリ別にそろえる。他アーキテクチャでは動かず、fastfetch と併用もできる。Rust 製。",
-      "en": "A neofetch-style system info tool built only for RISC-V. It shows ISA extensions and hart counts, ships 147 extensions sorted by category, and pairs nicely with fastfetch. It won't run on any other architecture. Written in Rust.",
-      "zh": "一款专为 RISC-V 打造的 neofetch 风格系统信息工具。展示 ISA 扩展与 hart 数，收录 147 项扩展并按类别整理，可与 fastfetch 搭配使用。在其他架构上根本跑不起来。以 Rust 编写。",
-      "es": "Una herramienta de información del sistema al estilo neofetch hecha solo para RISC-V. Muestra extensiones ISA y el número de harts, trae 147 extensiones ordenadas por categoría y combina bien con fastfetch. En ninguna otra arquitectura va a arrancar. Escrita en Rust."
-    },
-    "tags": ["OSS", "CLI"],
-    "images": ["https://raw.githubusercontent.com/kako-jun/riscfetch/main/assets/screenshot.webp"],
-    "repositoryUrl": "https://github.com/kako-jun/riscfetch",
-    "createdAt": "2025-01-10",
-    "updatedAt": "2025-01-10",
-    "featured": false,
-    "icon": "/images/cli.webp"
-  },
-  {
-    "id": "agasteer",
-    "title": {
-      "en": "Agasteer: A Markdown editor for idea-driven dev and everyday notes",
-      "ja": "Agasteer: アイデア駆動開発と日常メモのMarkdownエディタ",
-      "zh": "Agasteer: 面向点子驱动开发与日常记事的 Markdown 编辑器",
-      "es": "Agasteer: Un editor Markdown para el desarrollo guiado por ideas y las notas del día a día"
-    },
-    "description": {
-      "ja": "中間サーバーを介さず GitHub と直接同期する、最もシンプルな Markdown ノートアプリ。独自のマージで複数デバイスからの編集も安全にそろえ、データは常に自分の管理下に置ける。",
-      "en": "The simplest Markdown note app, syncing straight to GitHub with no server in between. A custom merge keeps edits from multiple devices safely in line, and your data always stays under your own control.",
-      "zh": "一款不经中间服务器、直接与 GitHub 同步的极简 Markdown 笔记应用。独家合并机制让多设备的编辑安全对齐，数据始终掌握在你自己手中。",
-      "es": "La app de notas Markdown más sencilla, que sincroniza directo con GitHub sin servidor de por medio. Un merge propio mantiene a salvo y alineadas las ediciones de varios dispositivos, y tus datos siempre quedan bajo tu control."
-    },
-    "tags": ["OSS", "Web"],
-    "images": [],
-    "demoUrl": "https://agasteer.llll-ll.com/",
-    "repositoryUrl": "https://github.com/kako-jun/agasteer",
-    "createdAt": "2025-01-08",
-    "updatedAt": "2025-01-08",
-    "featured": true,
-    "icon": "/images/apps/agasteer.webp"
   },
   {
     "id": "3min",
@@ -404,10 +244,55 @@
     "images": [],
     "demoUrl": "https://3min.llll-ll.com/",
     "repositoryUrl": "https://github.com/kako-jun/3min",
-    "createdAt": "2025-01-05",
+    "createdAt": "2025-11-29",
     "updatedAt": "2025-01-05",
     "featured": true,
     "icon": "/images/apps/3min.webp"
+  },
+  {
+    "id": "agasteer",
+    "title": {
+      "en": "Agasteer: A Markdown editor for idea-driven dev and everyday notes",
+      "ja": "Agasteer: アイデア駆動開発と日常メモのMarkdownエディタ",
+      "zh": "Agasteer: 面向点子驱动开发与日常记事的 Markdown 编辑器",
+      "es": "Agasteer: Un editor Markdown para el desarrollo guiado por ideas y las notas del día a día"
+    },
+    "description": {
+      "ja": "中間サーバーを介さず GitHub と直接同期する、最もシンプルな Markdown ノートアプリ。独自のマージで複数デバイスからの編集も安全にそろえ、データは常に自分の管理下に置ける。",
+      "en": "The simplest Markdown note app, syncing straight to GitHub with no server in between. A custom merge keeps edits from multiple devices safely in line, and your data always stays under your own control.",
+      "zh": "一款不经中间服务器、直接与 GitHub 同步的极简 Markdown 笔记应用。独家合并机制让多设备的编辑安全对齐，数据始终掌握在你自己手中。",
+      "es": "La app de notas Markdown más sencilla, que sincroniza directo con GitHub sin servidor de por medio. Un merge propio mantiene a salvo y alineadas las ediciones de varios dispositivos, y tus datos siempre quedan bajo tu control."
+    },
+    "tags": ["OSS", "Web"],
+    "images": [],
+    "demoUrl": "https://agasteer.llll-ll.com/",
+    "repositoryUrl": "https://github.com/kako-jun/agasteer",
+    "createdAt": "2025-11-20",
+    "updatedAt": "2025-01-08",
+    "featured": true,
+    "icon": "/images/apps/agasteer.webp"
+  },
+  {
+    "id": "riscfetch",
+    "title": {
+      "en": "riscfetch: A fetch tool just for RISC-V. It won't run on anything else.",
+      "ja": "riscfetch: RISC-V専用のfetch。他のアーキテクチャでは動かない。",
+      "zh": "riscfetch: 专属 RISC-V 的 fetch。别的架构上跑不了。",
+      "es": "riscfetch: Un fetch solo para RISC-V. En otra arquitectura no arranca."
+    },
+    "description": {
+      "ja": "RISC-V 専用の neofetch 風システム情報ツール。ISA 拡張やハート数を表示し、147の拡張をカテゴリ別にそろえる。他アーキテクチャでは動かず、fastfetch と併用もできる。Rust 製。",
+      "en": "A neofetch-style system info tool built only for RISC-V. It shows ISA extensions and hart counts, ships 147 extensions sorted by category, and pairs nicely with fastfetch. It won't run on any other architecture. Written in Rust.",
+      "zh": "一款专为 RISC-V 打造的 neofetch 风格系统信息工具。展示 ISA 扩展与 hart 数，收录 147 项扩展并按类别整理，可与 fastfetch 搭配使用。在其他架构上根本跑不起来。以 Rust 编写。",
+      "es": "Una herramienta de información del sistema al estilo neofetch hecha solo para RISC-V. Muestra extensiones ISA y el número de harts, trae 147 extensiones ordenadas por categoría y combina bien con fastfetch. En ninguna otra arquitectura va a arrancar. Escrita en Rust."
+    },
+    "tags": ["OSS", "CLI"],
+    "images": ["https://raw.githubusercontent.com/kako-jun/riscfetch/main/assets/screenshot.webp"],
+    "repositoryUrl": "https://github.com/kako-jun/riscfetch",
+    "createdAt": "2025-11-19",
+    "updatedAt": "2025-01-10",
+    "featured": false,
+    "icon": "/images/cli.webp"
   },
   {
     "id": "sync-stone",
@@ -432,32 +317,10 @@
         "url": "https://zenn.dev/kako_jun/scraps/38ef9ae285ed5b"
       }
     ],
-    "createdAt": "2025-01-01",
+    "createdAt": "2025-07-29",
     "updatedAt": "2025-01-01",
     "featured": false,
     "icon": "/images/apps/sync-stone.webp"
-  },
-  {
-    "id": "lawkit",
-    "title": {
-      "en": "lawkit: Spot fraud and anomalies with statistical laws",
-      "ja": "lawkit: 統計法則でデータの不正・異常を見抜く",
-      "zh": "lawkit: 用统计法则看穿数据的舞弊与异常",
-      "es": "lawkit: Detecta fraudes y anomalías con leyes estadísticas"
-    },
-    "description": {
-      "ja": "ベンフォードやパレートなど5つの統計法則で、データに潜む不正や異常を見抜く CLI。会計や選挙の不正検知から売上分析・品質管理まで使え、ASCII チャートでリスクを判定する。Rust 製。",
-      "en": "A CLI that uncovers fraud and anomalies hiding in your data using five statistical laws like Benford's and Pareto. It works for everything from accounting and election fraud detection to sales analysis and quality control, judging risk with ASCII charts. Written in Rust.",
-      "zh": "一款用本福德、帕累托等五条统计法则揭示数据中隐藏的舞弊与异常的 CLI。从会计、选举舞弊检测到销售分析、质量管控都能用，并以 ASCII 图表判定风险。以 Rust 编写。",
-      "es": "Una CLI que destapa fraudes y anomalías ocultas en tus datos con cinco leyes estadísticas como las de Benford y Pareto. Sirve desde la detección de fraude contable y electoral hasta el análisis de ventas y el control de calidad, y evalúa el riesgo con gráficos ASCII. Escrita en Rust."
-    },
-    "tags": ["OSS", "CLI", "Data"],
-    "images": [],
-    "repositoryUrl": "https://github.com/kako-jun/lawkit",
-    "createdAt": "2024-12-20",
-    "updatedAt": "2024-12-20",
-    "featured": true,
-    "icon": "/images/cli.webp"
   },
   {
     "id": "diffai",
@@ -476,8 +339,53 @@
     "tags": ["OSS", "CLI", "Data"],
     "images": [],
     "repositoryUrl": "https://github.com/kako-jun/diffai",
-    "createdAt": "2024-12-15",
+    "createdAt": "2025-07-12",
     "updatedAt": "2024-12-15",
+    "featured": true,
+    "icon": "/images/cli.webp"
+  },
+  {
+    "id": "machigai-salad",
+    "title": {
+      "en": "Machigai Salad: Two images side by side—long-press to compare and spot the difference",
+      "ja": "間違いサラダ: 2枚を並べてロングタップで見比べる間違い探し",
+      "zh": "Machigai Salad: 两图并排，长按对比找不同",
+      "es": "Machigai Salad: Dos imágenes en paralelo: mantén pulsado para comparar y hallar las diferencias"
+    },
+    "description": {
+      "ja": "2枚の画像を撮影またはアップロードして見比べ、違いを見つける汎用の間違い探しツール。台形補正・ルーペ・アンドゥ・GIF書き出しをそなえ、OpenCV.js でブラウザ内だけで完結する。",
+      "en": "A spot-the-difference tool for any pair of images: snap or upload two pictures, line them up, and hunt for what changed. Keystone correction, a loupe, undo, and GIF export all run entirely in your browser via OpenCV.js.",
+      "zh": "一款通用的找不同工具：拍摄或上传两张图片，并排对比，找出不同之处。梯形校正、放大镜、撤销、GIF 导出，全部基于 OpenCV.js 在浏览器内完成。",
+      "es": "Una herramienta para encontrar las diferencias entre dos imágenes cualesquiera: captura o sube dos fotos, ponlas lado a lado y busca qué cambió. Corrección de perspectiva, lupa, deshacer y exportación a GIF, todo dentro del navegador con OpenCV.js."
+    },
+    "tags": ["OSS", "Web"],
+    "images": [],
+    "demoUrl": "https://machigai-salad.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/machigai-salad",
+    "createdAt": "2025-07-10",
+    "updatedAt": "2026-04-20",
+    "featured": true,
+    "icon": "/images/apps/machigai-salad.webp"
+  },
+  {
+    "id": "lawkit",
+    "title": {
+      "en": "lawkit: Spot fraud and anomalies with statistical laws",
+      "ja": "lawkit: 統計法則でデータの不正・異常を見抜く",
+      "zh": "lawkit: 用统计法则看穿数据的舞弊与异常",
+      "es": "lawkit: Detecta fraudes y anomalías con leyes estadísticas"
+    },
+    "description": {
+      "ja": "ベンフォードやパレートなど5つの統計法則で、データに潜む不正や異常を見抜く CLI。会計や選挙の不正検知から売上分析・品質管理まで使え、ASCII チャートでリスクを判定する。Rust 製。",
+      "en": "A CLI that uncovers fraud and anomalies hiding in your data using five statistical laws like Benford's and Pareto. It works for everything from accounting and election fraud detection to sales analysis and quality control, judging risk with ASCII charts. Written in Rust.",
+      "zh": "一款用本福德、帕累托等五条统计法则揭示数据中隐藏的舞弊与异常的 CLI。从会计、选举舞弊检测到销售分析、质量管控都能用，并以 ASCII 图表判定风险。以 Rust 编写。",
+      "es": "Una CLI que destapa fraudes y anomalías ocultas en tus datos con cinco leyes estadísticas como las de Benford y Pareto. Sirve desde la detección de fraude contable y electoral hasta el análisis de ventas y el control de calidad, y evalúa el riesgo con gráficos ASCII. Escrita en Rust."
+    },
+    "tags": ["OSS", "CLI", "Data"],
+    "images": [],
+    "repositoryUrl": "https://github.com/kako-jun/lawkit",
+    "createdAt": "2025-07-09",
+    "updatedAt": "2024-12-20",
     "featured": true,
     "icon": "/images/cli.webp"
   },
@@ -508,10 +416,102 @@
         "url": "https://zenn.dev/kako_jun/articles/1d518f47225f42"
       }
     ],
-    "createdAt": "2024-12-10",
+    "createdAt": "2025-07-05",
     "updatedAt": "2024-12-10",
     "featured": true,
     "icon": "/images/cli.webp"
+  },
+  {
+    "id": "osaka-kenpo",
+    "title": {
+      "en": "Osaka Kenpo: Testing whether even tangled law feels easy in Osaka dialect",
+      "ja": "おおさかけんぽう: 難解な法律も大阪弁なら簡単に感じるかの実験場",
+      "zh": "大阪宪法: 晦涩的法律换成大阪话是否就变简单的实验场",
+      "es": "Osaka Kenpo: Un experimento: ¿hasta la ley enrevesada se siente fácil en dialecto de Osaka?"
+    },
+    "description": {
+      "ja": "難解な法律の条文を、親しみやすい大阪弁に翻訳して読めるサイト。日本の現行法から歴史的な法・外国法・国際条約まで5分類をそろえ、ワンクリックで原文と大阪弁を切り替えられる。",
+      "en": "A site that translates dense legal text into friendly Osaka dialect so it's actually readable. It spans five categories—from Japan's current laws to historical statutes, foreign law, and international treaties—and toggles between the original and the Osaka version in one click.",
+      "zh": "一个把晦涩的法律条文翻译成亲切大阪话、让人读得下去的网站。涵盖从日本现行法到历史法、外国法、国际条约等五大类，一键在原文与大阪话之间切换。",
+      "es": "Un sitio que traduce los densos textos legales al cercano dialecto de Osaka para que de verdad se puedan leer. Abarca cinco categorías—de las leyes japonesas vigentes a estatutos históricos, derecho extranjero y tratados internacionales—y alterna entre el original y la versión en dialecto con un clic."
+    },
+    "tags": ["OSS", "Web", "Language"],
+    "images": [],
+    "demoUrl": "https://osaka-kenpo.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/osaka-kenpo",
+    "createdAt": "2025-07-03",
+    "updatedAt": "2025-01-20",
+    "featured": true,
+    "icon": "/images/apps/osaka-kenpo.webp"
+  },
+  {
+    "id": "nostalgic",
+    "title": {
+      "en": "Nostalgic: Five parts that bring back ’90s web culture",
+      "ja": "Nostalgic: 90年代ネット文化を再現する5つの部品",
+      "zh": "Nostalgic: 重现 90 年代网络文化的五个部件",
+      "es": "Nostalgic: Cinco piezas que rescatan la cultura web de los 90"
+    },
+    "description": {
+      "ja": "カウンターやいいね・掲示板・ランキングなど、1990年代のネット文化を再現する5つの機能セット。登録不要のシンプルな GET API と Web Components で、静的サイトにすぐ組み込める。",
+      "en": "Five building blocks that bring back 1990s web culture: hit counters, likes, a guestbook, rankings, and more. With a simple sign-up-free GET API and Web Components, you can drop them into any static site in minutes.",
+      "zh": "重现上世纪 90 年代网络文化的五个功能部件：计数器、点赞、留言板、排行榜等。凭免注册的简单 GET API 与 Web Components，几分钟即可嵌入任何静态站点。",
+      "es": "Cinco piezas que rescatan la cultura web de los años 90: contadores de visitas, me gusta, libro de visitas, rankings y más. Con una sencilla API GET sin registro y Web Components, las integras en cualquier sitio estático en minutos."
+    },
+    "tags": ["OSS", "Web"],
+    "images": [],
+    "demoUrl": "https://nostalgic.llll-ll.com/",
+    "repositoryUrl": "https://github.com/kako-jun/nostalgic",
+    "createdAt": "2025-06-30",
+    "updatedAt": "2025-01-15",
+    "featured": true,
+    "icon": "/images/apps/nostalgic.webp"
+  },
+  {
+    "id": "tail-match",
+    "title": {
+      "en": "tail-match: Connecting shelter cats and dogs across Japan with adopters",
+      "ja": "ているまっち！: 全国の保護猫・犬を里親とつなぐ",
+      "zh": "tail-match: 为全日本的收容猫狗连接领养人",
+      "es": "tail-match: Conectando gatos y perros de refugio de todo Japón con quienes los adoptan"
+    },
+    "description": {
+      "ja": "全国の自治体が保護している猫・犬の情報を集約し、新しい家族とのマッチングを支援するサイト。緊急度別のギャラリーと毎日の自動スクレイピングで、石川県を起点に全国へ広げている。",
+      "en": "A site that gathers listings of cats and dogs sheltered by local governments across Japan and helps them find new families. Urgency-sorted galleries and daily automatic scraping power it, starting in Ishikawa and spreading nationwide.",
+      "zh": "一个汇集全日本各地政府收容的猫狗信息、帮助它们找到新家的网站。按紧急程度分类的画廊与每日自动抓取，从石川县起步，逐步推向全国。",
+      "es": "Un sitio que reúne los anuncios de gatos y perros acogidos por los municipios de todo Japón y los ayuda a encontrar una nueva familia. Galerías ordenadas por urgencia y rastreo automático diario lo impulsan, empezando en Ishikawa rumbo a todo el país."
+    },
+    "tags": ["OSS", "Web"],
+    "images": [],
+    "demoUrl": "https://tail-match.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/tail-match",
+    "createdAt": "2025-06-27",
+    "updatedAt": "2026-04-20",
+    "featured": true,
+    "icon": "/images/apps/tail-match.webp"
+  },
+  {
+    "id": "noun-gender",
+    "title": {
+      "en": "Noun Gender: Learn noun gender in eight languages through quizzes",
+      "ja": "Noun Gender: 8言語の名詞の性をクイズで学ぶ",
+      "zh": "Noun Gender: 用测验学习八种语言的名词性别",
+      "es": "Noun Gender: Aprende el género de los sustantivos en ocho idiomas con cuestionarios"
+    },
+    "description": {
+      "ja": "8言語の名詞がもつ文法的な性を学べるサイト。4,600語以上を英語か対象言語で検索でき、意味や記憶術も付く。性を当てるクイズや発音再生、11言語の UI もそなえている。",
+      "en": "A site for learning the grammatical gender of nouns across eight languages. Search over 4,600 words in English or the target language, with meanings and mnemonics included. It also has gender-guessing quizzes, pronunciation playback, and an 11-language UI.",
+      "zh": "一个学习八种语言名词语法性别的网站。可用英语或目标语言检索超过 4,600 个词，附带词义与记忆法。还设有猜性别测验、发音播放和 11 种语言的界面。",
+      "es": "Un sitio para aprender el género gramatical de los sustantivos en ocho idiomas. Busca más de 4.600 palabras en inglés o en la lengua de destino, con significados y reglas mnemotécnicas. Incluye cuestionarios para adivinar el género, reproducción de la pronunciación y una interfaz en 11 idiomas."
+    },
+    "tags": ["OSS", "Web", "Language"],
+    "images": [],
+    "demoUrl": "https://noun-gender.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/noun-gender",
+    "createdAt": "2025-06-27",
+    "updatedAt": "2025-01-18",
+    "featured": true,
+    "icon": "/images/apps/noun-gender.webp"
   },
   {
     "id": "sid-note",
@@ -541,7 +541,7 @@
         "url": "https://zenn.dev/kako_jun/articles/00dde8f9a28524"
       }
     ],
-    "createdAt": "2024-01-01",
+    "createdAt": "2025-05-12",
     "updatedAt": "2024-12-01",
     "featured": true,
     "icon": "/images/apps/sid-note.webp"

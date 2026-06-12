@@ -12,10 +12,33 @@
 <html lang="{{ lang }}">
 <head>
   <meta charset="utf-8" />
+  <script>
+    // 言語自動転送（#41）: 英語ルート(/) でのみ発火。QR の着地点をユーザー言語へ送る。
+    // 保存言語(localStorage 'llll-lang')を優先し、未設定/未対応値のときだけ navigator.language で判定して保存する。
+    // en は保存していてもルートに留まる（langbar の en クリックで en を保存＝英語に居続けられる）。
+    // 保存値はホワイトリスト(en/ja/zh/es)で検証し、破損・改変値で未対応パス(/fr/ 等の404)へ飛ぶのを防ぐ。
+    // 描画前に走らせてチラつきを防ぎ、location.replace で履歴を汚さずループを避ける。
+    (function () {
+      try {
+        if (location.pathname !== '/') return;
+        var KEY = 'llll-lang';
+        var LANGS = ['ja', 'zh', 'es']; // en は既定言語＝ルート直下なので転送先を持たない
+        var saved = localStorage.getItem(KEY);
+        if (saved !== 'en' && LANGS.indexOf(saved) === -1) {
+          // 未設定 or 未対応値 → ブラウザ言語で判定し直して保存
+          var bl = (navigator.language || 'en').slice(0, 2).toLowerCase();
+          saved = (LANGS.indexOf(bl) !== -1) ? bl : 'en';
+          localStorage.setItem(KEY, saved);
+        }
+        if (saved !== 'en') location.replace('/' + saved + '/');
+      } catch (e) {}
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ config.title }}</title>
   <meta name="description" content="{{ config.description }}" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="/favicon.ico" />
   {% include "_seo.html" %}
   {# blog の Atom フィード自動検出（言語別）。 #}
   <link rel="alternate" type="application/atom+xml" title="{{ config.title }} blog" href="{{ config.base_url | safe }}{{ nav_prefix | safe }}/posts/atom.xml" />
@@ -821,10 +844,10 @@
       <button type="button" class="theme-toggle" aria-label="{{ trans(key='theme_toggle_aria', lang=lang) }}" aria-pressed="false">
         <span class="theme-toggle-icon" aria-hidden="true">☾</span>
       </button>
-      {% if lang == "en" %}<span class="lang active" aria-current="true">en</span>{% else %}<a class="lang" href="/">en</a>{% endif %}
-      {% if lang == "ja" %}<span class="lang active" aria-current="true">ja</span>{% else %}<a class="lang" href="/ja/">ja</a>{% endif %}
-      {% if lang == "zh" %}<span class="lang active" aria-current="true">zh</span>{% else %}<a class="lang" href="/zh/">zh</a>{% endif %}
-      {% if lang == "es" %}<span class="lang active" aria-current="true">es</span>{% else %}<a class="lang" href="/es/">es</a>{% endif %}
+      {% if lang == "en" %}<span class="lang active" aria-current="true">en</span>{% else %}<a class="lang" data-lang="en" href="/">en</a>{% endif %}
+      {% if lang == "ja" %}<span class="lang active" aria-current="true">ja</span>{% else %}<a class="lang" data-lang="ja" href="/ja/">ja</a>{% endif %}
+      {% if lang == "zh" %}<span class="lang active" aria-current="true">zh</span>{% else %}<a class="lang" data-lang="zh" href="/zh/">zh</a>{% endif %}
+      {% if lang == "es" %}<span class="lang active" aria-current="true">es</span>{% else %}<a class="lang" data-lang="es" href="/es/">es</a>{% endif %}
     </nav>
 
     <!-- 上段3パネル -->
@@ -1055,6 +1078,7 @@
 
   <!-- テーマトグルの島（vanilla JS・defer・#9）。読めなくても ☾ ボタンが残るだけ（PE・既定/prefers で配色は効く）。 -->
   <script defer src="/js/theme-toggle.js"></script>
+  <script defer src="/js/lang-pref.js"></script>
   <!-- ヘッダ Tetris の島（vanilla JS・defer・#7）。読めなくても破線帯＋"tetris" ラベルが残る（PE）。 -->
   <script defer src="/js/tetris.js"></script>
   <!-- フィルタ＆検索の島（vanilla JS・defer）。読めなくても全件は見えたまま。 -->

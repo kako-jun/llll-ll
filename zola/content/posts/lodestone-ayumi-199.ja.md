@@ -1,6 +1,9 @@
 +++
 title = "歩み199. クリア後の世界も楽しい"
-date = 2022-09-27
+date = 2022-09-27T20:51:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

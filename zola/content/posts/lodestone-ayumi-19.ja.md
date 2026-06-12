@@ -1,6 +1,9 @@
 +++
 title = "歩み19. 目覚めよっ"
-date = 2021-11-17
+date = 2021-11-17T18:30:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

@@ -1,6 +1,9 @@
 +++
 title = "歩み144. FF14で最も許されない行為は"
-date = 2022-08-08
+date = 2022-08-08T12:21:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

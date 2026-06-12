@@ -11,6 +11,11 @@ build_search_index = false
 generate_feeds = true
 feed_filenames = ["atom.xml"]
 
+[[taxonomies]]
+name = "tags"
+url = "tags"
+feed = false
+
 # ── 既定言語(en)の UI 文言。全 UI 文字列をキー化し、テンプレは trans() で引く。 ──
 # btop 風の小さな角ラベル（header/apps/footer/visits/mypace/blog/bbs/app/art of today）と
 # 日替わり絵の作品名『…』は技術ラベル/固有名としてそのまま（btop 美学・#5 合意）。
@@ -38,6 +43,12 @@ blog_empty = "No posts yet."
 blog_all = "all posts →"
 mypace_all = "all posts →"
 posts_title = "all posts"
+tags_title = "tags"
+archive_title = "archive"
+related_posts = "related posts"
+comments = "comments"
+comment_hint = "click to comment"
+share = "share"
 back_to_top = "← back to top"
 bbs_placeholder = "Enable JavaScript to view the support board."
 back_to_list = "← Back to list"
@@ -58,6 +69,11 @@ nf_home = "Back to top →"
 [languages.ja]
 title = "llll-ll"
 description = "kako-jun のゲーム・アプリのポートフォリオ"
+
+[[languages.ja.taxonomies]]
+name = "tags"
+url = "tags"
+feed = false
 
 [languages.ja.translations]
 welcome = "ようこそ、llll-ll へ。"
@@ -83,6 +99,12 @@ blog_empty = "まだ記事がありません。"
 blog_all = "記事一覧 →"
 mypace_all = "つぶやき一覧 →"
 posts_title = "記事一覧"
+tags_title = "タグ"
+archive_title = "アーカイブ"
+related_posts = "関連記事"
+comments = "コメント"
+comment_hint = "クリックで書き込めます"
+share = "シェア"
 back_to_top = "← トップへ"
 bbs_placeholder = "掲示板の表示には JavaScript が必要です。"
 back_to_list = "← 一覧へ戻る"
@@ -103,6 +125,11 @@ nf_home = "トップへ戻る →"
 [languages.zh]
 title = "llll-ll"
 description = "kako-jun 的游戏与应用作品集"
+
+[[languages.zh.taxonomies]]
+name = "tags"
+url = "tags"
+feed = false
 
 [languages.zh.translations]
 welcome = "欢迎来到 llll-ll。"
@@ -128,6 +155,12 @@ blog_empty = "还没有文章。"
 blog_all = "全部文章 →"
 mypace_all = "全部动态 →"
 posts_title = "全部文章"
+tags_title = "标签"
+archive_title = "归档"
+related_posts = "相关文章"
+comments = "评论"
+comment_hint = "点击即可留言"
+share = "分享"
 back_to_top = "← 返回首页"
 bbs_placeholder = "需要启用 JavaScript 才能显示留言板。"
 back_to_list = "← 返回列表"
@@ -148,6 +181,11 @@ nf_home = "返回首页 →"
 [languages.es]
 title = "llll-ll"
 description = "Portafolio de juegos y apps de kako-jun"
+
+[[languages.es.taxonomies]]
+name = "tags"
+url = "tags"
+feed = false
 
 [languages.es.translations]
 welcome = "Bienvenido a llll-ll."
@@ -173,6 +211,12 @@ blog_empty = "Aún no hay entradas."
 blog_all = "todas las entradas →"
 mypace_all = "ver todas →"
 posts_title = "todas las entradas"
+tags_title = "etiquetas"
+archive_title = "archivo"
+related_posts = "entradas relacionadas"
+comments = "comentarios"
+comment_hint = "haz clic para comentar"
+share = "compartir"
 back_to_top = "← volver al inicio"
 bbs_placeholder = "Habilita JavaScript para ver el tablón."
 back_to_list = "← Volver a la lista"
@@ -210,6 +254,12 @@ mypace_post_url_base = "https://mypace.llll-ll.com/post/"
 mypace_profile_url = "https://mypace.llll-ll.com/user/npub1d7rmrw3zmzn9jpcqpzhk6helu8t3rcqk93ja39sh9rgylwr9007q83kemm"
 # 表示するノート件数。
 mypace_note_limit = 3
+# 記事コメント（avel 型の no-JS Nostalgic BBS 画像コメント欄）。
+# `node scripts/sync-nostalgic-bbs.mjs` が記事 URL ごとの BBS ID を data/nostalgic_bbs.toml に同期する。
+nostalgic_bbs = true
+nostalgic_bbs_limit = 3
+nostalgic_bbs_width = 760
+share_links = true
 # 黒×緑 palette（DESIGN.md / epic 準拠）= ダーク既定
 bg = "#121212"
 panel_bg = "#1e1e1e"

@@ -61,6 +61,10 @@ describe("content/posts 最小健全性", () => {
       });
 
       if (file.startsWith("lodestone-ayumi-")) {
+        it("Lodestone date は同日内ソート用の時刻を持つ", () => {
+          expect(/(^|\n)\s*date\s*=\s*\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:00\+09:00/.test(fm)).toBe(true);
+        });
+
         it("Lodestone 末尾コメントを移植しない", () => {
           const raw = rawPost(file);
           expect(/^## Comments$/m.test(raw)).toBe(false);

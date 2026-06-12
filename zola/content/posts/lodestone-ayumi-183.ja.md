@@ -1,6 +1,9 @@
 +++
 title = "歩み183. FF14でもプロほど省略するっぽい"
-date = 2022-09-14
+date = 2022-09-14T19:08:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

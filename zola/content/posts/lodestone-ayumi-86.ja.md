@@ -1,6 +1,9 @@
 +++
 title = "歩み86. 悪門と悪雷"
-date = 2022-01-13
+date = 2022-01-13T18:56:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

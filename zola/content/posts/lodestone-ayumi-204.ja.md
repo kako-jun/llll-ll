@@ -1,6 +1,9 @@
 +++
 title = "歩み204. ブリトラにさわろう"
-date = 2022-10-03
+date = 2022-10-03T15:58:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

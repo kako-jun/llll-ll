@@ -1,6 +1,9 @@
 +++
 title = "歩み184. STがMTに軽減バフを使うって知らなかった"
-date = 2022-09-16
+date = 2022-09-16T16:19:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

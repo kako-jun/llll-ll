@@ -1,6 +1,9 @@
 +++
 title = "歩み186. 知らないところでLogsデビューしてた"
-date = 2022-09-16
+date = 2022-09-16T19:35:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

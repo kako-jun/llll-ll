@@ -1,6 +1,9 @@
 +++
 title = "歩み1. 初めてFCに勧誘されたわけです"
-date = 2021-11-01
+date = 2021-11-01T12:00:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

@@ -1,6 +1,9 @@
 +++
 title = "歩み214. 必要な時に、師は現れる"
-date = 2022-10-13
+date = 2022-10-13T17:21:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

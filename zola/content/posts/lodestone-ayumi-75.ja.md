@@ -1,6 +1,9 @@
 +++
 title = "歩み75. ダスクヴィジルはHardがない"
-date = 2022-01-11
+date = 2022-01-11T11:12:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

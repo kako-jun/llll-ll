@@ -1,6 +1,9 @@
 +++
 title = "歩み143. 耳がー耳がー"
-date = 2022-08-08
+date = 2022-08-08T11:09:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

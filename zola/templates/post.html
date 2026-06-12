@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-{# post.html — 記事1本ページ /posts/{slug}/（Issue #10 Phase 3）。
+{# post.html — 記事1本ページ /posts/{slug}/（Issue #10 Phase 3 / #33 blog infra）。
    - 黒×緑の btop 様式で自己完結（base.html は継承しない・index.html / app.html と同パレット）。
    - 外枠＋nav は portal と同じ btop 枠。本文は「普通のページスクロール」（top の内部スクロールとは別扱い）。
    - 記事本文 page.content（Markdown→HTML）を .post-body の中で描く。見出し/コード/引用/箇条/表/画像を btop 調にスタイルする。
    - 前後ナビは sort_by="date" の page.higher / page.lower（avel の実績に合わせる）。
-   - タグは page.extra.tags の表示のみ（taxonomy 未設定。タグ別ページ・年別・関連は follow-up）。
+   - タグリンク・シェア・コメント・関連記事は avel 相当の素朴な機能を llll-ll の黒×緑で出す。
    - 軽い OGP（og:title/description/url）だけ出す。フル SEO（sitemap/JSON-LD/Atom）は #11 の領分。 #}
 {% if lang == config.default_language %}{% set nav_prefix = "" %}{% else %}{% set nav_prefix = "/" ~ lang %}{% endif %}
 {# SEO（#11）: 記事は article。OG/canonical/Twitter は _seo.html、JSON-LD は BlogPosting。 #}
@@ -142,11 +142,12 @@
       color: var(--text-muted);
       padding: 1px 7px;
     }
+    a.post-tag:hover { border-color: var(--border); color: var(--border); text-decoration: none; }
 
     /* ── 記事本文（Markdown→HTML）。読み物なので行間広め・等幅で btop 調。
        注意: html は font-size:0.85rem（=13.6px）でルートが縮んでいるので 1rem≒13.6px。
        ポータル(0.85rem)は密な UI 用。記事は読み物なので本文 ≒16px・見出しはその上に取る（kako-jun 指摘）。 ── */
-    .post-body { font-size: 1.18rem; line-height: 1.85; color: var(--text); max-width: 70ch; }
+    .post-body { font-size: 1.18rem; line-height: 1.9; color: var(--text); max-width: 70ch; }
     .post-body h1, .post-body h2, .post-body h3, .post-body h4 {
       color: var(--border);
       line-height: 1.4;
@@ -156,14 +157,14 @@
     .post-body h2 { font-size: 1.5rem; }
     .post-body h3 { font-size: 1.3rem; }
     .post-body h4 { font-size: 1.18rem; }
-    .post-body p { margin: 0 0 1em; }
+    .post-body p { margin: 0 0 1.35em; }
     .post-body a { color: var(--link); text-decoration: underline; }
     .post-body strong { color: var(--text); font-weight: 700; }
     .post-body em { font-style: italic; }
-    .post-body ul, .post-body ol { margin: 0 0 1em; padding-left: 1.6em; }
+    .post-body ul, .post-body ol { margin: 0 0 1.35em; padding-left: 1.6em; }
     .post-body li { margin: 0.3em 0; }
     .post-body blockquote {
-      margin: 0 0 1em;
+      margin: 0 0 1.35em;
       padding: 0.2em 0 0.2em 1em;
       border-left: 3px solid var(--border);
       color: var(--text-muted);
@@ -179,15 +180,77 @@
       background: var(--bg);
       border: 1px solid var(--border-muted);
       padding: 0.9em 1em;
-      margin: 0 0 1em;
+      margin: 0 0 1.35em;
       overflow-x: auto;
     }
     .post-body pre code { background: none; border: none; padding: 0; }
-    .post-body hr { border: none; border-top: 1px solid var(--border-muted); margin: 1.6em 0; }
+    .post-body hr { border: none; border-top: 1px solid var(--border-muted); margin: 2.1em 0; }
     .post-body img { max-width: 100%; height: auto; border: 1px solid var(--border-muted); }
-    .post-body table { border-collapse: collapse; margin: 0 0 1em; }
+    .post-body p:has(> img:only-child) { margin: 0 0 1.6em; }
+    .post-body table { border-collapse: collapse; margin: 0 0 1.35em; }
     .post-body th, .post-body td { border: 1px solid var(--border-muted); padding: 0.35em 0.6em; vertical-align: top; }
     .post-body th { color: var(--border); text-align: left; }
+
+    .post-tools {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65em;
+      margin-top: 1.2em;
+      padding-top: 0.9em;
+      border-top: 1px solid var(--border-muted);
+      color: var(--text-muted);
+      font-size: var(--fs-sm);
+    }
+    .post-tools-label { color: var(--border); }
+    .post-tools a { color: var(--link); }
+
+    .nostalgic-bbs {
+      margin-top: 1.2em;
+      padding-top: 0.9em;
+      border-top: 1px solid var(--border-muted);
+    }
+    .nostalgic-bbs-label {
+      margin: 0 0 0.4em;
+      color: var(--border);
+      font-size: var(--fs-sm);
+      letter-spacing: 0.05em;
+    }
+    .nostalgic-bbs-hint {
+      margin: 0.35em 0 0;
+      color: var(--text-muted);
+      font-size: var(--fs-sm);
+      text-align: right;
+    }
+    .nostalgic-bbs img {
+      display: block;
+      width: 100%;
+      max-width: 760px;
+      height: auto;
+      border: 1px solid var(--border-muted);
+      background: var(--bg);
+    }
+
+    .related {
+      margin-top: 1.2em;
+      padding-top: 0.9em;
+      border-top: 1px solid var(--border-muted);
+    }
+    .related-head {
+      margin: 0 0 0.5em;
+      color: var(--border);
+      font-size: var(--fs-sm);
+      letter-spacing: 0.05em;
+    }
+    .related-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4em;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .related-date { color: var(--text-muted); font-size: var(--fs-sm); margin-right: 0.7em; }
 
     /* 前後ナビ（記事末尾） */
     .post-nav {
@@ -226,8 +289,8 @@
         <h1 class="post-title">{{ page.title }}</h1>
         <div class="post-meta">
           {% if page.date %}<span>{{ page.date | date(format="%Y-%m-%d") }}</span>{% endif %}
-          {% if page.extra.tags %}
-          <span class="post-tags">{% for t in page.extra.tags %}<span class="post-tag">{{ t }}</span>{% endfor %}</span>
+          {% if page.taxonomies.tags %}
+          <span class="post-tags">{% for t in page.taxonomies.tags %}<a class="post-tag" href="{{ get_taxonomy_url(kind='tags', name=t, lang=lang) }}">#{{ t }}</a>{% endfor %}</span>
           {% endif %}
         </div>
 
@@ -235,11 +298,73 @@
           {{ page.content | safe }}
         </div>
 
+        {% if config.extra.share_links | default(value=false) %}
+        <nav class="post-tools" aria-label="{{ trans(key='share', lang=lang) }}">
+          <span class="post-tools-label">{{ trans(key="share", lang=lang) }}</span>
+          <a href="https://x.com/intent/tweet?url={{ page.permalink | urlencode }}&text={{ page.title | urlencode }}" target="_blank" rel="noopener noreferrer">X</a>
+          <a href="https://b.hatena.ne.jp/entry/{{ page.permalink }}" target="_blank" rel="noopener noreferrer">Hatena</a>
+          <a href="https://social-plugins.line.me/lineit/share?url={{ page.permalink | urlencode }}" target="_blank" rel="noopener noreferrer">LINE</a>
+          <a href="https://www.threads.net/intent/post?text={{ page.title | urlencode }}%20{{ page.permalink | urlencode }}" target="_blank" rel="noopener noreferrer">Threads</a>
+          <a href="https://bsky.app/intent/compose?text={{ page.title | urlencode }}%20{{ page.permalink | urlencode }}" target="_blank" rel="noopener noreferrer">Bluesky</a>
+        </nav>
+        {% endif %}
+
+        {% if config.extra.nostalgic_bbs | default(value=false) %}
+          {% set_global nostalgic_bbs_public_id = "" %}
+          {% set nostalgic_bbs = load_data(path="data/nostalgic_bbs.toml", required=false) %}
+          {% if nostalgic_bbs and nostalgic_bbs.posts %}
+            {% for post_path, post_bbs_id in nostalgic_bbs.posts %}
+              {% if post_path == page.path %}{% set_global nostalgic_bbs_public_id = post_bbs_id %}{% endif %}
+            {% endfor %}
+          {% endif %}
+          {% if nostalgic_bbs_public_id %}
+            {% set nostalgic_bbs_limit = config.extra.nostalgic_bbs_limit | default(value=3) %}
+            {% set nostalgic_bbs_width = config.extra.nostalgic_bbs_width | default(value=760) %}
+            {% set nostalgic_bbs_label = config.extra.nostalgic_bbs_label | default(value=trans(key="comments", lang=lang)) %}
+            {% set nostalgic_bbs_hint = config.extra.nostalgic_bbs_hint | default(value=trans(key="comment_hint", lang=lang)) %}
+            <div class="nostalgic-bbs">
+              <p class="nostalgic-bbs-label">{{ nostalgic_bbs_label }}</p>
+              <a href="https://nostalgic.llll-ll.com/bbs?id={{ nostalgic_bbs_public_id | urlencode }}" target="_blank" rel="noopener noreferrer">
+                <img src="https://api.nostalgic.llll-ll.com/bbs?action=get&id={{ nostalgic_bbs_public_id | urlencode }}&format=image&limit={{ nostalgic_bbs_limit }}&width={{ nostalgic_bbs_width }}" alt="{{ nostalgic_bbs_label }}: {{ page.title }}" loading="lazy" decoding="async" />
+              </a>
+              <p class="nostalgic-bbs-hint">{{ nostalgic_bbs_hint }}</p>
+            </div>
+          {% endif %}
+        {% endif %}
+
         {% if page.higher or page.lower %}
         <nav class="post-nav" aria-label="{{ trans(key='nav_aria', lang=lang) }}">
           {% if page.higher %}<span><a href="{{ page.higher.permalink | safe }}">← {{ page.higher.title }}</a></span>{% else %}<span></span>{% endif %}
           {% if page.lower %}<span><a href="{{ page.lower.permalink | safe }}">{{ page.lower.title }} →</a></span>{% else %}<span></span>{% endif %}
         </nav>
+        {% endif %}
+
+        {% if page.taxonomies.tags %}
+          {% set tax = get_taxonomy(kind="tags", lang=lang) %}
+          {% set_global rel_links = [] %}
+          {% set_global rel_pages = [] %}
+          {% for tag in page.taxonomies.tags %}
+            {% for term in tax.items %}
+              {% if term.name == tag %}
+                {% for p in term.pages %}
+                  {% if p.permalink != page.permalink and p.permalink not in rel_links %}
+                    {% set_global rel_links = rel_links | concat(with=p.permalink) %}
+                    {% set_global rel_pages = rel_pages | concat(with=p) %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+          {% if rel_pages | length > 0 %}
+          <aside class="related">
+            <p class="related-head">{{ trans(key="related_posts", lang=lang) }}</p>
+            <ul class="related-list">
+              {% for p in rel_pages | slice(end=5) %}
+              <li>{% if p.date %}<span class="related-date">{{ p.date | date(format="%Y-%m-%d") }}</span>{% endif %}<a href="{{ p.permalink | safe }}">{{ p.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </aside>
+          {% endif %}
         {% endif %}
       </article>
     </section>

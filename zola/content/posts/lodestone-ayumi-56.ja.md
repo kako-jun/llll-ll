@@ -1,6 +1,9 @@
 +++
 title = "歩み56. PvP（フロントライン）の猛者に質問です"
-date = 2021-12-16
+date = 2021-12-16T17:48:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

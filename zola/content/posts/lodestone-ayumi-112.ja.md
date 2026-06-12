@@ -1,6 +1,9 @@
 +++
 title = "歩み112. ボズヤにいると、FCやCWLSのことが分からなくなる説"
-date = 2022-03-15
+date = 2022-03-15T15:31:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

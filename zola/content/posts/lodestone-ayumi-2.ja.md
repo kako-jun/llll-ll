@@ -1,6 +1,9 @@
 +++
 title = "歩み2. 初めて日記を書いたわけです"
-date = 2021-11-01
+date = 2021-11-01T12:49:00+09:00
+
+[taxonomies]
+tags = ["FF14"]
 
 [extra]
 tags = ["FF14"]

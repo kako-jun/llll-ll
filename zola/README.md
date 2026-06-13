@@ -118,7 +118,14 @@ node scripts/sync-nostalgic-bbs.mjs && zola build
 NOSTALGIC_TOKEN=<kako-jun token> node scripts/sync-nostalgic-bbs.mjs
 ```
 
-大量記事で Nostalgic 側の rate limit に当たらないよう、同期スクリプトは `batchLookup` を小分けし、BBS 作成時は待機＋429/503 リトライを行う。調整用 env: `NOSTALGIC_LOOKUP_LIMIT` / `NOSTALGIC_CREATE_DELAY_MS`。
+大量記事で Nostalgic 側の rate limit に当たらないよう、同期スクリプトは `batchLookup` を小分けし、BBS 作成時は待機＋リトライを行う。429/503 **およびネットワーク例外**を待って再試行し（バックオフは create 後の待機 `NOSTALGIC_CREATE_DELAY_MS` とは独立した線形バックオフ）、`data/nostalgic_bbs.toml` を**各 create 直後・チャンク末にアトミック（tmp→rename）書き込み**する。途中で中断しても作成済みの id は残るので、再実行で無駄な lookup を繰り返さない。
+
+調整用 env:
+
+- `NOSTALGIC_LOOKUP_LIMIT` — `batchLookup` 1 回あたりの URL 数（＝チャンクサイズ）。既定 `50`。
+- `NOSTALGIC_CREATE_DELAY_MS` — 各 BBS 作成成功後の待機 ms。既定 `1200`。`0` で無効。
+- `NOSTALGIC_RETRY_BASE_MS` — リトライ時のバックオフ基準 ms（n 回目のリトライで `base × n` 待つ線形バックオフ）。既定 `2000`、最小 `500`。
+- `NOSTALGIC_MAX_RETRIES` — retryable な失敗の最大リトライ回数。既定 `5`。
 
 ### Lodestone / FF14 過去記事移植（#33）
 

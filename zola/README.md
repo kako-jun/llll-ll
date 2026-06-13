@@ -68,6 +68,7 @@ visits バー（Total / Today / Yesterday / Week / Month）は **Nostalgic visit
 - `static/js/visits-counter.js` がロード時に `GET https://api.nostalgic.llll-ll.com/visit?action=increment&id=<id>` を1回叩き（訪問を数えるので `increment`・サーバ側で重複排除）、返った `data.{total,today,yesterday,week,month}` を `[data-visit-stat]` の各スロットへ注入する。
 - **PE**: fetch 失敗 / JS 無効なら各スロットは `---` のまま（壊れない）。数値は固定 `,` 3桁区切り（ロケール非依存）。
 - 幅狭（`max-width:560px`）では**四角は横並びのまま**、各カウンタの中身（ラベルと数字）を**一斉に2段**（ラベル↑／数字↓）にする。media query なので全カウンタが同時に切替＝「1つでも改行されたら全部」(all-or-nothing)。箱は縦に積まない。
+- 右上に「これはなに？」リンク（#47）。mypace の「つぶやき一覧 →」と同じ `.panel-cta` 右上形式で、このカウンタを提供する **Nostalgic のトップ**（`[extra] nostalgic_url` = `https://nostalgic.llll-ll.com/`）へ飛ぶ。文言は4言語の `visits_help`（en: What's this? / ja: これはなに？ / zh: 这是什么？ / es: ¿Qué es esto?）。外部リンクなので `target=_blank rel=noopener noreferrer`。
 
 ## サポート BBS（#8）
 

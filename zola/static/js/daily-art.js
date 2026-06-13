@@ -6,7 +6,7 @@
 //   - インデックス算出 dailyIndexForDate() は DOM 非依存の純粋関数として切り出し、テストから import できる。
 //
 // 仕様:
-//   - クライアントの日付（epoch からの日数）を枚数で mod して日替わりローテ。今は1枚なので常に 0。
+//   - クライアントの日付（epoch からの日数）を枚数で mod して日替わりローテ（同じ日は同じ絵）。
 //   - 表示は『タイトル』の形（鉤括弧つき）。画像は /images/daily/NN.webp。
 
 /**
@@ -81,15 +81,21 @@ if (typeof module !== "undefined" && module.exports) {
   let isOpen = false;
   let lastTrigger = null; // 開いた瞬間の activeElement（閉じたら focus を戻す）。
 
+  // 拡大画像を配線時に先読みしておく（#46）。サムネ（.daily-art-img）と同 src なのでキャッシュ共有＝
+  // 追加転送なし。クリック時には既にロード済みなので、overlay を出した瞬間に正寸で表示され、
+  // 「空の緑枠が一瞬出てから縦に広がる」チラつきが起きない。
+  lightboxImg.src = img.currentSrc || img.src;
+
   function openLightbox() {
     if (isOpen) return;
     lastTrigger = document.activeElement;
-    // 現在表示中（今日の絵に差し替わった後）の src/alt を拡大側へ同期。
+    // 現在表示中（今日の絵に差し替わった後）の src を拡大側へ再同期（先読み済みと同 src なら再ロードなし）。
     lightboxImg.src = img.currentSrc || img.src;
     lightboxImg.alt = img.alt || "";
     overlay.hidden = false;
     document.body.classList.add("modal-open");
     isOpen = true;
+    // ポインタ開きの × の白フォーカスリングは CSS の :focus-visible で抑制（#46）。
     if (closeBtn && typeof closeBtn.focus === "function") closeBtn.focus();
   }
 

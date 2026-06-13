@@ -66,10 +66,11 @@ if (typeof module !== "undefined" && module.exports) {
   // 閉じる時に focus を戻すトリガ（開いた瞬間の document.activeElement）。
   let lastTrigger = null;
 
-  function showOverlay() {
+  // overlay を実際に画面へ出す（DOM 表示のみ）。中身（.app-detail 断片）が揃ってから呼ぶ＝
+  // 空の緑枠が一瞬出て縦に伸びるチラつきを防ぐ（#46）。論理的な開閉状態（isOpen）は openPopup 側で先に立てる。
+  function revealOverlay() {
     overlay.hidden = false;
     document.body.classList.add("modal-open");
-    isOpen = true;
   }
 
   // overlay を DOM 上で閉じるだけ（history は触らない）。popstate 経由・初期同期から呼ぶ。
@@ -147,7 +148,9 @@ if (typeof module !== "undefined" && module.exports) {
       }
     }
 
-    showOverlay();
+    // 論理的にはここで「開いた」（履歴は push 済み・Esc/閉じる/連打抑止が効くよう先に立てる）。
+    // overlay の表示は中身を注入してから（revealOverlay）行う＝空の緑枠が縦に伸びるチラつき防止（#46）。
+    isOpen = true;
     currentHref = href;
 
     fetch(href)
@@ -156,11 +159,17 @@ if (typeof module !== "undefined" && module.exports) {
         return res.text();
       })
       .then((html) => {
+        // 取得待ちの間に閉じられた / 別アプリへ切り替わったら、この結果では表示しない。
+        if (!isOpen || currentHref !== href) return;
         if (!injectFragment(html)) throw new Error("no .app-detail");
-        // 注入後に先頭 focusable（閉じるボタン優先）へ focus を移す。
+        // 中身が入った状態で初めて表示する。
+        revealOverlay();
+        // 注入後に閉じるボタンへ focus（ポインタ開きの白リングは CSS の :focus-visible で抑制・#46）。
         if (closeBtn) closeBtn.focus();
       })
       .catch(() => {
+        // 既に閉じられた / 切り替わった後なら何もしない。
+        if (!isOpen || currentHref !== href) return;
         // fetch / parse 失敗 → 素のページ遷移にフォールバック（PE）。
         window.location.href = href;
       });

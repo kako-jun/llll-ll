@@ -746,6 +746,9 @@
       cursor: pointer;
       padding: 0;
     }
+    /* 開いた瞬間に JS が closeBtn.focus() する。ポインタで開いた時は白いフォーカスリングを
+       出さない（:focus-visible はキーボード操作のみ true なので a11y は維持）。#46。 */
+    .modal-close:focus:not(:focus-visible) { outline: none; }
     /* ポップアップ内に注入される .app-detail（app.html のフラグメント）の最低限の体裁。
        詳細スタイルは app.html 側が持つが、注入断片には届かないのでここで主要要素だけ寄せる。 */
     .modal-body .app-detail { display: flex; flex-direction: column; gap: 14px; padding-right: 0.6em; }
@@ -807,6 +810,8 @@
       padding: 0;
       z-index: 1;
     }
+    /* ポインタで開いた時は白いフォーカスリングを出さない（キーボード時は維持）。#46。 */
+    .lightbox-close:focus:not(:focus-visible) { outline: none; }
     .lightbox-img {
       display: block;
       max-width: 90vw;
@@ -922,17 +927,37 @@
         </div>
       </section>
 
-      {# 日替わりトップ絵（#6）。manifest 先頭をサーバ側で既定描画（JS 無しでも 01・タイトルが出る＝PE）。
-         島 daily-art.js がクライアントの日付で今日のエントリに差し替えるだけ。 #}
+      {# 日替わりトップ絵（#6 / #46）。今日のエントリは直後の同期 inline script が初回ペイント前に確定する
+         （01→今日 のチラつき防止）。JS 無効時は figure 内の <noscript> が manifest 先頭(01)を出す＝PE。
+         defer の島 daily-art.js は同じ src を再設定（冪等）しつつライトボックスを配線する。 #}
       {% set daily = load_data(path="data/daily.json") %}
       <section class="panel panel-today">
         <span class="label">art of today</span>
         {% if daily and daily | length > 0 %}
+        {# 今日の絵は初回ペイント前に直後の同期 script で確定させる（#46: 01→今日 のチラつき防止）。
+           サーバは src を出さず、JS 無効時は <noscript> が daily[0] を出す＝PE。 #}
         <figure class="daily-art" data-lightbox-label="{{ trans(key='lightbox_open_aria', lang=lang) }}">
-          <img class="daily-art-img" src="/images/daily/{{ daily[0].file }}" alt="{{ daily[0].title }}" />
+          <img class="daily-art-img" alt="{{ daily[0].title }}" />
+          <noscript><img class="daily-art-img" src="/images/daily/{{ daily[0].file }}" alt="{{ daily[0].title }}" /></noscript>
           <figcaption class="daily-art-title">『{{ daily[0].title }}』</figcaption>
         </figure>
         <script type="application/json" id="daily-data">{{ daily | json_encode | safe }}</script>
+        <script>
+          // 初回ペイント前に今日のエントリへ確定（#46）。式は daily-art.js の dailyIndexForDate と同一。
+          // defer の daily-art.js は同じ src を再設定するだけ（冪等）＋ライトボックスを配線する。
+          (function () {
+            try {
+              var list = JSON.parse(document.getElementById("daily-data").textContent || "[]");
+              if (!Array.isArray(list) || list.length === 0) return;
+              var e = list[Math.floor(Date.now() / 86400000) % list.length];
+              if (!e || !e.file) return;
+              var img = document.querySelector(".daily-art-img");
+              if (img) { img.src = "/images/daily/" + e.file; img.alt = e.title || ""; }
+              var cap = document.querySelector(".daily-art-title");
+              if (cap) cap.textContent = "『" + (e.title || "") + "』";
+            } catch (err) { /* 失敗時は defer の daily-art.js が後で差し替える（PE） */ }
+          })();
+        </script>
         {% endif %}
       </section>
     </div>

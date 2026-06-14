@@ -20,7 +20,19 @@
     "createdAt": "2026-04-27",
     "updatedAt": "2026-06-11",
     "featured": true,
-    "icon": "/images/apps/orber.webp"
+    "icon": "/images/apps/orber.webp",
+    "effort": {
+      "sloc": 19344,
+      "slocLabel": "19,344",
+      "codeSloc": 17034,
+      "dataSloc": 2310,
+      "codeTier": "hard",
+      "dataTier": "config",
+      "personMonths": 10,
+      "usd": 70000,
+      "usdLabel": "$70k",
+      "level": 0.77
+    }
   },
   {
     "id": "machigai-salad",
@@ -43,7 +55,19 @@
     "createdAt": "2025-07-10",
     "updatedAt": "2026-04-20",
     "featured": true,
-    "icon": "/images/apps/machigai-salad.webp"
+    "icon": "/images/apps/machigai-salad.webp",
+    "effort": {
+      "sloc": 7074,
+      "slocLabel": "7,074",
+      "codeSloc": 5515,
+      "dataSloc": 1559,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 2.1,
+      "usd": 15000,
+      "usdLabel": "$15k",
+      "level": 0.33
+    }
   },
   {
     "id": "avel",
@@ -66,7 +90,19 @@
     "createdAt": "2026-06-11",
     "updatedAt": "2026-06-11",
     "featured": true,
-    "icon": "/images/apps/avel.webp"
+    "icon": "/images/apps/avel.webp",
+    "effort": {
+      "sloc": 2904,
+      "slocLabel": "2,904",
+      "codeSloc": 1264,
+      "dataSloc": 1640,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 0.9,
+      "usd": 6300,
+      "usdLabel": "$6.3k",
+      "level": 0.08
+    }
   },
   {
     "id": "osaka-kenpo",
@@ -89,7 +125,19 @@
     "createdAt": "2025-07-03",
     "updatedAt": "2025-01-20",
     "featured": true,
-    "icon": "/images/apps/osaka-kenpo.webp"
+    "icon": "/images/apps/osaka-kenpo.webp",
+    "effort": {
+      "sloc": 145600,
+      "slocLabel": "145,600",
+      "codeSloc": 15562,
+      "dataSloc": 130038,
+      "codeTier": "standard",
+      "dataTier": "authored",
+      "personMonths": 19.4,
+      "usd": 140000,
+      "usdLabel": "$140k",
+      "level": 0.96
+    }
   },
   {
     "id": "jiwa",
@@ -112,7 +160,19 @@
     "createdAt": "2026-05-29",
     "updatedAt": "2026-05-29",
     "featured": false,
-    "icon": "/images/cli.webp"
+    "icon": "/images/cli.webp",
+    "effort": {
+      "sloc": 2758,
+      "slocLabel": "2,758",
+      "codeSloc": 2408,
+      "dataSloc": 350,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 1.2,
+      "usd": 8400,
+      "usdLabel": "$8.4k",
+      "level": 0.17
+    }
   },
   {
     "id": "gitpp",
@@ -134,7 +194,19 @@
     "createdAt": "2026-04-03",
     "updatedAt": "2026-04-13",
     "featured": false,
-    "icon": "/images/cli.webp"
+    "icon": "/images/cli.webp",
+    "effort": {
+      "sloc": 3684,
+      "slocLabel": "3,684",
+      "codeSloc": 2544,
+      "dataSloc": 1140,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 1.2,
+      "usd": 8700,
+      "usdLabel": "$8.7k",
+      "level": 0.18
+    }
   },
   {
     "id": "ear-sky",
@@ -157,7 +229,19 @@
     "createdAt": "2026-03-28",
     "updatedAt": "2026-04-20",
     "featured": false,
-    "icon": "/images/apps/ear-sky.webp"
+    "icon": "/images/apps/ear-sky.webp",
+    "effort": {
+      "sloc": 5385,
+      "slocLabel": "5,385",
+      "codeSloc": 4732,
+      "dataSloc": 653,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 1.9,
+      "usd": 13000,
+      "usdLabel": "$13k",
+      "level": 0.29
+    }
   },
   {
     "id": "hacker-noroshi",
@@ -180,7 +264,19 @@
     "createdAt": "2026-02-13",
     "updatedAt": "2026-04-20",
     "featured": false,
-    "icon": "/images/apps/hacker-noroshi.webp"
+    "icon": "/images/apps/hacker-noroshi.webp",
+    "effort": {
+      "sloc": 15059,
+      "slocLabel": "15,059",
+      "codeSloc": 13775,
+      "dataSloc": 1284,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 4.5,
+      "usd": 31000,
+      "usdLabel": "$31k",
+      "level": 0.54
+    }
   },
   {
     "id": "sasso",
@@ -203,7 +299,19 @@
     "createdAt": "2025-12-10",
     "updatedAt": "2025-01-25",
     "featured": false,
-    "icon": "/images/apps/sasso.webp"
+    "icon": "/images/apps/sasso.webp",
+    "effort": {
+      "sloc": 5525,
+      "slocLabel": "5,525",
+      "codeSloc": 4521,
+      "dataSloc": 1004,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 1.8,
+      "usd": 13000,
+      "usdLabel": "$13k",
+      "level": 0.28
+    }
   },
   {
     "id": "mypace",
@@ -226,7 +334,19 @@
     "createdAt": "2025-12-06",
     "updatedAt": "2025-02-01",
     "featured": false,
-    "icon": "/images/apps/mypace.webp"
+    "icon": "/images/apps/mypace.webp",
+    "effort": {
+      "sloc": 51871,
+      "slocLabel": "51,871",
+      "codeSloc": 41648,
+      "dataSloc": 10223,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 12.6,
+      "usd": 88000,
+      "usdLabel": "$88k",
+      "level": 0.83
+    }
   },
   {
     "id": "chillout.nvim",
@@ -248,7 +368,19 @@
     "createdAt": "2025-12-02",
     "updatedAt": "2025-12-02",
     "featured": false,
-    "icon": "/images/lib.webp"
+    "icon": "/images/lib.webp",
+    "effort": {
+      "sloc": 1151,
+      "slocLabel": "1,151",
+      "codeSloc": 529,
+      "dataSloc": 622,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 0.7,
+      "usd": 4600,
+      "usdLabel": "$4.6k",
+      "level": 0
+    }
   },
   {
     "id": "chunkundo",
@@ -270,7 +402,19 @@
     "createdAt": "2025-12-02",
     "updatedAt": "2025-01-12",
     "featured": false,
-    "icon": "/images/lib.webp"
+    "icon": "/images/lib.webp",
+    "effort": {
+      "sloc": 1683,
+      "slocLabel": "1,683",
+      "codeSloc": 729,
+      "dataSloc": 954,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 0.7,
+      "usd": 5100,
+      "usdLabel": "$5.1k",
+      "level": 0.03
+    }
   },
   {
     "id": "3min",
@@ -293,7 +437,19 @@
     "createdAt": "2025-11-29",
     "updatedAt": "2025-01-05",
     "featured": false,
-    "icon": "/images/apps/3min.webp"
+    "icon": "/images/apps/3min.webp",
+    "effort": {
+      "sloc": 10760,
+      "slocLabel": "10,760",
+      "codeSloc": 5385,
+      "dataSloc": 5375,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 2.1,
+      "usd": 15000,
+      "usdLabel": "$15k",
+      "level": 0.33
+    }
   },
   {
     "id": "agasteer",
@@ -316,7 +472,19 @@
     "createdAt": "2025-11-20",
     "updatedAt": "2025-01-08",
     "featured": false,
-    "icon": "/images/apps/agasteer.webp"
+    "icon": "/images/apps/agasteer.webp",
+    "effort": {
+      "sloc": 35913,
+      "slocLabel": "35,913",
+      "codeSloc": 25939,
+      "dataSloc": 9974,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 8.1,
+      "usd": 57000,
+      "usdLabel": "$57k",
+      "level": 0.71
+    }
   },
   {
     "id": "riscfetch",
@@ -333,12 +501,26 @@
       "es": "Una herramienta de información del sistema al estilo neofetch hecha solo para RISC-V. Muestra extensiones ISA y el número de harts, trae 147 extensiones ordenadas por categoría y combina bien con fastfetch. En ninguna otra arquitectura va a arrancar. Escrita en Rust."
     },
     "tags": ["OSS", "CLI"],
-    "images": ["https://raw.githubusercontent.com/kako-jun/riscfetch/main/assets/screenshot.webp"],
+    "images": [
+      "https://raw.githubusercontent.com/kako-jun/riscfetch/main/assets/screenshot.webp"
+    ],
     "repositoryUrl": "https://github.com/kako-jun/riscfetch",
     "createdAt": "2025-11-19",
     "updatedAt": "2025-01-10",
     "featured": false,
-    "icon": "/images/cli.webp"
+    "icon": "/images/cli.webp",
+    "effort": {
+      "sloc": 3554,
+      "slocLabel": "3,554",
+      "codeSloc": 2309,
+      "dataSloc": 1245,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 1.2,
+      "usd": 8300,
+      "usdLabel": "$8.3k",
+      "level": 0.16
+    }
   },
   {
     "id": "sync-stone",
@@ -366,7 +548,19 @@
     "createdAt": "2025-07-29",
     "updatedAt": "2025-01-01",
     "featured": false,
-    "icon": "/images/apps/sync-stone.webp"
+    "icon": "/images/apps/sync-stone.webp",
+    "effort": {
+      "sloc": 18076,
+      "slocLabel": "18,076",
+      "codeSloc": 3911,
+      "dataSloc": 14165,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 1.9,
+      "usd": 13000,
+      "usdLabel": "$13k",
+      "level": 0.3
+    }
   },
   {
     "id": "diffai",
@@ -388,7 +582,19 @@
     "createdAt": "2025-07-12",
     "updatedAt": "2024-12-15",
     "featured": false,
-    "icon": "/images/cli.webp"
+    "icon": "/images/cli.webp",
+    "effort": {
+      "sloc": 10630,
+      "slocLabel": "10,630",
+      "codeSloc": 8519,
+      "dataSloc": 2111,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 3,
+      "usd": 21000,
+      "usdLabel": "$21k",
+      "level": 0.43
+    }
   },
   {
     "id": "lawkit",
@@ -410,7 +616,19 @@
     "createdAt": "2025-07-09",
     "updatedAt": "2024-12-20",
     "featured": false,
-    "icon": "/images/cli.webp"
+    "icon": "/images/cli.webp",
+    "effort": {
+      "sloc": 21657,
+      "slocLabel": "21,657",
+      "codeSloc": 17360,
+      "dataSloc": 4297,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 5.5,
+      "usd": 39000,
+      "usdLabel": "$39k",
+      "level": 0.6
+    }
   },
   {
     "id": "diffx",
@@ -427,7 +645,9 @@
       "es": "A diferencia del diff tradicional, que marca cada línea solo porque cambió el orden de las claves, esta CLI entiende la estructura y muestra solo lo que de verdad cambió. Detecta automáticamente seis formatos como JSON y YAML, y puede comparar directorios de forma recursiva."
     },
     "tags": ["OSS", "CLI", "Data"],
-    "images": ["https://storage.googleapis.com/zenn-user-upload/a82eab0d5859-20250706.png"],
+    "images": [
+      "https://storage.googleapis.com/zenn-user-upload/a82eab0d5859-20250706.png"
+    ],
     "repositoryUrl": "https://github.com/kako-jun/diffx",
     "articles": [
       {
@@ -442,7 +662,19 @@
     "createdAt": "2025-07-05",
     "updatedAt": "2024-12-10",
     "featured": false,
-    "icon": "/images/cli.webp"
+    "icon": "/images/cli.webp",
+    "effort": {
+      "sloc": 4840,
+      "slocLabel": "4,840",
+      "codeSloc": 3183,
+      "dataSloc": 1657,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 1.4,
+      "usd": 10000,
+      "usdLabel": "$10k",
+      "level": 0.22
+    }
   },
   {
     "id": "nostalgic",
@@ -465,7 +697,19 @@
     "createdAt": "2025-06-30",
     "updatedAt": "2025-01-15",
     "featured": false,
-    "icon": "/images/apps/nostalgic.webp"
+    "icon": "/images/apps/nostalgic.webp",
+    "effort": {
+      "sloc": 17957,
+      "slocLabel": "17,957",
+      "codeSloc": 13815,
+      "dataSloc": 4142,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 4.5,
+      "usd": 32000,
+      "usdLabel": "$32k",
+      "level": 0.54
+    }
   },
   {
     "id": "tail-match",
@@ -488,7 +732,19 @@
     "createdAt": "2025-06-27",
     "updatedAt": "2026-04-20",
     "featured": false,
-    "icon": "/images/apps/tail-match.webp"
+    "icon": "/images/apps/tail-match.webp",
+    "effort": {
+      "sloc": 106393,
+      "slocLabel": "106,393",
+      "codeSloc": 97327,
+      "dataSloc": 9066,
+      "codeTier": "repetitive",
+      "dataTier": "config",
+      "personMonths": 14.6,
+      "usd": 100000,
+      "usdLabel": "$100k",
+      "level": 0.88
+    }
   },
   {
     "id": "noun-gender",
@@ -511,7 +767,19 @@
     "createdAt": "2025-06-27",
     "updatedAt": "2025-01-18",
     "featured": false,
-    "icon": "/images/apps/noun-gender.webp"
+    "icon": "/images/apps/noun-gender.webp",
+    "effort": {
+      "sloc": 189618,
+      "slocLabel": "189,618",
+      "codeSloc": 5998,
+      "dataSloc": 183620,
+      "codeTier": "standard",
+      "dataTier": "authored",
+      "personMonths": 22.6,
+      "usd": 160000,
+      "usdLabel": "$160k",
+      "level": 1
+    }
   },
   {
     "id": "sid-note",
@@ -544,7 +812,19 @@
     "createdAt": "2025-05-12",
     "updatedAt": "2024-12-01",
     "featured": false,
-    "icon": "/images/apps/sid-note.webp"
+    "icon": "/images/apps/sid-note.webp",
+    "effort": {
+      "sloc": 5940,
+      "slocLabel": "5,940",
+      "codeSloc": 4530,
+      "dataSloc": 1410,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 1.8,
+      "usd": 13000,
+      "usdLabel": "$13k",
+      "level": 0.29
+    }
   },
   {
     "id": "esuna",

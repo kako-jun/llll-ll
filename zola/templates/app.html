@@ -110,7 +110,7 @@
     /* 上部のナビ（戻る導線） */
     .app-nav {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       gap: 1.2em;
       padding: 4px 4px 0;
       flex-shrink: 0;
@@ -198,7 +198,7 @@
   <div class="desktop">
     <nav class="app-nav" aria-label="{{ trans(key='nav_aria', lang=lang) }}">
       <a class="brand" href="{{ nav_prefix | safe }}/">llll-ll</a>
-      <a class="back" href="{{ nav_prefix | safe }}/">{{ trans(key="back_to_list", lang=lang) }}</a>
+      <a class="back" href="{{ nav_prefix | safe }}/"><span class="tri">◀</span> {{ trans(key="back_to_list", lang=lang) }}</a>
     </nav>
 
     <section class="panel">

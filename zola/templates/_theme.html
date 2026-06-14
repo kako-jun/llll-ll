@@ -28,6 +28,9 @@
   }
   /* テーマ切替時のなめらかな遷移（初期 paint では発火しない）。 */
   html { transition: background-color 0.3s ease, color 0.3s ease; }
+  /* リンク内の三角矢印（◀ ▶）共通スタイル（#48）。literal の文字は baseline 付近で「下にずれて」見えるので、
+     span.tri で包んで少し上げる。枠の無いリンク文中なので panel-cta の ▶（::after 0.27em）より高め。kako-jun 実機調整。 */
+  .tri { display: inline-block; vertical-align: 0.1em; font-style: normal; }
 </style>
 <script>
   // 白フラッシュ防止: paint 前に保存テーマを <html> へ。無ければ prefers-color-scheme に委ねる（既定ダーク）。

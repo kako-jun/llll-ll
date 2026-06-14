@@ -32,7 +32,7 @@
     a { color: var(--link); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .desktop { min-height: 100vh; padding: 8px; display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--border); background: var(--bg); }
-    .post-topnav { display: flex; align-items: baseline; gap: 1.2em; padding: 4px 4px 0; flex-shrink: 0; }
+    .post-topnav { display: flex; align-items: center; gap: 1.2em; padding: 4px 4px 0; flex-shrink: 0; }
     .post-topnav .brand { font-family: "Arial Black", "Arial", "Impact", sans-serif; font-weight: 900; letter-spacing: 0.15em; color: var(--border); font-size: 1.1rem; }
     .post-topnav .back { color: var(--text-muted); font-size: var(--fs-sm); }
     .panel { position: relative; border: 1px solid var(--border); background: var(--panel-bg); padding: 20px 18px 16px; }
@@ -51,7 +51,7 @@
   <div class="desktop">
     <nav class="post-topnav" aria-label="{{ trans(key='nav_aria', lang=lang) }}">
       <a class="brand" href="{{ nav_prefix | safe }}/">llll-ll</a>
-      <a class="back" href="{{ nav_prefix | safe }}/posts/">← {{ trans(key="posts_title", lang=lang) }}</a>
+      <a class="back" href="{{ nav_prefix | safe }}/posts/"><span class="tri">◀</span> {{ trans(key="posts_title", lang=lang) }}</a>
       <a class="back" href="{{ nav_prefix | safe }}/tags/">{{ trans(key="tags_title", lang=lang) }}</a>
     </nav>
 

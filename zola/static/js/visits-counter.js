@@ -38,11 +38,12 @@ if (typeof module !== "undefined" && module.exports) {
   module.exports = { formatCount };
 }
 
-var STAT_KEYS = ["total", "today", "yesterday", "week", "month"];
-
 (function () {
   // テスト時（module 環境）は DOM 配線を走らせない。
   if (typeof document === "undefined") return;
+
+  // 注入対象の stat キー。IIFE 内に閉じてグローバル汚染を避ける（classic script なので top-level var は window 直付け）。
+  var STAT_KEYS = ["total", "today", "yesterday", "week", "month"];
 
   var section = document.querySelector("[data-visit-id]");
   if (!section) return;

@@ -677,13 +677,15 @@
     }
     .panel-cta:hover { text-decoration: underline; }
     /* 右上 CTA の矢印を ▶（U+25B6・btop の指示子）に統一（#48）。文言から → を外し疑似要素で一元管理＝
-       4言語×複数文言を触らず DRY。content の `/ ""` で装飾扱い＝スクリーンリーダは矢印を読まない。 */
+       4言語×複数文言を触らず DRY。content は alt 構文 `/ ""` を付けず plain にする（付けると未対応ブラウザ＝
+       旧 Safari 等で declaration ごと drop され ▶ が一切描画されないため、確実に出す plain を選ぶ）。疑似要素なので
+       SR が読みうる点は 404 の literal ▶ と挙動が揃う。 */
     .panel-cta::after {
-      content: "\25B6" / "";
+      content: "\25B6";
       margin-inline-start: 0.4em;
       font-size: 0.82em;
       /* ▶ はフォント既定だと baseline 付近で「少し下」に見える。テキスト中心よりやや上に置く（kako-jun 実機調整）。
-         em は ::after 自身の font(=8.03px・viewport 不変) 基準。0.27em ≒ 中心から約1.6px 上。 */
+         em は ::after 自身の font 基準（root font-size 由来＝viewport 不変）。0.27em ≒ 中心からわずか上。 */
       vertical-align: 0.27em;
     }
 
@@ -796,8 +798,8 @@
       cursor: pointer;
       padding: 0;
     }
-    /* 開いた瞬間に JS が closeBtn.focus() する。ポインタで開いた時は白いフォーカスリングを
-       出さない（:focus-visible はキーボード操作のみ true なので a11y は維持）。#46。 */
+    /* × をポインタでクリックした時の白フォーカスリングを出さない（:focus-visible はキーボードのみ true＝a11y維持）。
+       開く時の focus はダイアログ本体に移すので（#52）、× は Tab 到達時のみリングが出る。#46/#52。 */
     .modal-close:focus:not(:focus-visible) { outline: none; }
     /* 開いた瞬間はダイアログ本体に focus を移す（× へのプログラム的 focus が初回だけ :focus-visible で
        枠を残すのを根治・#52）。コンテナは非操作要素なのでリング不要。× は Tab 到達時のみ :focus-visible でリング。 */
@@ -863,7 +865,7 @@
       padding: 0;
       z-index: 1;
     }
-    /* ポインタで開いた時は白いフォーカスリングを出さない（キーボード時は維持）。#46。 */
+    /* × をポインタでクリックした時の白フォーカスリングを出さない（キーボード時は維持）。開く時の focus はダイアログ本体（#52）。#46/#52。 */
     .lightbox-close:focus:not(:focus-visible) { outline: none; }
     /* ライトボックスも同様にダイアログ本体へ初期 focus（#52）。 */
     .lightbox:focus { outline: none; }

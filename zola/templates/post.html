@@ -86,7 +86,7 @@
     /* 上部のナビ（戻る導線） */
     .post-topnav {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       gap: 1.2em;
       padding: 4px 4px 0;
       flex-shrink: 0;
@@ -280,7 +280,7 @@
     <nav class="post-topnav" aria-label="{{ trans(key='nav_aria', lang=lang) }}">
       <a class="brand" href="{{ nav_prefix | safe }}/">llll-ll</a>
       <!-- 戻り先は「all posts」一覧（/posts/）。名前を一覧ラベルと一致させ i18n 化（ハードコード"← blog"を是正・#10 kako-jun）。 -->
-      <a class="back" href="{{ nav_prefix | safe }}/posts/">← {{ trans(key="posts_title", lang=lang) }}</a>
+      <a class="back" href="{{ nav_prefix | safe }}/posts/"><span class="tri">◀</span> {{ trans(key="posts_title", lang=lang) }}</a>
     </nav>
 
     <section class="panel">
@@ -334,8 +334,8 @@
 
         {% if page.higher or page.lower %}
         <nav class="post-nav" aria-label="{{ trans(key='nav_aria', lang=lang) }}">
-          {% if page.higher %}<span><a href="{{ page.higher.permalink | safe }}">← {{ page.higher.title }}</a></span>{% else %}<span></span>{% endif %}
-          {% if page.lower %}<span><a href="{{ page.lower.permalink | safe }}">{{ page.lower.title }} →</a></span>{% else %}<span></span>{% endif %}
+          {% if page.higher %}<span><a href="{{ page.higher.permalink | safe }}"><span class="tri">◀</span> {{ page.higher.title }}</a></span>{% else %}<span></span>{% endif %}
+          {% if page.lower %}<span><a href="{{ page.lower.permalink | safe }}">{{ page.lower.title }} <span class="tri">▶</span></a></span>{% else %}<span></span>{% endif %}
         </nav>
         {% endif %}
 

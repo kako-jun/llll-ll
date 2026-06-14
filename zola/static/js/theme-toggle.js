@@ -1,21 +1,22 @@
 // theme-toggle.js — llll-ll ポータルの「テーマトグル」の島（vanilla JS・依存なし・#9）。
 //
 // 設計:
-//   - 既定は prefers-color-scheme（OS 追従）。手動トグルで上書きし localStorage('llll-theme') に保持。
+//   - 既定はダーク固定（#60）。OS の prefers-color-scheme には追従しない（btop 黒×緑が初回ダークで開く）。
+//     手動トグルでライト/ダークを上書きし localStorage('llll-theme') に保持する。
 //   - 白フラッシュ防止の「paint 前に data-theme を当てる」処理は _theme.html のインライン script が担当。
 //     この島は「トグル UI の配線」＋「初期表示で正しいアイコン/aria/BBS テーマに合わせる」だけ。
-//   - パレット切替自体は CSS（:root[data-theme] / @media prefers-color-scheme）。JS は data-theme を出し入れするのみ。
+//   - パレット切替自体は CSS（:root[data-theme="light"] のときだけライト上書き）。JS は data-theme を出し入れするのみ。
 //   - **BBS テーマ連動**（kako-jun）: ライト時は <nostalgic-bbs theme="light">、ダーク時は "retro"。
-//   - PE: JS 無効なら四角ボタン（既定=塗り＝ダーク）が無反応で残るだけ（prefers-light なら自動ライト）で壊れない。
+//   - PE: JS 無効なら四角ボタン（既定=塗り＝ダーク）が無反応で残るだけ（既定ダークのまま）で壊れない。
 
 var STORAGE_KEY = "llll-theme";
 
 // ── 純粋ロジック（DOM 非依存・テストから import 可能）──
 
-/** 保存値と OS の prefers-light から、適用すべきテーマ('light'|'dark')を決める。 */
-function resolveTheme(stored, prefersLight) {
-  if (stored === "light" || stored === "dark") return stored;
-  return prefersLight ? "light" : "dark";
+/** 保存値から適用すべきテーマ('light'|'dark')を決める。保存が 'light' のときだけライト、
+ *  それ以外（'dark'・null・不正値）は既定ダーク（#60・OS の prefers-color-scheme には追従しない）。 */
+function resolveTheme(stored) {
+  return stored === "light" ? "light" : "dark";
 }
 
 /** トグル先のテーマ。 */
@@ -40,14 +41,6 @@ if (typeof module !== "undefined" && module.exports) {
 
 (function () {
   if (typeof document === "undefined") return;
-
-  function prefersLight() {
-    return (
-      typeof window !== "undefined" &&
-      typeof window.matchMedia === "function" &&
-      window.matchMedia("(prefers-color-scheme: light)").matches
-    );
-  }
 
   function storedTheme() {
     try {
@@ -85,15 +78,15 @@ if (typeof module !== "undefined" && module.exports) {
   }
 
   ready(function () {
-    // 初期表示: 保存値 or OS から現テーマを確定し、アイコン/aria/BBS を合わせる（persist しない）。
-    var current = resolveTheme(storedTheme(), prefersLight());
+    // 初期表示: 保存値から現テーマを確定し（無ければ既定ダーク）、アイコン/aria/BBS を合わせる（persist しない）。
+    var current = resolveTheme(storedTheme());
     apply(current, false);
 
     var btn = document.querySelector(".theme-toggle");
     if (btn) {
       btn.addEventListener("click", function () {
-        // 現在の実効テーマ（data-theme を最優先・無ければ OS）から反転。
-        var now = resolveTheme(document.documentElement.getAttribute("data-theme") || storedTheme(), prefersLight());
+        // 現在の実効テーマ（data-theme を最優先・無ければ保存値・無ければ既定ダーク）から反転。
+        var now = resolveTheme(document.documentElement.getAttribute("data-theme") || storedTheme());
         apply(nextTheme(now), true);
       });
     }

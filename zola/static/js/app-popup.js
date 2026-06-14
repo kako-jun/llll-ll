@@ -164,8 +164,9 @@ if (typeof module !== "undefined" && module.exports) {
         if (!injectFragment(html)) throw new Error("no .app-detail");
         // 中身が入った状態で初めて表示する。
         revealOverlay();
-        // 注入後に閉じるボタンへ focus（ポインタ開きの白リングは CSS の :focus-visible で抑制・#46）。
-        if (closeBtn) closeBtn.focus();
+        // 注入後はダイアログ本体へ focus（× へ直接 focus すると初回だけ :focus-visible で枠が残るため・#52）。
+        // SR は role=dialog/aria-label を読み上げ、focus trap も getFocusable が tabindex=-1 を除外するので不変。
+        if (modal) modal.focus({ preventScroll: true });
       })
       .catch(() => {
         // 既に閉じられた / 切り替わった後なら何もしない。

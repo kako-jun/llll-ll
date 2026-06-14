@@ -42,6 +42,9 @@ if (typeof module !== "undefined" && module.exports) {
   // テスト時（module 環境）は DOM 配線を走らせない。
   if (typeof document === "undefined") return;
 
+  // 注入対象の stat キー。IIFE 内に閉じてグローバル汚染を避ける（classic script なので top-level var は window 直付け）。
+  var STAT_KEYS = ["total", "today", "yesterday", "week", "month"];
+
   var section = document.querySelector("[data-visit-id]");
   if (!section) return;
   var id = (section.getAttribute("data-visit-id") || "").trim();
@@ -50,7 +53,33 @@ if (typeof module !== "undefined" && module.exports) {
   // fetch 非対応環境（PE）。
   if (typeof fetch !== "function") return;
 
+  // ロード中は各スロットの "---" を動くローダ（.visit-load）に差し替える（#48・kako-jun 指示）。
+  // JS 有効時のみ＝no-JS は "---" のまま（PE）。見た目は CSS の離散セル（単色の四角＋境界ギャップ）で、
+  // 明るいセルが左→右へ流れる＝フォント非依存。span に 5 セル(<i>)を挿す（描画は CSS）。
+  function showLoading() {
+    for (var i = 0; i < STAT_KEYS.length; i++) {
+      var el = section.querySelector('[data-visit-stat="' + STAT_KEYS[i] + '"]');
+      if (!el) continue;
+      el.textContent = ""; // "---" を消す。
+      var bar = document.createElement("span");
+      bar.className = "visit-load";
+      bar.setAttribute("aria-hidden", "true");
+      for (var c = 0; c < 5; c++) bar.appendChild(document.createElement("i")); // 離散セル（四角）
+      el.appendChild(bar);
+    }
+  }
+
+  // 失敗時は全スロットを "---" に戻す（ローダを回し続けない＝「読み込み中」の嘘をつかない・PE）。
+  function resetToDash() {
+    for (var i = 0; i < STAT_KEYS.length; i++) {
+      var el = section.querySelector('[data-visit-stat="' + STAT_KEYS[i] + '"]');
+      if (el) el.textContent = "---";
+    }
+  }
+
   var url = VISITS_API_BASE + "/visit?action=increment&id=" + encodeURIComponent(id);
+
+  showLoading();
 
   fetch(url)
     .then(function (res) {
@@ -58,18 +87,21 @@ if (typeof module !== "undefined" && module.exports) {
       return res.json();
     })
     .then(function (json) {
-      if (!json || json.success !== true || !json.data) return; // success:false / data 欠落 は無視。
+      if (!json || json.success !== true || !json.data) {
+        resetToDash(); // success:false / data 欠落 はローダを止めて "---" へ。
+        return;
+      }
       var data = json.data;
-      var keys = ["total", "today", "yesterday", "week", "month"];
-      for (var i = 0; i < keys.length; i++) {
-        var key = keys[i];
-        var formatted = formatCount(data[key]);
-        if (formatted === null) continue; // 不正値はスキップ（"---" を残す）。
+      for (var i = 0; i < STAT_KEYS.length; i++) {
+        var key = STAT_KEYS[i];
         var el = section.querySelector('[data-visit-stat="' + key + '"]');
-        if (el) el.textContent = formatted; // 注入対象が無い stat はスキップ。
+        if (!el) continue; // 注入対象が無い stat はスキップ。
+        var formatted = formatCount(data[key]);
+        el.textContent = formatted === null ? "---" : formatted; // 不正値は "---"（ローダを残さない）。
       }
     })
     .catch(function () {
       // fetch 失敗・JSON パース失敗など全て握りつぶす（PE）。console を汚さない。
+      resetToDash();
     });
 })();

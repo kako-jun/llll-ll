@@ -233,7 +233,9 @@
       /* 右上のキービジュアル（アバター）にテキストが回り込まないよう右に空ける（#14 kako-jun）。 */
       padding-right: 92px;
     }
-    .header-prose p { margin: 0 0 4px; }
+    /* welcome ↔ intro の間隔を、段落内の折り返し行間（line-height）と一致させる（#50）。
+       段落下マージン 4px を足すと折り返し行より広く＝段落っぽい違和感になるので 0 にする。 */
+    .header-prose p { margin: 0; }
     /* 旧 React トップ画像をキービジュアルとして右上に円形（アバター風）でやや小さく置く（#14 kako-jun）。
        テトリス背面(z0)より上・CTA(z2)より下の z1。装飾なので非クリック。 */
     .header-keyvisual {
@@ -248,7 +250,7 @@
       /* prose(z1) の箱（右余白）にクリックを奪われないよう z2（CTA と同列・空間的に重ならない）。 */
       z-index: 2;
     }
-    /* 「はじめに読んで →」＝入口記事 start-here への主要 CTA。右上 CTA の中でこれだけ太字。 */
+    /* 「はじめに読んでね」＝入口記事 start-here への主要 CTA（矢印 ▶ は .panel-cta::after）。右上 CTA の中でこれだけ太字。 */
     .panel-cta.read-first { font-weight: bold; }
     .panel-cta.read-first:hover { text-decoration: underline; }
 
@@ -292,25 +294,35 @@
       font-size: var(--fs-sm);
       text-align: left;
     }
-    /* 読み込み前のスケルトン（#8 / kako-jun「仮のまますぎる」）。実ノート(.mypace-note)に似た枠で、
-       中の薄いバーが脈動して「読み込み中」と分かる。島が取得できたら .mypace-feed ごと差し替わる（PE: 失敗時はこのまま）。 */
-    .mypace-skel {
-      border: 1px solid var(--border-muted);
-      padding: 6px 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
+    /* 読み込み中スピナー（#48 btop）。btop 既定の braille graph_symbol に倣い、点字スピナー
+       ⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏ を回す（＝kako-jun の言う「点8個文字」）。島が取得成功で .mypace-feed ごと
+       差し替わる（PE: 失敗/0件はこのまま＝旧スケルトンと同じく据え置き）。
+       content は非補間なのでキーフレームの各 % で離散的に切り替わる（steps(1)）。 */
+    .mypace-load {
+      text-align: center;
+      color: var(--border-muted);
+      font-size: 1.5rem;
+      line-height: 1.8;
+      letter-spacing: 0.1em;
     }
-    .mypace-skel-bar {
-      height: 8px;
-      background: var(--border-muted);
-      border-radius: 1px;
-      animation: mypacePulse 1.5s ease-in-out infinite;
+    .mypace-load::before {
+      content: "⠋";
+      animation: mypaceBraille 0.9s steps(1) infinite;
     }
-    .mypace-skel-bar.short { width: 55%; }
-    @keyframes mypacePulse { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.5; } }
-    @media (prefers-reduced-motion: reduce) { .mypace-skel-bar { animation: none; opacity: 0.35; } }
-    /* スクリーンリーダ専用（視覚的には隠す）。スケルトンの読み込み中ラベルに使う。 */
+    @keyframes mypaceBraille {
+      0%   { content: "⠋"; }
+      10%  { content: "⠙"; }
+      20%  { content: "⠹"; }
+      30%  { content: "⠸"; }
+      40%  { content: "⠼"; }
+      50%  { content: "⠴"; }
+      60%  { content: "⠦"; }
+      70%  { content: "⠧"; }
+      80%  { content: "⠇"; }
+      90%  { content: "⠏"; }
+    }
+    @media (prefers-reduced-motion: reduce) { .mypace-load::before { animation: none; content: "⠿"; } }
+    /* スクリーンリーダ専用（視覚的には隠す）。点字スピナーの読み込み中ラベルに使う。 */
     .sr-only {
       position: absolute;
       width: 1px; height: 1px;
@@ -380,6 +392,34 @@
     .stat:first-child { border-left: none; }
     .stat-label { color: var(--text-muted); font-size: var(--fs-sm); }
     .stat-num { color: var(--border); font-weight: bold; font-size: 1.1rem; letter-spacing: 0.05em; }
+    /* visits ロード中のローダ（#48・kako-jun 指示）。"---" の代わりに「読み込み中＝動く」機能。
+       濃淡グリフ ░▒▓ は閲覧者のフォントで格子化し不統一になる（実機確認）ため、CSS の離散セル（単色の四角＋
+       境界ギャップ）で描く＝フォント非依存・全環境で同一・btop のセグメントメーター調。滑らかなグラデでなく
+       「四角の区切りが見える」形を kako-jun が選択。明るいセルが左→右へ流れる（各セルの明滅をずらしたコメット）。
+       visits-counter.js が fetch 直前に各スロットへ .visit-load（中に5セル）を注入し、成功で数字／失敗（非200・
+       success:false・data欠落・不正値・reject）で "---" に戻す。no-JS は "---" のまま（PE）。reduced-motion は静止。 */
+    .visit-load {
+      display: inline-flex;
+      gap: 0;                     /* ← 四角は隙間なく接する（境界は色の段差で見せる） */
+      height: 0.88em;
+      vertical-align: -0.1em;
+    }
+    .visit-load i {
+      display: block;
+      width: 0.5em;
+      height: 100%;
+      background: var(--border);
+      opacity: 0.16;
+      /* 各セルは bright→dim のランプ。隣同士で位相を 1/5 ずらすので常に濃さが違う＝接していても色の段差で
+         四角の境界が見える。ずれたランプが流れて「読み込み中」を表す。 */
+      animation: visitLoad 1.05s linear infinite;
+    }
+    .visit-load i:nth-child(2) { animation-delay: -0.21s; }
+    .visit-load i:nth-child(3) { animation-delay: -0.42s; }
+    .visit-load i:nth-child(4) { animation-delay: -0.63s; }
+    .visit-load i:nth-child(5) { animation-delay: -0.84s; }
+    @keyframes visitLoad { 0% { opacity: 1; } 100% { opacity: 0.16; } }
+    @media (prefers-reduced-motion: reduce) { .visit-load i { animation: none; opacity: 0.5; } }
     /* 幅狭では各カウンタの中身（ラベルと数字）を「一斉に」2段（ラベル↑／数字↓）にする。
        四角(.stat)は横並びのまま・縦罫(border-left)も維持し、箱は縦に積まない。
        media query なので全カウンタが同時に2段化＝「1つでも改行されたら全部改行」(all-or-nothing)。
@@ -414,23 +454,43 @@
       color: var(--border);
       font-weight: bold;
     }
-    /* テーマトグル（#9）。langbar 左端＝空いていた側へ（margin-right:auto で言語は右のまま）。
-       JS 無しでは ☾（既定ダーク）のまま無反応＝壊れない。theme-toggle.js が現テーマで ☀/☾ と aria を更新。 */
+    /* テーマトグル（#9 / #55）。langbar 左端（margin-right:auto で言語は右のまま）。枠なし・CSS 描画の四角で
+       現テーマを示す（btop ブロック・kako-jun）: dark（aria-pressed=false）=塗りつぶし ◼／light（aria-pressed=true）=白抜き ◻。
+       字形でなく CSS なのでアスタリスク化せず全環境同一。JS 無しでは既定（塗り＝ダーク）のまま無反応＝壊れない（PE）。 */
     .theme-toggle {
       margin-right: auto;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 0.4em;
       background: none;
-      border: 1px solid var(--border-muted);
+      border: none;
       color: var(--text-muted);
       cursor: pointer;
       font: inherit;
       line-height: 1;
-      padding: 2px 8px;
+      padding: 2px 4px;
     }
-    .theme-toggle:hover { color: var(--border); border-color: var(--border); }
-    .theme-toggle-icon { font-size: var(--fs-base); }
+    .theme-toggle:hover { color: var(--border); }
+    /* 現テーマを表す四角。既定（dark）は塗りつぶし。 */
+    .theme-toggle-icon {
+      display: inline-block;
+      box-sizing: border-box;
+      width: 0.82em;
+      height: 0.82em;
+      border: 1px solid currentColor;
+      background: currentColor;
+    }
+    /* light がアクティブ → 白抜き ◻。指示子は aria-pressed（JS が defer で後から当てる）でなく data-theme で駆動する。
+       data-theme は _theme.html の no-flash script が paint 前に当てるので、JS を待たずに正しい四角が出る＝ちらつき無し。
+       no-JS の prefers-light（data-theme 未固定）でも正しく白抜きになる（PE）。aria-pressed は a11y 用に JS が別途維持。 */
+    :root[data-theme="light"] .theme-toggle-icon { background: transparent; }
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) .theme-toggle-icon { background: transparent; }
+    }
+    /* 「クリックできる」を示す小ラベル（#55・kako-jun）。site の btop ラベル（header/apps…）同様に英字小文字で。
+       hover で四角ごと緑に光り操作子だと分かる。aria-hidden＝aria-label と二重読みしない。 */
+    .theme-toggle-label { font-size: var(--fs-sm); letter-spacing: 0.05em; }
 
     /* ── 中段スクロール領域（apps + BBS を1領域に。blog は header 列へ移設・#10）── */
     .mid {
@@ -636,6 +696,18 @@
       font-size: var(--fs-sm);
     }
     .panel-cta:hover { text-decoration: underline; }
+    /* 右上 CTA の矢印を ▶（U+25B6・btop の指示子）に統一（#48）。文言から → を外し疑似要素で一元管理＝
+       4言語×複数文言を触らず DRY。content は alt 構文 `/ ""` を付けず plain にする（付けると未対応ブラウザ＝
+       旧 Safari 等で declaration ごと drop され ▶ が一切描画されないため、確実に出す plain を選ぶ）。疑似要素なので
+       SR が読みうる点は 404 の literal ▶ と挙動が揃う。 */
+    .panel-cta::after {
+      content: "\25B6";
+      margin-inline-start: 0.4em;
+      font-size: 0.82em;
+      /* ▶ はフォント既定だと baseline 付近で「少し下」に見える。テキスト中心よりやや上に置く（kako-jun 実機調整）。
+         em は ::after 自身の font 基準（root font-size 由来＝viewport 不変）。0.27em ≒ 中心からわずか上。 */
+      vertical-align: 0.27em;
+    }
 
     /* ── footer（固定・外枠最下）── */
     .footer {
@@ -746,9 +818,12 @@
       cursor: pointer;
       padding: 0;
     }
-    /* 開いた瞬間に JS が closeBtn.focus() する。ポインタで開いた時は白いフォーカスリングを
-       出さない（:focus-visible はキーボード操作のみ true なので a11y は維持）。#46。 */
+    /* × をポインタでクリックした時の白フォーカスリングを出さない（:focus-visible はキーボードのみ true＝a11y維持）。
+       開く時の focus はダイアログ本体に移すので（#52）、× は Tab 到達時のみリングが出る。#46/#52。 */
     .modal-close:focus:not(:focus-visible) { outline: none; }
+    /* 開いた瞬間はダイアログ本体に focus を移す（× へのプログラム的 focus が初回だけ :focus-visible で
+       枠を残すのを根治・#52）。コンテナは非操作要素なのでリング不要。× は Tab 到達時のみ :focus-visible でリング。 */
+    .modal:focus { outline: none; }
     /* ポップアップ内に注入される .app-detail（app.html のフラグメント）の最低限の体裁。
        詳細スタイルは app.html 側が持つが、注入断片には届かないのでここで主要要素だけ寄せる。 */
     .modal-body .app-detail { display: flex; flex-direction: column; gap: 14px; padding-right: 0.6em; }
@@ -810,8 +885,10 @@
       padding: 0;
       z-index: 1;
     }
-    /* ポインタで開いた時は白いフォーカスリングを出さない（キーボード時は維持）。#46。 */
+    /* × をポインタでクリックした時の白フォーカスリングを出さない（キーボード時は維持）。開く時の focus はダイアログ本体（#52）。#46/#52。 */
     .lightbox-close:focus:not(:focus-visible) { outline: none; }
+    /* ライトボックスも同様にダイアログ本体へ初期 focus（#52）。 */
+    .lightbox:focus { outline: none; }
     .lightbox-img {
       display: block;
       max-width: 90vw;
@@ -844,9 +921,12 @@
     <!-- 最上段：言語切替バー（全幅・緑帯）— 各言語ホームへの実リンク（#5）。
          en→/, ja→/ja/, zh→/zh/, es→/es/。現在言語は active 表示でリンクにしない。 -->
     <nav class="langbar" aria-label="{{ trans(key='langbar_aria', lang=lang) }}">
-      <!-- テーマトグル（#9・kako-jun 合意の langbar 左端）。既定 ☾（ダーク）。theme-toggle.js が現テーマで更新。 -->
+      <!-- テーマトグル（#9 / #55・langbar 左端）。アイコンは CSS 描画の四角（塗り=dark / 白抜き=light）で、
+           表示は data-theme 駆動（_theme.html の no-flash script が paint 前に当てる＝ちらつき無し）。
+           theme-toggle.js は data-theme と aria-pressed（a11y）を更新する。 -->
       <button type="button" class="theme-toggle" aria-label="{{ trans(key='theme_toggle_aria', lang=lang) }}" aria-pressed="false">
-        <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+        <span class="theme-toggle-icon" aria-hidden="true"></span>
+        <span class="theme-toggle-label" aria-hidden="true">theme</span>
       </button>
       {% if lang == "en" %}<span class="lang active" aria-current="true">en</span>{% else %}<a class="lang" data-lang="en" href="/">en</a>{% endif %}
       {% if lang == "ja" %}<span class="lang active" aria-current="true">ja</span>{% else %}<a class="lang" data-lang="ja" href="/ja/">ja</a>{% endif %}
@@ -862,7 +942,7 @@
       <div class="header-col">
       <section class="panel panel-header">
         <span class="label">header</span>
-        <!-- 「はじめに読んで →」＝入口記事 start-here への導線。prose の1行を食わないよう、blog/mypace と同じ
+        <!-- 「はじめに読んでね」＝入口記事 start-here への導線（矢印 ▶ は ::after）。prose の1行を食わないよう、blog/mypace と同じ
              panel-cta 形式で header パネル右上（border 上）へ（#10 kako-jun）。静的 about を作らず blog へ誘導。 -->
         <a class="panel-cta read-first" href="{{ nav_prefix | safe }}/posts/start-here/">{{ trans(key="read_first", lang=lang) }}</a>
         <!-- キービジュアル（旧 React トップ画像・#14 kako-jun）: 右上「Read this」直下の空き空間へ。
@@ -919,11 +999,9 @@
              data-mypace-relays='{{ config.extra.mypace_relays | json_encode }}'
              data-mypace-post-base="{{ config.extra.mypace_post_url_base }}"
              data-mypace-limit="{{ config.extra.mypace_note_limit }}">
-          <!-- 読み込み前スケルトン（仮っぽさ排除・#8 kako-jun）。島が取得成功で実つぶやきに差し替え、失敗/0件はこのまま。 -->
+          <!-- 読み込み中スピナー（btop 点字・#48）。島が取得成功で実つぶやきに差し替え、失敗/0件はこのまま。 -->
           <span class="sr-only">{{ trans(key="mypace_placeholder", lang=lang) }}</span>
-          <div class="mypace-skel" aria-hidden="true"><span class="mypace-skel-bar"></span><span class="mypace-skel-bar short"></span></div>
-          <div class="mypace-skel" aria-hidden="true"><span class="mypace-skel-bar"></span><span class="mypace-skel-bar short"></span></div>
-          <div class="mypace-skel" aria-hidden="true"><span class="mypace-skel-bar"></span><span class="mypace-skel-bar short"></span></div>
+          <div class="mypace-load" aria-hidden="true"></div>
         </div>
       </section>
 
@@ -1087,7 +1165,7 @@
   <!-- アプリ詳細ポップアップの器（#13）。既定 hidden。app-popup.js が中身を入れて表示する。
        JS 無し/失敗時はカードタイトルの素のリンクで /apps/{id}/ へ遷移するので、この器は隠れたまま。 -->
   <div class="modal-overlay" hidden>
-    <div class="modal" role="dialog" aria-modal="true" aria-label="{{ trans(key='modal_aria', lang=lang) }}">
+    <div class="modal" role="dialog" aria-modal="true" tabindex="-1" aria-label="{{ trans(key='modal_aria', lang=lang) }}">
       <button type="button" class="modal-close" aria-label="{{ trans(key='modal_close_aria', lang=lang) }}">×</button>
       <div class="modal-body"></div>
     </div>
@@ -1096,13 +1174,13 @@
   <!-- 日替わりトップ絵のライトボックス（#24）。既定 hidden。daily-art.js が拡大画像の src を入れて表示する。
        app-popup.js とは別系統（.lightbox-overlay）なので履歴は積まない。JS 無し/失敗時はこの器は隠れたまま（PE）。 -->
   <div class="lightbox-overlay" hidden>
-    <div class="lightbox" role="dialog" aria-modal="true" aria-label="{{ trans(key='lightbox_aria', lang=lang) }}">
+    <div class="lightbox" role="dialog" aria-modal="true" tabindex="-1" aria-label="{{ trans(key='lightbox_aria', lang=lang) }}">
       <button type="button" class="lightbox-close" aria-label="{{ trans(key='modal_close_aria', lang=lang) }}">×</button>
       <img class="lightbox-img" src="" alt="" />
     </div>
   </div>
 
-  <!-- テーマトグルの島（vanilla JS・defer・#9）。読めなくても ☾ ボタンが残るだけ（PE・既定/prefers で配色は効く）。 -->
+  <!-- テーマトグルの島（vanilla JS・defer・#9 / #55）。読めなくても四角ボタン（既定=塗り＝ダーク）が残るだけ（PE・既定/prefers で配色は効く）。 -->
   <script defer src="/js/theme-toggle.js"></script>
   <script defer src="/js/lang-pref.js"></script>
   <!-- ヘッダ Tetris の島（vanilla JS・defer・#7）。読めなくても破線帯＋"tetris" ラベルが残る（PE）。 -->

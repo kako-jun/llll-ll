@@ -64,7 +64,7 @@
     }
     .post-topnav {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       gap: 1.2em;
       padding: 4px 4px 0;
       flex-shrink: 0;
@@ -135,7 +135,7 @@
     <nav class="post-topnav" aria-label="{{ trans(key='nav_aria', lang=lang) }}">
       <a class="brand" href="{{ nav_prefix | safe }}/">llll-ll</a>
       <!-- ここは「all posts」一覧そのもの。戻り先はホーム＝「リストへ戻る」ではなく「トップへ」（#10 kako-jun）。 -->
-      <a class="back" href="{{ nav_prefix | safe }}/">{{ trans(key="back_to_top", lang=lang) }}</a>
+      <a class="back" href="{{ nav_prefix | safe }}/"><span class="tri">◀</span> {{ trans(key="back_to_top", lang=lang) }}</a>
     </nav>
 
     <!-- ラベルは「all posts」＝ホームで押したリンク名と一致させる（#10 kako-jun）。 -->

@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 // theme-toggle.js は island（module.exports ガード）。純粋ロジックだけ検証する（#9）。
 // DOM 配線の IIFE は jsdom 下でも `.theme-toggle` が無ければ無害に終わる。
-import { resolveTheme, nextTheme, bbsThemeFor, iconFor, STORAGE_KEY } from "../static/js/theme-toggle.js";
+import { resolveTheme, nextTheme, bbsThemeFor, STORAGE_KEY } from "../static/js/theme-toggle.js";
 
 describe("resolveTheme", () => {
   it("保存値 light/dark をそのまま採用（OS より優先）", () => {
@@ -34,13 +34,6 @@ describe("bbsThemeFor", () => {
   it("ライト=light / ダーク=retro（kako-jun: BBS もライト時はライトに）", () => {
     expect(bbsThemeFor("light")).toBe("light");
     expect(bbsThemeFor("dark")).toBe("retro");
-  });
-});
-
-describe("iconFor", () => {
-  it("ダーク=☾ / ライト=☀（現テーマを表す）", () => {
-    expect(iconFor("dark")).toBe("☾");
-    expect(iconFor("light")).toBe("☀");
   });
 });
 

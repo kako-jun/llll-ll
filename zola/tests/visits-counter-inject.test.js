@@ -269,4 +269,57 @@ describe("visits-counter inject (jsdom)", () => {
       expect(warnSpy).not.toHaveBeenCalled();
     });
   });
+
+  describe("ロード中の濃淡ブロック（#48）", () => {
+    it("fetch 未解決の間は各スロットが .visit-load ローダ（'---' でも数字でもない）", async () => {
+      // 永遠に解決しない fetch でロード中状態を固定する。
+      const fetchMock = vi.fn(() => new Promise(() => {}));
+      await setupAndImport(visitsMarkup("orber"), fetchMock);
+      await flush();
+      for (const k of STAT_KEYS) {
+        const el = document.querySelector(`[data-visit-stat="${k}"]`);
+        const loader = el.querySelector(".visit-load");
+        expect(loader).not.toBeNull(); // ローダが注入されている
+        expect(loader.getAttribute("aria-hidden")).toBe("true");
+        expect(loader.querySelectorAll("i").length).toBe(5); // 離散セル（四角）5個
+        // セルは CSS 背景で描くので、要素自体の textContent は空（"---" でも数字でもない）。
+        expect(el.textContent).toBe("");
+      }
+    });
+
+    it("ロード中ローダは成功で数字に置き換わる（ローダが残らない）", async () => {
+      const fetchMock = vi.fn(() =>
+        Promise.resolve(
+          okResponse({
+            success: true,
+            data: { total: 1234, today: 8, yesterday: 15, week: 27, month: 32 },
+          })
+        )
+      );
+      await setupAndImport(visitsMarkup("orber"), fetchMock);
+      await flush();
+      expect(document.querySelector(".visit-load")).toBeNull(); // ローダは残らない
+      expect(readStats()).toEqual({
+        total: "1,234",
+        today: "8",
+        yesterday: "15",
+        week: "27",
+        month: "32",
+      });
+    });
+
+    it("ロード中ローダは失敗で '---' に戻る（ローダが残らない）", async () => {
+      const fetchMock = vi.fn(() => Promise.reject(new Error("network down")));
+      await setupAndImport(visitsMarkup("orber"), fetchMock);
+      await flush();
+      expect(document.querySelector(".visit-load")).toBeNull(); // ローダは残らない
+      expect(readStats()).toEqual({
+        total: "---",
+        today: "---",
+        yesterday: "---",
+        week: "---",
+        month: "---",
+      });
+    });
+  });
 });

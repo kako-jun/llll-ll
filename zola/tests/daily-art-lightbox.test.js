@@ -32,7 +32,7 @@ function fullMarkup() {
     </figure>
     <script type="application/json" id="daily-data">[{"file":"01.webp","title":"情報化社会"}]</script>
     <div class="lightbox-overlay" hidden>
-      <div class="lightbox" role="dialog" aria-modal="true" aria-label="拡大表示">
+      <div class="lightbox" role="dialog" aria-modal="true" tabindex="-1" aria-label="拡大表示">
         <button type="button" class="lightbox-close" aria-label="閉じる">×</button>
         <img class="lightbox-img" src="" alt="" />
       </div>
@@ -149,11 +149,11 @@ describe("daily-art lightbox wiring (jsdom)", () => {
   });
 
   describe("focus management", () => {
-    it("moves focus to the close button on open", async () => {
+    it("moves focus to the dialog body (.lightbox) on open（× へ直接 focus せず初回枠を防ぐ・#52）", async () => {
       await setupAndImport(fullMarkup());
-      const { triggerImg, closeBtn } = getEls();
+      const { triggerImg, inner } = getEls();
       triggerImg.dispatchEvent(new window.MouseEvent("click", { bubbles: true }));
-      expect(document.activeElement).toBe(closeBtn);
+      expect(document.activeElement).toBe(inner);
     });
 
     it("returns focus to the trigger on close (keyboard path)", async () => {

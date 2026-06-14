@@ -95,8 +95,9 @@ if (typeof module !== "undefined" && module.exports) {
     overlay.hidden = false;
     document.body.classList.add("modal-open");
     isOpen = true;
-    // ポインタ開きの × の白フォーカスリングは CSS の :focus-visible で抑制（#46）。
-    if (closeBtn && typeof closeBtn.focus === "function") closeBtn.focus();
+    // 開いたらダイアログ本体へ focus（× へ直接 focus すると初回だけ :focus-visible で枠が残るため・#52）。
+    const lightbox = overlay.querySelector(".lightbox");
+    if (lightbox && typeof lightbox.focus === "function") lightbox.focus({ preventScroll: true });
   }
 
   function closeLightbox() {

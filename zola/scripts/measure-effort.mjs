@@ -8,7 +8,7 @@
 //     各アプリを一貫ルーブリックで区分」するハイブリッド。判断は区分割当（基準ベース）に閉じ、調整は
 //     グローバル定数のみ（個別の額は曲げない＝バイアス防止）。
 //
-//   工数(人月) = OVERHEAD + コード行 / コード速度[難度] + データ行 / データ速度[種別]
+//   工数(person-months) = OVERHEAD + コード行 / コード速度[難度] + データ行 / データ速度[種別]
 //   USD       = round2sig(工数 × MONTHLY_RATE)     ← MONTHLY_RATE が唯一のグローバルダイヤル
 //
 // 漏洩対策: products.json に書くのは数値のみ。私的な絶対パスはハードコードせず REPOS_ROOT を動的解決。
@@ -147,7 +147,7 @@ for (const r of rows) {
 
 rows.sort((a, b) => b.usd - a.usd);
 const pad = (s, n) => String(s).padEnd(n);
-console.log(pad("id", 16), pad("code", 8), pad("data", 9), pad("難度/種別", 20), pad("人月", 6), pad("再構築コスト", 12), "lvl");
+console.log(pad("id", 16), pad("code", 8), pad("data", 9), pad("難度/種別", 20), pad("p-mo", 6), pad("再構築コスト", 12), "lvl");
 console.log("-".repeat(86));
 for (const r of rows) {
   console.log(

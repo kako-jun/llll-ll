@@ -233,7 +233,9 @@
       /* 右上のキービジュアル（アバター）にテキストが回り込まないよう右に空ける（#14 kako-jun）。 */
       padding-right: 92px;
     }
-    .header-prose p { margin: 0 0 4px; }
+    /* welcome ↔ intro の間隔を、段落内の折り返し行間（line-height）と一致させる（#50）。
+       段落下マージン 4px を足すと折り返し行より広く＝段落っぽい違和感になるので 0 にする。 */
+    .header-prose p { margin: 0; }
     /* 旧 React トップ画像をキービジュアルとして右上に円形（アバター風）でやや小さく置く（#14 kako-jun）。
        テトリス背面(z0)より上・CTA(z2)より下の z1。装飾なので非クリック。 */
     .header-keyvisual {
@@ -292,24 +294,34 @@
       font-size: var(--fs-sm);
       text-align: left;
     }
-    /* 読み込み前のスケルトン（#8 / kako-jun「仮のまますぎる」）。実ノート(.mypace-note)に似た枠で、
-       中の薄いバーが脈動して「読み込み中」と分かる。島が取得できたら .mypace-feed ごと差し替わる（PE: 失敗時はこのまま）。 */
-    .mypace-skel {
-      border: 1px solid var(--border-muted);
-      padding: 6px 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
+    /* 読み込み中スピナー（#48 btop）。btop 既定の braille graph_symbol に倣い、点字スピナー
+       ⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏ を回す（＝kako-jun の言う「点8個文字」）。島が取得成功で .mypace-feed ごと
+       差し替わる（PE: 失敗/0件はこのまま＝旧スケルトンと同じく据え置き）。
+       content は非補間なのでキーフレームの各 % で離散的に切り替わる（steps(1)）。 */
+    .mypace-load {
+      text-align: center;
+      color: var(--border-muted);
+      font-size: 1.5rem;
+      line-height: 1.8;
+      letter-spacing: 0.1em;
     }
-    .mypace-skel-bar {
-      height: 8px;
-      background: var(--border-muted);
-      border-radius: 1px;
-      animation: mypacePulse 1.5s ease-in-out infinite;
+    .mypace-load::before {
+      content: "⠋";
+      animation: mypaceBraille 0.9s steps(1) infinite;
     }
-    .mypace-skel-bar.short { width: 55%; }
-    @keyframes mypacePulse { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.5; } }
-    @media (prefers-reduced-motion: reduce) { .mypace-skel-bar { animation: none; opacity: 0.35; } }
+    @keyframes mypaceBraille {
+      0%   { content: "⠋"; }
+      10%  { content: "⠙"; }
+      20%  { content: "⠹"; }
+      30%  { content: "⠸"; }
+      40%  { content: "⠼"; }
+      50%  { content: "⠴"; }
+      60%  { content: "⠦"; }
+      70%  { content: "⠧"; }
+      80%  { content: "⠇"; }
+      90%  { content: "⠏"; }
+    }
+    @media (prefers-reduced-motion: reduce) { .mypace-load::before { animation: none; content: "⠿"; } }
     /* スクリーンリーダ専用（視覚的には隠す）。スケルトンの読み込み中ラベルに使う。 */
     .sr-only {
       position: absolute;
@@ -380,6 +392,34 @@
     .stat:first-child { border-left: none; }
     .stat-label { color: var(--text-muted); font-size: var(--fs-sm); }
     .stat-num { color: var(--border); font-weight: bold; font-size: 1.1rem; letter-spacing: 0.05em; }
+    /* visits ロード中のローダ（#48・kako-jun 指示）。"---" の代わりに「読み込み中＝動く」機能。
+       濃淡グリフ ░▒▓ は閲覧者のフォントで格子化し不統一になる（実機確認）ため、CSS の離散セル（単色の四角＋
+       境界ギャップ）で描く＝フォント非依存・全環境で同一・btop のセグメントメーター調。滑らかなグラデでなく
+       「四角の区切りが見える」形を kako-jun が選択。明るいセルが左→右へ流れる（各セルの明滅をずらしたコメット）。
+       visits-counter.js が fetch 直前に各スロットへ .visit-load（中に5セル）を注入し、成功で数字／失敗（非200・
+       success:false・data欠落・不正値・reject）で "---" に戻す。no-JS は "---" のまま（PE）。reduced-motion は静止。 */
+    .visit-load {
+      display: inline-flex;
+      gap: 0;                     /* ← 四角は隙間なく接する（境界は色の段差で見せる） */
+      height: 0.88em;
+      vertical-align: -0.1em;
+    }
+    .visit-load i {
+      display: block;
+      width: 0.5em;
+      height: 100%;
+      background: var(--border);
+      opacity: 0.16;
+      /* 各セルは bright→dim のランプ。隣同士で位相を 1/5 ずらすので常に濃さが違う＝接していても色の段差で
+         四角の境界が見える。ずれたランプが流れて「読み込み中」を表す。 */
+      animation: visitLoad 1.05s linear infinite;
+    }
+    .visit-load i:nth-child(2) { animation-delay: -0.21s; }
+    .visit-load i:nth-child(3) { animation-delay: -0.42s; }
+    .visit-load i:nth-child(4) { animation-delay: -0.63s; }
+    .visit-load i:nth-child(5) { animation-delay: -0.84s; }
+    @keyframes visitLoad { 0% { opacity: 1; } 100% { opacity: 0.16; } }
+    @media (prefers-reduced-motion: reduce) { .visit-load i { animation: none; opacity: 0.5; } }
     /* 幅狭では各カウンタの中身（ラベルと数字）を「一斉に」2段（ラベル↑／数字↓）にする。
        四角(.stat)は横並びのまま・縦罫(border-left)も維持し、箱は縦に積まない。
        media query なので全カウンタが同時に2段化＝「1つでも改行されたら全部改行」(all-or-nothing)。
@@ -636,6 +676,16 @@
       font-size: var(--fs-sm);
     }
     .panel-cta:hover { text-decoration: underline; }
+    /* 右上 CTA の矢印を ▶（U+25B6・btop の指示子）に統一（#48）。文言から → を外し疑似要素で一元管理＝
+       4言語×複数文言を触らず DRY。content の `/ ""` で装飾扱い＝スクリーンリーダは矢印を読まない。 */
+    .panel-cta::after {
+      content: "\25B6" / "";
+      margin-inline-start: 0.4em;
+      font-size: 0.82em;
+      /* ▶ はフォント既定だと baseline 付近で「少し下」に見える。テキスト中心よりやや上に置く（kako-jun 実機調整）。
+         em は ::after 自身の font(=8.03px・viewport 不変) 基準。0.27em ≒ 中心から約1.6px 上。 */
+      vertical-align: 0.27em;
+    }
 
     /* ── footer（固定・外枠最下）── */
     .footer {
@@ -749,6 +799,9 @@
     /* 開いた瞬間に JS が closeBtn.focus() する。ポインタで開いた時は白いフォーカスリングを
        出さない（:focus-visible はキーボード操作のみ true なので a11y は維持）。#46。 */
     .modal-close:focus:not(:focus-visible) { outline: none; }
+    /* 開いた瞬間はダイアログ本体に focus を移す（× へのプログラム的 focus が初回だけ :focus-visible で
+       枠を残すのを根治・#52）。コンテナは非操作要素なのでリング不要。× は Tab 到達時のみ :focus-visible でリング。 */
+    .modal:focus { outline: none; }
     /* ポップアップ内に注入される .app-detail（app.html のフラグメント）の最低限の体裁。
        詳細スタイルは app.html 側が持つが、注入断片には届かないのでここで主要要素だけ寄せる。 */
     .modal-body .app-detail { display: flex; flex-direction: column; gap: 14px; padding-right: 0.6em; }
@@ -812,6 +865,8 @@
     }
     /* ポインタで開いた時は白いフォーカスリングを出さない（キーボード時は維持）。#46。 */
     .lightbox-close:focus:not(:focus-visible) { outline: none; }
+    /* ライトボックスも同様にダイアログ本体へ初期 focus（#52）。 */
+    .lightbox:focus { outline: none; }
     .lightbox-img {
       display: block;
       max-width: 90vw;
@@ -919,11 +974,9 @@
              data-mypace-relays='{{ config.extra.mypace_relays | json_encode }}'
              data-mypace-post-base="{{ config.extra.mypace_post_url_base }}"
              data-mypace-limit="{{ config.extra.mypace_note_limit }}">
-          <!-- 読み込み前スケルトン（仮っぽさ排除・#8 kako-jun）。島が取得成功で実つぶやきに差し替え、失敗/0件はこのまま。 -->
+          <!-- 読み込み中スピナー（btop 点字・#48）。島が取得成功で実つぶやきに差し替え、失敗/0件はこのまま。 -->
           <span class="sr-only">{{ trans(key="mypace_placeholder", lang=lang) }}</span>
-          <div class="mypace-skel" aria-hidden="true"><span class="mypace-skel-bar"></span><span class="mypace-skel-bar short"></span></div>
-          <div class="mypace-skel" aria-hidden="true"><span class="mypace-skel-bar"></span><span class="mypace-skel-bar short"></span></div>
-          <div class="mypace-skel" aria-hidden="true"><span class="mypace-skel-bar"></span><span class="mypace-skel-bar short"></span></div>
+          <div class="mypace-load" aria-hidden="true"></div>
         </div>
       </section>
 
@@ -1087,7 +1140,7 @@
   <!-- アプリ詳細ポップアップの器（#13）。既定 hidden。app-popup.js が中身を入れて表示する。
        JS 無し/失敗時はカードタイトルの素のリンクで /apps/{id}/ へ遷移するので、この器は隠れたまま。 -->
   <div class="modal-overlay" hidden>
-    <div class="modal" role="dialog" aria-modal="true" aria-label="{{ trans(key='modal_aria', lang=lang) }}">
+    <div class="modal" role="dialog" aria-modal="true" tabindex="-1" aria-label="{{ trans(key='modal_aria', lang=lang) }}">
       <button type="button" class="modal-close" aria-label="{{ trans(key='modal_close_aria', lang=lang) }}">×</button>
       <div class="modal-body"></div>
     </div>
@@ -1096,7 +1149,7 @@
   <!-- 日替わりトップ絵のライトボックス（#24）。既定 hidden。daily-art.js が拡大画像の src を入れて表示する。
        app-popup.js とは別系統（.lightbox-overlay）なので履歴は積まない。JS 無し/失敗時はこの器は隠れたまま（PE）。 -->
   <div class="lightbox-overlay" hidden>
-    <div class="lightbox" role="dialog" aria-modal="true" aria-label="{{ trans(key='lightbox_aria', lang=lang) }}">
+    <div class="lightbox" role="dialog" aria-modal="true" tabindex="-1" aria-label="{{ trans(key='lightbox_aria', lang=lang) }}">
       <button type="button" class="lightbox-close" aria-label="{{ trans(key='modal_close_aria', lang=lang) }}">×</button>
       <img class="lightbox-img" src="" alt="" />
     </div>

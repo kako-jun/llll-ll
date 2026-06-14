@@ -454,23 +454,38 @@
       color: var(--border);
       font-weight: bold;
     }
-    /* テーマトグル（#9）。langbar 左端＝空いていた側へ（margin-right:auto で言語は右のまま）。
-       JS 無しでは ☾（既定ダーク）のまま無反応＝壊れない。theme-toggle.js が現テーマで ☀/☾ と aria を更新。 */
+    /* テーマトグル（#9 / #55）。langbar 左端（margin-right:auto で言語は右のまま）。枠なし・CSS 描画の四角で
+       現テーマを示す（btop ブロック・kako-jun）: dark（aria-pressed=false）=塗りつぶし ◼／light（aria-pressed=true）=白抜き ◻。
+       字形でなく CSS なのでアスタリスク化せず全環境同一。JS 無しでは既定（塗り＝ダーク）のまま無反応＝壊れない（PE）。 */
     .theme-toggle {
       margin-right: auto;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 0.4em;
       background: none;
-      border: 1px solid var(--border-muted);
+      border: none;
       color: var(--text-muted);
       cursor: pointer;
       font: inherit;
       line-height: 1;
-      padding: 2px 8px;
+      padding: 2px 4px;
     }
-    .theme-toggle:hover { color: var(--border); border-color: var(--border); }
-    .theme-toggle-icon { font-size: var(--fs-base); }
+    .theme-toggle:hover { color: var(--border); }
+    /* 現テーマを表す四角。既定（no-JS／aria-pressed=false）は塗りつぶし＝ダーク。 */
+    .theme-toggle-icon {
+      display: inline-block;
+      box-sizing: border-box;
+      width: 0.82em;
+      height: 0.82em;
+      border: 1px solid currentColor;
+      background: currentColor;
+    }
+    /* light がアクティブ（aria-pressed=true）→ 白抜き ◻。 */
+    .theme-toggle[aria-pressed="true"] .theme-toggle-icon { background: transparent; }
+    /* 「クリックできる」を示す小ラベル（#55・kako-jun）。site の btop ラベル（header/apps…）同様に英字小文字で。
+       hover で四角ごと緑に光り操作子だと分かる。aria-hidden＝aria-label と二重読みしない。 */
+    .theme-toggle-label { font-size: var(--fs-sm); letter-spacing: 0.05em; }
 
     /* ── 中段スクロール領域（apps + BBS を1領域に。blog は header 列へ移設・#10）── */
     .mid {
@@ -901,9 +916,11 @@
     <!-- 最上段：言語切替バー（全幅・緑帯）— 各言語ホームへの実リンク（#5）。
          en→/, ja→/ja/, zh→/zh/, es→/es/。現在言語は active 表示でリンクにしない。 -->
     <nav class="langbar" aria-label="{{ trans(key='langbar_aria', lang=lang) }}">
-      <!-- テーマトグル（#9・kako-jun 合意の langbar 左端）。既定 ☾（ダーク）。theme-toggle.js が現テーマで更新。 -->
+      <!-- テーマトグル（#9 / #55・langbar 左端）。アイコンは CSS 描画の四角（塗り=dark / 白抜き=light）。
+           既定 aria-pressed=false＝塗り（ダーク）。theme-toggle.js が現テーマで aria-pressed を更新し CSS が四角を切替。 -->
       <button type="button" class="theme-toggle" aria-label="{{ trans(key='theme_toggle_aria', lang=lang) }}" aria-pressed="false">
-        <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+        <span class="theme-toggle-icon" aria-hidden="true"></span>
+        <span class="theme-toggle-label" aria-hidden="true">theme</span>
       </button>
       {% if lang == "en" %}<span class="lang active" aria-current="true">en</span>{% else %}<a class="lang" data-lang="en" href="/">en</a>{% endif %}
       {% if lang == "ja" %}<span class="lang active" aria-current="true">ja</span>{% else %}<a class="lang" data-lang="ja" href="/ja/">ja</a>{% endif %}
@@ -1157,7 +1174,7 @@
     </div>
   </div>
 
-  <!-- テーマトグルの島（vanilla JS・defer・#9）。読めなくても ☾ ボタンが残るだけ（PE・既定/prefers で配色は効く）。 -->
+  <!-- テーマトグルの島（vanilla JS・defer・#9 / #55）。読めなくても四角ボタン（既定=塗り＝ダーク）が残るだけ（PE・既定/prefers で配色は効く）。 -->
   <script defer src="/js/theme-toggle.js"></script>
   <script defer src="/js/lang-pref.js"></script>
   <!-- ヘッダ Tetris の島（vanilla JS・defer・#7）。読めなくても破線帯＋"tetris" ラベルが残る（PE）。 -->

@@ -265,7 +265,7 @@
             <span class="app-effort-gauge" aria-hidden="true"></span>
             <span class="app-effort-head">{{ trans(key="effort_label", lang=lang) }}: <strong>{{ app.effort.usdLabel }}</strong></span>
             <span class="app-effort-basis">{{ app.effort.slocLabel }} SLOC · {{ app.effort.personMonths }} {{ trans(key="effort_pm", lang=lang) }}</span>
-            <a class="app-effort-link" href="{{ art_prefix | safe }}/rebuild-cost/">{{ trans(key="effort_method", lang=lang) }} →</a>
+            <a class="app-effort-link" href="{{ art_prefix | safe }}/rebuild-cost/">{{ trans(key="effort_method", lang=lang) }} <span class="tri">▶</span></a>
           </div>
           {% endif %}
         {% else %}

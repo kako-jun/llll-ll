@@ -84,7 +84,7 @@ Zola's standard multi-language setup with `default_language = "en"`:
 
 `zola/static/js/` (all `defer`, progressive-enhancement; degrade gracefully when JS is off):
 
-- `theme-toggle.js` — light/dark toggle + OS follow (paired with `_theme.html`'s anti-flash script)
+- `theme-toggle.js` — light/dark toggle (default is always dark; no OS follow — #60; paired with `_theme.html`'s anti-flash script)
 - `tetris.js` — the header-panel Tetris toy (pure grid logic is exported for tests)
 - `apps-filter.js` — client-side filter/search over the app grid
 - `app-popup.js` — fetches the `.app-detail` fragment from `app.html` into the detail popup (with hover/focus/press prefetch + per-href in-memory memoization so first opens are instant; #53)

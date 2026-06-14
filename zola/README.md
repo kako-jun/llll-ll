@@ -146,15 +146,15 @@ node scripts/import-lodestone.mjs
 
 ## テーマトグル（#9）
 
-ライト/ダークの手動切替＋ OS 追従。パレットは DESIGN.md の light 値（bg #fff・text #000・緑 #218838・link #007bff 等）。
+ライト/ダークの手動切替。**既定はダーク固定**で OS の `prefers-color-scheme` には追従しない（#60）。パレットは DESIGN.md の light 値（bg #fff・text #000・緑 #218838・link #007bff 等）。
 
-- **仕組み**: 全自己完結テンプレ（index/post/posts/app/404）の `<head>` で共通パーツ `templates/_theme.html` を include。`:root` はダーク既定、`@media (prefers-color-scheme: light) :root:not([data-theme="dark"])` で OS ライトに自動追従、`:root[data-theme="light"]` で手動上書き。パレットは config.extra の `*_light` 7色から注入。
-- **白フラッシュ防止**: `_theme.html` のインライン script が paint 前に `localStorage('llll-theme')` を `<html data-theme>` へ反映。保存が無ければ CSS の prefers-color-scheme に委ねる（既定ダーク）。
+- **仕組み**: 全自己完結テンプレ（index/post/posts/app/404）の `<head>` で共通パーツ `templates/_theme.html` を include。`:root` はダーク既定、`:root[data-theme="light"]` のときだけライト上書き（OS 追従の `@media (prefers-color-scheme: light)` は #60 で撤去）。パレットは config.extra の `*_light` 7色から注入。
+- **白フラッシュ防止**: `_theme.html` のインライン script が paint 前に `localStorage('llll-theme')` を `<html data-theme>` へ反映。保存が 'light' のときだけライト、無ければ既定ダーク（CSS の `:root`・OS 追従しない・#60）。
 - **トグル UI**: index の langbar **左端**（`margin-right:auto` で言語は右のまま）。`static/js/theme-toggle.js` が `data-theme` 反転＋localStorage 保存＋アイコン（☀/☾）/aria 更新。
 - **BBS 連動**（kako-jun）: ライト時 `<nostalgic-bbs theme="light">`／ダーク時 `theme="retro"`。島が現テーマに合わせて属性を切替。
 - **フッタ背景**: 金沢駅オーバーレイをテーマ追従（ダーク=暗幕 `rgba(18,18,18,.74-.82)`／ライト=白幕 `rgba(255,255,255,.66-.80)`）で、どちらでも文字が読めるように。
-- 純粋ロジック（`resolveTheme`/`nextTheme`/`bbsThemeFor`/`iconFor`）を export し `tests/theme-toggle.test.js` で検証。
-- **PE**: JS 無効でも ☾ ボタンが無反応で残るだけ。配色は CSS（既定ダーク／prefers-light は自動ライト）で効く。
+- 純粋ロジック（`resolveTheme`/`nextTheme`/`bbsThemeFor`）を export し `tests/theme-toggle.test.js` で検証。
+- **PE**: JS 無効でも四角ボタンが無反応で残るだけ。配色は CSS（既定ダーク・OS 追従しない・#60）で効く。
 - follow-up: トグル本体は index langbar のみ（テーマは localStorage で全ページ追従）。post 等への設置は別途。
 
 ## ヘッダ Tetris（#7）

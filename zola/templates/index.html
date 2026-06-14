@@ -483,11 +483,8 @@
     }
     /* light がアクティブ → 白抜き ◻。指示子は aria-pressed（JS が defer で後から当てる）でなく data-theme で駆動する。
        data-theme は _theme.html の no-flash script が paint 前に当てるので、JS を待たずに正しい四角が出る＝ちらつき無し。
-       no-JS の prefers-light（data-theme 未固定）でも正しく白抜きになる（PE）。aria-pressed は a11y 用に JS が別途維持。 */
+       既定はダーク（塗り ◼）。OS の prefers-color-scheme には追従しない（#60）。aria-pressed は a11y 用に JS が別途維持。 */
     :root[data-theme="light"] .theme-toggle-icon { background: transparent; }
-    @media (prefers-color-scheme: light) {
-      :root:not([data-theme="dark"]) .theme-toggle-icon { background: transparent; }
-    }
     /* 「クリックできる」を示す小ラベル（#55・kako-jun）。site の btop ラベル（header/apps…）同様に英字小文字で。
        hover で四角ごと緑に光り操作子だと分かる。aria-hidden＝aria-label と二重読みしない。 */
     .theme-toggle-label { font-size: var(--fs-sm); letter-spacing: 0.05em; }
@@ -768,10 +765,8 @@
       padding: 9px 8px 8px;
       font-size: var(--fs-base);
     }
-    /* ライト時は白幕に切替（暗幕のままだと白地＋黒文字が暗い駅画像に潰れる・#9）。 */
-    @media (prefers-color-scheme: light) {
-      :root:not([data-theme="dark"]) .footer { --footer-ov1: rgba(255, 255, 255, 0.66); --footer-ov2: rgba(255, 255, 255, 0.80); }
-    }
+    /* ライト時（data-theme="light"）は白幕に切替（暗幕のままだと白地＋黒文字が暗い駅画像に潰れる・#9）。
+       OS の prefers-color-scheme には追従しない＝既定は暗幕のまま（#60）。 */
     :root[data-theme="light"] .footer { --footer-ov1: rgba(255, 255, 255, 0.66); --footer-ov2: rgba(255, 255, 255, 0.80); }
     .footer > .label {
       position: absolute;

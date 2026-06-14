@@ -1,22 +1,10 @@
 {# テーマトグル共通パーツ（#9）。各自己完結テンプレ（index/post/posts/app/404）の <head> 内、
    各自の <style>（ダーク既定の :root）より後で include する。
-   - ライトパレット上書き: prefers-color-scheme:light で自動／data-theme で手動。
+   - 既定はダーク固定（#60）。OS の prefers-color-scheme には追従しない。data-theme="light" のときだけライト上書き。
    - 白フラッシュ防止: paint 前に保存テーマ（localStorage 'llll-theme'）を <html data-theme> へ反映。
    テーマ切替の本体（トグル UI とその配線）は index の langbar ＋ js/theme-toggle.js。 #}
 <style>
-  /* OS がライト & 手動でダーク固定していない → 自動ライト（既定は prefers-color-scheme・#9） */
-  @media (prefers-color-scheme: light) {
-    :root:not([data-theme="dark"]) {
-      --bg: {{ config.extra.bg_light }};
-      --panel-bg: {{ config.extra.panel_bg_light }};
-      --border: {{ config.extra.border_light }};
-      --border-muted: {{ config.extra.border_muted_light }};
-      --text: {{ config.extra.text_light }};
-      --text-muted: {{ config.extra.text_muted_light }};
-      --link: {{ config.extra.link_light }};
-    }
-  }
-  /* 手動ライト（OS 設定より優先） */
+  /* 手動ライト（data-theme="light" のときだけ。OS がライトでも既定はダークのまま・#60） */
   :root[data-theme="light"] {
     --bg: {{ config.extra.bg_light }};
     --panel-bg: {{ config.extra.panel_bg_light }};
@@ -33,7 +21,7 @@
   .tri { display: inline-block; vertical-align: 0.1em; font-style: normal; }
 </style>
 <script>
-  // 白フラッシュ防止: paint 前に保存テーマを <html> へ。無ければ prefers-color-scheme に委ねる（既定ダーク）。
+  // 白フラッシュ防止: paint 前に保存テーマを <html> へ。無ければ既定ダーク（CSS の :root が暗・OS 追従しない・#60）。
   (function () {
     try {
       var t = localStorage.getItem('llll-theme');

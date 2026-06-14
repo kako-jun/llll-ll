@@ -5,6 +5,9 @@
 //     .app-detail フラグメントを抜き出し、モーダルに差し込んで見せる（DRY）。
 //   - PE: この島が読めない/失敗してもカードタイトルは素の /apps/{id}/ へ遷移する（deep-link）。
 //     モーダルの器は hidden のまま。JS は「開く/閉じる」だけを足す。
+//   - 体感速度（#53）: 取得した HTML を href 単位で in-memory メモ化し、hover（pointerover）/
+//     focus / press（pointerdown）で先読みしておく。初回ポップアップも「実 fetch を待たず即時」に
+//     なる。先読みは read-only（preventDefault しない・遷移しない）で、PE は崩さない。
 //
 // 履歴モデル（正準のモーダル履歴パターン）:
 //   - 開く（カードクリック・閉→開）: history.pushState で /apps/{id}/ を「1エントリだけ」積む。
@@ -45,9 +48,49 @@ function appHrefFromPath(pathname) {
   return "/apps/" + m[1] + "/";
 }
 
+/**
+ * href 単位でフラグメント HTML をメモ化する取得器を作る純粋なファクトリ（DOM 非依存）。
+ *
+ * なぜメモ化するか（#53）: 案F=fetch は開くたびに fetch するため、初回は実 fetch 待ちで体感が遅い
+ * （2回目以降は HTTP キャッシュで即時）。同一 href の取得結果（Promise）を Map で保持しておけば、
+ * hover/press の先読みで温めた結果を実クリック時に即返せる＝初回も即時になる。
+ *
+ * @param {(href: string) => Promise<Response>} fetchImpl - 実際の取得関数（ブラウザでは fetch）。
+ * @returns {{ fetchFragment: (href: string) => Promise<string>, cache: Map<string, Promise<string>> }}
+ *          fetchFragment は href の HTML 文字列を解決する Promise を返す。cache はテスト検証用に露出。
+ */
+function createFragmentFetcher(fetchImpl) {
+  // Map<href, Promise<string>>: 取得中/取得済みの Promise を href で引く。
+  // 同一 href への多重呼び出しは fetchImpl を1回しか呼ばない（冪等）＝先読みとクリックが衝突しない。
+  const cache = new Map();
+
+  function fetchFragment(href) {
+    const cached = cache.get(href);
+    if (cached) return cached;
+
+    // fetchImpl が同期 throw しても reject Promise に正規化されるよう Promise.resolve().then で包む。
+    // これで下の catch（evict 専用）が確実に走り、壊れたエントリが Map に残らない。
+    const p = Promise.resolve()
+      .then(() => fetchImpl(href))
+      .then((res) => {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.text();
+      });
+
+    // 失敗した Promise は Map から evict する（次回は再取得＝実クリック時の再試行/フォールバックを生かす）。
+    // これは eviction 専用の副作用で、consumer は別途自分の chain を p から張るため握りつぶしにならない。
+    p.catch(() => cache.delete(href));
+
+    cache.set(href, p);
+    return p;
+  }
+
+  return { fetchFragment, cache };
+}
+
 // テスト用に export（ブラウザでは module ではないので typeof ガード）。
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { appHrefFromPath };
+  module.exports = { appHrefFromPath, createFragmentFetcher };
 }
 
 (function () {
@@ -65,6 +108,9 @@ if (typeof module !== "undefined" && module.exports) {
   let currentHref = null;
   // 閉じる時に focus を戻すトリガ（開いた瞬間の document.activeElement）。
   let lastTrigger = null;
+
+  // フラグメント取得器（#53）。href 単位でメモ化し、先読み（hover/press）と実クリックで結果を共有する。
+  const fetcher = createFragmentFetcher((href) => fetch(href));
 
   // overlay を実際に画面へ出す（DOM 表示のみ）。中身（.app-detail 断片）が揃ってから呼ぶ＝
   // 空の緑枠が一瞬出て縦に伸びるチラつきを防ぐ（#46）。論理的な開閉状態（isOpen）は openPopup 側で先に立てる。
@@ -153,11 +199,10 @@ if (typeof module !== "undefined" && module.exports) {
     isOpen = true;
     currentHref = href;
 
-    fetch(href)
-      .then((res) => {
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        return res.text();
-      })
+    // 取得は fetcher.fetchFragment 経由（#53）。HTTP ステータスチェックと res.text() は fetchFragment 内に
+    // 移したので、ここの .then は HTML 文字列を直接受け取る。先読みで温めてあればこの Promise は即解決する。
+    fetcher
+      .fetchFragment(href)
       .then((html) => {
         // 取得待ちの間に閉じられた / 別アプリへ切り替わったら、この結果では表示しない。
         if (!isOpen || currentHref !== href) return;
@@ -272,6 +317,41 @@ if (typeof module !== "undefined" && module.exports) {
       hideOverlay();
     }
   });
+
+  // ── 先読み（#53） ──
+
+  // href のフラグメントを温める（結果は使わない・失敗は握りつぶす＝evict は fetchFragment 内で済む）。
+  // 先読みが失敗しても遷移はしない（PE）。実クリック時に fetchFragment が再試行/フォールバックする。
+  function prefetch(href) {
+    if (href) fetcher.fetchFragment(href).catch(() => {});
+  }
+
+  // hover/focus/press をイベント委譲で捕らえ、対象アプリの詳細を先読みする read-only ハンドラ。
+  // preventDefault も stopPropagation も絶対にしない（クリックの本処理・他の島の挙動を変えない）。
+  // ターゲット解決ロジックは click ハンドラと同じ（a[href] → 無ければ .card のタイトルリンク）。
+  // メモ化により pointerover の多重発火は冪等（Map ヒットで即 return するので fetch storm にならない）。
+  function prefetchFromEvent(e) {
+    // テキストノード等で closest が無い場合に備えるガード。
+    if (!e.target || typeof e.target.closest !== "function") return;
+    let href = null;
+    const link = e.target.closest("a[href]");
+    if (link && !overlay.contains(link)) {
+      href = appHrefFromPath(new URL(link.href, window.location.origin).pathname);
+    }
+    if (!href) {
+      const card = e.target.closest(".card");
+      if (card && !overlay.contains(card)) {
+        const titleLink = card.querySelector(".card-title-link[href]");
+        if (titleLink) href = appHrefFromPath(new URL(titleLink.href, window.location.origin).pathname);
+      }
+    }
+    if (href) prefetch(href);
+  }
+
+  // hover（pointerover）・focus（focusin）・press（pointerdown）で先読みする。read-only。
+  document.addEventListener("pointerover", prefetchFromEvent);
+  document.addEventListener("focusin", prefetchFromEvent);
+  document.addEventListener("pointerdown", prefetchFromEvent);
 
   // 直リンクで /apps/{id}/ に来た場合は app.html がそのまま素のページを出すので、ここでは何もしない
   // （index 上で動く島であり、初期 URL は常に "/"）。

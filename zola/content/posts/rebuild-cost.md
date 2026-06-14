@@ -1,6 +1,12 @@
 +++
 title = "About the “rebuild cost”"
-template = "post.html"
+date = 2026-06-14
+
+[taxonomies]
+tags = ["rebuild-cost", "about"]
+
+[extra]
+tags = ["rebuild-cost", "about"]
 +++
 
 The “rebuild cost” shown on each app card is **an estimate of the cost to rebuild that software from scratch, by hand**. It is not the time or money the author actually spent, but the cost of producing the finished result again from the ground up — its replacement value.

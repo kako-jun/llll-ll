@@ -66,7 +66,7 @@ if (typeof module !== "undefined" && module.exports) {
         localStorage.setItem(STORAGE_KEY, theme);
       } catch (e) {}
     }
-    // トグルボタンの状態。アイコン（四角の塗り/白抜き）は aria-pressed を見て CSS が描く（#55）。
+    // トグルボタンの aria-pressed（a11y・トグル状態）を更新。四角の塗り/白抜きは data-theme で CSS が描く（#55）。
     var btn = document.querySelector(".theme-toggle");
     if (btn) {
       btn.setAttribute("aria-pressed", theme === "light" ? "true" : "false");

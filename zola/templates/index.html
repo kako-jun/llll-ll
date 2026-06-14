@@ -250,7 +250,7 @@
       /* prose(z1) の箱（右余白）にクリックを奪われないよう z2（CTA と同列・空間的に重ならない）。 */
       z-index: 2;
     }
-    /* 「はじめに読んで →」＝入口記事 start-here への主要 CTA。右上 CTA の中でこれだけ太字。 */
+    /* 「はじめに読んでね」＝入口記事 start-here への主要 CTA（矢印 ▶ は .panel-cta::after）。右上 CTA の中でこれだけ太字。 */
     .panel-cta.read-first { font-weight: bold; }
     .panel-cta.read-first:hover { text-decoration: underline; }
 
@@ -322,7 +322,7 @@
       90%  { content: "⠏"; }
     }
     @media (prefers-reduced-motion: reduce) { .mypace-load::before { animation: none; content: "⠿"; } }
-    /* スクリーンリーダ専用（視覚的には隠す）。スケルトンの読み込み中ラベルに使う。 */
+    /* スクリーンリーダ専用（視覚的には隠す）。点字スピナーの読み込み中ラベルに使う。 */
     .sr-only {
       position: absolute;
       width: 1px; height: 1px;
@@ -472,7 +472,7 @@
       padding: 2px 4px;
     }
     .theme-toggle:hover { color: var(--border); }
-    /* 現テーマを表す四角。既定（no-JS／aria-pressed=false）は塗りつぶし＝ダーク。 */
+    /* 現テーマを表す四角。既定（dark）は塗りつぶし。 */
     .theme-toggle-icon {
       display: inline-block;
       box-sizing: border-box;
@@ -481,8 +481,13 @@
       border: 1px solid currentColor;
       background: currentColor;
     }
-    /* light がアクティブ（aria-pressed=true）→ 白抜き ◻。 */
-    .theme-toggle[aria-pressed="true"] .theme-toggle-icon { background: transparent; }
+    /* light がアクティブ → 白抜き ◻。指示子は aria-pressed（JS が defer で後から当てる）でなく data-theme で駆動する。
+       data-theme は _theme.html の no-flash script が paint 前に当てるので、JS を待たずに正しい四角が出る＝ちらつき無し。
+       no-JS の prefers-light（data-theme 未固定）でも正しく白抜きになる（PE）。aria-pressed は a11y 用に JS が別途維持。 */
+    :root[data-theme="light"] .theme-toggle-icon { background: transparent; }
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) .theme-toggle-icon { background: transparent; }
+    }
     /* 「クリックできる」を示す小ラベル（#55・kako-jun）。site の btop ラベル（header/apps…）同様に英字小文字で。
        hover で四角ごと緑に光り操作子だと分かる。aria-hidden＝aria-label と二重読みしない。 */
     .theme-toggle-label { font-size: var(--fs-sm); letter-spacing: 0.05em; }
@@ -916,8 +921,9 @@
     <!-- 最上段：言語切替バー（全幅・緑帯）— 各言語ホームへの実リンク（#5）。
          en→/, ja→/ja/, zh→/zh/, es→/es/。現在言語は active 表示でリンクにしない。 -->
     <nav class="langbar" aria-label="{{ trans(key='langbar_aria', lang=lang) }}">
-      <!-- テーマトグル（#9 / #55・langbar 左端）。アイコンは CSS 描画の四角（塗り=dark / 白抜き=light）。
-           既定 aria-pressed=false＝塗り（ダーク）。theme-toggle.js が現テーマで aria-pressed を更新し CSS が四角を切替。 -->
+      <!-- テーマトグル（#9 / #55・langbar 左端）。アイコンは CSS 描画の四角（塗り=dark / 白抜き=light）で、
+           表示は data-theme 駆動（_theme.html の no-flash script が paint 前に当てる＝ちらつき無し）。
+           theme-toggle.js は data-theme と aria-pressed（a11y）を更新する。 -->
       <button type="button" class="theme-toggle" aria-label="{{ trans(key='theme_toggle_aria', lang=lang) }}" aria-pressed="false">
         <span class="theme-toggle-icon" aria-hidden="true"></span>
         <span class="theme-toggle-label" aria-hidden="true">theme</span>
@@ -936,7 +942,7 @@
       <div class="header-col">
       <section class="panel panel-header">
         <span class="label">header</span>
-        <!-- 「はじめに読んで →」＝入口記事 start-here への導線。prose の1行を食わないよう、blog/mypace と同じ
+        <!-- 「はじめに読んでね」＝入口記事 start-here への導線（矢印 ▶ は ::after）。prose の1行を食わないよう、blog/mypace と同じ
              panel-cta 形式で header パネル右上（border 上）へ（#10 kako-jun）。静的 about を作らず blog へ誘導。 -->
         <a class="panel-cta read-first" href="{{ nav_prefix | safe }}/posts/start-here/">{{ trans(key="read_first", lang=lang) }}</a>
         <!-- キービジュアル（旧 React トップ画像・#14 kako-jun）: 右上「Read this」直下の空き空間へ。

@@ -328,7 +328,9 @@ if (typeof module !== "undefined" && module.exports) {
 
   // hover/focus/press をイベント委譲で捕らえ、対象アプリの詳細を先読みする read-only ハンドラ。
   // preventDefault も stopPropagation も絶対にしない（クリックの本処理・他の島の挙動を変えない）。
-  // ターゲット解決ロジックは click ハンドラと同じ（a[href] → 無ければ .card のタイトルリンク）。
+  // ターゲット解決は click ハンドラと同じ向き（a[href] → 無ければ .card のタイトルリンク）。
+  // ただし click 側の [data-card-tag]/[data-card-featured] 早期 return（フィルタ用）は先読みには不要＝
+  // タグ span を hover してもそのカードの正しいアプリを温めるだけで害はない（結果は使わない）。
   // メモ化により pointerover の多重発火は冪等（Map ヒットで即 return するので fetch storm にならない）。
   function prefetchFromEvent(e) {
     // テキストノード等で closest が無い場合に備えるガード。

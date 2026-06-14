@@ -187,6 +187,25 @@
       gap: 1.2em;
     }
     .app-detail .not-found { color: var(--text-muted); }
+    /* 再構築コスト（#51）。人力で一から作り直す場合の概算。緑ゲージ（濃いほど高価・赤/黄は不使用）
+       ＋金額＋根拠(SLOC/人月)＋算出方法の記事リンク。カードのタップ→このポップアップで読める（モバイル可）。 */
+    .app-detail .app-effort {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.5em 0.9em;
+      font-size: var(--fs-sm); color: var(--text-muted);
+      padding-top: 0.7em; border-top: 1px solid var(--border-muted);
+    }
+    .app-detail .app-effort-gauge {
+      width: 36px; height: 0.8em; background: var(--border-muted);
+      border-radius: 1px; overflow: hidden; flex-shrink: 0;
+    }
+    .app-detail .app-effort-gauge::before {
+      content: ""; display: block; height: 100%;
+      width: calc((0.18 + var(--lvl, 0) * 0.82) * 100%);
+      background: var(--border); opacity: calc(0.4 + var(--lvl, 0) * 0.6);
+    }
+    .app-detail .app-effort-head { color: var(--text); }
+    .app-detail .app-effort-head strong { color: var(--border); }
+    .app-detail .app-effort-link { color: var(--link); }
 
     @media (max-width: 600px) {
       .app-detail .hero img { max-width: 110px; max-height: 110px; }
@@ -237,6 +256,18 @@
             {% if app.createdAt %}<span>{{ trans(key="meta_created", lang=lang) }}: {{ app.createdAt }}</span>{% endif %}
             {% if app.updatedAt %}<span>{{ trans(key="meta_updated", lang=lang) }}: {{ app.updatedAt }}</span>{% endif %}
           </div>
+
+          {% if app.effort %}
+          {# 記事リンクの言語: ja/en はその言語のページ、zh/es は en 記事へフォールバック（zh/es 版は未作成）。 #}
+          {% set art_prefix = nav_prefix %}
+          {% if lang != "ja" and lang != config.default_language %}{% set art_prefix = "" %}{% endif %}
+          <div class="app-effort" style="--lvl: {{ app.effort.level }}">
+            <span class="app-effort-gauge" aria-hidden="true"></span>
+            <span class="app-effort-head">{{ trans(key="effort_label", lang=lang) }}: <strong>{{ app.effort.usdLabel }}</strong></span>
+            <span class="app-effort-basis">{{ app.effort.slocLabel }} SLOC · {{ app.effort.personMonths }} {{ trans(key="effort_pm", lang=lang) }}</span>
+            <a class="app-effort-link" href="{{ art_prefix | safe }}/rebuild-cost/">{{ trans(key="effort_method", lang=lang) }} →</a>
+          </div>
+          {% endif %}
         {% else %}
           <p class="not-found">{{ trans(key="not_found_prefix", lang=lang) }}{{ page.extra.app_id }}{{ trans(key="not_found_suffix", lang=lang) }}<a href="{{ nav_prefix | safe }}/">{{ trans(key="not_found_link", lang=lang) }}</a></p>
         {% endif %}

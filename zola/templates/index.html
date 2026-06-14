@@ -657,7 +657,39 @@
       padding: 1px 6px;
     }
     /* リンクは左揃え（カードの title/desc/tags も詳細ページ/ポップアップの app-links も左。右寄せだけ浮くので統一・#14 kako-jun）。 */
-    .card-links { display: flex; justify-content: flex-start; gap: 12px; margin-top: auto; }
+    .card-links { display: flex; justify-content: flex-start; align-items: center; gap: 12px; margin-top: auto; }
+    /* 「再構築コスト」バッジ（#51）。人力で一から作り直す場合の概算額を、緑のメーター（高価なほど濃い緑・
+       赤/黄は使わない・kako-jun 指示）＋数値で控えめに示す。濃淡グリフ ░▒▓ はフォント格子化するため使わず
+       CSS 単色ブロック（#48 の確定方針）。SLOC・人月・算出方法はアプリ詳細ポップアップ（タップで開く）に出す
+       ＝ホバー表示は無し。effort 欠落時はバッジ非表示（PE）。リンク行の右隅に置く。 */
+    .card-effort {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--fs-sm);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .effort-gauge {
+      width: 22px;
+      height: 0.7em;
+      background: var(--border-muted);
+      border-radius: 1px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .effort-gauge::before {
+      content: "";
+      display: block;
+      height: 100%;
+      /* 水準 0 でも空に見えないよう最小フィル。 */
+      width: calc((0.18 + var(--lvl, 0) * 0.82) * 100%);
+      /* 色は赤/黄を使わず緑系のみ（サイトの --border 緑）。高価なほど不透明＝濃い緑（kako-jun 指示）。 */
+      background: var(--border);
+      opacity: calc(0.4 + var(--lvl, 0) * 0.6);
+    }
+    .effort-val { color: var(--border); font-weight: bold; letter-spacing: 0.02em; }
 
     /* ── blog パネル（apps 直下・footer 上）── */
     .panel-blog, .panel-bbs { padding-bottom: 12px; }
@@ -844,6 +876,24 @@
     .modal-body .app-detail .app-meta {
       color: var(--text-muted); font-size: var(--fs-sm); display: flex; flex-wrap: wrap; gap: 1.2em;
     }
+    /* 再構築コスト（#51）。注入フラグメント用なので app.html と同じ体裁をここでも定義（緑ゲージ＋金額＋根拠＋記事リンク）。 */
+    .modal-body .app-detail .app-effort {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.5em 0.9em;
+      font-size: var(--fs-sm); color: var(--text-muted);
+      padding-top: 0.7em; border-top: 1px solid var(--border-muted);
+    }
+    .modal-body .app-detail .app-effort-gauge {
+      width: 36px; height: 0.8em; background: var(--border-muted);
+      border-radius: 1px; overflow: hidden; flex-shrink: 0;
+    }
+    .modal-body .app-detail .app-effort-gauge::before {
+      content: ""; display: block; height: 100%;
+      width: calc((0.18 + var(--lvl, 0) * 0.82) * 100%);
+      background: var(--border); opacity: calc(0.4 + var(--lvl, 0) * 0.6);
+    }
+    .modal-body .app-detail .app-effort-head { color: var(--text); }
+    .modal-body .app-detail .app-effort-head strong { color: var(--border); }
+    .modal-body .app-detail .app-effort-link { color: var(--link); }
 
     /* ── 日替わりトップ絵のライトボックス（#24）── アプリ詳細モーダルと同じ緑枠の見た目だが、
        overlay は別系統（.lightbox-overlay）。daily-art.js が src を同期して hidden を外す。
@@ -1118,7 +1168,7 @@
             <div class="card-links">
               {% if p.demoUrl %}<a href="{{ p.demoUrl | safe }}" target="_blank" rel="noopener noreferrer">open</a>{% endif %}
               {% if p.repositoryUrl %}<a href="{{ p.repositoryUrl | safe }}" target="_blank" rel="noopener noreferrer">repo</a>{% endif %}
-            </div>
+              {% if p.effort %}<span class="card-effort" style="--lvl: {{ p.effort.level }}" aria-label="{{ p.effort.usdLabel }} — {{ trans(key='effort_help', lang=lang) }}"><span class="effort-gauge" aria-hidden="true"></span><span class="effort-val">{{ p.effort.usdLabel }}</span></span>{% endif %}
           </article>
           {%- endif -%}
           {% endfor %}

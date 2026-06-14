@@ -1089,8 +1089,10 @@
          data-visit-id を JS が読み、Nostalgic で increment する。各 stat-num の data-visit-stat が注入先。 -->
     <section class="panel visits-bar" data-visit-id="{{ config.extra.nostalgic_visit_id }}">
       <span class="label">visits</span>
-      <!-- 「これはなに？」＝このカウンタを提供する Nostalgic のトップへ。mypace の つぶやき一覧 → と同じ .panel-cta 右上形式。 -->
-      <a class="panel-cta" href="{{ config.extra.nostalgic_url }}" target="_blank" rel="noopener noreferrer">{{ trans(key="visits_help", lang=lang) }}</a>
+      <!-- 「これはなに？」＝Nostalgic（このカウンタ/BBS の仕組み）を説明した記事へ（#62）。記事は en+ja のみなので
+           zh/es は en 版へフォールバック（art_prefix。app.html の effort-link と同方針）。.panel-cta 右上形式。 -->
+      {% set art_prefix = nav_prefix %}{% if lang != "ja" and lang != config.default_language %}{% set art_prefix = "" %}{% endif %}
+      <a class="panel-cta" href="{{ art_prefix | safe }}/posts/nostalgic/">{{ trans(key="visits_help", lang=lang) }}</a>
       <div class="visits-stats">
         <span class="stat"><span class="stat-label">{{ trans(key="stat_total", lang=lang) }}</span><span class="stat-num" data-visit-stat="total">---</span></span>
         <span class="stat"><span class="stat-label">{{ trans(key="stat_today", lang=lang) }}</span><span class="stat-num" data-visit-stat="today">---</span></span>

@@ -17,7 +17,7 @@ Line count alone cannot distinguish repetitive code from novel code, so the esti
 2. A rule shared by all apps is applied to those lines to estimate effort.
 
 ```
-effort (months) = fixed overhead 0.5
+effort (person-months) = fixed overhead 0.5
                 + code lines ÷ code speed
                 + data lines ÷ data speed
 

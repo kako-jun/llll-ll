@@ -188,7 +188,7 @@
     }
     .app-detail .not-found { color: var(--text-muted); }
     /* 再構築コスト（#51）。人力で一から作り直す場合の概算。緑ゲージ（濃いほど高価・赤/黄は不使用）
-       ＋金額＋根拠(SLOC/人月)＋算出方法の記事リンク。カードのタップ→このポップアップで読める（モバイル可）。 */
+       ＋金額＋根拠(SLOC/person-months)＋算出方法の記事リンク。カードのタップ→このポップアップで読める（モバイル可）。 */
     .app-detail .app-effort {
       display: flex; flex-wrap: wrap; align-items: center; gap: 0.5em 0.9em;
       font-size: var(--fs-sm); color: var(--text-muted);
@@ -264,7 +264,7 @@
           <div class="app-effort" style="--lvl: {{ app.effort.level }}">
             <span class="app-effort-gauge" aria-hidden="true"></span>
             <span class="app-effort-head">{{ trans(key="effort_label", lang=lang) }}: <strong>{{ app.effort.usdLabel }}</strong></span>
-            <span class="app-effort-basis">{{ app.effort.slocLabel }} SLOC · {{ app.effort.personMonths }} {{ trans(key="effort_pm", lang=lang) }}</span>
+            <span class="app-effort-basis">{{ app.effort.slocLabel }} SLOC | {{ app.effort.personMonths }} {{ trans(key="effort_pm", lang=lang) }}</span>
             <a class="app-effort-link" href="{{ art_prefix | safe }}/rebuild-cost/">{{ trans(key="effort_method", lang=lang) }} <span class="tri">▶</span></a>
           </div>
           {% endif %}

@@ -53,6 +53,9 @@
     a { color: var(--link); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
     .desktop {
       min-height: 100vh;
       padding: 8px;
@@ -127,10 +130,37 @@
       font-size: var(--fs-sm);
     }
     .archive-tools a { color: var(--border); }
+
+    /* 「上へ戻る」ボタン（右下固定・btop パネル様式）。post.html と同仕様。 */
+    .to-top-btn {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      background: var(--panel-bg);
+      color: var(--border);
+      font-size: 18px;
+      line-height: 1;
+      text-decoration: none;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.18s ease, background 0.12s ease, color 0.12s ease;
+    }
+    .to-top-btn.is-visible { opacity: 1; visibility: visible; pointer-events: auto; }
+    .to-top-btn:hover { background: var(--border); color: var(--bg); text-decoration: none; }
+    .to-top-btn:focus-visible { outline: 2px solid var(--border); outline-offset: 2px; }
   </style>
+  <noscript><style>.to-top-btn{opacity:1;visibility:visible;pointer-events:auto}</style></noscript>
   {% include "_theme.html" %}
 </head>
-<body>
+<body id="top">
   <div class="desktop">
     <nav class="post-topnav" aria-label="{{ trans(key='nav_aria', lang=lang) }}">
       <a class="brand" href="{{ nav_prefix | safe }}/">llll-ll</a>
@@ -165,5 +195,9 @@
       {% endif %}
     </section>
   </div>
+
+  <a class="to-top-btn" href="#top" aria-label="{{ trans(key='scroll_top_aria', lang=lang) }}" title="{{ trans(key='scroll_top_aria', lang=lang) }}">▲</a>
+
+  <script defer src="/js/scroll-to-top.js"></script>
 </body>
 </html>

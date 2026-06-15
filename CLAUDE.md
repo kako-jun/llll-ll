@@ -92,6 +92,7 @@ Zola's standard multi-language setup with `default_language = "en"`:
 - `lang-pref.js` — language preference persistence (works with the #41 redirect)
 - `visits-counter.js` — Nostalgic visit counter injection
 - `mypace-feed.js` — pulls latest Nostr notes and renders them in the btop style
+- `scroll-to-top.js` — blog (`post.html` / `posts.html`) back-to-top button; reveals past a scroll threshold, smooth-scrolls to top. No-JS fallback: `<noscript>` shows the plain `#top` anchor
 
 The btop portal also embeds a **Nostalgic BBS** web component and a **visits counter** (IDs in `config.toml [extra]`).
 

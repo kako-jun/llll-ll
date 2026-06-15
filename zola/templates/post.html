@@ -72,6 +72,9 @@
     a { color: var(--link); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
     /* 外枠＝緑ボーダーの btop ウィンドウ（index / app と同じ調子）。
        記事は「普通のページスクロール」なので height は固定せず、本文に合わせて伸びる。 */
     .desktop {
@@ -324,6 +327,33 @@
       object-fit: contain;
     }
 
+    /* 「上へ戻る」ボタン（右下固定・btop パネル様式）。既定は非表示で、JS が下方スクロール時に .is-visible を付ける。
+       JS 無効時は <noscript> で常時表示にし、素の #top アンカーとして機能させる（PE）。 */
+    .to-top-btn {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      background: var(--panel-bg);
+      color: var(--border);
+      font-size: 18px;
+      line-height: 1;
+      text-decoration: none;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.18s ease, background 0.12s ease, color 0.12s ease;
+    }
+    .to-top-btn.is-visible { opacity: 1; visibility: visible; pointer-events: auto; }
+    .to-top-btn:hover { background: var(--border); color: var(--bg); text-decoration: none; }
+    .to-top-btn:focus-visible { outline: 2px solid var(--border); outline-offset: 2px; }
+
     @media (max-width: 600px) {
       .post-body { max-width: none; }
       .post-nav { flex-direction: column; gap: 0.4em; }
@@ -331,9 +361,10 @@
       .post-nav span:last-child { text-align: left; }
     }
   </style>
+  <noscript><style>.to-top-btn{opacity:1;visibility:visible;pointer-events:auto}</style></noscript>
   {% include "_theme.html" %}
 </head>
-<body>
+<body id="top">
   <div class="desktop">
     <nav class="post-topnav" aria-label="{{ trans(key='nav_aria', lang=lang) }}">
       <a class="brand" href="{{ nav_prefix | safe }}/">llll-ll</a>
@@ -428,6 +459,8 @@
     </section>
   </div>
 
+  <a class="to-top-btn" href="#top" aria-label="{{ trans(key='scroll_top_aria', lang=lang) }}" title="{{ trans(key='scroll_top_aria', lang=lang) }}">▲</a>
+
   <div class="lightbox-overlay" hidden>
     <div class="lightbox" role="dialog" aria-modal="true" tabindex="-1" aria-label="{{ trans(key='lightbox_aria', lang=lang) }}">
       <button type="button" class="lightbox-close" aria-label="{{ trans(key='modal_close_aria', lang=lang) }}">×</button>
@@ -437,5 +470,6 @@
 
   <script defer src="/js/lightbox-core.js"></script>
   <script defer src="/js/post-image-lightbox.js"></script>
+  <script defer src="/js/scroll-to-top.js"></script>
 </body>
 </html>

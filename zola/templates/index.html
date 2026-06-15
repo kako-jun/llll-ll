@@ -891,7 +891,7 @@
     .modal-body .app-detail .app-effort-link { color: var(--link); }
 
     /* ── 日替わりトップ絵のライトボックス（#24）── アプリ詳細モーダルと同じ緑枠の見た目だが、
-       overlay は別系統（.lightbox-overlay）。daily-art.js が src を同期して hidden を外す。
+       overlay は別系統（.lightbox-overlay）。各画像 island が src を渡し、lightbox-core.js が hidden を外す。
        app-popup.js（履歴モデル）は .modal-overlay だけを拾うので、ここには触れない＝履歴を積まない。 */
     .lightbox-overlay {
       position: fixed;
@@ -940,7 +940,7 @@
       max-height: 85vh;
       object-fit: contain;
     }
-    /* 日替わり絵の cursor:pointer は daily-art.js が JS 配線時に付与する（no-JS では非クリックなので嘘の pointer を出さない・PE）。 */
+    /* 画像の cursor:pointer は lightbox-core.js が JS 配線時に付与する（no-JS では非クリックなので嘘の pointer を出さない・PE）。 */
 
     /* ── スマホ: 100vh 固定を解除し、縦積み＋普通のスクロール ── */
     @media (max-width: 600px) {
@@ -1218,7 +1218,7 @@
     </div>
   </div>
 
-  <!-- 日替わりトップ絵のライトボックス（#24）。既定 hidden。daily-art.js が拡大画像の src を入れて表示する。
+  <!-- 日替わりトップ絵のライトボックス（#24）。既定 hidden。各画像 island が拡大画像の src を入れて表示する。
        app-popup.js とは別系統（.lightbox-overlay）なので履歴は積まない。JS 無し/失敗時はこの器は隠れたまま（PE）。 -->
   <div class="lightbox-overlay" hidden>
     <div class="lightbox" role="dialog" aria-modal="true" tabindex="-1" aria-label="{{ trans(key='lightbox_aria', lang=lang) }}">
@@ -1236,6 +1236,7 @@
   <script defer src="/js/apps-filter.js"></script>
   <!-- 詳細ポップアップの島（vanilla JS・defer）。読めなくてもタイトルリンクで素の遷移（PE）。 -->
   <script defer src="/js/app-popup.js"></script>
+  <script defer src="/js/lightbox-core.js"></script>
   <!-- 日替わりトップ絵の島（vanilla JS・defer）。読めなくてもサーバ既定（先頭=01）が見えたまま（PE）。 -->
   <script defer src="/js/daily-art.js"></script>
   <script defer src="/js/keyvisual-lightbox.js"></script>

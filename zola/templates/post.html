@@ -268,6 +268,51 @@
     .post-nav span:last-child { text-align: right; }
     .post-nav a { color: var(--link); }
 
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 12px;
+    }
+    .lightbox-overlay[hidden] { display: none; }
+    body.modal-open { overflow: hidden; }
+    .lightbox {
+      position: relative;
+      background: var(--panel-bg);
+      border: 2px solid var(--border);
+      padding: 1.2em;
+      max-width: 92vw;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: var(--border);
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1;
+    }
+    .lightbox-close:focus:not(:focus-visible) { outline: none; }
+    .lightbox:focus { outline: none; }
+    .lightbox-img {
+      display: block;
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+    }
+
     @media (max-width: 600px) {
       .post-body { max-width: none; }
       .post-nav { flex-direction: column; gap: 0.4em; }
@@ -371,5 +416,15 @@
       </article>
     </section>
   </div>
+
+  <div class="lightbox-overlay" hidden>
+    <div class="lightbox" role="dialog" aria-modal="true" tabindex="-1" aria-label="{{ trans(key='lightbox_aria', lang=lang) }}">
+      <button type="button" class="lightbox-close" aria-label="{{ trans(key='modal_close_aria', lang=lang) }}">×</button>
+      <img class="lightbox-img" src="" alt="" />
+    </div>
+  </div>
+
+  <script defer src="/js/lightbox-core.js"></script>
+  <script defer src="/js/post-image-lightbox.js"></script>
 </body>
 </html>

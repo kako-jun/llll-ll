@@ -20,6 +20,7 @@ import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 // ここでは可視判定を overlay.hidden（属性/プロパティ）と DOM 状態で行う（jsdom 制約）。
 
 const MODULE_PATH = "../static/js/daily-art.js";
+const CORE_PATH = "../static/js/lightbox-core.js";
 
 // IIFE が早期 return しないために必要な最小 DOM（#daily-data に非空配列・トリガ img・overlay 一式）。
 // daily-art.js は #daily-data を読んで img.src を /images/daily/<file> に差し替えるので、
@@ -44,6 +45,7 @@ function fullMarkup() {
 async function setupAndImport(html) {
   document.body.innerHTML = html;
   vi.resetModules();
+  await import(CORE_PATH);
   await import(MODULE_PATH);
 }
 

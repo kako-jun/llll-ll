@@ -63,8 +63,7 @@ if (typeof module !== "undefined" && module.exports) {
   const overlay = document.querySelector(".lightbox-overlay");
   if (!overlay || !img) return;
   const lightboxImg = overlay.querySelector(".lightbox-img");
-  const closeBtn = overlay.querySelector(".lightbox-close");
-  if (!lightboxImg) return;
+  if (!lightboxImg || !window.llllLightbox) return;
 
   // トリガは画像自体。figure は figcaption（『タイトル』）を含むので button 化に不適。
   // i18n ラベルは figure[data-lightbox-label] から読む。
@@ -72,62 +71,17 @@ if (typeof module !== "undefined" && module.exports) {
   const trigger = img;
   const label = (figure && figure.getAttribute("data-lightbox-label")) || img.alt || "";
 
-  // トリガを interactive 化（PE: JS が動いたときだけ button 化＋pointer 化する。素の HTML は plain image）。
-  trigger.setAttribute("role", "button");
-  trigger.setAttribute("tabindex", "0");
-  trigger.style.cursor = "pointer";
-  if (label) trigger.setAttribute("aria-label", label);
-
-  let isOpen = false;
-  let lastTrigger = null; // 開いた瞬間の activeElement（閉じたら focus を戻す）。
-
   // 拡大画像を配線時に先読みしておく（#46）。サムネ（.daily-art-img）と同 src なのでキャッシュ共有＝
   // 追加転送なし。クリック時には既にロード済みなので、overlay を出した瞬間に正寸で表示され、
   // 「空の緑枠が一瞬出てから縦に広がる」チラつきが起きない。
   lightboxImg.src = img.currentSrc || img.src;
 
-  function openLightbox() {
-    if (isOpen) return;
-    lastTrigger = document.activeElement;
-    // 現在表示中（今日の絵に差し替わった後）の src を拡大側へ再同期（先読み済みと同 src なら再ロードなし）。
-    lightboxImg.src = img.currentSrc || img.src;
-    lightboxImg.alt = img.alt || "";
-    overlay.hidden = false;
-    document.body.classList.add("modal-open");
-    isOpen = true;
-    // 開いたらダイアログ本体へ focus（× へ直接 focus すると初回だけ :focus-visible で枠が残るため・#52）。
-    const lightbox = overlay.querySelector(".lightbox");
-    if (lightbox && typeof lightbox.focus === "function") lightbox.focus({ preventScroll: true });
-  }
-
-  function closeLightbox() {
-    if (!isOpen) return;
-    overlay.hidden = true;
-    document.body.classList.remove("modal-open");
-    isOpen = false;
-    // 開く時に保持したトリガへ focus を戻す（消えていれば何もしない）。
-    const target = lastTrigger;
-    lastTrigger = null;
-    if (target && typeof target.focus === "function" && document.contains(target)) {
-      target.focus();
-    }
-  }
-
-  // 開く: click と Enter/Space。Space はスクロール抑止のため preventDefault。
-  trigger.addEventListener("click", openLightbox);
-  trigger.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      openLightbox();
-    }
-  });
-
-  // 閉じる: × / 背景クリック（モーダル本体クリックは透過させない）/ Esc。history は一切触らない。
-  if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
-  overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) closeLightbox();
-  });
-  document.addEventListener("keydown", (e) => {
-    if (isOpen && e.key === "Escape") closeLightbox();
+  // 開閉・Escape・背景クリック・focus 復帰は lightbox-core.js に集約。
+  window.llllLightbox.bindImageTrigger({
+    trigger,
+    overlay,
+    label,
+    getSrc: () => img.currentSrc || img.src,
+    getAlt: () => img.alt || "",
   });
 })();

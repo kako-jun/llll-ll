@@ -82,6 +82,22 @@ describe("post image lightbox", () => {
     expect(lightboxImg.alt).toBe("Linked image");
   });
 
+  it("hides the previous lightbox image until the newly clicked image loads", async () => {
+    await setupAndImport();
+    const { linkedImage, lightboxImg } = els();
+    lightboxImg.src = "/images/posts/previous.webp";
+    lightboxImg.hidden = false;
+
+    linkedImage.dispatchEvent(new window.MouseEvent("click", { bubbles: true, cancelable: true }));
+
+    expect(lightboxImg.src).toContain("/images/posts/full.webp");
+    expect(lightboxImg.src).not.toContain("/images/posts/previous.webp");
+    expect(lightboxImg.hidden).toBe(true);
+
+    lightboxImg.dispatchEvent(new window.Event("load"));
+    expect(lightboxImg.hidden).toBe(false);
+  });
+
   it("prevents default navigation for thumbnail image links on keyboard open", async () => {
     await setupAndImport();
     const { linkedImage, overlay, lightboxImg } = els();

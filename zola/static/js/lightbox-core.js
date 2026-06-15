@@ -16,8 +16,17 @@
     function open(trigger, src, alt) {
       if (!lightboxImg || isOpen) return;
       lastTrigger = document.activeElement;
+      lightboxImg.hidden = true;
+
+      function reveal() {
+        lightboxImg.hidden = false;
+      }
+      lightboxImg.onload = reveal;
+      lightboxImg.onerror = reveal;
       lightboxImg.src = src;
       lightboxImg.alt = alt || "";
+      if (lightboxImg.complete) reveal();
+
       overlay.hidden = false;
       document.body.classList.add("modal-open");
       isOpen = true;

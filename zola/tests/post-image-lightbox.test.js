@@ -7,7 +7,8 @@ function markup() {
   return `
     <div class="post-body">
       <p><img src="/images/posts/sample.webp" alt="Sample image" /></p>
-      <p><a href="/images/posts/linked.webp"><img src="/images/posts/linked.webp" alt="Linked image" /></a></p>
+      <p><a href="/images/posts/full.webp"><img src="/images/posts/thumb.webp" alt="Linked image" /></a></p>
+      <p><a href="/posts/other/"><img src="/images/posts/page-link.webp" alt="Page link image" /></a></p>
     </div>
     <div class="lightbox-overlay" hidden>
       <div class="lightbox" role="dialog" aria-modal="true" tabindex="-1" aria-label="Enlarged image">
@@ -28,7 +29,8 @@ async function setupAndImport(html = markup()) {
 function els() {
   return {
     image: document.querySelector(".post-body p:first-child img"),
-    linkedImage: document.querySelector(".post-body a img"),
+    linkedImage: document.querySelector('.post-body a[href="/images/posts/full.webp"] img'),
+    pageLinkedImage: document.querySelector('.post-body a[href="/posts/other/"] img'),
     overlay: document.querySelector(".lightbox-overlay"),
     lightbox: document.querySelector(".lightbox"),
     lightboxImg: document.querySelector(".lightbox-img"),
@@ -47,13 +49,14 @@ afterEach(() => {
 });
 
 describe("post image lightbox", () => {
-  it("upgrades plain post images but not linked images", async () => {
+  it("upgrades plain post images and image links, but not page links", async () => {
     await setupAndImport();
-    const { image, linkedImage } = els();
+    const { image, linkedImage, pageLinkedImage } = els();
     expect(image.getAttribute("role")).toBe("button");
     expect(image.getAttribute("tabindex")).toBe("0");
     expect(image.style.cursor).toBe("pointer");
-    expect(linkedImage.getAttribute("role")).toBe(null);
+    expect(linkedImage.getAttribute("role")).toBe("button");
+    expect(pageLinkedImage.getAttribute("role")).toBe(null);
   });
 
   it("opens the overlay and syncs src/alt on click", async () => {
@@ -64,6 +67,34 @@ describe("post image lightbox", () => {
     expect(lightboxImg.src).toBe(image.src);
     expect(lightboxImg.alt).toBe("Sample image");
     expect(document.body.classList.contains("modal-open")).toBe(true);
+  });
+
+  it("opens full-size href for thumbnail image links and prevents navigation", async () => {
+    await setupAndImport();
+    const { linkedImage, overlay, lightboxImg } = els();
+    const event = new window.MouseEvent("click", { bubbles: true, cancelable: true });
+    const dispatchResult = linkedImage.dispatchEvent(event);
+    expect(dispatchResult).toBe(false);
+    expect(event.defaultPrevented).toBe(true);
+    expect(overlay.hidden).toBe(false);
+    expect(lightboxImg.src).toContain("/images/posts/full.webp");
+    expect(lightboxImg.src).not.toContain("/images/posts/thumb.webp");
+    expect(lightboxImg.alt).toBe("Linked image");
+  });
+
+  it("prevents default navigation for thumbnail image links on keyboard open", async () => {
+    await setupAndImport();
+    const { linkedImage, overlay, lightboxImg } = els();
+    const event = new window.KeyboardEvent("keydown", {
+      key: "Enter",
+      bubbles: true,
+      cancelable: true,
+    });
+    const dispatchResult = linkedImage.dispatchEvent(event);
+    expect(dispatchResult).toBe(false);
+    expect(event.defaultPrevented).toBe(true);
+    expect(overlay.hidden).toBe(false);
+    expect(lightboxImg.src).toContain("/images/posts/full.webp");
   });
 
   it("opens on Enter and closes on Escape", async () => {

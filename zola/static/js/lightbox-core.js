@@ -66,7 +66,10 @@
     trigger.style.cursor = "pointer";
     if (label) trigger.setAttribute("aria-label", label);
 
-    function open() {
+    function open(event) {
+      if (options.preventDefault && event && typeof event.preventDefault === "function") {
+        event.preventDefault();
+      }
       controller.open(trigger, getSrc(), getAlt());
     }
 
@@ -74,7 +77,7 @@
     trigger.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        open();
+        open(e);
       }
     });
 

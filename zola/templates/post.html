@@ -147,7 +147,7 @@
     /* ── 記事本文（Markdown→HTML）。読み物なので行間広め・等幅で btop 調。
        注意: html は font-size:0.85rem（=13.6px）でルートが縮んでいるので 1rem≒13.6px。
        ポータル(0.85rem)は密な UI 用。記事は読み物なので本文 ≒16px・見出しはその上に取る（kako-jun 指摘）。 ── */
-    .post-body { font-size: 1.18rem; line-height: 1.9; color: var(--text); max-width: 70ch; }
+    .post-body { font-size: 1.18rem; line-height: 1.9; color: var(--text); max-width: none; }
     .post-body h1, .post-body h2, .post-body h3, .post-body h4 {
       color: var(--border);
       line-height: 1.4;
@@ -222,13 +222,15 @@
       font-size: var(--fs-sm);
       text-align: right;
     }
+    .nostalgic-bbs a {
+      display: block;
+      width: 100%;
+    }
     .nostalgic-bbs img {
       display: block;
       width: 100%;
-      max-width: 760px;
       height: auto;
-      border: 1px solid var(--border-muted);
-      background: var(--bg);
+      vertical-align: middle;
     }
 
     .related {

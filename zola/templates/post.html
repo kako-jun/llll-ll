@@ -187,6 +187,17 @@
     .post-body hr { border: none; border-top: 1px solid var(--border-muted); margin: 2.1em 0; }
     .post-body img { max-width: 100%; height: auto; border: 1px solid var(--border-muted); }
     .post-body p:has(> img:only-child) { margin: 0 0 1.6em; }
+    .post-body .youtube-embed { max-width: 100%; margin: 1.5rem 0; }
+    /* On wider screens, don't blow images (esp. phone screenshots) or video
+       embeds up to the full content width — that wastes vertical space. Cap the
+       display width and center them. Resolution is unchanged and the lightbox
+       still opens the full image. On phones (<=600px) the base max-width:100%
+       keeps them full-width, which is what we want there. */
+    @media (min-width: 601px) {
+      .post-body img { max-width: 400px; }
+      .post-body p:has(> img:only-child) { text-align: center; }
+      .post-body .youtube-embed { max-width: 480px; margin-left: auto; margin-right: auto; }
+    }
     .post-body table { border-collapse: collapse; margin: 0 0 1.35em; }
     .post-body th, .post-body td { border: 1px solid var(--border-muted); padding: 0.35em 0.6em; vertical-align: top; }
     .post-body th { color: var(--border); text-align: left; }

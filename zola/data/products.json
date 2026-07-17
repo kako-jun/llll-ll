@@ -1,145 +1,5 @@
 [
   {
-    "id": "orber",
-    "title": {
-      "en": "orber: Turn a photo into a mood video of glowing orbs",
-      "ja": "orber: 写真を光の玉のムード映像に変える",
-      "zh": ": 把照片变成发光光球的氛围影像",
-      "es": ": Convierte una foto en un vídeo ambiental de orbes de luz"
-    },
-    "description": {
-      "ja": "写真を、ゆっくり漂う色とりどりの光の玉の抽象的なムード映像に変える Web アプリと Rust 製ツール。動画背景や配信の待機画面、壁紙に使え、元写真をぼかして匂わせにもできる。",
-      "en": "A web app and Rust tool that turns a photo into an abstract mood video of slowly drifting, colorful orbs of light. Use it as a video background, a streaming standby screen, or a wallpaper—or blur the original photo to merely hint at it.",
-      "zh": "一款把照片变成缓缓漂浮、五颜六色光球抽象氛围影像的 Web 应用与 Rust 工具。可用作视频背景、直播待机画面或壁纸，也可把原图虚化、只留一丝意境。",
-      "es": "Una app web y herramienta en Rust que convierte una foto en un vídeo ambiental abstracto de orbes de luz de colores que flotan despacio. Úsalo de fondo de vídeo, de pantalla de espera en directos o de fondo de pantalla—o difumina la foto original para apenas insinuarla."
-    },
-    "tags": ["OSS", "Web"],
-    "images": [],
-    "demoUrl": "https://orber.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/orber",
-    "createdAt": "2026-04-27",
-    "updatedAt": "2026-06-11",
-    "featured": true,
-    "icon": "/images/apps/orber.webp",
-    "effort": {
-      "sloc": 19599,
-      "slocLabel": "19,599",
-      "codeSloc": 17279,
-      "dataSloc": 2320,
-      "codeTier": "hard",
-      "dataTier": "config",
-      "personMonths": 10.1,
-      "usd": 71000,
-      "usdLabel": "$71k",
-      "level": 0.81
-    }
-  },
-  {
-    "id": "machigai-salad",
-    "title": {
-      "en": "Machigai Salad: Two images side by side—long-press to compare and spot the difference",
-      "ja": "小エビの間違いサラダ: 2枚を並べてロングタップで見比べる間違い探し",
-      "zh": "Machigai Salad: 两图并排，长按对比找不同",
-      "es": "Machigai Salad: Dos imágenes en paralelo: mantén pulsado para comparar y hallar las diferencias"
-    },
-    "description": {
-      "ja": "2枚の画像を撮影またはアップロードして見比べ、違いを見つける汎用の間違い探しツール。台形補正・ルーペ・アンドゥ・GIF書き出しをそなえ、OpenCV.js でブラウザ内だけで完結する。",
-      "en": "A spot-the-difference tool for any pair of images: snap or upload two pictures, line them up, and hunt for what changed. Keystone correction, a loupe, undo, and GIF export all run entirely in your browser via OpenCV.js.",
-      "zh": "一款通用的找不同工具：拍摄或上传两张图片，并排对比，找出不同之处。梯形校正、放大镜、撤销、GIF 导出，全部基于 OpenCV.js 在浏览器内完成。",
-      "es": "Una herramienta para encontrar las diferencias entre dos imágenes cualesquiera: captura o sube dos fotos, ponlas lado a lado y busca qué cambió. Corrección de perspectiva, lupa, deshacer y exportación a GIF, todo dentro del navegador con OpenCV.js."
-    },
-    "tags": ["OSS", "Web"],
-    "images": [],
-    "demoUrl": "https://machigai-salad.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/machigai-salad",
-    "createdAt": "2025-07-10",
-    "updatedAt": "2026-04-20",
-    "featured": true,
-    "icon": "/images/apps/machigai-salad.webp",
-    "effort": {
-      "sloc": 8123,
-      "slocLabel": "8,123",
-      "codeSloc": 6440,
-      "dataSloc": 1683,
-      "codeTier": "standard",
-      "dataTier": "config",
-      "personMonths": 2.4,
-      "usd": 17000,
-      "usdLabel": "$17k",
-      "level": 0.38
-    }
-  },
-  {
-    "id": "avel",
-    "title": {
-      "en": "avel: The fastest-loading Zola blog theme",
-      "ja": "avel: 最速で表示されるZolaブログテーマ",
-      "zh": ": 加载最快的 Zola 博客主题",
-      "es": ": El tema de blog para Zola que carga más rápido"
-    },
-    "description": {
-      "ja": "阿部寛のホームページに着想を得た、最速で表示される Zola 向けブログテーマ。JavaScript ゼロ・外部リソースなしで瞬時に描き、config.toml だけで見た目を細かく調整できる。",
-      "en": "A blazing-fast Zola blog theme inspired by Hiroshi Abe's legendarily quick homepage. With zero JavaScript and no external resources, it paints instantly, and you can fine-tune the look from config.toml alone.",
-      "zh": "一款灵感源自阿部宽那以“极快”闻名的主页、加载最快的 Zola 博客主题。零 JavaScript、无外部资源，瞬间渲染，仅靠 config.toml 就能细调外观。",
-      "es": "Un tema de blog para Zola ultrarrápido, inspirado en la legendariamente veloz página de Hiroshi Abe. Sin nada de JavaScript ni recursos externos, se dibuja al instante, y puedes afinar su aspecto solo desde config.toml."
-    },
-    "tags": ["OSS", "Theme"],
-    "images": [],
-    "demoUrl": "https://avel.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/avel",
-    "createdAt": "2026-06-11",
-    "updatedAt": "2026-06-11",
-    "featured": true,
-    "icon": "/images/apps/avel.webp",
-    "effort": {
-      "sloc": 2924,
-      "slocLabel": "2,924",
-      "codeSloc": 1279,
-      "dataSloc": 1645,
-      "codeTier": "standard",
-      "dataTier": "config",
-      "personMonths": 0.9,
-      "usd": 6300,
-      "usdLabel": "$6.3k",
-      "level": 0.09
-    }
-  },
-  {
-    "id": "osaka-kenpo",
-    "title": {
-      "en": "Osaka Kenpo: Testing whether even tangled law feels easy in Osaka dialect",
-      "ja": "おおさかけんぽう: 難解な法律も大阪弁なら簡単に感じるかの実験場",
-      "zh": "大阪宪法: 晦涩的法律换成大阪话是否就变简单的实验场",
-      "es": "Osaka Kenpo: Un experimento: ¿hasta la ley enrevesada se siente fácil en dialecto de Osaka?"
-    },
-    "description": {
-      "ja": "難解な法律の条文を、親しみやすい大阪弁に翻訳して読めるサイト。日本の現行法から歴史的な法・外国法・国際条約まで5分類をそろえ、ワンクリックで原文と大阪弁を切り替えられる。",
-      "en": "A site that translates dense legal text into friendly Osaka dialect so it's actually readable. It spans five categories—from Japan's current laws to historical statutes, foreign law, and international treaties—and toggles between the original and the Osaka version in one click.",
-      "zh": "一个把晦涩的法律条文翻译成亲切大阪话、让人读得下去的网站。涵盖从日本现行法到历史法、外国法、国际条约等五大类，一键在原文与大阪话之间切换。",
-      "es": "Un sitio que traduce los densos textos legales al cercano dialecto de Osaka para que de verdad se puedan leer. Abarca cinco categorías—de las leyes japonesas vigentes a estatutos históricos, derecho extranjero y tratados internacionales—y alterna entre el original y la versión en dialecto con un clic."
-    },
-    "tags": ["OSS", "Web", "Language"],
-    "images": [],
-    "demoUrl": "https://osaka-kenpo.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/osaka-kenpo",
-    "createdAt": "2025-07-03",
-    "updatedAt": "2025-01-20",
-    "featured": true,
-    "icon": "/images/apps/osaka-kenpo.webp",
-    "effort": {
-      "sloc": 146016,
-      "slocLabel": "146,016",
-      "codeSloc": 15747,
-      "dataSloc": 130269,
-      "codeTier": "standard",
-      "dataTier": "authored",
-      "personMonths": 19.5,
-      "usd": 140000,
-      "usdLabel": "$140k",
-      "level": 1
-    }
-  },
-  {
     "id": "theo-hayami",
     "title": {
       "en": "Theo Hayami: A short philosophical dialogue anthology in the Sea of Wisdom",
@@ -153,7 +13,11 @@
       "zh": "一个短篇对话剧阅读网站：让人格化的哲学住民回答人们不断背负的业。本篇、住民别选集、主题索引与时事茶会，像叡智星海中的书架一样展开。",
       "es": "Un sitio de lectura de diálogos breves donde filosofías personificadas responden a las cargas que la gente sigue llevando. Historia principal, antologías por habitante, índices por tema y entradas de té sobre temas actuales se ordenan como estanterías en el Mar de la Sabiduría."
     },
-    "tags": ["Web", "Story", "Game"],
+    "tags": [
+      "Web",
+      "Story",
+      "Game"
+    ],
     "images": [],
     "demoUrl": "https://theo-hayami.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/theo-hayami",
@@ -188,7 +52,11 @@
       "zh": "一个基于 Nostr 的植物照片社交动态：比 Instagram 更快更简单，每张照片只需配上一句话。支持发布、个人资料、热门品种和市民手册，一起培育虚构的植物城市 Hanōba。",
       "es": "Un feed social de fotos de plantas basado en Nostr: más rápido y sencillo que Instagram, con una breve nota junto a cada foto. Incluye publicación, perfiles, variedades populares y una libreta ciudadana para cultivar juntos la ciudad vegetal imaginaria de Hanōba."
     },
-    "tags": ["OSS", "Web", "Social"],
+    "tags": [
+      "OSS",
+      "Web",
+      "Social"
+    ],
     "images": [],
     "demoUrl": "https://hanoba.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/hanoba",
@@ -210,6 +78,159 @@
     }
   },
   {
+    "id": "orber",
+    "title": {
+      "en": "orber: Turn a photo into a mood video of glowing orbs",
+      "ja": "orber: 写真を光の玉のムード映像に変える",
+      "zh": ": 把照片变成发光光球的氛围影像",
+      "es": ": Convierte una foto en un vídeo ambiental de orbes de luz"
+    },
+    "description": {
+      "ja": "写真を、ゆっくり漂う色とりどりの光の玉の抽象的なムード映像に変える Web アプリと Rust 製ツール。動画背景や配信の待機画面、壁紙に使え、元写真をぼかして匂わせにもできる。",
+      "en": "A web app and Rust tool that turns a photo into an abstract mood video of slowly drifting, colorful orbs of light. Use it as a video background, a streaming standby screen, or a wallpaper—or blur the original photo to merely hint at it.",
+      "zh": "一款把照片变成缓缓漂浮、五颜六色光球抽象氛围影像的 Web 应用与 Rust 工具。可用作视频背景、直播待机画面或壁纸，也可把原图虚化、只留一丝意境。",
+      "es": "Una app web y herramienta en Rust que convierte una foto en un vídeo ambiental abstracto de orbes de luz de colores que flotan despacio. Úsalo de fondo de vídeo, de pantalla de espera en directos o de fondo de pantalla—o difumina la foto original para apenas insinuarla."
+    },
+    "tags": [
+      "OSS",
+      "Web"
+    ],
+    "images": [],
+    "demoUrl": "https://orber.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/orber",
+    "createdAt": "2026-04-27",
+    "updatedAt": "2026-06-11",
+    "featured": true,
+    "icon": "/images/apps/orber.webp",
+    "effort": {
+      "sloc": 19599,
+      "slocLabel": "19,599",
+      "codeSloc": 17279,
+      "dataSloc": 2320,
+      "codeTier": "hard",
+      "dataTier": "config",
+      "personMonths": 10.1,
+      "usd": 71000,
+      "usdLabel": "$71k",
+      "level": 0.81
+    }
+  },
+  {
+    "id": "machigai-salad",
+    "title": {
+      "en": "Machigai Salad: Two images side by side—long-press to compare and spot the difference",
+      "ja": "小エビの間違いサラダ: 2枚を並べてロングタップで見比べる間違い探し",
+      "zh": "Machigai Salad: 两图并排，长按对比找不同",
+      "es": "Machigai Salad: Dos imágenes en paralelo: mantén pulsado para comparar y hallar las diferencias"
+    },
+    "description": {
+      "ja": "2枚の画像を撮影またはアップロードして見比べ、違いを見つける汎用の間違い探しツール。台形補正・ルーペ・アンドゥ・GIF書き出しをそなえ、OpenCV.js でブラウザ内だけで完結する。",
+      "en": "A spot-the-difference tool for any pair of images: snap or upload two pictures, line them up, and hunt for what changed. Keystone correction, a loupe, undo, and GIF export all run entirely in your browser via OpenCV.js.",
+      "zh": "一款通用的找不同工具：拍摄或上传两张图片，并排对比，找出不同之处。梯形校正、放大镜、撤销、GIF 导出，全部基于 OpenCV.js 在浏览器内完成。",
+      "es": "Una herramienta para encontrar las diferencias entre dos imágenes cualesquiera: captura o sube dos fotos, ponlas lado a lado y busca qué cambió. Corrección de perspectiva, lupa, deshacer y exportación a GIF, todo dentro del navegador con OpenCV.js."
+    },
+    "tags": [
+      "OSS",
+      "Web"
+    ],
+    "images": [],
+    "demoUrl": "https://machigai-salad.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/machigai-salad",
+    "createdAt": "2025-07-10",
+    "updatedAt": "2026-04-20",
+    "featured": true,
+    "icon": "/images/apps/machigai-salad.webp",
+    "effort": {
+      "sloc": 8123,
+      "slocLabel": "8,123",
+      "codeSloc": 6440,
+      "dataSloc": 1683,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 2.4,
+      "usd": 17000,
+      "usdLabel": "$17k",
+      "level": 0.38
+    }
+  },
+  {
+    "id": "avel",
+    "title": {
+      "en": "avel: The fastest-loading Zola blog theme",
+      "ja": "avel: 最速で表示されるZolaブログテーマ",
+      "zh": ": 加载最快的 Zola 博客主题",
+      "es": ": El tema de blog para Zola que carga más rápido"
+    },
+    "description": {
+      "ja": "阿部寛のホームページに着想を得た、最速で表示される Zola 向けブログテーマ。JavaScript ゼロ・外部リソースなしで瞬時に描き、config.toml だけで見た目を細かく調整できる。",
+      "en": "A blazing-fast Zola blog theme inspired by Hiroshi Abe's legendarily quick homepage. With zero JavaScript and no external resources, it paints instantly, and you can fine-tune the look from config.toml alone.",
+      "zh": "一款灵感源自阿部宽那以“极快”闻名的主页、加载最快的 Zola 博客主题。零 JavaScript、无外部资源，瞬间渲染，仅靠 config.toml 就能细调外观。",
+      "es": "Un tema de blog para Zola ultrarrápido, inspirado en la legendariamente veloz página de Hiroshi Abe. Sin nada de JavaScript ni recursos externos, se dibuja al instante, y puedes afinar su aspecto solo desde config.toml."
+    },
+    "tags": [
+      "OSS",
+      "Theme"
+    ],
+    "images": [],
+    "demoUrl": "https://avel.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/avel",
+    "createdAt": "2026-06-11",
+    "updatedAt": "2026-06-11",
+    "featured": true,
+    "icon": "/images/apps/avel.webp",
+    "effort": {
+      "sloc": 2924,
+      "slocLabel": "2,924",
+      "codeSloc": 1279,
+      "dataSloc": 1645,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 0.9,
+      "usd": 6300,
+      "usdLabel": "$6.3k",
+      "level": 0.09
+    }
+  },
+  {
+    "id": "osaka-kenpo",
+    "title": {
+      "en": "Osaka Kenpo: Testing whether even tangled law feels easy in Osaka dialect",
+      "ja": "おおさかけんぽう: 難解な法律も大阪弁なら簡単に感じるかの実験場",
+      "zh": "大阪宪法: 晦涩的法律换成大阪话是否就变简单的实验场",
+      "es": "Osaka Kenpo: Un experimento: ¿hasta la ley enrevesada se siente fácil en dialecto de Osaka?"
+    },
+    "description": {
+      "ja": "難解な法律の条文を、親しみやすい大阪弁に翻訳して読めるサイト。日本の現行法から歴史的な法・外国法・国際条約まで5分類をそろえ、ワンクリックで原文と大阪弁を切り替えられる。",
+      "en": "A site that translates dense legal text into friendly Osaka dialect so it's actually readable. It spans five categories—from Japan's current laws to historical statutes, foreign law, and international treaties—and toggles between the original and the Osaka version in one click.",
+      "zh": "一个把晦涩的法律条文翻译成亲切大阪话、让人读得下去的网站。涵盖从日本现行法到历史法、外国法、国际条约等五大类，一键在原文与大阪话之间切换。",
+      "es": "Un sitio que traduce los densos textos legales al cercano dialecto de Osaka para que de verdad se puedan leer. Abarca cinco categorías—de las leyes japonesas vigentes a estatutos históricos, derecho extranjero y tratados internacionales—y alterna entre el original y la versión en dialecto con un clic."
+    },
+    "tags": [
+      "OSS",
+      "Web",
+      "Language"
+    ],
+    "images": [],
+    "demoUrl": "https://osaka-kenpo.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/osaka-kenpo",
+    "createdAt": "2025-07-03",
+    "updatedAt": "2025-01-20",
+    "featured": true,
+    "icon": "/images/apps/osaka-kenpo.webp",
+    "effort": {
+      "sloc": 146016,
+      "slocLabel": "146,016",
+      "codeSloc": 15747,
+      "dataSloc": 130269,
+      "codeTier": "standard",
+      "dataTier": "authored",
+      "personMonths": 19.5,
+      "usd": 140000,
+      "usdLabel": "$140k",
+      "level": 1
+    }
+  },
+  {
     "id": "jiwa",
     "title": {
       "en": "jiwa: Make terminal text slowly emerge",
@@ -223,7 +244,10 @@
       "zh": "一款让终端文字渐渐浮现的 reveal 动画 Rust 库兼 CLI。提供打字机风淡入与脉动两个部件，零依赖，可接入管道使用。",
       "es": "Una biblioteca y CLI en Rust para animaciones de aparición que hacen surgir poco a poco el texto en la terminal. Ofrece dos piezas—un fundido tipo máquina de escribir y un pulso—sin dependencias y listas para encadenar en un pipe."
     },
-    "tags": ["OSS", "CLI"],
+    "tags": [
+      "OSS",
+      "CLI"
+    ],
     "images": [],
     "demoUrl": "https://crates.io/crates/jiwa",
     "repositoryUrl": "https://github.com/kako-jun/jiwa",
@@ -258,7 +282,10 @@
       "zh": "一个以单一 YAML 配置批量操作多个 Git 仓库的 CLI。可一次性跨所有仓库运行 clone、pull 等十项命令，并用 TUI 实时展示每个仓库的进度。以 Rust 编写。",
       "es": "Una CLI que maneja muchos repositorios Git a la vez desde una sola configuración YAML. Ejecuta diez comandos como clone o pull sobre todos de una sola pasada, con una TUI que muestra el progreso de cada repo en tiempo real. Escrita en Rust."
     },
-    "tags": ["OSS", "CLI"],
+    "tags": [
+      "OSS",
+      "CLI"
+    ],
     "images": [],
     "repositoryUrl": "https://github.com/kako-jun/gitpp",
     "createdAt": "2026-04-03",
@@ -292,7 +319,11 @@
       "zh": "一个发布、播放和分享“空耳”（听错成另一种语言的歌词）的网站。给视频 URL 设定起止秒数和空耳文本，就会以节目般的卡拉 OK 字幕播出。免注册、匿名，轻松玩。",
       "es": "Un sitio para publicar, reproducir y compartir soramimi: letras que se oyen como palabras de otro idioma. Pon la URL de un vídeo con los segundos de inicio y fin y tu texto mal oído, y suena con subtítulos tipo karaoke, como un programa de tele. Sin registro, anónimo y para divertirse."
     },
-    "tags": ["OSS", "Web", "Music"],
+    "tags": [
+      "OSS",
+      "Web",
+      "Music"
+    ],
     "images": [],
     "demoUrl": "https://ear-sky.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/ear-sky",
@@ -327,7 +358,10 @@
       "zh": "一个仿 Hacker News 的链接聚合与讨论站点，面向日本的个人开发者和初创企业。具备发帖、主题评论、投票与 karma，专注于日语和日本本地的服务。",
       "es": "Un agregador de enlaces y foro de discusión al estilo de Hacker News para los desarrolladores independientes y startups de Japón. Publicaciones, comentarios en hilo, votos y karma, todo centrado en el idioma japonés y los servicios locales."
     },
-    "tags": ["OSS", "Web"],
+    "tags": [
+      "OSS",
+      "Web"
+    ],
     "images": [],
     "demoUrl": "https://hn.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/hacker-noroshi",
@@ -362,7 +396,11 @@
       "zh": "一款消除相邻相同数字的计算器解谜游戏。运用四则运算搭出连锁。设有计算器、练习、无尽三种模式，连锁与铺垫越多，分数倍率越高。",
       "es": "Un juego de lógica con calculadora en el que eliminas números iguales adyacentes. Encadena jugadas usando las cuatro operaciones aritméticas. Tres modos—calculadora, práctica e infinito—con multiplicadores de puntos que suben con cadenas y preparativos."
     },
-    "tags": ["OSS", "Web", "Game"],
+    "tags": [
+      "OSS",
+      "Web",
+      "Game"
+    ],
     "images": [],
     "demoUrl": "https://sasso.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/sasso",
@@ -397,7 +435,10 @@
       "zh": "一个运行在 Nostr 协议上的去中心化社交网络。无需安装、无需注册，打开浏览器即可使用。私钥仅保存在本地，还内置了涂鸦、语音备忘等表达工具。",
       "es": "Una red social descentralizada sobre el protocolo Nostr. Sin instalar, sin registrarse: solo ábrela en el navegador. Tu clave privada se queda solo en tu dispositivo, y trae extras expresivos como dibujo y notas de voz."
     },
-    "tags": ["OSS", "Web"],
+    "tags": [
+      "OSS",
+      "Web"
+    ],
     "images": [],
     "demoUrl": "https://mypace.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/mypace",
@@ -432,7 +473,10 @@
       "zh": "一个为 Neovim 提供 debounce、throttle 与 batch 的极小型 Lua 库，约 150 行。零外部依赖，提供 maxWait、cancel、flush 等实用 API。",
       "es": "Una biblioteca Lua diminuta—unas 150 líneas—que trae debounce, throttle y batch a Neovim. Sin dependencias externas y con APIs prácticas como maxWait, cancel y flush."
     },
-    "tags": ["OSS", "Plugin"],
+    "tags": [
+      "OSS",
+      "Plugin"
+    ],
     "images": [],
     "repositoryUrl": "https://github.com/kako-jun/chillout.nvim",
     "createdAt": "2025-12-02",
@@ -466,7 +510,10 @@
       "zh": "Neovim 默认会把整个插入会话归为一次 undo；这个插件按时间与词语边界将其拆得更细。它会学习你的打字习惯并自动调整，也是 chillout.nvim 的实用示例。",
       "es": "Un plugin que divide el undo de Neovim—que normalmente agrupa toda una sesión de inserción en uno solo—en trozos más finos por tiempo y límites de palabra. Aprende tus hábitos de escritura y se ajusta solo, y sirve de ejemplo real de chillout.nvim."
     },
-    "tags": ["OSS", "Plugin"],
+    "tags": [
+      "OSS",
+      "Plugin"
+    ],
     "images": [],
     "repositoryUrl": "https://github.com/kako-jun/chunkundo.nvim",
     "createdAt": "2025-12-02",
@@ -500,7 +547,10 @@
       "zh": "一个自动识别日本节假日、三分钟就能做出营业日历的网站。拖拽即可快速编辑，并直接分享到 Instagram 或 LINE。为努力打拼的个体经营者节省时间。",
       "es": "Un sitio que detecta solo los festivos de Japón y te deja armar un calendario de horarios en tres minutos. Edita rápido arrastrando y soltando, y compártelo directo en Instagram o LINE. Pensado para ahorrarle tiempo a los autónomos que se dejan la piel."
     },
-    "tags": ["OSS", "Web"],
+    "tags": [
+      "OSS",
+      "Web"
+    ],
     "images": [],
     "demoUrl": "https://3min.llll-ll.com/",
     "repositoryUrl": "https://github.com/kako-jun/3min",
@@ -535,7 +585,10 @@
       "zh": "一款不经中间服务器、直接与 GitHub 同步的极简 Markdown 笔记应用。独家合并机制让多设备的编辑安全对齐，数据始终掌握在你自己手中。",
       "es": "La app de notas Markdown más sencilla, que sincroniza directo con GitHub sin servidor de por medio. Un merge propio mantiene a salvo y alineadas las ediciones de varios dispositivos, y tus datos siempre quedan bajo tu control."
     },
-    "tags": ["OSS", "Web"],
+    "tags": [
+      "OSS",
+      "Web"
+    ],
     "images": [],
     "demoUrl": "https://agasteer.llll-ll.com/",
     "repositoryUrl": "https://github.com/kako-jun/agasteer",
@@ -570,7 +623,10 @@
       "zh": "一款专为 RISC-V 打造的 neofetch 风格系统信息工具。展示 ISA 扩展与 hart 数，收录 147 项扩展并按类别整理，可与 fastfetch 搭配使用。在其他架构上根本跑不起来。以 Rust 编写。",
       "es": "Una herramienta de información del sistema al estilo neofetch hecha solo para RISC-V. Muestra extensiones ISA y el número de harts, trae 147 extensiones ordenadas por categoría y combina bien con fastfetch. En ninguna otra arquitectura va a arrancar. Escrita en Rust."
     },
-    "tags": ["OSS", "CLI"],
+    "tags": [
+      "OSS",
+      "CLI"
+    ],
     "images": [
       "https://raw.githubusercontent.com/kako-jun/riscfetch/main/assets/screenshot.webp"
     ],
@@ -606,7 +662,10 @@
       "zh": "一款把本无导出功能的 FF14 云冠（Lodestone）日记整个保存为 Markdown 与 ZIP 的 Chrome 扩展。保留正文、图片、评论甚至点赞数，覆盖五个大区与好友的文章。",
       "es": "Una extensión de Chrome que guarda enteras las entradas del blog de FF14 Lodestone—que no tienen función de exportación—en Markdown y ZIP. Conserva el texto, las imágenes, los comentarios e incluso los me gusta, y abarca las cinco regiones y los artículos de tus amigos."
     },
-    "tags": ["OSS", "Extension"],
+    "tags": [
+      "OSS",
+      "Extension"
+    ],
     "images": [],
     "repositoryUrl": "https://github.com/kako-jun/sync-stone",
     "articles": [
@@ -646,7 +705,11 @@
       "zh": "一款不止于“Binary files differ”、能展示 ML 模型文件之间有意义差异的 CLI。具备学习率、损失等 11 种自动分析与张量统计对比，还可为 CI/CD 输出 JSON。",
       "es": "Una CLI que va más allá de «Binary files differ» y muestra diferencias con sentido entre archivos de modelos de ML. Con 11 tipos de análisis automático—tasa de aprendizaje, pérdida y más—y comparación de estadísticas de tensores, también puede emitir JSON para CI/CD."
     },
-    "tags": ["OSS", "CLI", "Data"],
+    "tags": [
+      "OSS",
+      "CLI",
+      "Data"
+    ],
     "images": [],
     "repositoryUrl": "https://github.com/kako-jun/diffai",
     "createdAt": "2025-07-12",
@@ -680,7 +743,11 @@
       "zh": "一款用本福德、帕累托等五条统计法则揭示数据中隐藏的舞弊与异常的 CLI。从会计、选举舞弊检测到销售分析、质量管控都能用，并以 ASCII 图表判定风险。以 Rust 编写。",
       "es": "Una CLI que destapa fraudes y anomalías ocultas en tus datos con cinco leyes estadísticas como las de Benford y Pareto. Sirve desde la detección de fraude contable y electoral hasta el análisis de ventas y el control de calidad, y evalúa el riesgo con gráficos ASCII. Escrita en Rust."
     },
-    "tags": ["OSS", "CLI", "Data"],
+    "tags": [
+      "OSS",
+      "CLI",
+      "Data"
+    ],
     "images": [],
     "repositoryUrl": "https://github.com/kako-jun/lawkit",
     "createdAt": "2025-07-09",
@@ -714,7 +781,11 @@
       "zh": "传统 diff 会因为键的顺序变了就把所有行都当作差异；这款 CLI 不同，它理解结构，只显示真正变动之处。能自动识别 JSON、YAML 等六种格式，并可递归比较目录。",
       "es": "A diferencia del diff tradicional, que marca cada línea solo porque cambió el orden de las claves, esta CLI entiende la estructura y muestra solo lo que de verdad cambió. Detecta automáticamente seis formatos como JSON y YAML, y puede comparar directorios de forma recursiva."
     },
-    "tags": ["OSS", "CLI", "Data"],
+    "tags": [
+      "OSS",
+      "CLI",
+      "Data"
+    ],
     "images": [
       "https://storage.googleapis.com/zenn-user-upload/a82eab0d5859-20250706.png"
     ],
@@ -760,7 +831,10 @@
       "zh": "重现上世纪 90 年代网络文化的五个功能部件：计数器、点赞、留言板、排行榜等。凭免注册的简单 GET API 与 Web Components，几分钟即可嵌入任何静态站点。",
       "es": "Cinco piezas que rescatan la cultura web de los años 90: contadores de visitas, me gusta, libro de visitas, rankings y más. Con una sencilla API GET sin registro y Web Components, las integras en cualquier sitio estático en minutos."
     },
-    "tags": ["OSS", "Web"],
+    "tags": [
+      "OSS",
+      "Web"
+    ],
     "images": [],
     "demoUrl": "https://nostalgic.llll-ll.com/",
     "repositoryUrl": "https://github.com/kako-jun/nostalgic",
@@ -795,7 +869,10 @@
       "zh": "一个汇集全日本各地政府收容的猫狗信息、帮助它们找到新家的网站。按紧急程度分类的画廊与每日自动抓取，从石川县起步，逐步推向全国。",
       "es": "Un sitio que reúne los anuncios de gatos y perros acogidos por los municipios de todo Japón y los ayuda a encontrar una nueva familia. Galerías ordenadas por urgencia y rastreo automático diario lo impulsan, empezando en Ishikawa rumbo a todo el país."
     },
-    "tags": ["OSS", "Web"],
+    "tags": [
+      "OSS",
+      "Web"
+    ],
     "images": [],
     "demoUrl": "https://tail-match.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/tail-match",
@@ -830,7 +907,11 @@
       "zh": "一个学习八种语言名词语法性别的网站。可用英语或目标语言检索超过 4,600 个词，附带词义与记忆法。还设有猜性别测验、发音播放和 11 种语言的界面。",
       "es": "Un sitio para aprender el género gramatical de los sustantivos en ocho idiomas. Busca más de 4.600 palabras en inglés o en la lengua de destino, con significados y reglas mnemotécnicas. Incluye cuestionarios para adivinar el género, reproducción de la pronunciación y una interfaz en 11 idiomas."
     },
-    "tags": ["OSS", "Web", "Language"],
+    "tags": [
+      "OSS",
+      "Web",
+      "Language"
+    ],
     "images": [],
     "demoUrl": "https://noun-gender.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/noun-gender",
@@ -865,12 +946,19 @@
       "zh": "一款展示贝斯指板、供练习使用的 Web 应用。让你看清正在弹的和弦或音在曲子、和弦中扮演什么角色。还能看到 TAB 谱上没有的指法与闷音，并可把指板存为图片分享。",
       "es": "Una app web que muestra el diapasón del bajo para practicar. Ve qué papel cumple el acorde o la nota que tocas dentro de una canción o un acorde. Revela digitaciones y mutes que las tablaturas omiten, y puedes compartir el diapasón como imagen."
     },
-    "tags": ["OSS", "Web", "Music"],
+    "tags": [
+      "OSS",
+      "Web",
+      "Music"
+    ],
     "images": [
       "https://storage.googleapis.com/zenn-user-upload/5f02c372318d-20250622.png",
       "https://storage.googleapis.com/zenn-user-upload/10b0af181da2-20250622.png"
     ],
-    "videos": ["https://youtu.be/bE_fR3AcX78", "https://youtu.be/MatsIe3Pgoc"],
+    "videos": [
+      "https://youtu.be/bE_fR3AcX78",
+      "https://youtu.be/MatsIe3Pgoc"
+    ],
     "demoUrl": "https://sid-note.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/sid-note",
     "articles": [

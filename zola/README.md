@@ -31,7 +31,7 @@ Zola 標準の多言語構成。**既定言語 en をルート直下**に置き�
 
 - URL: `/`（en・canonical）/ `/ja/` / `/zh/` / `/es/`。per-app は `/apps/{id}/`（en）と `/{lang}/apps/{id}/`。
 - UI 文言は `config.toml` の `[translations]`（en 既定）＋ `[languages.{ja,zh,es}.translations]`。テンプレは `trans(key=..., lang=lang)` で引く。
-- アプリの `title` / `description` は `products.json` の言語キー（`p.title[lang]`・欠けたら en にフォールバック）から表示言語で出す。全エントリが4言語を非空で持つことは `tests/products-data.test.js` が保証する（en 欠落は全言語ビルドを落とすため）。
+- アプリの `title` / `description` は `products.json` の言語キー（`p.title[lang]`・欠けたら ja にフォールバック）から表示言語で出す。公開エントリの `title.ja` / `description.ja` は `tests/products-data.test.js` が保証する。
 - 言語切替は**ナビの実リンク**（静的 per-language ビルド）。localStorage 即時切替はしない（リロードを挟む）。
 - ロケール別フォントは `html[lang]` で**システム CJK スタック**を切替（自前 webfont は読み込みブロッキング回避のため不採用）。
 - `gen-app-pages.mjs` は id に `.` を含む `chillout.nvim` を、Zola が `.{lang}` を言語コードと誤認しないよう**ファイル名は `chillout-nvim` に sanitize しつつ公開 URL の `path` は `.nvim` を維持**する。
@@ -46,7 +46,7 @@ zola/
 │   ├── apps/              # gen-app-pages.mjs が products.json から生成（{id}.md=en + {id}.{lang}.md）
 │   └── posts/             # ブログ記事（#10）。_index.* がセクション、{slug}[.{lang}].md が記事
 ├── data/
-│   ├── products.json      # アプリ20件（title/description は en/ja/zh/es の言語キー）
+│   ├── products.json      # 公開アプリ25件 + draft（title/description は ja マスター、多言語キー任意）
 │   └── nostalgic_bbs.toml # 記事URLごとの Nostalgic BBS 公開ID（コメント欄用）
 ├── templates/
 │   ├── index.html         # btop パネルのポータル（自己完結・html[lang]・trans()）

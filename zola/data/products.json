@@ -140,6 +140,52 @@
     }
   },
   {
+    "id": "hanoba",
+    "title": {
+      "en": "Hanōba: A quiet plant-photo social feed on Nostr",
+      "ja": "Hanōba: 植物写真をひとこと添えて置く静かなSNS",
+      "zh": "Hanōba: 在 Nostr 上分享植物照片的安静社交动态",
+      "es": "Hanōba: Un feed social tranquilo para fotos de plantas en Nostr"
+    },
+    "description": {
+      "ja": "植物写真を、Instagram より早く簡単に、ひとこと添えて置ける Nostr ベースの写真SNS。投稿・プロフィール・人気品種・市民手帳をそなえ、植物好きの架空都市ハノーバをみんなで育てる。",
+      "en": "A Nostr-based plant-photo social feed: faster and simpler than Instagram, with one short note beside each photo. It includes posting, profiles, popular varieties, and a citizen handbook for growing the imaginary plant city of Hanōba together.",
+      "zh": "一个基于 Nostr 的植物照片社交动态：比 Instagram 更快更简单，每张照片只需配上一句话。支持发布、个人资料、热门品种和市民手册，一起培育虚构的植物城市 Hanōba。",
+      "es": "Un feed social de fotos de plantas basado en Nostr: más rápido y sencillo que Instagram, con una breve nota junto a cada foto. Incluye publicación, perfiles, variedades populares y una libreta ciudadana para cultivar juntos la ciudad vegetal imaginaria de Hanōba."
+    },
+    "tags": ["OSS", "Web", "Social"],
+    "images": [],
+    "demoUrl": "https://hanoba.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/hanoba",
+    "createdAt": "2026-06-20",
+    "updatedAt": "2026-07-17",
+    "featured": false,
+    "icon": "/images/apps/hanoba.webp"
+  },
+  {
+    "id": "theo-hayami",
+    "title": {
+      "en": "Theo Hayami: A short philosophical dialogue anthology in the Sea of Wisdom",
+      "ja": "せおはやみ: 叡智の星海で業を訊く短い会話劇",
+      "zh": "せおはやみ: 在叡智星海中追问人之业的短篇对话剧",
+      "es": "Theo Hayami: Diálogos filosóficos breves en el Mar de la Sabiduría"
+    },
+    "description": {
+      "ja": "哲学が人格化した住人たちに、人が抱え続ける業を訊く短い会話劇の読み物サイト。本編、住人別アンソロジー、業別索引、時事的なティータイムを、星海の書架として読める。",
+      "en": "A reading site for short dialogue pieces where personified philosophies answer the burdens people keep carrying. Main story, resident anthologies, theme indexes, and topical tea-time entries are arranged as shelves in the Sea of Wisdom.",
+      "zh": "一个短篇对话剧阅读网站：让人格化的哲学住民回答人们不断背负的业。本篇、住民别选集、主题索引与时事茶会，像叡智星海中的书架一样展开。",
+      "es": "Un sitio de lectura de diálogos breves donde filosofías personificadas responden a las cargas que la gente sigue llevando. Historia principal, antologías por habitante, índices por tema y entradas de té sobre temas actuales se ordenan como estanterías en el Mar de la Sabiduría."
+    },
+    "tags": ["Web", "Story"],
+    "images": [],
+    "demoUrl": "https://theo-hayami.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/theo-hayami",
+    "createdAt": "2026-07-10",
+    "updatedAt": "2026-07-17",
+    "featured": false,
+    "icon": "/images/apps/theo-hayami.webp"
+  },
+  {
     "id": "jiwa",
     "title": {
       "en": "jiwa: Make terminal text slowly emerge",

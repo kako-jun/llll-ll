@@ -11,7 +11,8 @@
 //   工数(person-months) = OVERHEAD + コード行 / コード速度[難度] + データ行 / データ速度[種別]
 //   USD       = round2sig(工数 × MONTHLY_RATE)     ← MONTHLY_RATE が唯一のグローバルダイヤル
 //
-// 漏洩対策: products.json に書くのは数値のみ。私的な絶対パスはハードコードせず REPOS_ROOT を動的解決。
+// 漏洩対策: products.json に書くのは数値のみ。私的な絶対パスはハードコードせず LLLL_LL_REPOS_ROOT を動的解決。
+// 環境変数名は他ツール（gitpp等）の REPOS_ROOT と衝突しないよう専用化してある。
 //
 // 使い方:
 //   node scripts/measure-effort.mjs --dry-run   # 表で出すだけ（書き込まない）
@@ -25,7 +26,7 @@ import { homedir } from "node:os";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PRODUCTS = join(__dirname, "..", "data", "products.json");
-const REPOS_ROOT = process.env.REPOS_ROOT || join(homedir(), "repos");
+const REPOS_ROOT = process.env.LLLL_LL_REPOS_ROOT || join(homedir(), "repos");
 const DRY_RUN = process.argv.includes("--dry-run");
 
 // ── ルーブリック定数（全アプリに同一適用・記事で全公開） ───────────────────────────

@@ -1,5 +1,5 @@
 +++
-title = "chunkundo.nvim: Smart Undo Chunking for Neovim"
+title = "chunkundo.nvim: Smartly chunk undo for IME typing in Neovim"
 path = "apps/chunkundo"
 template = "app.html"
 

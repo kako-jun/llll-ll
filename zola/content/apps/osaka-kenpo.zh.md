@@ -1,5 +1,5 @@
 +++
-title = "大阪宪法: 用亲切的大阪方言解读法律"
+title = "大阪宪法: 晦涩的法律换成大阪话是否就变简单的实验场"
 path = "zh/apps/osaka-kenpo"
 template = "app.html"
 

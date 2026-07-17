@@ -1,5 +1,5 @@
 +++
-title = "Sasso: 计算器遇上益智游戏。消除数字"
+title = "Sasso: 为门萨会员设计的计算器解谜游戏"
 path = "zh/apps/sasso"
 template = "app.html"
 

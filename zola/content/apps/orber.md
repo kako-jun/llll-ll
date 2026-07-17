@@ -1,5 +1,5 @@
 +++
-title = "orber: Turn a Photo into an Abstract Orb Mood Video"
+title = "orber: Turn a photo into a mood video of glowing orbs"
 path = "apps/orber"
 template = "app.html"
 

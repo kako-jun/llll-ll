@@ -1,5 +1,5 @@
 +++
-title = "3 min. Calendar: Crea tu calendario de negocios en 3 minutos"
+title = "3 min. Calendar: Arma un calendario de horarios en 3 minutos y compártelo en Instagram"
 path = "es/apps/3min"
 template = "app.html"
 

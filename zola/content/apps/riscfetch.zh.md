@@ -1,5 +1,5 @@
 +++
-title = "riscfetch: 仅限RISC-V。其他架构上会退出。"
+title = "riscfetch: 专属 RISC-V 的 fetch。别的架构上跑不了。"
 path = "zh/apps/riscfetch"
 template = "app.html"
 

@@ -1,5 +1,5 @@
 +++
-title = "Ear in the Sky Diamond: Cross-Lingual Soramimi Sharing"
+title = "Ear in the Sky Diamond: Pick a YouTube clip and recreate your own misheard-lyrics show"
 path = "apps/ear-sky"
 template = "app.html"
 

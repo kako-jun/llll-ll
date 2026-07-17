@@ -1,5 +1,5 @@
 +++
-title = "Nostalgic: 用5个复古功能复活1990年代互联网"
+title = "Nostalgic: 重现 90 年代网络文化的五个部件"
 path = "zh/apps/nostalgic"
 template = "app.html"
 

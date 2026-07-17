@@ -1,5 +1,5 @@
 +++
-title = "diffai: 「Binary files differ」不够用"
+title = "diffai: 不会只留下一句“Binary files differ”"
 path = "zh/apps/diffai"
 template = "app.html"
 

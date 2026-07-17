@@ -1,5 +1,5 @@
 +++
-title = "diffai: \"Binary files differ\" No Es Suficiente"
+title = "diffai: No se queda en «Binary files differ»"
 path = "es/apps/diffai"
 template = "app.html"
 

@@ -1,5 +1,5 @@
 +++
-title = "Nostalgic: Revive el Internet de los 90 con 5 Funciones Web Retro"
+title = "Nostalgic: Cinco piezas que rescatan la cultura web de los 90"
 path = "es/apps/nostalgic"
 template = "app.html"
 

@@ -1,5 +1,5 @@
 +++
-title = "Osaka Kenpo: Legal Texts in Friendly Osaka Dialect"
+title = "Osaka Kenpo: Testing whether even tangled law feels easy in Osaka dialect"
 path = "apps/osaka-kenpo"
 template = "app.html"
 

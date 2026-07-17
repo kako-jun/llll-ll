@@ -1,5 +1,5 @@
 +++
-title = "gitpp: Manage Multiple Git Repositories in Parallel"
+title = "gitpp: Operate many Git repos from one config"
 path = "apps/gitpp"
 template = "app.html"
 

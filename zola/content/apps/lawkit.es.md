@@ -1,5 +1,5 @@
 +++
-title = "lawkit: Detecta Fraude de Datos con Leyes Estadísticas"
+title = "lawkit: Detecta fraudes y anomalías con leyes estadísticas"
 path = "es/apps/lawkit"
 template = "app.html"
 

@@ -1,5 +1,5 @@
 +++
-title = "orber: Turn a Photo into an Abstract Orb Mood Video"
+title = ": 把照片变成发光光球的氛围影像"
 path = "zh/apps/orber"
 template = "app.html"
 

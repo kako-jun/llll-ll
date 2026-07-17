@@ -1,5 +1,5 @@
 +++
-title = "diffx: Shows Only Meaningful Changes"
+title = "diffx: Show only the changes that matter"
 path = "apps/diffx"
 template = "app.html"
 

@@ -1,5 +1,5 @@
 +++
-title = "avel: The Fastest-Rendering Zola Blog Theme"
+title = ": El tema de blog para Zola que carga más rápido"
 path = "es/apps/avel"
 template = "app.html"
 

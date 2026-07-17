@@ -1,5 +1,5 @@
 +++
-title = "Machigai Salad: 找不同图片对比工具"
+title = "Machigai Salad: 两图并排，长按对比找不同"
 path = "zh/apps/machigai-salad"
 template = "app.html"
 

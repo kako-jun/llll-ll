@@ -22,16 +22,16 @@
     "featured": true,
     "icon": "/images/apps/orber.webp",
     "effort": {
-      "sloc": 19344,
-      "slocLabel": "19,344",
-      "codeSloc": 17034,
-      "dataSloc": 2310,
+      "sloc": 19599,
+      "slocLabel": "19,599",
+      "codeSloc": 17279,
+      "dataSloc": 2320,
       "codeTier": "hard",
       "dataTier": "config",
-      "personMonths": 10,
-      "usd": 70000,
-      "usdLabel": "$70k",
-      "level": 0.77
+      "personMonths": 10.1,
+      "usd": 71000,
+      "usdLabel": "$71k",
+      "level": 0.81
     }
   },
   {
@@ -57,16 +57,16 @@
     "featured": true,
     "icon": "/images/apps/machigai-salad.webp",
     "effort": {
-      "sloc": 7074,
-      "slocLabel": "7,074",
-      "codeSloc": 5515,
-      "dataSloc": 1559,
+      "sloc": 8123,
+      "slocLabel": "8,123",
+      "codeSloc": 6440,
+      "dataSloc": 1683,
       "codeTier": "standard",
       "dataTier": "config",
-      "personMonths": 2.1,
-      "usd": 15000,
-      "usdLabel": "$15k",
-      "level": 0.33
+      "personMonths": 2.4,
+      "usd": 17000,
+      "usdLabel": "$17k",
+      "level": 0.38
     }
   },
   {
@@ -92,16 +92,16 @@
     "featured": true,
     "icon": "/images/apps/avel.webp",
     "effort": {
-      "sloc": 2904,
-      "slocLabel": "2,904",
-      "codeSloc": 1264,
-      "dataSloc": 1640,
+      "sloc": 2924,
+      "slocLabel": "2,924",
+      "codeSloc": 1279,
+      "dataSloc": 1645,
       "codeTier": "standard",
       "dataTier": "config",
       "personMonths": 0.9,
       "usd": 6300,
       "usdLabel": "$6.3k",
-      "level": 0.08
+      "level": 0.09
     }
   },
   {
@@ -127,40 +127,17 @@
     "featured": true,
     "icon": "/images/apps/osaka-kenpo.webp",
     "effort": {
-      "sloc": 145600,
-      "slocLabel": "145,600",
-      "codeSloc": 15562,
-      "dataSloc": 130038,
+      "sloc": 146016,
+      "slocLabel": "146,016",
+      "codeSloc": 15747,
+      "dataSloc": 130269,
       "codeTier": "standard",
       "dataTier": "authored",
-      "personMonths": 19.4,
+      "personMonths": 19.5,
       "usd": 140000,
       "usdLabel": "$140k",
-      "level": 0.96
+      "level": 1
     }
-  },
-  {
-    "id": "hanoba",
-    "title": {
-      "en": "Hanōba: A quiet plant-photo social feed on Nostr",
-      "ja": "Hanōba: 植物写真をひとこと添えて置く静かなSNS",
-      "zh": "Hanōba: 在 Nostr 上分享植物照片的安静社交动态",
-      "es": "Hanōba: Un feed social tranquilo para fotos de plantas en Nostr"
-    },
-    "description": {
-      "ja": "植物写真を、Instagram より早く簡単に、ひとこと添えて置ける Nostr ベースの写真SNS。投稿・プロフィール・人気品種・市民手帳をそなえ、植物好きの架空都市ハノーバをみんなで育てる。",
-      "en": "A Nostr-based plant-photo social feed: faster and simpler than Instagram, with one short note beside each photo. It includes posting, profiles, popular varieties, and a citizen handbook for growing the imaginary plant city of Hanōba together.",
-      "zh": "一个基于 Nostr 的植物照片社交动态：比 Instagram 更快更简单，每张照片只需配上一句话。支持发布、个人资料、热门品种和市民手册，一起培育虚构的植物城市 Hanōba。",
-      "es": "Un feed social de fotos de plantas basado en Nostr: más rápido y sencillo que Instagram, con una breve nota junto a cada foto. Incluye publicación, perfiles, variedades populares y una libreta ciudadana para cultivar juntos la ciudad vegetal imaginaria de Hanōba."
-    },
-    "tags": ["OSS", "Web", "Social"],
-    "images": [],
-    "demoUrl": "https://hanoba.llll-ll.com",
-    "repositoryUrl": "https://github.com/kako-jun/hanoba",
-    "createdAt": "2026-06-20",
-    "updatedAt": "2026-07-17",
-    "featured": false,
-    "icon": "/images/apps/hanoba.webp"
   },
   {
     "id": "theo-hayami",
@@ -176,14 +153,61 @@
       "zh": "一个短篇对话剧阅读网站：让人格化的哲学住民回答人们不断背负的业。本篇、住民别选集、主题索引与时事茶会，像叡智星海中的书架一样展开。",
       "es": "Un sitio de lectura de diálogos breves donde filosofías personificadas responden a las cargas que la gente sigue llevando. Historia principal, antologías por habitante, índices por tema y entradas de té sobre temas actuales se ordenan como estanterías en el Mar de la Sabiduría."
     },
-    "tags": ["Web", "Story"],
+    "tags": ["Web", "Story", "Game"],
     "images": [],
     "demoUrl": "https://theo-hayami.llll-ll.com",
     "repositoryUrl": "https://github.com/kako-jun/theo-hayami",
     "createdAt": "2026-07-10",
     "updatedAt": "2026-07-17",
-    "featured": false,
-    "icon": "/images/apps/theo-hayami.webp"
+    "featured": true,
+    "icon": "/images/apps/theo-hayami.webp",
+    "effort": {
+      "sloc": 24912,
+      "slocLabel": "24,912",
+      "codeSloc": 5479,
+      "dataSloc": 19433,
+      "codeTier": "standard",
+      "dataTier": "authored",
+      "personMonths": 4.2,
+      "usd": 30000,
+      "usdLabel": "$30k",
+      "level": 0.55
+    }
+  },
+  {
+    "id": "hanoba",
+    "title": {
+      "en": "Hanōba: A quiet plant-photo social feed on Nostr",
+      "ja": "Hanōba: 植物写真をひとこと添えて置くSNS",
+      "zh": "Hanōba: 在 Nostr 上分享植物照片的安静社交动态",
+      "es": "Hanōba: Un feed social tranquilo para fotos de plantas en Nostr"
+    },
+    "description": {
+      "ja": "植物写真を、Instagram より早く簡単に、ひとこと添えて置ける Nostr ベースの写真SNS。投稿・プロフィール・人気品種・市民手帳をそなえ、植物好きの架空都市ハノーバをみんなで育てる。",
+      "en": "A Nostr-based plant-photo social feed: faster and simpler than Instagram, with one short note beside each photo. It includes posting, profiles, popular varieties, and a citizen handbook for growing the imaginary plant city of Hanōba together.",
+      "zh": "一个基于 Nostr 的植物照片社交动态：比 Instagram 更快更简单，每张照片只需配上一句话。支持发布、个人资料、热门品种和市民手册，一起培育虚构的植物城市 Hanōba。",
+      "es": "Un feed social de fotos de plantas basado en Nostr: más rápido y sencillo que Instagram, con una breve nota junto a cada foto. Incluye publicación, perfiles, variedades populares y una libreta ciudadana para cultivar juntos la ciudad vegetal imaginaria de Hanōba."
+    },
+    "tags": ["OSS", "Web", "Social"],
+    "images": [],
+    "demoUrl": "https://hanoba.llll-ll.com",
+    "repositoryUrl": "https://github.com/kako-jun/hanoba",
+    "createdAt": "2026-06-20",
+    "updatedAt": "2026-07-17",
+    "featured": true,
+    "icon": "/images/apps/hanoba.webp",
+    "effort": {
+      "sloc": 32818,
+      "slocLabel": "32,818",
+      "codeSloc": 32351,
+      "dataSloc": 467,
+      "codeTier": "standard",
+      "dataTier": "config",
+      "personMonths": 9.8,
+      "usd": 68000,
+      "usdLabel": "$68k",
+      "level": 0.8
+    }
   },
   {
     "id": "jiwa",
@@ -251,7 +275,7 @@
       "personMonths": 1.2,
       "usd": 8700,
       "usdLabel": "$8.7k",
-      "level": 0.18
+      "level": 0.19
     }
   },
   {
@@ -277,16 +301,16 @@
     "featured": false,
     "icon": "/images/apps/ear-sky.webp",
     "effort": {
-      "sloc": 5385,
-      "slocLabel": "5,385",
-      "codeSloc": 4732,
-      "dataSloc": 653,
+      "sloc": 5453,
+      "slocLabel": "5,453",
+      "codeSloc": 4808,
+      "dataSloc": 645,
       "codeTier": "standard",
       "dataTier": "config",
       "personMonths": 1.9,
       "usd": 13000,
       "usdLabel": "$13k",
-      "level": 0.29
+      "level": 0.31
     }
   },
   {
@@ -312,16 +336,16 @@
     "featured": false,
     "icon": "/images/apps/hacker-noroshi.webp",
     "effort": {
-      "sloc": 15059,
-      "slocLabel": "15,059",
-      "codeSloc": 13775,
-      "dataSloc": 1284,
+      "sloc": 18480,
+      "slocLabel": "18,480",
+      "codeSloc": 17169,
+      "dataSloc": 1311,
       "codeTier": "standard",
       "dataTier": "config",
-      "personMonths": 4.5,
-      "usd": 31000,
-      "usdLabel": "$31k",
-      "level": 0.54
+      "personMonths": 5.4,
+      "usd": 38000,
+      "usdLabel": "$38k",
+      "level": 0.62
     }
   },
   {
@@ -347,16 +371,16 @@
     "featured": false,
     "icon": "/images/apps/sasso.webp",
     "effort": {
-      "sloc": 5525,
-      "slocLabel": "5,525",
-      "codeSloc": 4521,
-      "dataSloc": 1004,
+      "sloc": 7430,
+      "slocLabel": "7,430",
+      "codeSloc": 6282,
+      "dataSloc": 1148,
       "codeTier": "standard",
       "dataTier": "config",
-      "personMonths": 1.8,
-      "usd": 13000,
-      "usdLabel": "$13k",
-      "level": 0.28
+      "personMonths": 2.3,
+      "usd": 16000,
+      "usdLabel": "$16k",
+      "level": 0.37
     }
   },
   {
@@ -382,16 +406,16 @@
     "featured": false,
     "icon": "/images/apps/mypace.webp",
     "effort": {
-      "sloc": 51871,
-      "slocLabel": "51,871",
-      "codeSloc": 41648,
-      "dataSloc": 10223,
+      "sloc": 52017,
+      "slocLabel": "52,017",
+      "codeSloc": 41792,
+      "dataSloc": 10225,
       "codeTier": "standard",
       "dataTier": "config",
       "personMonths": 12.6,
-      "usd": 88000,
-      "usdLabel": "$88k",
-      "level": 0.83
+      "usd": 89000,
+      "usdLabel": "$89k",
+      "level": 0.87
     }
   },
   {
@@ -485,16 +509,16 @@
     "featured": false,
     "icon": "/images/apps/3min.webp",
     "effort": {
-      "sloc": 10760,
-      "slocLabel": "10,760",
-      "codeSloc": 5385,
-      "dataSloc": 5375,
+      "sloc": 11670,
+      "slocLabel": "11,670",
+      "codeSloc": 6164,
+      "dataSloc": 5506,
       "codeTier": "standard",
       "dataTier": "config",
-      "personMonths": 2.1,
-      "usd": 15000,
-      "usdLabel": "$15k",
-      "level": 0.33
+      "personMonths": 2.4,
+      "usd": 17000,
+      "usdLabel": "$17k",
+      "level": 0.38
     }
   },
   {
@@ -520,16 +544,16 @@
     "featured": false,
     "icon": "/images/apps/agasteer.webp",
     "effort": {
-      "sloc": 35913,
-      "slocLabel": "35,913",
-      "codeSloc": 25939,
-      "dataSloc": 9974,
+      "sloc": 49000,
+      "slocLabel": "49,000",
+      "codeSloc": 38191,
+      "dataSloc": 10809,
       "codeTier": "standard",
       "dataTier": "config",
-      "personMonths": 8.1,
-      "usd": 57000,
-      "usdLabel": "$57k",
-      "level": 0.71
+      "personMonths": 11.6,
+      "usd": 81000,
+      "usdLabel": "$81k",
+      "level": 0.85
     }
   },
   {
@@ -565,7 +589,7 @@
       "personMonths": 1.2,
       "usd": 8300,
       "usdLabel": "$8.3k",
-      "level": 0.16
+      "level": 0.17
     }
   },
   {
@@ -605,7 +629,7 @@
       "personMonths": 1.9,
       "usd": 13000,
       "usdLabel": "$13k",
-      "level": 0.3
+      "level": 0.31
     }
   },
   {
@@ -639,7 +663,7 @@
       "personMonths": 3,
       "usd": 21000,
       "usdLabel": "$21k",
-      "level": 0.43
+      "level": 0.44
     }
   },
   {
@@ -673,7 +697,7 @@
       "personMonths": 5.5,
       "usd": 39000,
       "usdLabel": "$39k",
-      "level": 0.6
+      "level": 0.63
     }
   },
   {
@@ -719,7 +743,7 @@
       "personMonths": 1.4,
       "usd": 10000,
       "usdLabel": "$10k",
-      "level": 0.22
+      "level": 0.23
     }
   },
   {
@@ -754,7 +778,7 @@
       "personMonths": 4.5,
       "usd": 32000,
       "usdLabel": "$32k",
-      "level": 0.54
+      "level": 0.57
     }
   },
   {
@@ -780,16 +804,16 @@
     "featured": false,
     "icon": "/images/apps/tail-match.webp",
     "effort": {
-      "sloc": 106393,
-      "slocLabel": "106,393",
-      "codeSloc": 97327,
-      "dataSloc": 9066,
+      "sloc": 111630,
+      "slocLabel": "111,630",
+      "codeSloc": 101364,
+      "dataSloc": 10266,
       "codeTier": "repetitive",
       "dataTier": "config",
-      "personMonths": 14.6,
-      "usd": 100000,
-      "usdLabel": "$100k",
-      "level": 0.88
+      "personMonths": 15.2,
+      "usd": 110000,
+      "usdLabel": "$110k",
+      "level": 0.93
     }
   },
   {
@@ -815,16 +839,16 @@
     "featured": false,
     "icon": "/images/apps/noun-gender.webp",
     "effort": {
-      "sloc": 189618,
-      "slocLabel": "189,618",
-      "codeSloc": 5998,
-      "dataSloc": 183620,
+      "sloc": 119613,
+      "slocLabel": "119,613",
+      "codeSloc": 5283,
+      "dataSloc": 114330,
       "codeTier": "standard",
       "dataTier": "authored",
-      "personMonths": 22.6,
-      "usd": 160000,
-      "usdLabel": "$160k",
-      "level": 1
+      "personMonths": 14.7,
+      "usd": 100000,
+      "usdLabel": "$100k",
+      "level": 0.92
     }
   },
   {
@@ -869,7 +893,7 @@
       "personMonths": 1.8,
       "usd": 13000,
       "usdLabel": "$13k",
-      "level": 0.29
+      "level": 0.3
     }
   },
   {

@@ -1,5 +1,5 @@
 +++
-title = "Hacker Noroshi: 日本版Hacker News克隆"
+title = "Hacker Noroshi: 为日本打造的 Hacker News 克隆"
 path = "zh/apps/hacker-noroshi"
 template = "app.html"
 

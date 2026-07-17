@@ -1,5 +1,5 @@
 +++
-title = "Sasso: Calculator Meets Puzzle - Eliminate Digits"
+title = "Sasso: A calculator puzzle game for Mensa minds"
 path = "apps/sasso"
 template = "app.html"
 

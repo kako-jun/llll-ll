@@ -1,5 +1,5 @@
 +++
-title = "Hacker Noroshi: Un Clon de Hacker News Enfocado en Japón"
+title = "Hacker Noroshi: Un clon de Hacker News hecho para Japón"
 path = "es/apps/hacker-noroshi"
 template = "app.html"
 

@@ -1,5 +1,5 @@
 +++
-title = "3 min. Calendar: 3分钟完成营业日历"
+title = "3 min. Calendar: 三分钟做好营业日历，一键分享到 Instagram"
 path = "zh/apps/3min"
 template = "app.html"
 

@@ -41,7 +41,7 @@ const DATA_RATE = { authored: 9000, config: 50000 };
 //   repetitive = 似た部品の量産・設定駆動（1行が軽い）。
 //   data authored = 主たる価値が人手の著作コンテンツ（翻訳・法令訳・言語データ）。
 const CODE_TIER = { orber: "hard", "tail-match": "repetitive" };
-const DATA_TIER = { "noun-gender": "authored", "osaka-kenpo": "authored" };
+const DATA_TIER = { "noun-gender": "authored", "osaka-kenpo": "authored", "theo-hayami": "authored" };
 
 // id とリポ名がずれるものの例外（既定は repositoryUrl 末尾 → 無ければ id）。
 const REPO_OVERRIDES = { chunkundo: "chunkundo.nvim" };

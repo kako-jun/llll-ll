@@ -1,5 +1,5 @@
 +++
-title = "MY PACE: 基于Nostr协议的去中心化社交网络"
+title = "MY PACE: 按自己节奏来的五分熟社交"
 path = "zh/apps/mypace"
 template = "app.html"
 

@@ -1,5 +1,5 @@
 +++
-title = "lawkit: 用统计法则检测数据欺诈"
+title = "lawkit: 用统计法则看穿数据的舞弊与异常"
 path = "zh/apps/lawkit"
 template = "app.html"
 

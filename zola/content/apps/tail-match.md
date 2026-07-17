@@ -1,5 +1,5 @@
 +++
-title = "tail-match: Shelter Cat & Dog Matching for Ishikawa"
+title = "tail-match: Connecting shelter cats and dogs across Japan with adopters"
 path = "apps/tail-match"
 template = "app.html"
 

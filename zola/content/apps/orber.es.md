@@ -1,5 +1,5 @@
 +++
-title = "orber: Turn a Photo into an Abstract Orb Mood Video"
+title = ": Convierte una foto en un vídeo ambiental de orbes de luz"
 path = "es/apps/orber"
 template = "app.html"
 

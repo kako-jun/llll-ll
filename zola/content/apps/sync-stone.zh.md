@@ -1,5 +1,5 @@
 +++
-title = "SyncStone - Stardustmemoir: FF14陆行鸟站导出工具"
+title = "SyncStone - Stardustmemoir: 完整保存你的 FF14 云冠日记"
 path = "zh/apps/sync-stone"
 template = "app.html"
 

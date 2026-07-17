@@ -1,5 +1,5 @@
 +++
-title = "chunkundo.nvim: Fragmentación inteligente de deshacer para Neovim"
+title = "chunkundo.nvim: Divide con criterio el undo de la escritura con IME en Neovim"
 path = "es/apps/chunkundo"
 template = "app.html"
 

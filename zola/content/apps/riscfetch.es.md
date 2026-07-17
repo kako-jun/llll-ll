@@ -1,5 +1,5 @@
 +++
-title = "riscfetch: Solo RISC-V. Sale en Otras Arquitecturas."
+title = "riscfetch: Un fetch solo para RISC-V. En otra arquitectura no arranca."
 path = "es/apps/riscfetch"
 template = "app.html"
 

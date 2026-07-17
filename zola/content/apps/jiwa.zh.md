@@ -1,5 +1,5 @@
 +++
-title = "jiwa: Terminal Text Reveal Animations for Rust"
+title = ": 让终端文字渐渐浮现"
 path = "zh/apps/jiwa"
 template = "app.html"
 

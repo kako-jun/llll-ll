@@ -1,5 +1,5 @@
 +++
-title = "diffx: 只显示有意义的变更"
+title = "diffx: 只显示真正重要的变更"
 path = "zh/apps/diffx"
 template = "app.html"
 

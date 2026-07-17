@@ -1,5 +1,5 @@
 +++
-title = "Noun Gender: Learn Grammatical Gender in 8 Languages"
+title = "Noun Gender: Learn noun gender in eight languages through quizzes"
 path = "apps/noun-gender"
 template = "app.html"
 

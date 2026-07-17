@@ -1,5 +1,5 @@
 +++
-title = "Agasteer: La aplicación Markdown más simple que nunca tiene conflictos"
+title = "Agasteer: Un editor Markdown para el desarrollo guiado por ideas y las notas del día a día"
 path = "es/apps/agasteer"
 template = "app.html"
 

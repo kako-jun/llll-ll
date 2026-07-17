@@ -1,5 +1,5 @@
 +++
-title = "MY PACE: A Decentralized SNS on Nostr Protocol"
+title = "MY PACE: A medium-rare social network, taken at your own pace"
 path = "apps/mypace"
 template = "app.html"
 

@@ -1,5 +1,5 @@
 +++
-title = "Hanōba: Un feed social tranquilo para fotos de plantas en Nostr"
+title = "Hanōba: SNS de fotos de plantas en Nostr"
 path = "es/apps/hanoba"
 template = "app.html"
 

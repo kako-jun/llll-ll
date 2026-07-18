@@ -41,10 +41,10 @@
   {
     "id": "hanoba",
     "title": {
-      "en": "Hanōba: A quiet plant-photo social feed on Nostr",
+      "en": "Hanōba: A plant-photo SNS on Nostr",
       "ja": "Hanōba: 植物写真をひとこと添えて置くSNS",
-      "zh": "Hanōba: 在 Nostr 上分享植物照片的安静社交动态",
-      "es": "Hanōba: Un feed social tranquilo para fotos de plantas en Nostr"
+      "zh": "Hanōba: 基于 Nostr 的植物照片 SNS",
+      "es": "Hanōba: SNS de fotos de plantas en Nostr"
     },
     "description": {
       "ja": "植物写真を、Instagram より早く簡単に、ひとこと添えて置ける Nostr ベースの写真SNS。投稿・プロフィール・人気品種・市民手帳をそなえ、植物好きの架空都市ハノーバをみんなで育てる。",

@@ -1,5 +1,5 @@
 +++
-title = "Hanōba: 在 Nostr 上分享植物照片的安静社交动态"
+title = "Hanōba: 基于 Nostr 的植物照片 SNS"
 path = "zh/apps/hanoba"
 template = "app.html"
 

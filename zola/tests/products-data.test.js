@@ -14,6 +14,14 @@ import products from "../data/products.json";
 //     （master が欠けると、その言語にフォールバックする先が無く表示が空になる）。
 
 const released = products.filter((p) => !p.draft);
+const featuredIds = [
+  "theo-hayami",
+  "hanoba",
+  "orber",
+  "machigai-salad",
+  "avel",
+  "osaka-kenpo",
+];
 
 describe("products.json", () => {
   it("配列で1件以上ある", () => {
@@ -32,22 +40,21 @@ describe("products.json", () => {
     expect([...new Set(dup)]).toEqual([]);
   });
 
-  it("アプリ一覧の先頭は注目4件を指定順で並べる", () => {
-    expect(products.slice(0, 4).map((p) => p.id)).toEqual([
-      "orber",
-      "machigai-salad",
-      "avel",
-      "osaka-kenpo",
-    ]);
+  it("アプリ一覧の先頭は注目アプリを指定順で並べる", () => {
+    expect(products.slice(0, featuredIds.length).map((p) => p.id)).toEqual(featuredIds);
   });
 
-  it("注目フラグは指定4件だけに立てる", () => {
-    expect(products.filter((p) => p.featured).map((p) => p.id)).toEqual([
-      "orber",
-      "machigai-salad",
-      "avel",
-      "osaka-kenpo",
-    ]);
+  it("注目フラグは指定アプリだけに立てる", () => {
+    expect(products.filter((p) => p.featured).map((p) => p.id)).toEqual(featuredIds);
+  });
+
+  it("Hanoba のタイトルは過疎に見える静かな表現を使わない", () => {
+    const hanoba = products.find((p) => p.id === "hanoba");
+
+    expect(hanoba).toBeTruthy();
+    expect(Object.values(hanoba.title).join("\n")).not.toMatch(
+      /quiet|tranquilo|安静|静かな/
+    );
   });
 
   it("公開エントリ（!draft）が1件以上ある", () => {
